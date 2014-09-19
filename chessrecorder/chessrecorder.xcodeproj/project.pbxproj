@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
+		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
+		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
+		C025713F19CC5D7B00624F0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713E19CC5D7B00624F0E /* ViewController.m */; };
+		C025714219CC5D7B00624F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C025714019CC5D7B00624F0E /* Main.storyboard */; };
+		C025714419CC5D7B00624F0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C025714319CC5D7B00624F0E /* Images.xcassets */; };
+		C025714719CC5D7B00624F0E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C025714519CC5D7B00624F0E /* LaunchScreen.xib */; };
+		C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C025715219CC5D7B00624F0E /* chessrecorderTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C025714D19CC5D7B00624F0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C025712819CC5D7B00624F0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C025712F19CC5D7B00624F0E;
+			remoteInfo = chessrecorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C025713419CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C025713519CC5D7B00624F0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C025713719CC5D7B00624F0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C025713819CC5D7B00624F0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C025713B19CC5D7B00624F0E /* chessrecorder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chessrecorder.xcdatamodel; sourceTree = "<group>"; };
+		C025713D19CC5D7B00624F0E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C025713E19CC5D7B00624F0E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C025714119CC5D7B00624F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C025714319CC5D7B00624F0E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C025714619CC5D7B00624F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C025714C19CC5D7B00624F0E /* chessrecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chessrecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C025715119CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C025715219CC5D7B00624F0E /* chessrecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chessrecorderTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C025712D19CC5D7B00624F0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C025714919CC5D7B00624F0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C025712719CC5D7B00624F0E = {
+			isa = PBXGroup;
+			children = (
+				C025713219CC5D7B00624F0E /* chessrecorder */,
+				C025714F19CC5D7B00624F0E /* chessrecorderTests */,
+				C025713119CC5D7B00624F0E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C025713119CC5D7B00624F0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C025713019CC5D7B00624F0E /* chessrecorder.app */,
+				C025714C19CC5D7B00624F0E /* chessrecorderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C025713219CC5D7B00624F0E /* chessrecorder */ = {
+			isa = PBXGroup;
+			children = (
+				C025713719CC5D7B00624F0E /* AppDelegate.h */,
+				C025713819CC5D7B00624F0E /* AppDelegate.m */,
+				C025713D19CC5D7B00624F0E /* ViewController.h */,
+				C025713E19CC5D7B00624F0E /* ViewController.m */,
+				C025714019CC5D7B00624F0E /* Main.storyboard */,
+				C025714319CC5D7B00624F0E /* Images.xcassets */,
+				C025714519CC5D7B00624F0E /* LaunchScreen.xib */,
+				C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */,
+				C025713319CC5D7B00624F0E /* Supporting Files */,
+			);
+			path = chessrecorder;
+			sourceTree = "<group>";
+		};
+		C025713319CC5D7B00624F0E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C025713419CC5D7B00624F0E /* Info.plist */,
+				C025713519CC5D7B00624F0E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C025714F19CC5D7B00624F0E /* chessrecorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				C025715219CC5D7B00624F0E /* chessrecorderTests.m */,
+				C025715019CC5D7B00624F0E /* Supporting Files */,
+			);
+			path = chessrecorderTests;
+			sourceTree = "<group>";
+		};
+		C025715019CC5D7B00624F0E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C025715119CC5D7B00624F0E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C025712F19CC5D7B00624F0E /* chessrecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C025715619CC5D7B00624F0E /* Build configuration list for PBXNativeTarget "chessrecorder" */;
+			buildPhases = (
+				C025712C19CC5D7B00624F0E /* Sources */,
+				C025712D19CC5D7B00624F0E /* Frameworks */,
+				C025712E19CC5D7B00624F0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = chessrecorder;
+			productName = chessrecorder;
+			productReference = C025713019CC5D7B00624F0E /* chessrecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C025714B19CC5D7B00624F0E /* chessrecorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C025715919CC5D7B00624F0E /* Build configuration list for PBXNativeTarget "chessrecorderTests" */;
+			buildPhases = (
+				C025714819CC5D7B00624F0E /* Sources */,
+				C025714919CC5D7B00624F0E /* Frameworks */,
+				C025714A19CC5D7B00624F0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C025714E19CC5D7B00624F0E /* PBXTargetDependency */,
+			);
+			name = chessrecorderTests;
+			productName = chessrecorderTests;
+			productReference = C025714C19CC5D7B00624F0E /* chessrecorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C025712819CC5D7B00624F0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Colman Marcus-Quinn";
+				TargetAttributes = {
+					C025712F19CC5D7B00624F0E = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					C025714B19CC5D7B00624F0E = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = C025712F19CC5D7B00624F0E;
+					};
+				};
+			};
+			buildConfigurationList = C025712B19CC5D7B00624F0E /* Build configuration list for PBXProject "chessrecorder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C025712719CC5D7B00624F0E;
+			productRefGroup = C025713119CC5D7B00624F0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C025712F19CC5D7B00624F0E /* chessrecorder */,
+				C025714B19CC5D7B00624F0E /* chessrecorderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C025712E19CC5D7B00624F0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C025714219CC5D7B00624F0E /* Main.storyboard in Resources */,
+				C025714719CC5D7B00624F0E /* LaunchScreen.xib in Resources */,
+				C025714419CC5D7B00624F0E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C025714A19CC5D7B00624F0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C025712C19CC5D7B00624F0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */,
+				C025713619CC5D7B00624F0E /* main.m in Sources */,
+				C025713F19CC5D7B00624F0E /* ViewController.m in Sources */,
+				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C025714819CC5D7B00624F0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C025714E19CC5D7B00624F0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C025712F19CC5D7B00624F0E /* chessrecorder */;
+			targetProxy = C025714D19CC5D7B00624F0E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C025714019CC5D7B00624F0E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C025714119CC5D7B00624F0E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C025714519CC5D7B00624F0E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C025714619CC5D7B00624F0E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C025715419CC5D7B00624F0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C025715519CC5D7B00624F0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C025715719CC5D7B00624F0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = chessrecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C025715819CC5D7B00624F0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = chessrecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C025715A19CC5D7B00624F0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = chessrecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chessrecorder.app/chessrecorder";
+			};
+			name = Debug;
+		};
+		C025715B19CC5D7B00624F0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = chessrecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chessrecorder.app/chessrecorder";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C025712B19CC5D7B00624F0E /* Build configuration list for PBXProject "chessrecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C025715419CC5D7B00624F0E /* Debug */,
+				C025715519CC5D7B00624F0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C025715619CC5D7B00624F0E /* Build configuration list for PBXNativeTarget "chessrecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C025715719CC5D7B00624F0E /* Debug */,
+				C025715819CC5D7B00624F0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C025715919CC5D7B00624F0E /* Build configuration list for PBXNativeTarget "chessrecorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C025715A19CC5D7B00624F0E /* Debug */,
+				C025715B19CC5D7B00624F0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C025713B19CC5D7B00624F0E /* chessrecorder.xcdatamodel */,
+			);
+			currentVersion = C025713B19CC5D7B00624F0E /* chessrecorder.xcdatamodel */;
+			path = chessrecorder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C025712819CC5D7B00624F0E /* Project object */;
+}
