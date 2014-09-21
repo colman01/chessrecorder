@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "SimpleVideoFilterViewController.h"
+
+
 
 @interface AppDelegate ()
 
@@ -17,6 +20,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    rootViewController = [[SimpleVideoFilterViewController alloc] initWithNibName:@"SimpleVideoFilterViewController" bundle:nil];
+    rootViewController.view.frame = [[UIScreen mainScreen] bounds];
+    [self.window addSubview:rootViewController.view];
+    
+    [self.window makeKeyAndVisible];
+    [self.window layoutSubviews];
+    self.window.rootViewController = rootViewController;
     return YES;
 }
 

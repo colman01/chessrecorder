@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class SimpleVideoFilterViewController ;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+
+    SimpleVideoFilterViewController *rootViewController;
+}
+
+
+
 
 @property (strong, nonatomic) UIWindow *window;
 
