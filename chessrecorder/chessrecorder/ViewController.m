@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <GPUImage/GPUImage.h>
 
 @interface ViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+//    
+    GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
