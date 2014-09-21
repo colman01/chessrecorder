@@ -15,10 +15,10 @@
 		C025714419CC5D7B00624F0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C025714319CC5D7B00624F0E /* Images.xcassets */; };
 		C025714719CC5D7B00624F0E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C025714519CC5D7B00624F0E /* LaunchScreen.xib */; };
 		C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C025715219CC5D7B00624F0E /* chessrecorderTests.m */; };
-		C0CF586C19CF03BE000B98E1 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586A19CF03BE000B98E1 /* libGPUImage.a */; };
-		C0CF586D19CF03BE000B98E1 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586B19CF03BE000B98E1 /* GPUImage.framework */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
+		C0CF587D19CF2E11000B98E1 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586B19CF03BE000B98E1 /* GPUImage.framework */; };
+		C0CF587E19CF2E1A000B98E1 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586A19CF03BE000B98E1 /* libGPUImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0CF586C19CF03BE000B98E1 /* libGPUImage.a in Frameworks */,
-				C0CF586D19CF03BE000B98E1 /* GPUImage.framework in Frameworks */,
+				C0CF587D19CF2E11000B98E1 /* GPUImage.framework in Frameworks */,
+				C0CF587E19CF2E1A000B98E1 /* libGPUImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,12 +372,16 @@
 					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build",
 					"/Users/colmanmarcus-quinn/workspace/chess",
 					"software/cr/GPUFramework/GPUImage-master/build",
+					"/Users/colmanmarcus-quinn/workspace/chess",
+					"software/cr/GPUFramework/GPUImage-master/build",
 				);
 				INFOPLIST_FILE = chessrecorder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build/Release-iphoneos",
+					"/Users/colmanmarcus-quinn/workspace/chess",
+					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 					"/Users/colmanmarcus-quinn/workspace/chess",
 					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 				);
@@ -394,12 +398,16 @@
 					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build",
 					"/Users/colmanmarcus-quinn/workspace/chess",
 					"software/cr/GPUFramework/GPUImage-master/build",
+					"/Users/colmanmarcus-quinn/workspace/chess",
+					"software/cr/GPUFramework/GPUImage-master/build",
 				);
 				INFOPLIST_FILE = chessrecorder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build/Release-iphoneos",
+					"/Users/colmanmarcus-quinn/workspace/chess",
+					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 					"/Users/colmanmarcus-quinn/workspace/chess",
 					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 				);
