@@ -1,59 +1,43 @@
 //
-//  ViewController.m
+//  FilterViewController.m
 //  chessrecorder
 //
-//  Created by colman on 19/09/14.
+//  Created by colman on 22/09/14.
 //  Copyright (c) 2014 Colman Marcus-Quinn. All rights reserved.
 //
 
-#import "ViewController.h"
-#import <GPUImage/GPUImage.h>
-#import "ShowcaseFilterViewController.h"
+#import "FilterViewController.h"
 
-@interface ViewController ()
+@interface FilterViewController ()
 
 @end
 
-
-
-@implementation ViewController
-
-@synthesize s;
-
-
+@implementation FilterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    filterType = GPUIMAGE_CANNYEDGEDETECTION;
-    filterType = GPUIMAGE_HARRISCORNERDETECTION;
+
+    filterType = GPUIMAGE_CANNYEDGEDETECTION;
+    //    filterType = GPUIMAGE_HARRISCORNERDETECTION;
     
     [self setupFilter];
     
-//  GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-//    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-////    
-////    GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"SimpleVideoFilterViewController"];
-//    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
-////    
-////    // Add the view somewhere so it's visible
-////    [videoCamera addTarget:customFilter];
-////    [customFilter addTarget:filteredVideoView];
-//    [videoCamera startCameraCapture];
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+
 }
+
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-//    s = [[SimpleVideoFilterViewController alloc] init];
+    //    s = [[SimpleVideoFilterViewController alloc] init];
     
-//    s = segue.destinationViewController;
-
-    ShowcaseFilterViewController *show = [[ShowcaseFilterViewController alloc] initWithFilterType:GPUIMAGE_CANNYEDGEDETECTION];
-    show = segue.destinationViewController;
+    //    s = segue.destinationViewController;
+    
+//    ShowcaseFilterViewController *show = [[ShowcaseFilterViewController alloc] initWithFilterType:GPUIMAGE_CANNYEDGEDETECTION];
+//    show = segue.destinationViewController;
     
 }
 
@@ -1509,32 +1493,32 @@
         }
         else if (filterType == GPUIMAGE_MOTIONDETECTOR)
         {
-//            faceView = [[UIView alloc] initWithFrame:CGRectMake(100.0, 100.0, 100.0, 100.0)];
-//            faceView.layer.borderWidth = 1;
-//            faceView.layer.borderColor = [[UIColor redColor] CGColor];
-//            [self.view addSubview:faceView];
-//            faceView.hidden = YES;
-//            
-//            __unsafe_unretained ShowcaseFilterViewController * weakSelf = self;
-//            [(GPUImageMotionDetector *) filter setMotionDetectionBlock:^(CGPoint motionCentroid, CGFloat motionIntensity, CMTime frameTime) {
-//                if (motionIntensity > 0.01)
-//                {
-//                    CGFloat motionBoxWidth = 1500.0 * motionIntensity;
-//                    CGSize viewBounds = weakSelf.view.bounds.size;
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        weakSelf->faceView.frame = CGRectMake(round(viewBounds.width * motionCentroid.x - motionBoxWidth / 2.0), round(viewBounds.height * motionCentroid.y - motionBoxWidth / 2.0), motionBoxWidth, motionBoxWidth);
-//                        weakSelf->faceView.hidden = NO;
-//                    });
-//                    
-//                }
-//                else
-//                {
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        weakSelf->faceView.hidden = YES;
-//                    });
-//                }
-//                
-//            }];
+            //            faceView = [[UIView alloc] initWithFrame:CGRectMake(100.0, 100.0, 100.0, 100.0)];
+            //            faceView.layer.borderWidth = 1;
+            //            faceView.layer.borderColor = [[UIColor redColor] CGColor];
+            //            [self.view addSubview:faceView];
+            //            faceView.hidden = YES;
+            //
+            //            __unsafe_unretained ShowcaseFilterViewController * weakSelf = self;
+            //            [(GPUImageMotionDetector *) filter setMotionDetectionBlock:^(CGPoint motionCentroid, CGFloat motionIntensity, CMTime frameTime) {
+            //                if (motionIntensity > 0.01)
+            //                {
+            //                    CGFloat motionBoxWidth = 1500.0 * motionIntensity;
+            //                    CGSize viewBounds = weakSelf.view.bounds.size;
+            //                    dispatch_async(dispatch_get_main_queue(), ^{
+            //                        weakSelf->faceView.frame = CGRectMake(round(viewBounds.width * motionCentroid.x - motionBoxWidth / 2.0), round(viewBounds.height * motionCentroid.y - motionBoxWidth / 2.0), motionBoxWidth, motionBoxWidth);
+            //                        weakSelf->faceView.hidden = NO;
+            //                    });
+            //
+            //                }
+            //                else
+            //                {
+            //                    dispatch_async(dispatch_get_main_queue(), ^{
+            //                        weakSelf->faceView.hidden = YES;
+            //                    });
+            //                }
+            //
+            //            }];
             
             [videoCamera addTarget:filterView];
         }
@@ -1823,9 +1807,5 @@
     }
 }
 
-#pragma mark -
-#pragma mark Accessors
-
-@synthesize filterSettingsSlider = _filterSettingsSlider;
 
 @end
