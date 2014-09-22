@@ -47,7 +47,22 @@
     [self.view addSubview:view4];
     
     GPUImageFilter *filter1 = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"Shader1"] ;
-    GPUImageFilter *filter2 = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"Shader2"] ;
+//    GPUImageFilter *filter2 = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"Shader2"] ;
+//    GPUImageFilter *filter2 = [[GPUImageHarrisCornerDetectionFilter alloc] init];
+//    GPUImageFilter *filter2 = [[GPUIMAGE_HARRISCORNERDETECTION alloc] ini;
+    self.title = @"Harris Corner Detection";
+    self.filterSettingsSlider.hidden = NO;
+    
+    [self.filterSettingsSlider setMinimumValue:0.01];
+    [self.filterSettingsSlider setMaximumValue:0.70];
+    [self.filterSettingsSlider setValue:0.20];
+    
+    filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
+    [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.20];
+//    GPUImageHarrisCornerDetectionFilter  *filter2 = [[GPUImageHarrisCornerDetectionFilter alloc] init];
+    GPUImageCannyEdgeDetectionFilter *filter2 = [[GPUImageCannyEdgeDetectionFilter alloc] init];
+    
+//    filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];;
     GPUImageSepiaFilter *filter3 = [[GPUImageSepiaFilter alloc] init] ;
     
     //    GPUImageBrightnessFilter *filter1 = [[GPUImageBrightnessFilter alloc] init];
