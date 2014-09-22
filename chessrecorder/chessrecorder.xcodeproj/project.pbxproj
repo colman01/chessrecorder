@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C000999919D0251B009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000999819D0251B009A8019 /* libGPUImage.a */; };
-		C000999A19D02525009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586B19CF03BE000B98E1 /* GPUImage.framework */; };
-		C000B0EB19D0276F009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EA19D0276F009A8019 /* libGPUImage.a */; };
 		C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EC19D02842009A8019 /* GPUImage.framework */; };
+		C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EA19D0276F009A8019 /* libGPUImage.a */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
@@ -34,9 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C000983619D0147E009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "../GPUFramework/GPUImage-master/build/Release-iphoneos/libGPUImage.a"; sourceTree = "<group>"; };
 		C000984019D0196E009A8019 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C000999819D0251B009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "../GPUFramework/GPUImage-master/build/Release-iphone/lib/libGPUImage.a"; sourceTree = "<group>"; };
 		C000B0EA19D0276F009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGPUImage.a; sourceTree = "<group>"; };
 		C000B0EC19D02842009A8019 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +49,6 @@
 		C025714C19CC5D7B00624F0E /* chessrecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chessrecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025715119CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025715219CC5D7B00624F0E /* chessrecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chessrecorderTests.m; sourceTree = "<group>"; };
-		C0CF586B19CF03BE000B98E1 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../GPUFramework/GPUImage-master/build/GPUImage.framework"; sourceTree = "<group>"; };
 		C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoFilterViewController.h; sourceTree = "<group>"; };
 		C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoFilterViewController.m; sourceTree = "<group>"; };
 		C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVideoFilterViewController.xib; sourceTree = "<group>"; };
@@ -64,10 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C000999919D0251B009A8019 /* libGPUImage.a in Frameworks */,
 				C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */,
-				C000B0EB19D0276F009A8019 /* libGPUImage.a in Frameworks */,
-				C000999A19D02525009A8019 /* GPUImage.framework in Frameworks */,
+				C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,10 +79,7 @@
 			children = (
 				C000B0EC19D02842009A8019 /* GPUImage.framework */,
 				C000B0EA19D0276F009A8019 /* libGPUImage.a */,
-				C000999819D0251B009A8019 /* libGPUImage.a */,
 				C000984019D0196E009A8019 /* PrefixHeader.pch */,
-				C000983619D0147E009A8019 /* libGPUImage.a */,
-				C0CF586B19CF03BE000B98E1 /* GPUImage.framework */,
 				C025713219CC5D7B00624F0E /* chessrecorder */,
 				C025714F19CC5D7B00624F0E /* chessrecorderTests */,
 				C025713119CC5D7B00624F0E /* Products */,
