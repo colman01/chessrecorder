@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C000983719D0147E009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000983619D0147E009A8019 /* libGPUImage.a */; };
-		C000983819D0147F009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586B19CF03BE000B98E1 /* GPUImage.framework */; };
+		C000982E19D0132F009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586A19CF03BE000B98E1 /* libGPUImage.a */; };
+		C000982F19D01332009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF586B19CF03BE000B98E1 /* GPUImage.framework */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
@@ -32,7 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C000983619D0147E009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "../GPUFramework/GPUImage-master/build/Release-iphoneos/libGPUImage.a"; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025713419CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025713519CC5D7B00624F0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,8 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C000983719D0147E009A8019 /* libGPUImage.a in Frameworks */,
-				C000983819D0147F009A8019 /* GPUImage.framework in Frameworks */,
+				C000982E19D0132F009A8019 /* libGPUImage.a in Frameworks */,
+				C000982F19D01332009A8019 /* GPUImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +76,6 @@
 		C025712719CC5D7B00624F0E = {
 			isa = PBXGroup;
 			children = (
-				C000983619D0147E009A8019 /* libGPUImage.a */,
 				C0CF586A19CF03BE000B98E1 /* libGPUImage.a */,
 				C0CF586B19CF03BE000B98E1 /* GPUImage.framework */,
 				C025713219CC5D7B00624F0E /* chessrecorder */,
@@ -393,7 +391,7 @@
 					"/Users/colmanmarcus-quinn/workspace/chess",
 					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphoneos",
+					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -427,7 +425,7 @@
 					"/Users/colmanmarcus-quinn/workspace/chess",
 					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphoneos",
+					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
