@@ -27,45 +27,18 @@
     filterType = GPUIMAGE_CANNYEDGEDETECTION;
 //    filterType = GPUIMAGE_HARRISCORNERDETECTION;
     
-    
-    
-//    if ([GPUImageContext supportsFastTextureUpload])
-//    {
-//        NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyLow, CIDetectorAccuracy, nil];
-//        self.faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
-//        faceThinking = NO;
-//    }
-    
     [self setupFilter];
     
-
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    self.window.backgroundColor = [UIColor whiteColor];
-    
-//    self.s = [[SimpleVideoFilterViewController alloc] initWithNibName:@"SimpleVideoFilterViewController" bundle:nil];
-//    s.view.frame = [[UIScreen mainScreen] bounds];
-////    [self.window addSubview:rootViewController.view];
-//    
-////    [self.window makeKeyAndVisible];
-////    [self.window layoutSubviews];
-////    self.window.rootViewController = rootViewController;
-//    
-//    
-//        GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+//  GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
 //    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-//    
-//    GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"SimpleVideoFilterViewController"];
+////    
+////    GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"SimpleVideoFilterViewController"];
 //    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
-//    
-//    // Add the view somewhere so it's visible
-//    [videoCamera addTarget:customFilter];
-//    [customFilter addTarget:filteredVideoView];
+////    
+////    // Add the view somewhere so it's visible
+////    [videoCamera addTarget:customFilter];
+////    [customFilter addTarget:filteredVideoView];
 //    [videoCamera startCameraCapture];
-
-    
-    
-    
 
 }
 
