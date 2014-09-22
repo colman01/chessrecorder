@@ -53,25 +53,6 @@
             <point key="canvasLocation" x="299" y="415"/>
         </scene>
         <!--Filter View Controller-->
-        <scene sceneID="RcT-Qn-xaa">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nXm-DF-tkf" customClass="FilterViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="K28-yn-5eL"/>
-                        <viewControllerLayoutGuide type="bottom" id="uPS-5O-I8Z"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uDJ-9Q-1b8" customClass="GPUImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wA6-ws-NbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="887" y="414.5"/>
-        </scene>
-        <!--Filter View Controller-->
         <scene sceneID="lik-fK-h4l">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="vwA-0D-CQ6" customClass="FilterViewController" sceneMemberID="viewController">

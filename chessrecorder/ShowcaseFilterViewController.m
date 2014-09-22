@@ -1413,7 +1413,7 @@
             UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 240.0f, 320.0f)];
             timeLabel.font = [UIFont systemFontOfSize:17.0f];
             timeLabel.text = @"Time: 0.0 s";
-            timeLabel.textAlignment = UITextAlignmentCenter;
+//            timeLabel.textAlignment = UITextAlignmentCenter;
             timeLabel.backgroundColor = [UIColor clearColor];
             timeLabel.textColor = [UIColor whiteColor];
 

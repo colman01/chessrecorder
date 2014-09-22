@@ -22,7 +22,7 @@
     GPUImageFilterPipeline *pipeline;
     UIView *faceView;
     
-    CIDetector *faceDetector;
+//    CIDetector *faceDetector;
     
     IBOutlet UISwitch *facesSwitch;
     IBOutlet UILabel *facesLabel;
@@ -34,7 +34,7 @@
 @property(readwrite, unsafe_unretained, nonatomic) IBOutlet UISlider *filterSettingsSlider;
 @property(nonatomic,retain) CIDetector*faceDetector;
 // Initialization and teardown
-- (id)initWithFilterType:(GPUImageShowcaseFilterType)newFilterType;
+//- (id)initWithFilterType:(GPUImageShowcaseFilterType)newFilterType;
 - (void)setupFilter;
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 // Filter adjustments
