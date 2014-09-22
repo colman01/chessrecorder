@@ -23,8 +23,6 @@
 //    } else {
 //        filterType = GPUIMAGE_CANNYEDGEDETECTION;
 //    }
-    
-
 //    [self setupFilter];
     
     CGRect mainScreenFrame = [[UIScreen mainScreen] applicationFrame];
@@ -46,7 +44,9 @@
     [self.view addSubview:view3];
     [self.view addSubview:view4];
     
-    GPUImageFilter *filter1 = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"Shader1"] ;
+//    GPUImageFilter *filter1 = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"Shader1"] ;
+    
+    GPUImageHarrisCornerDetectionFilter  *filter1 = [[GPUImageHarrisCornerDetectionFilter alloc] init];
 //    GPUImageFilter *filter2 = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"Shader2"] ;
 //    GPUImageFilter *filter2 = [[GPUImageHarrisCornerDetectionFilter alloc] init];
 //    GPUImageFilter *filter2 = [[GPUIMAGE_HARRISCORNERDETECTION alloc] ini;
@@ -63,7 +63,8 @@
     GPUImageCannyEdgeDetectionFilter *filter2 = [[GPUImageCannyEdgeDetectionFilter alloc] init];
     
 //    filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];;
-    GPUImageSepiaFilter *filter3 = [[GPUImageSepiaFilter alloc] init] ;
+//    GPUImageSepiaFilter *filter3 = [[GPUImageSepiaFilter alloc] init] ;
+        GPUImageHoughTransformLineDetector *filter3 = [[GPUImageHoughTransformLineDetector alloc] init] ;
     
     //    GPUImageBrightnessFilter *filter1 = [[GPUImageBrightnessFilter alloc] init];
     //    GPUImageBrightnessFilter *filter2 = [[GPUImageBrightnessFilter alloc] init];
