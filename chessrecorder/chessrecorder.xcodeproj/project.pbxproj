@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EC19D02842009A8019 /* GPUImage.framework */; };
 		C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EA19D0276F009A8019 /* libGPUImage.a */; };
+		C002E05319D035B100948635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C025714019CC5D7B00624F0E /* Main.storyboard */; };
+		C002E05419D035B400948635 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C025714519CC5D7B00624F0E /* LaunchScreen.xib */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
 		C025713F19CC5D7B00624F0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713E19CC5D7B00624F0E /* ViewController.m */; };
-		C025714219CC5D7B00624F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C025714019CC5D7B00624F0E /* Main.storyboard */; };
 		C025714419CC5D7B00624F0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C025714319CC5D7B00624F0E /* Images.xcassets */; };
-		C025714719CC5D7B00624F0E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C025714519CC5D7B00624F0E /* LaunchScreen.xib */; };
 		C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C025715219CC5D7B00624F0E /* chessrecorderTests.m */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
@@ -220,10 +220,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C025714219CC5D7B00624F0E /* Main.storyboard in Resources */,
-				C025714719CC5D7B00624F0E /* LaunchScreen.xib in Resources */,
 				C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */,
 				C025714419CC5D7B00624F0E /* Images.xcassets in Resources */,
+				C002E05319D035B100948635 /* Main.storyboard in Resources */,
+				C002E05419D035B400948635 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,19 +371,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -392,31 +379,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build/Release-iphoneos",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphoneos",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphoneos",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphoneos/GPUImage.build/Objects-normal/arm64",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphoneos/GPUImage.build/Objects-normal/armv7",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphonesimulator/GPUImage.build/Objects-normal/i386",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphonesimulator/GPUImage.build/Objects-normal/x86_64",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphonesimulator",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,19 +391,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -450,31 +399,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/colmanmarcus-quinn/Downloads/GPUImage-master/build/Release-iphoneos",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphoneos",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphoneos",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphone/lib",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphoneos/GPUImage.build/Objects-normal/arm64",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphoneos/GPUImage.build/Objects-normal/armv7",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphonesimulator/GPUImage.build/Objects-normal/i386",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/GPUImage.build/Release-iphonesimulator/GPUImage.build/Objects-normal/x86_64",
-					"/Users/colmanmarcus-quinn/workspace/chess",
-					"software/cr/GPUFramework/GPUImage-master/build/Release-iphonesimulator",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
