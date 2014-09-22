@@ -27,8 +27,6 @@
     [videoCamera addTarget:customFilter];
     [customFilter addTarget:filteredVideoView];
     [videoCamera startCameraCapture];
-    // all good
-
     
 }
 
