@@ -46,7 +46,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     // Note: I needed to stop camera capture before the view went off the screen in order to prevent a crash from the camera still sending frames
-    [videoCamera stopCameraCapture];
+//    [videoCamera stopCameraCapture];
     
 	[super viewWillDisappear:animated];
 }

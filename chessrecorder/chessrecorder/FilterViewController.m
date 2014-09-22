@@ -17,11 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    filterType = GPUIMAGE_CANNYEDGEDETECTION;
-    //    filterType = GPUIMAGE_HARRISCORNERDETECTION;
     
+    if(self.view.tag != 1) {
+        filterType = GPUIMAGE_HARRISCORNERDETECTION;
+    } else {
+        filterType = GPUIMAGE_CANNYEDGEDETECTION;
+    }
+    
+
     [self setupFilter];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,14 +35,6 @@
 
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    //    s = [[SimpleVideoFilterViewController alloc] init];
-    
-    //    s = segue.destinationViewController;
-    
-//    ShowcaseFilterViewController *show = [[ShowcaseFilterViewController alloc] initWithFilterType:GPUIMAGE_CANNYEDGEDETECTION];
-//    show = segue.destinationViewController;
-    
 }
 
 
