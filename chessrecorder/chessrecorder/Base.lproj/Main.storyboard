@@ -27,18 +27,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtK-Wz-In7">
-                                <rect key="frame" x="0.0" y="58" width="320" height="189"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="189" id="Bn1-oL-OEe"/>
-                                    <constraint firstAttribute="width" constant="320" id="wHn-yD-FhX"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="nXm-DF-tkf" kind="embed" identifier="filter" id="avn-da-fd0"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VpH-oS-dQl">
-                                <rect key="frame" x="0.0" y="281" width="320" height="199"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="199"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="5GI-nE-d1L"/>
                                     <constraint firstAttribute="height" constant="199" id="Zua-La-XmE"/>
@@ -51,9 +41,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PaR-6h-WvC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1Na-fY-QcY"/>
-                            <constraint firstItem="CtK-Wz-In7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="6xg-Hb-dcJ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VpH-oS-dQl" secondAttribute="bottom" id="RiS-g1-DCK"/>
-                            <constraint firstItem="CtK-Wz-In7" firstAttribute="top" secondItem="PaR-6h-WvC" secondAttribute="bottom" constant="17" id="eF7-tL-a26"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VpH-oS-dQl" secondAttribute="bottom" constant="225" id="RiS-g1-DCK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VpH-oS-dQl" secondAttribute="trailing" constant="-16" id="nyA-44-JKe"/>
                             <constraint firstItem="PaR-6h-WvC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tzO-kj-suG"/>
                         </constraints>
@@ -73,7 +61,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uPS-5O-I8Z"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uDJ-9Q-1b8" customClass="GPUImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

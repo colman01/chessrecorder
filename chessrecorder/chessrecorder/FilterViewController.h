@@ -17,6 +17,7 @@
     GPUImagePicture *sourcePicture;
     GPUImageShowcaseFilterType filterType;
     GPUImageUIElement *uiElementInput;
+    GPUImageView *view1, *view2, *view3, *view4;
     
     GPUImageFilterPipeline *pipeline;
     UIView *faceView;
