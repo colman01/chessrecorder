@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbF-vc-FFe">
-                                <rect key="frame" x="16" y="100" width="288" height="380"/>
+                                <rect key="frame" x="16" y="100" width="288" height="145"/>
                                 <connections>
                                     <segue destination="kiT-U8-cxB" kind="embed" id="bhk-0L-0xI"/>
                                 </connections>
@@ -51,6 +51,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68C-QW-Vf4">
+                                <rect key="frame" x="11" y="270" width="293" height="190"/>
+                                <connections>
+                                    <segue destination="VBg-Zz-mfQ" kind="embed" id="iAU-8U-OGv"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -70,7 +76,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyR-vq-SBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="kiT-U8-cxB" customClass="FilterPreviewCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5oI-1i-Sy1">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="380"/>
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="145"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="3Nk-nR-AhO">
@@ -164,7 +170,7 @@
                     </connections>
                 </collectionViewController>
             </objects>
-            <point key="canvasLocation" x="299" y="955.5"/>
+            <point key="canvasLocation" x="708" y="369.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pki-pZ-1GI">
@@ -183,6 +189,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnR-O4-fsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="451" y="1665"/>
+        </scene>
+        <!--Free Transform Controller-->
+        <scene sceneID="1pV-nM-e4p">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="VBg-Zz-mfQ" customClass="FreeTransformController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B9N-Sn-3Uv"/>
+                        <viewControllerLayoutGuide type="bottom" id="K1o-iE-t2r"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XZs-iY-sek">
+                        <rect key="frame" x="0.0" y="0.0" width="293" height="190"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NxT-hf-tgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="938"/>
         </scene>
     </scenes>
     <resources>

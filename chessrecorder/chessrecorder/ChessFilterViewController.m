@@ -20,6 +20,7 @@
 
 //    filterType = GPUIMAGE_CANNYEDGEDETECTION;
     filterType =GPUIMAGE_TRANSFORM3D;
+    
     [self setupFilter];
 }
 

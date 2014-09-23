@@ -18,9 +18,23 @@ static NSString * const reuseIdentifier = @"Cell";
 
 @synthesize origImages, foundCornersImages, transformedImages;
 
+bool done = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupData];
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [self setupData];
+        // trigger the main completion handler when this completed
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            done = YES;
+            [self.collectionView reloadData];
+            
+        });
+    });
+    
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -66,32 +80,35 @@ static NSString * const reuseIdentifier = @"Cell";
 //    rownum*3 + col
     NSInteger col = indexPath.row % 3;
     NSInteger row = indexPath.row / 3;
-    switch (col) {
-        case 0: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell2" forIndexPath:indexPath];
-            UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
-            imgView.image = [origImages objectAtIndex:row];
-            break;
+    if (done) {
+        switch (col) {
+            case 0: {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell2" forIndexPath:indexPath];
+                UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
+                imgView.image = [origImages objectAtIndex:row];
+                break;
+            }
+            case 1: {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell3" forIndexPath:indexPath];
+                UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
+                imgView.image = [foundCornersImages objectAtIndex:row];
+                break;
+            }
+                
+            case 2:
+            {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell4" forIndexPath:indexPath];
+                UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
+                imgView.image = [transformedImages objectAtIndex:row];
+                break;
+            }
+                
+                
+            default:
+                break;
         }
-        case 1: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell3" forIndexPath:indexPath];
-            UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
-            imgView.image = [foundCornersImages objectAtIndex:row];
-            break;
-        }
-            
-        case 2:
-        {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell4" forIndexPath:indexPath];
-            UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
-            imgView.image = [transformedImages objectAtIndex:row];
-            break;
-        }
-            
-            
-        default:
-            break;
     }
+
     
     UILabel *lbl = (UILabel *)[cell viewWithTag:2];
 //    [lbl setText:[NSString stringWithFormat:@"%i", indexPath.row]];
