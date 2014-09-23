@@ -20,6 +20,7 @@
 		C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0A619D18D1F00948635 /* FilterPreviewCollectionViewController.m */; };
 		C002E0A919D19D9100948635 /* chess.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0A819D19D9100948635 /* chess.jpg */; };
 		C002E0AB19D1A17500948635 /* chess-top-view.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0AA19D1A17500948635 /* chess-top-view.jpg */; };
+		C002E0AE19D1A6B600948635 /* Chess_board_top.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0AD19D1A6B600948635 /* Chess_board_top.jpg */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
@@ -57,6 +58,7 @@
 		C002E0A619D18D1F00948635 /* FilterPreviewCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterPreviewCollectionViewController.m; sourceTree = "<group>"; };
 		C002E0A819D19D9100948635 /* chess.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess.jpg; sourceTree = "<group>"; };
 		C002E0AA19D1A17500948635 /* chess-top-view.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-top-view.jpg"; sourceTree = "<group>"; };
+		C002E0AD19D1A6B600948635 /* Chess_board_top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chess_board_top.jpg; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025713419CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025713519CC5D7B00624F0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,11 +134,20 @@
 			name = "Custom filter";
 			sourceTree = "<group>";
 		};
+		C002E0AC19D1A68A00948635 /* pictures */ = {
+			isa = PBXGroup;
+			children = (
+				C002E0AD19D1A6B600948635 /* Chess_board_top.jpg */,
+				C002E0AA19D1A17500948635 /* chess-top-view.jpg */,
+				C002E0A819D19D9100948635 /* chess.jpg */,
+			);
+			name = pictures;
+			sourceTree = "<group>";
+		};
 		C025712719CC5D7B00624F0E = {
 			isa = PBXGroup;
 			children = (
-				C002E0AA19D1A17500948635 /* chess-top-view.jpg */,
-				C002E0A819D19D9100948635 /* chess.jpg */,
+				C002E0AC19D1A68A00948635 /* pictures */,
 				C002E09519D0650000948635 /* icons */,
 				C000B0EC19D02842009A8019 /* GPUImage.framework */,
 				C000B0EA19D0276F009A8019 /* libGPUImage.a */,
@@ -288,6 +299,7 @@
 				C002E05419D035B400948635 /* LaunchScreen.xib in Resources */,
 				C002E0A919D19D9100948635 /* chess.jpg in Resources */,
 				C002E09719D0650800948635 /* realIcond40.png in Resources */,
+				C002E0AE19D1A6B600948635 /* Chess_board_top.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
