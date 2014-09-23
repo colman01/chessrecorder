@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GPUImage/GPUImage.h>
 
 typedef enum {
     ORIG,
@@ -18,6 +19,10 @@ typedef enum {
 @interface FilterPreviewCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property ImageFilterType *imageFilterType;
+
+@property NSMutableArray *origImages;
+@property NSMutableArray *foundCornersImages;
+@property NSMutableArray *transformedImages;
 
 
 

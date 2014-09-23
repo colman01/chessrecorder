@@ -97,7 +97,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chess.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-nB-w5O">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chess.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-nB-w5O">
                                             <rect key="frame" x="0.0" y="15" width="80" height="65"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOs-B0-oRe">
@@ -124,7 +124,7 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chess_board_top.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-Oa-H07">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chess_board_top.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-Oa-H07">
                                             <rect key="frame" x="0.0" y="15" width="80" height="65"/>
                                         </imageView>
                                     </subviews>
@@ -139,7 +139,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chess-top-view.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0l1-vy-d4Q">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chess-top-view.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0l1-vy-d4Q">
                                             <rect key="frame" x="0.0" y="15" width="80" height="65"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4k-S2-le8">
