@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <GPUImage/GPUImage.h>
+#import "SimpleVideoFilterViewController.h"
+#import "ShowcaseFilterViewController.h"
 
 @interface ChessFilterViewController : UIViewController<GPUImageVideoCameraDelegate> {
     GPUImageVideoCamera *videoCamera;
     GPUImageOutput<GPUImageInput> *filter;
     GPUImagePicture *sourcePicture;
-//    GPUImageShowcaseFilterType filterType;
+    GPUImageShowcaseFilterType filterType;
     GPUImageUIElement *uiElementInput;
     IBOutlet GPUImageView *view1, *view2, *view3, *view4;
     

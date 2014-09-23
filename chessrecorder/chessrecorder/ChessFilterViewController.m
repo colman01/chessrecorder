@@ -16,6 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+    filterType = GPUIMAGE_CANNYEDGEDETECTION;
+    [self setupFilter];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,8 +43,7 @@
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1920x1080 cameraPosition:AVCaptureDevicePositionBack];
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    facesSwitch.hidden = YES;
-    facesLabel.hidden = YES;
+
     BOOL needsSecondImage = NO;
     
     switch (filterType)
@@ -1017,14 +1020,6 @@
             
             filter = [[GPUImageHardLightBlendFilter alloc] init];
         }; break;
-        case GPUIMAGE_SOFTLIGHTBLEND:
-        {
-            self.title = @"Soft Light Blend";
-            self.filterSettingsSlider.hidden = YES;
-            needsSecondImage = YES;
-            
-            filter = [[GPUImageSoftLightBlendFilter alloc] init];
-        }; break;
         case GPUIMAGE_COLORBLEND:
         {
             self.title = @"Color Blend";
@@ -1114,17 +1109,6 @@
             
             filter = [[GPUImageKuwaharaRadius3Filter alloc] init];
         }; break;
-        case GPUIMAGE_VIGNETTE:
-        {
-            self.title = @"Vignette";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setMinimumValue:0.5];
-            [self.filterSettingsSlider setMaximumValue:0.9];
-            [self.filterSettingsSlider setValue:0.75];
-            
-            filter = [[GPUImageVignetteFilter alloc] init];
-        }; break;
         case GPUIMAGE_GAUSSIAN:
         {
             self.title = @"Gaussian Blur";
@@ -1153,28 +1137,6 @@
             self.filterSettingsSlider.hidden = YES;
             
             filter = [[GPUImageMedianFilter alloc] init];
-        }; break;
-        case GPUIMAGE_MOTIONBLUR:
-        {
-            self.title = @"Motion Blur";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:180.0f];
-            [self.filterSettingsSlider setValue:0.0];
-            
-            filter = [[GPUImageMotionBlurFilter alloc] init];
-        }; break;
-        case GPUIMAGE_ZOOMBLUR:
-        {
-            self.title = @"Zoom Blur";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:2.5f];
-            [self.filterSettingsSlider setValue:1.0];
-            
-            filter = [[GPUImageZoomBlurFilter alloc] init];
         }; break;
         case GPUIMAGE_IOSBLUR:
         {
@@ -1249,19 +1211,6 @@
             
         case GPUIMAGE_FACES:
         {
-            facesSwitch.hidden = NO;
-            facesLabel.hidden = NO;
-            
-            [videoCamera rotateCamera];
-            self.title = @"Face Detection";
-            self.filterSettingsSlider.hidden = YES;
-            
-            [self.filterSettingsSlider setValue:1.0];
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:2.0];
-            
-            filter = [[GPUImageSaturationFilter alloc] init];
-            [videoCamera setDelegate:self];
             break;
         }
             
@@ -1336,7 +1285,7 @@
         else if ( (filterType == GPUIMAGE_HARRISCORNERDETECTION) || (filterType == GPUIMAGE_NOBLECORNERDETECTION) || (filterType == GPUIMAGE_SHITOMASIFEATUREDETECTION) )
         {
             GPUImageCrosshairGenerator *crosshairGenerator = [[GPUImageCrosshairGenerator alloc] init];
-            crosshairGenerator.crosshairWidth = 15.0;
+            crosshairGenerator.crosshairWidth = 60.0;
             [crosshairGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
             
             [(GPUImageHarrisCornerDetectionFilter *)filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
@@ -1467,51 +1416,6 @@
             
             [colorGenerator addTarget:filterView];
         }
-        else if (filterType == GPUIMAGE_IOSBLUR)
-        {
-            [videoCamera removeAllTargets];
-            [videoCamera addTarget:filterView];
-            GPUImageCropFilter *cropFilter = [[GPUImageCropFilter alloc] init];
-            cropFilter.cropRegion = CGRectMake(0.0, 0.5, 1.0, 0.5);
-            [videoCamera addTarget:cropFilter];
-            [cropFilter addTarget:filter];
-            
-            CGRect currentViewFrame = filterView.bounds;
-            GPUImageView *blurOverlayView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, round(currentViewFrame.size.height / 2.0), currentViewFrame.size.width, currentViewFrame.size.height - round(currentViewFrame.size.height / 2.0))];
-            [filterView addSubview:blurOverlayView];
-            [filter addTarget:blurOverlayView];
-        }
-        else if (filterType == GPUIMAGE_MOTIONDETECTOR)
-        {
-            //            faceView = [[UIView alloc] initWithFrame:CGRectMake(100.0, 100.0, 100.0, 100.0)];
-            //            faceView.layer.borderWidth = 1;
-            //            faceView.layer.borderColor = [[UIColor redColor] CGColor];
-            //            [self.view addSubview:faceView];
-            //            faceView.hidden = YES;
-            //
-            //            __unsafe_unretained ShowcaseFilterViewController * weakSelf = self;
-            //            [(GPUImageMotionDetector *) filter setMotionDetectionBlock:^(CGPoint motionCentroid, CGFloat motionIntensity, CMTime frameTime) {
-            //                if (motionIntensity > 0.01)
-            //                {
-            //                    CGFloat motionBoxWidth = 1500.0 * motionIntensity;
-            //                    CGSize viewBounds = weakSelf.view.bounds.size;
-            //                    dispatch_async(dispatch_get_main_queue(), ^{
-            //                        weakSelf->faceView.frame = CGRectMake(round(viewBounds.width * motionCentroid.x - motionBoxWidth / 2.0), round(viewBounds.height * motionCentroid.y - motionBoxWidth / 2.0), motionBoxWidth, motionBoxWidth);
-            //                        weakSelf->faceView.hidden = NO;
-            //                    });
-            //
-            //                }
-            //                else
-            //                {
-            //                    dispatch_async(dispatch_get_main_queue(), ^{
-            //                        weakSelf->faceView.hidden = YES;
-            //                    });
-            //                }
-            //
-            //            }];
-            
-            [videoCamera addTarget:filterView];
-        }
         else
         {
             [filter addTarget:filterView];
@@ -1635,109 +1539,16 @@
 
 #pragma mark - Face Detection Delegate Callback
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
-    if (!faceThinking) {
-        CFAllocatorRef allocator = CFAllocatorGetDefault();
-        CMSampleBufferRef sbufCopyOut;
-        CMSampleBufferCreateCopy(allocator,sampleBuffer,&sbufCopyOut);
-        [self performSelectorInBackground:@selector(grepFacesForSampleBuffer:) withObject:CFBridgingRelease(sbufCopyOut)];
-    }
 }
 
-- (void)grepFacesForSampleBuffer:(CMSampleBufferRef)sampleBuffer{
-    faceThinking = TRUE;
-    NSLog(@"Faces thinking");
-    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
-    CIImage *convertedImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer options:(__bridge NSDictionary *)attachments];
-    
-    if (attachments)
-        CFRelease(attachments);
-    NSDictionary *imageOptions = nil;
-    UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
-    int exifOrientation;
-    
-    /* kCGImagePropertyOrientation values
-     The intended display orientation of the image. If present, this key is a CFNumber value with the same value as defined
-     by the TIFF and EXIF specifications -- see enumeration of integer constants.
-     The value specified where the origin (0,0) of the image is located. If not present, a value of 1 is assumed.
-     
-     used when calling featuresInImage: options: The value for this key is an integer NSNumber from 1..8 as found in kCGImagePropertyOrientation.
-     If present, the detection will be done based on that orientation but the coordinates in the returned features will still be based on those of the image. */
-    
-    enum {
-        PHOTOS_EXIF_0ROW_TOP_0COL_LEFT			= 1, //   1  =  0th row is at the top, and 0th column is on the left (THE DEFAULT).
-        PHOTOS_EXIF_0ROW_TOP_0COL_RIGHT			= 2, //   2  =  0th row is at the top, and 0th column is on the right.
-        PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT      = 3, //   3  =  0th row is at the bottom, and 0th column is on the right.
-        PHOTOS_EXIF_0ROW_BOTTOM_0COL_LEFT       = 4, //   4  =  0th row is at the bottom, and 0th column is on the left.
-        PHOTOS_EXIF_0ROW_LEFT_0COL_TOP          = 5, //   5  =  0th row is on the left, and 0th column is the top.
-        PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP         = 6, //   6  =  0th row is on the right, and 0th column is the top.
-        PHOTOS_EXIF_0ROW_RIGHT_0COL_BOTTOM      = 7, //   7  =  0th row is on the right, and 0th column is the bottom.
-        PHOTOS_EXIF_0ROW_LEFT_0COL_BOTTOM       = 8  //   8  =  0th row is on the left, and 0th column is the bottom.
-    };
-    BOOL isUsingFrontFacingCamera = FALSE;
-    AVCaptureDevicePosition currentCameraPosition = [videoCamera cameraPosition];
-    
-    if (currentCameraPosition != AVCaptureDevicePositionBack)
-    {
-        isUsingFrontFacingCamera = TRUE;
-    }
-    
-    switch (curDeviceOrientation) {
-        case UIDeviceOrientationPortraitUpsideDown:  // Device oriented vertically, home button on the top
-            exifOrientation = PHOTOS_EXIF_0ROW_LEFT_0COL_BOTTOM;
-            break;
-        case UIDeviceOrientationLandscapeLeft:       // Device oriented horizontally, home button on the right
-            if (isUsingFrontFacingCamera)
-                exifOrientation = PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT;
-            else
-                exifOrientation = PHOTOS_EXIF_0ROW_TOP_0COL_LEFT;
-            break;
-        case UIDeviceOrientationLandscapeRight:      // Device oriented horizontally, home button on the left
-            if (isUsingFrontFacingCamera)
-                exifOrientation = PHOTOS_EXIF_0ROW_TOP_0COL_LEFT;
-            else
-                exifOrientation = PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT;
-            break;
-        case UIDeviceOrientationPortrait:            // Device oriented vertically, home button on the bottom
-        default:
-            exifOrientation = PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP;
-            break;
-    }
-    
-    imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:exifOrientation] forKey:CIDetectorImageOrientation];
-    
-    NSLog(@"Face Detector %@", [self.faceDetector description]);
-    NSLog(@"converted Image %@", [convertedImage description]);
-    NSArray *features = [self.faceDetector featuresInImage:convertedImage options:imageOptions];
-    
-    
-    // get the clean aperture
-    // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
-    // that represents image data valid for display.
-    CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
-    CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-    
-    
-    [self GPUVCWillOutputFeatures:features forClap:clap andOrientation:curDeviceOrientation];
-    faceThinking = FALSE;
-    
-}
 
 - (void)GPUVCWillOutputFeatures:(NSArray*)featureArray forClap:(CGRect)clap
                  andOrientation:(UIDeviceOrientation)curDeviceOrientation
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"Did receive array");
-        
-        CGRect previewBox = self.view.frame;
-        
-        if (featureArray == nil && faceView) {
-            [faceView removeFromSuperview];
-            faceView = nil;
-        }
-        
-
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSLog(@"Did receive array");
+//        CGRect previewBox = self.view.frame;
+//    });
     
 }
 
