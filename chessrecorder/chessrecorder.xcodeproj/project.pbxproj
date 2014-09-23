@@ -40,8 +40,8 @@
 		C000984019D0196E009A8019 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C000B0EA19D0276F009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGPUImage.a; sourceTree = "<group>"; };
 		C000B0EC19D02842009A8019 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
-		C002E08F19D051A100948635 /* ShowcaseFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowcaseFilterViewController.h; sourceTree = "<group>"; };
-		C002E09019D051A100948635 /* ShowcaseFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowcaseFilterViewController.m; sourceTree = "<group>"; };
+		C002E08F19D051A100948635 /* ShowcaseFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowcaseFilterViewController.h; path = ../ShowcaseFilterViewController.h; sourceTree = "<group>"; };
+		C002E09019D051A100948635 /* ShowcaseFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowcaseFilterViewController.m; path = ../ShowcaseFilterViewController.m; sourceTree = "<group>"; };
 		C002E09219D05CF700948635 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		C002E09319D05CF700948635 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		C002E09619D0650800948635 /* realIcond40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = realIcond40.png; sourceTree = "<group>"; };
@@ -94,12 +94,34 @@
 			name = icons;
 			sourceTree = "<group>";
 		};
+		C002E0A019D1803F00948635 /* Files from multiview project */ = {
+			isa = PBXGroup;
+			children = (
+				C025714519CC5D7B00624F0E /* LaunchScreen.xib */,
+				C002E09919D06E6E00948635 /* Shader1.fsh */,
+				C002E09A19D06E6E00948635 /* Shader2.fsh */,
+				C002E08F19D051A100948635 /* ShowcaseFilterViewController.h */,
+				C002E09019D051A100948635 /* ShowcaseFilterViewController.m */,
+				C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */,
+				C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */,
+				C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */,
+			);
+			name = "Files from multiview project";
+			sourceTree = "<group>";
+		};
+		C002E0A119D1806C00948635 /* Custom filter */ = {
+			isa = PBXGroup;
+			children = (
+				C002E09219D05CF700948635 /* FilterViewController.h */,
+				C002E09319D05CF700948635 /* FilterViewController.m */,
+			);
+			name = "Custom filter";
+			sourceTree = "<group>";
+		};
 		C025712719CC5D7B00624F0E = {
 			isa = PBXGroup;
 			children = (
 				C002E09519D0650000948635 /* icons */,
-				C002E08F19D051A100948635 /* ShowcaseFilterViewController.h */,
-				C002E09019D051A100948635 /* ShowcaseFilterViewController.m */,
 				C000B0EC19D02842009A8019 /* GPUImage.framework */,
 				C000B0EA19D0276F009A8019 /* libGPUImage.a */,
 				C000984019D0196E009A8019 /* PrefixHeader.pch */,
@@ -121,22 +143,16 @@
 		C025713219CC5D7B00624F0E /* chessrecorder */ = {
 			isa = PBXGroup;
 			children = (
-				C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */,
-				C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */,
-				C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */,
+				C002E0A119D1806C00948635 /* Custom filter */,
+				C002E0A019D1803F00948635 /* Files from multiview project */,
 				C025713719CC5D7B00624F0E /* AppDelegate.h */,
 				C025713819CC5D7B00624F0E /* AppDelegate.m */,
 				C025713D19CC5D7B00624F0E /* ViewController.h */,
 				C025713E19CC5D7B00624F0E /* ViewController.m */,
 				C025714019CC5D7B00624F0E /* Main.storyboard */,
 				C025714319CC5D7B00624F0E /* Images.xcassets */,
-				C025714519CC5D7B00624F0E /* LaunchScreen.xib */,
 				C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */,
 				C025713319CC5D7B00624F0E /* Supporting Files */,
-				C002E09219D05CF700948635 /* FilterViewController.h */,
-				C002E09319D05CF700948635 /* FilterViewController.m */,
-				C002E09919D06E6E00948635 /* Shader1.fsh */,
-				C002E09A19D06E6E00948635 /* Shader2.fsh */,
 			);
 			path = chessrecorder;
 			sourceTree = "<group>";
