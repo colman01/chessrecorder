@@ -18,7 +18,8 @@
     [super viewDidLoad];
     
 
-    filterType = GPUIMAGE_CANNYEDGEDETECTION;
+//    filterType = GPUIMAGE_CANNYEDGEDETECTION;
+    filterType =GPUIMAGE_TRANSFORM3D;
     [self setupFilter];
 }
 
@@ -48,83 +49,6 @@
     
     switch (filterType)
     {
-        case GPUIMAGE_SEPIA:
-        {
-            self.title = @"Sepia Tone";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:1.0];
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:1.0];
-            
-            filter = [[GPUImageSepiaFilter alloc] init];
-        }; break;
-        case GPUIMAGE_PIXELLATE:
-        {
-            self.title = @"Pixellate";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:0.05];
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:0.3];
-            
-            filter = [[GPUImagePixellateFilter alloc] init];
-        }; break;
-        case GPUIMAGE_POLARPIXELLATE:
-        {
-            self.title = @"Polar Pixellate";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:0.05];
-            [self.filterSettingsSlider setMinimumValue:-0.1];
-            [self.filterSettingsSlider setMaximumValue:0.1];
-            
-            filter = [[GPUImagePolarPixellateFilter alloc] init];
-        }; break;
-        case GPUIMAGE_PIXELLATE_POSITION:
-        {
-            self.title = @"Pixellate (position)";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:0.25];
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:0.5];
-            
-            filter = [[GPUImagePixellatePositionFilter alloc] init];
-        }; break;
-        case GPUIMAGE_POLKADOT:
-        {
-            self.title = @"Polka Dot";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:0.05];
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:0.3];
-            
-            filter = [[GPUImagePolkaDotFilter alloc] init];
-        }; break;
-        case GPUIMAGE_HALFTONE:
-        {
-            self.title = @"Halftone";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:0.01];
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:0.05];
-            
-            filter = [[GPUImageHalftoneFilter alloc] init];
-        }; break;
-        case GPUIMAGE_CROSSHATCH:
-        {
-            self.title = @"Crosshatch";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:0.03];
-            [self.filterSettingsSlider setMinimumValue:0.01];
-            [self.filterSettingsSlider setMaximumValue:0.06];
-            
-            filter = [[GPUImageCrosshatchFilter alloc] init];
-        }; break;
         case GPUIMAGE_COLORINVERT:
         {
             self.title = @"Color Invert";
@@ -235,17 +159,7 @@
             
             filter = [[GPUImageRGBFilter alloc] init];
         }; break;
-        case GPUIMAGE_HUE:
-        {
-            self.title = @"Hue";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:360.0];
-            [self.filterSettingsSlider setValue:90.0];
-            
-            filter = [[GPUImageHueFilter alloc] init];
-        }; break;
+
         case GPUIMAGE_WHITEBALANCE:
         {
             self.title = @"White Balance";
@@ -302,29 +216,6 @@
             [self.filterSettingsSlider setValue:1.0];
             
             filter = [[GPUImageGammaFilter alloc] init];
-        }; break;
-        case GPUIMAGE_TONECURVE:
-        {
-            self.title = @"Tone curve";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:1.0];
-            [self.filterSettingsSlider setValue:0.5];
-            
-            filter = [[GPUImageToneCurveFilter alloc] init];
-            [(GPUImageToneCurveFilter *)filter setBlueControlPoints:[NSArray arrayWithObjects:[NSValue valueWithCGPoint:CGPointMake(0.0, 0.0)], [NSValue valueWithCGPoint:CGPointMake(0.5, 0.5)], [NSValue valueWithCGPoint:CGPointMake(1.0, 0.75)], nil]];
-        }; break;
-        case GPUIMAGE_HIGHLIGHTSHADOW:
-        {
-            self.title = @"Highlights and Shadows";
-            self.filterSettingsSlider.hidden = NO;
-            
-            [self.filterSettingsSlider setValue:1.0];
-            [self.filterSettingsSlider setMinimumValue:0.0];
-            [self.filterSettingsSlider setMaximumValue:1.0];
-            
-            filter = [[GPUImageHighlightShadowFilter alloc] init];
         }; break;
         case GPUIMAGE_HAZE:
         {

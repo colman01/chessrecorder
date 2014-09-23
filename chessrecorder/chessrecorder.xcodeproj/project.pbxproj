@@ -17,6 +17,9 @@
 		C002E09B19D06E6E00948635 /* Shader1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C002E09919D06E6E00948635 /* Shader1.fsh */; };
 		C002E09C19D06E6E00948635 /* Shader2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C002E09A19D06E6E00948635 /* Shader2.fsh */; };
 		C002E0A419D1862E00948635 /* ChessFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0A319D1862E00948635 /* ChessFilterViewController.m */; };
+		C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0A619D18D1F00948635 /* FilterPreviewCollectionViewController.m */; };
+		C002E0A919D19D9100948635 /* chess.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0A819D19D9100948635 /* chess.jpg */; };
+		C002E0AB19D1A17500948635 /* chess-top-view.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0AA19D1A17500948635 /* chess-top-view.jpg */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
@@ -50,6 +53,10 @@
 		C002E09A19D06E6E00948635 /* Shader2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader2.fsh; sourceTree = "<group>"; };
 		C002E0A219D1862E00948635 /* ChessFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChessFilterViewController.h; sourceTree = "<group>"; };
 		C002E0A319D1862E00948635 /* ChessFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChessFilterViewController.m; sourceTree = "<group>"; };
+		C002E0A519D18D1F00948635 /* FilterPreviewCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterPreviewCollectionViewController.h; sourceTree = "<group>"; };
+		C002E0A619D18D1F00948635 /* FilterPreviewCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterPreviewCollectionViewController.m; sourceTree = "<group>"; };
+		C002E0A819D19D9100948635 /* chess.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess.jpg; sourceTree = "<group>"; };
+		C002E0AA19D1A17500948635 /* chess-top-view.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-top-view.jpg"; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025713419CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025713519CC5D7B00624F0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +122,8 @@
 		C002E0A119D1806C00948635 /* Custom filter */ = {
 			isa = PBXGroup;
 			children = (
+				C002E0A519D18D1F00948635 /* FilterPreviewCollectionViewController.h */,
+				C002E0A619D18D1F00948635 /* FilterPreviewCollectionViewController.m */,
 				C002E09219D05CF700948635 /* FilterViewController.h */,
 				C002E09319D05CF700948635 /* FilterViewController.m */,
 				C002E0A219D1862E00948635 /* ChessFilterViewController.h */,
@@ -126,6 +135,8 @@
 		C025712719CC5D7B00624F0E = {
 			isa = PBXGroup;
 			children = (
+				C002E0AA19D1A17500948635 /* chess-top-view.jpg */,
+				C002E0A819D19D9100948635 /* chess.jpg */,
 				C002E09519D0650000948635 /* icons */,
 				C000B0EC19D02842009A8019 /* GPUImage.framework */,
 				C000B0EA19D0276F009A8019 /* libGPUImage.a */,
@@ -269,11 +280,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C002E09B19D06E6E00948635 /* Shader1.fsh in Resources */,
+				C002E0AB19D1A17500948635 /* chess-top-view.jpg in Resources */,
 				C002E09C19D06E6E00948635 /* Shader2.fsh in Resources */,
 				C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */,
 				C025714419CC5D7B00624F0E /* Images.xcassets in Resources */,
 				C002E05319D035B100948635 /* Main.storyboard in Resources */,
 				C002E05419D035B400948635 /* LaunchScreen.xib in Resources */,
+				C002E0A919D19D9100948635 /* chess.jpg in Resources */,
 				C002E09719D0650800948635 /* realIcond40.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +311,7 @@
 				C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */,
 				C025713619CC5D7B00624F0E /* main.m in Sources */,
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
+				C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */,
 				C025713F19CC5D7B00624F0E /* ViewController.m in Sources */,
 				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
 			);
