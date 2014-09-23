@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Filter View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FilterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -27,28 +27,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VpH-oS-dQl">
-                                <rect key="frame" x="0.0" y="63" width="320" height="417"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="5GI-nE-d1L"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="WCt-9I-pnw"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="417" id="Zkk-mG-v1M"/>
-                                    <constraint firstAttribute="height" constant="417" id="Zua-La-XmE"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="vwA-0D-CQ6" kind="embed" id="hvb-YY-lNb"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PaR-6h-WvC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1Na-fY-QcY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VpH-oS-dQl" secondAttribute="bottom" id="CJ1-qM-Gwr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VpH-oS-dQl" secondAttribute="trailing" constant="-16" id="EnM-lS-Rpm"/>
-                            <constraint firstItem="VpH-oS-dQl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="NwC-GP-28C"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VpH-oS-dQl" secondAttribute="bottom" id="RiS-g1-DCK"/>
-                            <constraint firstItem="VpH-oS-dQl" firstAttribute="top" secondItem="PaR-6h-WvC" secondAttribute="bottom" constant="22" id="iER-nY-beT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VpH-oS-dQl" secondAttribute="trailing" constant="-16" id="nyA-44-JKe"/>
                             <constraint firstItem="PaR-6h-WvC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tzO-kj-suG"/>
                         </constraints>
                     </view>
@@ -57,49 +39,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="299" y="415"/>
-        </scene>
-        <!--Filter View Controller-->
-        <scene sceneID="lik-fK-h4l">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vwA-0D-CQ6" customClass="FilterViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Y6W-g0-HxH"/>
-                        <viewControllerLayoutGuide type="bottom" id="hBY-l6-QpC"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" id="bnK-UJ-Xec" customClass="GPUImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="417"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-tf-MtN" customClass="GPUImageView">
-                                <rect key="frame" x="33" y="46" width="101" height="96"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VjX-Dn-4qw" customClass="GPUImageView">
-                                <rect key="frame" x="163" y="52" width="101" height="96"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHR-BH-Sm3" customClass="GPUImageView">
-                                <rect key="frame" x="43" y="215" width="101" height="96"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gRz-UD-axx" customClass="GPUImageView">
-                                <rect key="frame" x="171" y="215" width="101" height="96"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="view1" destination="0vp-tf-MtN" id="AXq-Dc-dII"/>
-                        <outlet property="view2" destination="VjX-Dn-4qw" id="3eG-gi-9Ae"/>
-                        <outlet property="view3" destination="BHR-BH-Sm3" id="HLX-KD-nXA"/>
-                        <outlet property="view4" destination="gRz-UD-axx" id="vAl-e8-38V"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y29-NT-ZIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="299" y="1027.5"/>
         </scene>
     </scenes>
 </document>
