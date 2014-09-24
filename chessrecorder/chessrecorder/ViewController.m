@@ -25,11 +25,7 @@
 - (void) warpSpeedImage {
     
     DHWarpView *warpView = [[DHWarpView alloc] initWithFrame:CGRectMake(0, 0, 3500, 3500)];
-    
-    
-    //    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chessboard_03_rotate.jpg"]];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chess.jpg"]];
-    
     
     warpView.frame = self.display.bounds;
     warpView.contentMode = UIViewContentModeScaleAspectFit; // or other desired mode
@@ -55,14 +51,14 @@
     //    warpView.bottomLeft = CGPointMake(350, 1000);
     //    warpView.bottomRight = CGPointMake(490, 540);
     
-    warpView.topLeft = CGPointMake(-30, 30);
-    warpView.topRight = CGPointMake(660, 30);
+    warpView.topLeft = CGPointMake(-20, -30);
+    warpView.topRight = CGPointMake(680, -30);
     warpView.bottomLeft = CGPointMake(20, 550);
     warpView.bottomRight = CGPointMake(470, 550);
     
     CGRect center = self.display.frame;
-    center.origin.x -= 100;
-    center.origin.y -= 100;
+    center.origin.x += 50;
+    center.origin.y -= 400;
     [warpView setFrame:center];
     
 
