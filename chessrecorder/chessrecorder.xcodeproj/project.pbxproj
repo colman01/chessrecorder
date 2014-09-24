@@ -33,6 +33,7 @@
 		C025713F19CC5D7B00624F0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713E19CC5D7B00624F0E /* ViewController.m */; };
 		C025714419CC5D7B00624F0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C025714319CC5D7B00624F0E /* Images.xcassets */; };
 		C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C025715219CC5D7B00624F0E /* chessrecorderTests.m */; };
+		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		C025714C19CC5D7B00624F0E /* chessrecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chessrecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025715119CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025715219CC5D7B00624F0E /* chessrecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chessrecorderTests.m; sourceTree = "<group>"; };
+		C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess_rotate.jpg; sourceTree = "<group>"; };
 		C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoFilterViewController.h; sourceTree = "<group>"; };
 		C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoFilterViewController.m; sourceTree = "<group>"; };
 		C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVideoFilterViewController.xib; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				C002E0AD19D1A6B600948635 /* Chess_board_top.jpg */,
 				C002E0AA19D1A17500948635 /* chess-top-view.jpg */,
 				C002E0A819D19D9100948635 /* chess.jpg */,
+				C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */,
 			);
 			name = pictures;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				C002E05419D035B400948635 /* LaunchScreen.xib in Resources */,
 				C002E0A919D19D9100948635 /* chess.jpg in Resources */,
 				C002E09719D0650800948635 /* realIcond40.png in Resources */,
+				C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */,
 				C002E0B219D1ABBA00948635 /* Chess-board.jpg in Resources */,
 				C002E0B019D1ABA700948635 /* Chess_board_opening.jpg in Resources */,
 				C002E0AE19D1A6B600948635 /* Chess_board_top.jpg in Resources */,
