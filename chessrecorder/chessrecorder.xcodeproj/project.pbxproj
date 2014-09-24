@@ -26,6 +26,7 @@
 		C002E0B419D1ABF500948635 /* Chess_table.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0B319D1ABF500948635 /* Chess_table.jpg */; };
 		C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0B919D1C8F300948635 /* FreeTransformController.m */; };
 		C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BB19D1C8F300948635 /* UIView+Quadrilateral.m */; };
+		C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BF19D1D54E00948635 /* DHWarpView.m */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
@@ -71,6 +72,8 @@
 		C002E0B919D1C8F300948635 /* FreeTransformController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeTransformController.m; sourceTree = "<group>"; };
 		C002E0BA19D1C8F300948635 /* UIView+Quadrilateral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Quadrilateral.h"; sourceTree = "<group>"; };
 		C002E0BB19D1C8F300948635 /* UIView+Quadrilateral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Quadrilateral.m"; sourceTree = "<group>"; };
+		C002E0BE19D1D54E00948635 /* DHWarpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHWarpView.h; sourceTree = "<group>"; };
+		C002E0BF19D1D54E00948635 /* DHWarpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHWarpView.m; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025713419CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025713519CC5D7B00624F0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 		C002E0B719D1C8D900948635 /* Transform */ = {
 			isa = PBXGroup;
 			children = (
+				C002E0BE19D1D54E00948635 /* DHWarpView.h */,
+				C002E0BF19D1D54E00948635 /* DHWarpView.m */,
 				C002E0B819D1C8F300948635 /* FreeTransformController.h */,
 				C002E0B919D1C8F300948635 /* FreeTransformController.m */,
 				C002E0BA19D1C8F300948635 /* UIView+Quadrilateral.h */,
@@ -351,6 +356,7 @@
 				C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */,
 				C002E0A419D1862E00948635 /* ChessFilterViewController.m in Sources */,
 				C002E09119D051A100948635 /* ShowcaseFilterViewController.m in Sources */,
+				C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */,
 				C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */,
 				C025713619CC5D7B00624F0E /* main.m in Sources */,
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,

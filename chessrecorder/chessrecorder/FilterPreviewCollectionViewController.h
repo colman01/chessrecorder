@@ -20,6 +20,7 @@ typedef enum {
 
 @property ImageFilterType *imageFilterType;
 
+
 @property NSMutableArray *origImages;
 @property NSMutableArray *foundCornersImages;
 @property NSMutableArray *transformedImages;
