@@ -55,16 +55,26 @@
     //    warpView.bottomLeft = CGPointMake(350, 1000);
     //    warpView.bottomRight = CGPointMake(490, 540);
     
-    warpView.topLeft = CGPointMake(97, 49);
-    warpView.topRight = CGPointMake(677, 46);
-    warpView.bottomLeft = CGPointMake(150, 580);
-    warpView.bottomRight = CGPointMake(775, 580);
+    warpView.topLeft = CGPointMake(-30, 30);
+    warpView.topRight = CGPointMake(660, 30);
+    warpView.bottomLeft = CGPointMake(20, 550);
+    warpView.bottomRight = CGPointMake(470, 550);
     
     CGRect center = self.display.frame;
-    center.origin.x -= 200;
-    center.origin.y -= 200;
+    center.origin.x -= 100;
+    center.origin.y -= 100;
     [warpView setFrame:center];
     
+
+    self.display.layer.cornerRadius = 10.0;
+    self.display.layer.shadowRadius = 10.0;
+    self.display.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.display.layer.shadowOpacity = 1.0;
+    self.display.layer.shadowRadius = 5.0;
+    self.display.layer.shadowOffset = CGSizeMake(0, 3);
+    self.display.clipsToBounds = NO;
+    
+
     [warpView warp];
 }
 
