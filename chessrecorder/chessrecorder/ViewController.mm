@@ -32,23 +32,24 @@
 }
 
 - (void) detectChessboard {
-    UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
+    //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
+    UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"perfect_checkerboard" ofType:@"png"]];
     
     [self detectChessboard:imgSrc];
 }
 
 - (void) detectChessboard:(UIImage*)img {
-    cv::Size patternsize(8,8);
+    cv::Size patternsize(7, 7);
     cv::Mat frame = [CvMatUIImageConverter cvMatGrayFromUIImage:img];
     std::vector<cv::Point2f> corners;
     
-    NSLog(@"doing cv::findChessboardCorners");
-    bool patternfound = cv::findChessboardCorners(frame, patternsize, corners);
-    NSLog(@"pettern found: %s", patternfound ? "YES" : "NO");
+    printf("doing cv::findChessboardCorners\n");
+    bool found = cv::findChessboardCorners(frame, patternsize, corners);
+    printf("found: %s\n", found ? "YES" : "NO");
     
-    cv::drawChessboardCorners(frame, patternsize, cv::Mat(corners), patternfound);
+    cv::drawChessboardCorners(frame, patternsize, cv::Mat(corners), found);
     
-    NSLog(@"done");
+    printf("done\n");
 }
 
 - (void) warpSpeedImage {

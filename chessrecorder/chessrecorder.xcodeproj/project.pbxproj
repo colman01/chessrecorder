@@ -12,6 +12,7 @@
 		0481AE5619D4376800F2DE80 /* chessboard_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5319D4376800F2DE80 /* chessboard_03.jpg */; };
 		0481AE5819D4391D00F2DE80 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481AE5719D4391D00F2DE80 /* opencv2.framework */; };
 		0481AE5D19D44D9500F2DE80 /* CvMatUIImageConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0481AE5C19D44D9500F2DE80 /* CvMatUIImageConverter.mm */; };
+		0481AE5F19D4685200F2DE80 /* perfect_checkerboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5E19D4685200F2DE80 /* perfect_checkerboard.png */; };
 		C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EC19D02842009A8019 /* GPUImage.framework */; };
 		C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EA19D0276F009A8019 /* libGPUImage.a */; };
 		C002E05319D035B100948635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C025714019CC5D7B00624F0E /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		0481AE5719D4391D00F2DE80 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../opencv2.framework; sourceTree = "<group>"; };
 		0481AE5B19D44D9500F2DE80 /* CvMatUIImageConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CvMatUIImageConverter.h; path = ../CvMatUIImageConverter.h; sourceTree = "<group>"; };
 		0481AE5C19D44D9500F2DE80 /* CvMatUIImageConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CvMatUIImageConverter.mm; path = ../CvMatUIImageConverter.mm; sourceTree = "<group>"; };
+		0481AE5E19D4685200F2DE80 /* perfect_checkerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = perfect_checkerboard.png; sourceTree = "<group>"; };
 		C000984019D0196E009A8019 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
 		C000B0EA19D0276F009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = ../libGPUImage.a; sourceTree = "<group>"; };
 		C000B0EC19D02842009A8019 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../GPUImage.framework; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		C002E0AC19D1A68A00948635 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				0481AE5E19D4685200F2DE80 /* perfect_checkerboard.png */,
 				C002E0B319D1ABF500948635 /* Chess_table.jpg */,
 				C002E0B119D1ABBA00948635 /* Chess-board.jpg */,
 				C002E0AF19D1ABA700948635 /* Chess_board_opening.jpg */,
@@ -368,6 +371,7 @@
 				C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */,
 				0481AE5619D4376800F2DE80 /* chessboard_03.jpg in Resources */,
 				C002E0B219D1ABBA00948635 /* Chess-board.jpg in Resources */,
+				0481AE5F19D4685200F2DE80 /* perfect_checkerboard.png in Resources */,
 				0481AE5419D4376800F2DE80 /* chessboard_01.jpg in Resources */,
 				C002E0B019D1ABA700948635 /* Chess_board_opening.jpg in Resources */,
 				C002E0AE19D1A6B600948635 /* Chess_board_top.jpg in Resources */,
