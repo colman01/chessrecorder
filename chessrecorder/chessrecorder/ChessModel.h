@@ -10,4 +10,24 @@
 
 @interface ChessModel : NSObject
 
+typedef enum {
+    PAWN,
+    KNIGHT,
+    BISHOP,
+    ROOK,
+    QUEEN,
+    KING
+} ChessType;
+
+
+typedef enum {
+        BLACK,
+        WHITE
+} ChessColor;
+
+typedef struct {
+    ChessType type;
+    ChessColor color;
+} ChessPiece;
+
 @end
