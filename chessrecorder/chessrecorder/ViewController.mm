@@ -43,7 +43,7 @@
     
     bool patternfound = findChessboardCorners(frame,patternsize,centers);
 
-    NSLog(@"pettrern found: %i", patternfound);
+    NSLog(@"pettern found: %i", patternfound);
     drawChessboardCorners(frame, patternsize, cv::Mat(centers), patternfound);
     
     cvNamedWindow("window");
