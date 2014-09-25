@@ -10,6 +10,7 @@
 		0481AE5419D4376800F2DE80 /* chessboard_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5119D4376800F2DE80 /* chessboard_01.jpg */; };
 		0481AE5519D4376800F2DE80 /* chessboard_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5219D4376800F2DE80 /* chessboard_02.jpg */; };
 		0481AE5619D4376800F2DE80 /* chessboard_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5319D4376800F2DE80 /* chessboard_03.jpg */; };
+		0481AE5819D4391D00F2DE80 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481AE5719D4391D00F2DE80 /* opencv2.framework */; };
 		C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EC19D02842009A8019 /* GPUImage.framework */; };
 		C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EA19D0276F009A8019 /* libGPUImage.a */; };
 		C002E05319D035B100948635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C025714019CC5D7B00624F0E /* Main.storyboard */; };
@@ -33,7 +34,7 @@
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
-		C025713F19CC5D7B00624F0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713E19CC5D7B00624F0E /* ViewController.m */; };
+		C025713F19CC5D7B00624F0E /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C025713E19CC5D7B00624F0E /* ViewController.mm */; };
 		C025714419CC5D7B00624F0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C025714319CC5D7B00624F0E /* Images.xcassets */; };
 		C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C025715219CC5D7B00624F0E /* chessrecorderTests.m */; };
 		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
@@ -55,9 +56,10 @@
 		0481AE5119D4376800F2DE80 /* chessboard_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chessboard_01.jpg; sourceTree = "<group>"; };
 		0481AE5219D4376800F2DE80 /* chessboard_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chessboard_02.jpg; sourceTree = "<group>"; };
 		0481AE5319D4376800F2DE80 /* chessboard_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chessboard_03.jpg; sourceTree = "<group>"; };
-		C000984019D0196E009A8019 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C000B0EA19D0276F009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGPUImage.a; sourceTree = "<group>"; };
-		C000B0EC19D02842009A8019 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
+		0481AE5719D4391D00F2DE80 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../opencv2.framework; sourceTree = "<group>"; };
+		C000984019D0196E009A8019 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
+		C000B0EA19D0276F009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = ../libGPUImage.a; sourceTree = "<group>"; };
+		C000B0EC19D02842009A8019 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../GPUImage.framework; sourceTree = "<group>"; };
 		C002E08F19D051A100948635 /* ShowcaseFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowcaseFilterViewController.h; path = ../ShowcaseFilterViewController.h; sourceTree = "<group>"; };
 		C002E09019D051A100948635 /* ShowcaseFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowcaseFilterViewController.m; path = ../ShowcaseFilterViewController.m; sourceTree = "<group>"; };
 		C002E09219D05CF700948635 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
@@ -88,7 +90,7 @@
 		C025713819CC5D7B00624F0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C025713B19CC5D7B00624F0E /* chessrecorder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chessrecorder.xcdatamodel; sourceTree = "<group>"; };
 		C025713D19CC5D7B00624F0E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C025713E19CC5D7B00624F0E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C025713E19CC5D7B00624F0E /* ViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		C025714119CC5D7B00624F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C025714319CC5D7B00624F0E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C025714619CC5D7B00624F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0481AE5819D4391D00F2DE80 /* opencv2.framework in Frameworks */,
 				C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */,
 				C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */,
 			);
@@ -192,9 +195,6 @@
 			children = (
 				C002E0AC19D1A68A00948635 /* pictures */,
 				C002E09519D0650000948635 /* icons */,
-				C000B0EC19D02842009A8019 /* GPUImage.framework */,
-				C000B0EA19D0276F009A8019 /* libGPUImage.a */,
-				C000984019D0196E009A8019 /* PrefixHeader.pch */,
 				C002E0B719D1C8D900948635 /* Transform */,
 				C025713219CC5D7B00624F0E /* chessrecorder */,
 				C025714F19CC5D7B00624F0E /* chessrecorderTests */,
@@ -219,7 +219,7 @@
 				C025713719CC5D7B00624F0E /* AppDelegate.h */,
 				C025713819CC5D7B00624F0E /* AppDelegate.m */,
 				C025713D19CC5D7B00624F0E /* ViewController.h */,
-				C025713E19CC5D7B00624F0E /* ViewController.m */,
+				C025713E19CC5D7B00624F0E /* ViewController.mm */,
 				C025714019CC5D7B00624F0E /* Main.storyboard */,
 				C025714319CC5D7B00624F0E /* Images.xcassets */,
 				C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */,
@@ -231,6 +231,10 @@
 		C025713319CC5D7B00624F0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C000984019D0196E009A8019 /* PrefixHeader.pch */,
+				C000B0EA19D0276F009A8019 /* libGPUImage.a */,
+				C000B0EC19D02842009A8019 /* GPUImage.framework */,
+				0481AE5719D4391D00F2DE80 /* opencv2.framework */,
 				C025713419CC5D7B00624F0E /* Info.plist */,
 				C025713519CC5D7B00624F0E /* main.m */,
 			);
@@ -378,7 +382,7 @@
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
 				C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */,
 				C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */,
-				C025713F19CC5D7B00624F0E /* ViewController.m in Sources */,
+				C025713F19CC5D7B00624F0E /* ViewController.mm in Sources */,
 				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
