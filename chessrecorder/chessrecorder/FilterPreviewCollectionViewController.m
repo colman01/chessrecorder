@@ -88,24 +88,36 @@ bool done = NO;
     NSInteger row = indexPath.row / 3;
     if (done) {
         switch (col) {
+                // Orig
             case 0: {
                 cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell2" forIndexPath:indexPath];
                 UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
                 imgView.image = [origImages objectAtIndex:row];
+                
+                UILabel *lbl = (UILabel *)[cell viewWithTag:2];
+                [lbl setText:[NSString stringWithFormat:@"%i %@", indexPath.row, @"Before"]];
+                
                 break;
             }
+                // Filtered
             case 1: {
                 cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell3" forIndexPath:indexPath];
                 UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
                 imgView.image = [foundCornersImages objectAtIndex:row];
+                UILabel *lbl = (UILabel *)[cell viewWithTag:2];
+                [lbl setText:[NSString stringWithFormat:@"%i %@", indexPath.row, @"Corner"]];
+                
                 break;
             }
                 
+                // Transformed
             case 2:
             {
                 cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell4" forIndexPath:indexPath];
                 UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
                 imgView.image = [transformedImages objectAtIndex:row];
+                UILabel *lbl = (UILabel *)[cell viewWithTag:2];
+                [lbl setText:[NSString stringWithFormat:@"%i %@", indexPath.row, @"Transformed"]];
                 break;
             }
                 

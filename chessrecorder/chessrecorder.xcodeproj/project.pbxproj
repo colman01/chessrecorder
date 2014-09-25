@@ -38,6 +38,7 @@
 		C025713F19CC5D7B00624F0E /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C025713E19CC5D7B00624F0E /* ViewController.mm */; };
 		C025714419CC5D7B00624F0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C025714319CC5D7B00624F0E /* Images.xcassets */; };
 		C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C025715219CC5D7B00624F0E /* chessrecorderTests.m */; };
+		C025D00A19D4515A003EC2D0 /* ChessModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = C025D00919D4515A003EC2D0 /* ChessModel.mm */; };
 		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
@@ -100,6 +101,8 @@
 		C025714C19CC5D7B00624F0E /* chessrecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chessrecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025715119CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025715219CC5D7B00624F0E /* chessrecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chessrecorderTests.m; sourceTree = "<group>"; };
+		C025D00819D4515A003EC2D0 /* ChessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChessModel.h; sourceTree = "<group>"; };
+		C025D00919D4515A003EC2D0 /* ChessModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChessModel.mm; sourceTree = "<group>"; };
 		C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess_rotate.jpg; sourceTree = "<group>"; };
 		C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoFilterViewController.h; sourceTree = "<group>"; };
 		C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoFilterViewController.m; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 		C025713219CC5D7B00624F0E /* chessrecorder */ = {
 			isa = PBXGroup;
 			children = (
+				C025D00B19D45160003EC2D0 /* Chess Model */,
 				C002E0A119D1806C00948635 /* Custom filter */,
 				C002E0A019D1803F00948635 /* Files from multiview project */,
 				C025713719CC5D7B00624F0E /* AppDelegate.h */,
@@ -261,6 +265,15 @@
 				C025715119CC5D7B00624F0E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C025D00B19D45160003EC2D0 /* Chess Model */ = {
+			isa = PBXGroup;
+			children = (
+				C025D00819D4515A003EC2D0 /* ChessModel.h */,
+				C025D00919D4515A003EC2D0 /* ChessModel.mm */,
+			);
+			name = "Chess Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +397,7 @@
 				C002E09119D051A100948635 /* ShowcaseFilterViewController.m in Sources */,
 				C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */,
 				C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */,
+				C025D00A19D4515A003EC2D0 /* ChessModel.mm in Sources */,
 				C025713619CC5D7B00624F0E /* main.m in Sources */,
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
 				C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */,
