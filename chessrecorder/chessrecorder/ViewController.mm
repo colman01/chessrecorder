@@ -27,30 +27,50 @@
     
     [self detectChessboard];
     
-    [self warpSpeedImage];
+    //[self warpSpeedImage];
 }
 
 - (void) detectChessboard {
-    UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_01" ofType:@"jpg"]];
+    UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
     
     [self detectChessboard:imgSrc];
 }
 
-- (void) detectChessboard:(UIImage*)img {
-    cv::Size patternsize(8,8); //number of centers
-    cv::Mat frame = cv::imread("perfect.png"); //source image
-    std::vector<cv::Point2f> centers; //this will be filled by the detected centers
+- (cv::Mat)cvMatFromUIImage:(UIImage *)image {
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
+    CGFloat cols = image.size.width;
+    CGFloat rows = image.size.height;
     
-    bool patternfound = findChessboardCorners(frame,patternsize,centers);
+    cv::Mat cvMat(rows, cols, CV_8UC4); // 8 bits per component, 4 channels (color channels + alpha)
+    
+    CGContextRef contextRef = CGBitmapContextCreate(cvMat.data,                 // Pointer to  data
+                                                    cols,                       // Width of bitmap
+                                                    rows,                       // Height of bitmap
+                                                    8,                          // Bits per component
+                                                    cvMat.step[0],              // Bytes per row
+                                                    colorSpace,                 // Colorspace
+                                                    kCGImageAlphaNoneSkipLast |
+                                                    kCGBitmapByteOrderDefault); // Bitmap info flags
+    
+    CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
+    CGContextRelease(contextRef);
+    
+    return cvMat;
+}
 
-    NSLog(@"pettern found: %i", patternfound);
-    drawChessboardCorners(frame, patternsize, cv::Mat(centers), patternfound);
+- (void) detectChessboard:(UIImage*)img {
+    NSLog(@"local array");
+    cv::Size patternsize(8,8);
+    NSLog(@"loading image");
+    cv::Mat frame = [self cvMatFromUIImage:img];
+    NSLog(@"vector for storing corners");
+    std::vector<cv::Point2f> corners;
+    NSLog(@"pettern");
     
-    cvNamedWindow("window");
-    while (1) {
-        imshow("window",frame);
-        cvWaitKey(33);
-    }
+    bool patternfound = findChessboardCorners(frame, patternsize, corners);
+
+    NSLog(@"pettern found: %s", patternfound ? "YES" : "NO");
+    drawChessboardCorners(frame, patternsize, cv::Mat(corners), patternfound);
 }
 
 - (void) warpSpeedImage {
