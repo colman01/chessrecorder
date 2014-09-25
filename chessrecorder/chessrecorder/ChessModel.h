@@ -30,4 +30,7 @@ typedef struct {
     ChessColor color;
 } ChessPiece;
 
+
+- (bool) checkColorOfPositionX:(int) x andPositionY:(int) y;
+
 @end
