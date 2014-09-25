@@ -20,8 +20,6 @@ static ChessModel *sharedInstance;
     }
 }
 
-
-
 - (void) setupBoard {
     NSMutableArray *board = [[NSMutableArray alloc] initWithCapacity:8];
     for (int i=0; i<8; i++) {
