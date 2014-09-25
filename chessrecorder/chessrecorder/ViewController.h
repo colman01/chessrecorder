@@ -13,5 +13,8 @@
 @interface ViewController : UIViewController {
 }
 
+
+@property IBOutlet UIView *display;
+
 @end
 
