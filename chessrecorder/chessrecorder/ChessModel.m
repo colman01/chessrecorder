@@ -10,4 +10,14 @@
 
 @implementation ChessModel
 
+
+static ChessModel *sharedInstance;
+
++ (void)initialize
+{
+    if (self == [ChessModel class]) {
+         sharedInstance = [[self alloc] init]; 
+    }
+}
+
 @end
