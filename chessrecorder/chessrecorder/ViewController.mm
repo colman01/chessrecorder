@@ -33,24 +33,25 @@
 
 - (void) detectChessboard {
     //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
+    UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"nicely" ofType:@"jpg"]];
     //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"perfect_checkerboard" ofType:@"png"]];
-    UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess-top-view" ofType:@"jpg"]];
+    //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess-top-view" ofType:@"jpg"]];
     
     [self detectChessboard:imgSrc];
 }
 
 - (void) detectChessboard:(UIImage*)img {
-    cv::Size patternsize(7, 7);
-    cv::Mat frame = [CvMatUIImageConverter cvMatFromUIImage:img];
+    cv::Size patternsize(3, 7);
+    cv::Mat frame = [CvMatUIImageConverter cvMatGrayFromUIImage:img];
     std::vector<cv::Point2f> corners;
     
     printf("doing cv::findChessboardCorners\n");
-    bool found = cv::findChessboardCorners(frame, patternsize, corners, CV_CALIB_CB_ADAPTIVE_THRESH + CV_CALIB_CB_FILTER_QUADS + CV_CALIB_CB_NORMALIZE_IMAGE + CV_CALIB_CB_FAST_CHECK);
+    bool found = cv::findChessboardCorners(frame, patternsize, corners, CV_CALIB_CB_ADAPTIVE_THRESH + CV_CALIB_CB_FILTER_QUADS);
     printf("found: %s\n", found ? "YES" : "NO");
     
-    cv::drawChessboardCorners(frame, patternsize, cv::Mat(corners), found);
+    //cv::drawChessboardCorners(frame, patternsize, cv::Mat(corners), found);
     
-    printf("done\n");
+    //printf("done\n");
 }
 
 - (void) warpSpeedImage {
