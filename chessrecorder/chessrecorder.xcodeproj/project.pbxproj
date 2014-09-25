@@ -11,6 +11,7 @@
 		0481AE5519D4376800F2DE80 /* chessboard_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5219D4376800F2DE80 /* chessboard_02.jpg */; };
 		0481AE5619D4376800F2DE80 /* chessboard_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5319D4376800F2DE80 /* chessboard_03.jpg */; };
 		0481AE5819D4391D00F2DE80 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481AE5719D4391D00F2DE80 /* opencv2.framework */; };
+		0481AE5D19D44D9500F2DE80 /* CvMatUIImageConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0481AE5C19D44D9500F2DE80 /* CvMatUIImageConverter.mm */; };
 		C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EC19D02842009A8019 /* GPUImage.framework */; };
 		C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EA19D0276F009A8019 /* libGPUImage.a */; };
 		C002E05319D035B100948635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C025714019CC5D7B00624F0E /* Main.storyboard */; };
@@ -57,6 +58,8 @@
 		0481AE5219D4376800F2DE80 /* chessboard_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chessboard_02.jpg; sourceTree = "<group>"; };
 		0481AE5319D4376800F2DE80 /* chessboard_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chessboard_03.jpg; sourceTree = "<group>"; };
 		0481AE5719D4391D00F2DE80 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../opencv2.framework; sourceTree = "<group>"; };
+		0481AE5B19D44D9500F2DE80 /* CvMatUIImageConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CvMatUIImageConverter.h; path = ../CvMatUIImageConverter.h; sourceTree = "<group>"; };
+		0481AE5C19D44D9500F2DE80 /* CvMatUIImageConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CvMatUIImageConverter.mm; path = ../CvMatUIImageConverter.mm; sourceTree = "<group>"; };
 		C000984019D0196E009A8019 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
 		C000B0EA19D0276F009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = ../libGPUImage.a; sourceTree = "<group>"; };
 		C000B0EC19D02842009A8019 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../GPUImage.framework; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				C002E0A019D1803F00948635 /* Files from multiview project */,
 				C025713719CC5D7B00624F0E /* AppDelegate.h */,
 				C025713819CC5D7B00624F0E /* AppDelegate.m */,
+				0481AE5B19D44D9500F2DE80 /* CvMatUIImageConverter.h */,
+				0481AE5C19D44D9500F2DE80 /* CvMatUIImageConverter.mm */,
 				C025713D19CC5D7B00624F0E /* ViewController.h */,
 				C025713E19CC5D7B00624F0E /* ViewController.mm */,
 				C025714019CC5D7B00624F0E /* Main.storyboard */,
@@ -375,6 +380,7 @@
 				C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */,
 				C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */,
 				C002E0A419D1862E00948635 /* ChessFilterViewController.m in Sources */,
+				0481AE5D19D44D9500F2DE80 /* CvMatUIImageConverter.mm in Sources */,
 				C002E09119D051A100948635 /* ShowcaseFilterViewController.m in Sources */,
 				C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */,
 				C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */,

@@ -114,10 +114,6 @@ bool done = NO;
                 break;
         }
     }
-
-    
-    UILabel *lbl = (UILabel *)[cell viewWithTag:2];
-//    [lbl setText:[NSString stringWithFormat:@"%i", indexPath.row]];
     
     return cell;
 }
