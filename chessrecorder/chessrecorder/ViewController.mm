@@ -26,22 +26,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self detectChessboard];
+//    [self detectChessboard];
     
     //[self warpSpeedImage];
 }
 
 - (void) detectChessboard {
+    UIImage* imgSrc;
+    
+    //imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"perfect_checkerboard" ofType:@"png"]];
+    //[self detectChessboard:imgSrc];
+    
+    imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Chess_table" ofType:@"jpg"]];
+    [self detectChessboard:imgSrc];
+    
     //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
-    UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"nicely" ofType:@"jpg"]];
-    //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"perfect_checkerboard" ofType:@"png"]];
+    //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"nicely" ofType:@"jpg"]];
     //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess-top-view" ofType:@"jpg"]];
     
-    [self detectChessboard:imgSrc];
 }
 
 - (void) detectChessboard:(UIImage*)img {
-    cv::Size patternsize(3, 7);
+    cv::Size patternsize(7, 7);
     cv::Mat frame = [CvMatUIImageConverter cvMatGrayFromUIImage:img];
     std::vector<cv::Point2f> corners;
     
@@ -49,9 +55,8 @@
     bool found = cv::findChessboardCorners(frame, patternsize, corners, CV_CALIB_CB_ADAPTIVE_THRESH + CV_CALIB_CB_FILTER_QUADS);
     printf("found: %s\n", found ? "YES" : "NO");
     
-    //cv::drawChessboardCorners(frame, patternsize, cv::Mat(corners), found);
-    
-    //printf("done\n");
+    cv::drawChessboardCorners(frame, patternsize, cv::Mat(corners), found);
+    printf("done\n");
 }
 
 - (void) warpSpeedImage {
@@ -60,39 +65,12 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chess_rotate.jpg"]];
     
     warpView.frame = self.display.bounds;
-    warpView.contentMode = UIViewContentModeScaleAspectFit; // or other desired mode
-    //    warpView.contentMode = UIViewContentModeScaleToFill;
-    //    warpView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    warpView.contentMode = UIViewContentModeScaleAspectFit; 
     warpView.autoresizingMask = UIViewAutoresizingNone;
     self.display.autoresizingMask = UIViewAutoresizingNone;
     
     [warpView addSubview:imageView];
     [self.display addSubview:warpView];
-    //    warpView.topLeft = CGPointMake(97, 49);
-    //    warpView.topRight = CGPointMake(677, 46);
-    //    warpView.bottomLeft = CGPointMake(15, 580);
-    //    warpView.bottomRight = CGPointMake(775, 580);
-    
-    //    warpView.topLeft = CGPointMake(97, 49);
-    //    warpView.topRight = CGPointMake(677, 46);
-    //    warpView.bottomLeft = CGPointMake(15, 580);
-    //    warpView.bottomRight = CGPointMake(775, 580);
-    
-    //    warpView.topLeft = CGPointMake(150, 336);
-    //    warpView.topRight = CGPointMake(460, 30);
-    //    warpView.bottomLeft = CGPointMake(350, 1000);
-    //    warpView.bottomRight = CGPointMake(490, 540);
-    
-//    warpView.topLeft = CGPointMake(-20, -30);
-//    warpView.topRight = CGPointMake(680, -30);
-//    warpView.bottomLeft = CGPointMake(20, 550);
-//    warpView.bottomRight = CGPointMake(470, 550);
-    
-//    warpView.topLeft = CGPointMake(470, 550);
-//    warpView.topRight = CGPointMake(20, 550);
-//    warpView.bottomLeft = CGPointMake(680, -30);
-//    warpView.bottomRight = CGPointMake(-20, -30);
-    
     warpView.topLeft = CGPointMake(27, 26);
     warpView.topRight = CGPointMake(550, -30);
     warpView.bottomLeft = CGPointMake(20, 400);
