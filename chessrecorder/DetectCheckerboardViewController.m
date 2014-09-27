@@ -59,112 +59,28 @@
     [self.view addSubview:view3];
     [self.view addSubview:view4];
     
-    /* LINE GENERATOR EXAMPLE
-     GPUImageLineGenerator *lineGenerator = [[GPUImageLineGenerator alloc] init];
-     //            lineGenerator.crosshairWidth = 15.0;
-     [lineGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-     [lineGenerator setLineColorRed:1.0 green:0.0 blue:0.0];
-     [(GPUImageHoughTransformLineDetector *)filter setLinesDetectedBlock:^(GLfloat* lineArray, NSUInteger linesDetected, CMTime frameTime){
-     [lineGenerator renderLinesFromArray:lineArray count:linesDetected frameTime:frameTime];
-     NSLog(@"number of lines %i" , linesDetected);
-     }];
-     
-     [(GPUImageHoughTransformLineDetector *)filter setLineDetectionThreshold:0.60];
-     
-     GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-     [blendFilter forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-     GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-     [videoCamera addTarget:gammaFilter];
-     [gammaFilter addTarget:blendFilter];
-     
-     [lineGenerator addTarget:blendFilter];
-     
-     [blendFilter addTarget:view1];
-     */
-    
-    
-    GPUImageCrosshairGenerator *crosshairGenerator = [[GPUImageCrosshairGenerator alloc] init];
-    crosshairGenerator.crosshairWidth = 20.0;
-    [crosshairGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-    
-    GPUImageHarrisCornerDetectionFilter *harrisFilter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-    [(GPUImageHarrisCornerDetectionFilter *)harrisFilter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
-        [crosshairGenerator renderCrosshairsFromArray:cornerArray count:cornersDetected frameTime:frameTime];
-    }];
-    
-    [(GPUImageHarrisCornerDetectionFilter *)harrisFilter setThreshold:0.10];
-    
-    //        [(GPUImageHoughTransformLineDetector *)filter setLineDetectionThreshold:0.60];
-    
-    
-    GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-    [blendFilter forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-    GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-    [videoCamera addTarget:gammaFilter];
-    [gammaFilter addTarget:blendFilter];
-    
-    [crosshairGenerator addTarget:blendFilter];
-    
-    [blendFilter addTarget:view1];
-    
     GPUImage3x3ConvolutionFilter *convoluationCustom = [[GPUImage3x3ConvolutionFilter alloc] init];
     [(GPUImage3x3ConvolutionFilter *)convoluationCustom setConvolutionKernel:(GPUMatrix3x3){
-        {-1.0f,  0.0f, 1.0f},
-        {0.0f, 0.0f, 0.0f},
-        {-1.0f,  0.0f, 0.2f}
+        {0.0f,  0.0f, 0.0f},
+        {-1.0f, 0.0f, 1.0f},
+        {0.0f,  0.0f, 0.0f}
     }];
-    
-    GPUImageGaussianBlurFilter *gaussian = [[GPUImageGaussianBlurFilter alloc] init];
-    
     
     GPUImage3x3ConvolutionFilter *convoluation = [[GPUImage3x3ConvolutionFilter alloc] init];
     [(GPUImage3x3ConvolutionFilter *)convoluation setConvolutionKernel:(GPUMatrix3x3){
-        {-1.0f,  0.0f, 1.0f},
-        {-2.0f, 0.0f, 2.0f},
-        {-1.0f,  0.0f, 1.0f}
+        {0.0f,  1.0f, 0.0f},
+        {0.0f, 0.0f, 0.0f},
+        {0.0f,  -1.0f, 0.0f}
     }];
-    
-    //        [filter1 forceProcessingAtSize:view2.sizeInPixels];
-    
-    GPUImageFilterPipeline *filterPipeline = [[GPUImageFilterPipeline alloc] init];
-    
-    [filterPipeline addFilter:gaussian];
-    [filterPipeline addFilter:convoluation];
-    filterPipeline.output = view1;
-    filterPipeline.input = videoCamera;
-    //        [videoCamera addTarget:view1];
-    [videoCamera addTarget:filterPipeline.output];
-    
-    
-    
-    
-    [filter forceProcessingAtSize:view1.sizeInPixels];
-    [convoluationCustom forceProcessingAtSize:view2.sizeInPixels];
-    [gaussian forceProcessingAtSize:view3.sizeInPixels];
-    [convoluation forceProcessingAtSize:view4.sizeInPixels];
-    
-    
-    
-    
-    //        [videoCamera addTarget:harrisFilter];
-    //        [harrisFilter addTarget:view1];
-    
+    [convoluation forceProcessingAtSize:view2.sizeInPixels];
+    [convoluationCustom forceProcessingAtSize:view3.sizeInPixels];
+
+    [videoCamera addTarget:convoluation];
+    [convoluation addTarget:view2];
     [videoCamera addTarget:convoluationCustom];
-    [convoluationCustom addTarget:view2];
-    [videoCamera addTarget:gaussian];
-    [gaussian addTarget:view3];
-    [self updateFilterPipeline:1];
+    [convoluationCustom addTarget:view3];
     
-    
-    [self configureSomeArraysOfFilters];
-    [self configureAnEmptyPipeline];
-    
-    
-    
-    //        [videoCamera addTarget:view4];
-    
-    
-    //        [videoCamera startCameraCapture];
+    [videoCamera startCameraCapture];
 }
 
 
