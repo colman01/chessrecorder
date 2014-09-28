@@ -135,35 +135,7 @@
     
     
     
-//    [C]
-    
-    
-//    UIImage *I_45_x = cv::add(Ix, Iy, outputImage);
-    
-//    cv::Mat frame = [CvMatUIImageConverter cvMatGrayFromUIImage:img];
-//    cv:cv::Mat Ix = [CvMatUIImageConverter cvMatFromUIImage:[derivativeXConv img]];
-//    cv:cv::Mat Iy = [CvMatUIImageConverter cvMatFromUIImage:[derivativeYConv imag]];
-//    cv:cv::Mat frame = [CvMatUIImageConverter cvMatFromUIImage:img];
-//    
-////    cv::multiply(frame, frame, frame);
-//    cv::add(Ix, Iy, );
 
-    
-    
-    // I_45 = Ix * cos(+PI/4) + Iy*sin(PI/4);
-//    I_45 = Ix * cos(-PI/4) + Iy*sin(-PI/4);
-//    % second derivative
-//    Ixy = imfilter(Ix, derivFilter', 'conv');
-//                   
-//                   I_45_x = imfilter(I_45, derivFilter, 'conv');
-//                   I_45_y = imfilter(I_45, derivFilter', 'conv');
-
-//    I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
-//    % suppress the outer corners
-//    cxy = sigma^2 * abs(Ixy) - sigma * (abs(I_45) + abs(I_n45));
-//    cxy(cxy < 0) = 0;
-//    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
-//    c45(c45 < 0) = 0;
     
     
 

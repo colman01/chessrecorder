@@ -48,7 +48,21 @@
         {0.0f,  0.0f, cosf(M_PI_4)}
     }];
     
+    GPUImage3x3ConvolutionFilter *negCosConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)negCosConv setConvolutionKernel:(GPUMatrix3x3){
+        {-cosf(M_PI_4),  0.0f, 0.0f},
+        {0.0f, -cosf(M_PI_4), 0.0f},
+        {0.0f,  0.0f, -cosf(M_PI_4)}
+    }];
+    
     GPUImage3x3ConvolutionFilter *sinConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)sinConv setConvolutionKernel:(GPUMatrix3x3){
+        {sinf(M_PI_4),  0.0f, 0.0f},
+        {0.0f, sinf(M_PI_4), 0.0f},
+        {0.0f,  0.0f, sinf(M_PI_4)}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *negSinConv = [[GPUImage3x3ConvolutionFilter alloc] init];
     [(GPUImage3x3ConvolutionFilter *)sinConv setConvolutionKernel:(GPUMatrix3x3){
         {sinf(M_PI_4),  0.0f, 0.0f},
         {0.0f, sinf(M_PI_4), 0.0f},
@@ -63,19 +77,44 @@
     UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
     UIImage *Iy = [derivativeYConv imageByFilteringImage:img];
     
-    UIImage *Ix_45 = [cosConv imageByFilteringImage:Ix];
-    UIImage *Iy_45 = [sinConv imageByFilteringImage:Iy];
+    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
+    UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
     
     
     
     //    cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromImage:outputImage];
     cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];
-    cv::Mat cvIx = [CvMatUIImageConverter cvMatGrayFromUIImage:Ix_45];
-    cv::Mat cvIy = [CvMatUIImageConverter cvMatGrayFromUIImage:Iy_45];
+    cv::Mat cvIx_cos = [CvMatUIImageConverter cvMatGrayFromUIImage:Ix_45_cos];
+    cv::Mat cvIy_sin = [CvMatUIImageConverter cvMatGrayFromUIImage:Iy_45_sin];
     //    cv::Mat cvIx = [CvMatUIImageConverter cvMatGrayFromImage:Ix_45];
     //    cv::Mat cvIy = [CvMatUIImageConverter cvMatGrayFromImage:Iy_45];
     
-    cv::add(cvIx, cvIy, cvResult);
+    cv::add(cvIx_cos, cvIy_sin, cvResult);
+
+    UIImage *I_45 = [self imageWithCVMat:cvResult];
+    UIImage *Ixy = [derivativeYConv imageByFilteringImage:I_45];
+    
+    UIImage *I_45_x = [derivativeXConv imageByFilteringImage:I_45];
+    UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
+    
+    
+    //    I_45_x * cos(-pi/4)
+    //    I_45_y * sin(-pi/4)
+    UIImage *I_45_x_cos_n_pi4 = [negCosConv imageByFilteringImage:I_45_x];
+    UIImage *I_45_y_sin_n_pi4 = [negSinConv imageByFilteringImage:I_45_y];
+    
+    
+    cv::Mat cv_I_45_x_cos_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_x_cos_n_pi4];
+    cv::Mat cv_I_45_y_sin_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_y_sin_n_pi4];
+    
+    //    I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
+    cv::add(cv_I_45_x_cos_n_pi4, cv_I_45_y_sin_n_pi4, cvResult);
+    
+    UIImage *I_45_45 = [self imageWithCVMat:cvResult];
+    
+    
+    
+    
     
     //    + (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat
     UIImage *cvOutput = [self imageWithCVMat:cvResult];
