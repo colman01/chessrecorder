@@ -64,6 +64,15 @@
                                     <segue destination="ScQ-Il-Ei1" kind="show" id="FwF-b4-sgP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86c-PS-7Fm">
+                                <rect key="frame" x="93" y="430" width="58" height="30"/>
+                                <state key="normal" title="OpenCV">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="oix-Gn-fh6" kind="show" id="9eJ-9W-W4b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -243,11 +252,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.047118742970000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ApP-u6-CEF">
+                                <rect key="frame" x="34" y="165" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="imageView" destination="ApP-u6-CEF" id="ObM-Fr-PCs"/>
                         <outlet property="view1" destination="19f-41-oh7" id="MCW-Zj-Tuq"/>
                         <outlet property="view2" destination="1zb-7E-lzS" id="65j-Mp-s5D"/>
                         <outlet property="view3" destination="mNA-aW-S4o" id="2zk-Ds-4e3"/>
@@ -257,6 +270,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4O-KP-sGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111" y="1083"/>
+        </scene>
+        <!--OpenCV View Controller-->
+        <scene sceneID="8uM-VC-757">
+            <objects>
+                <viewController id="oix-Gn-fh6" customClass="OpenCVViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VYt-WQ-eDh"/>
+                        <viewControllerLayoutGuide type="bottom" id="llv-zr-JYT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RYp-uM-2dT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwE-tD-B0C">
+                                <rect key="frame" x="33" y="80" width="227" height="349"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="jwE-tD-B0C" id="oz0-Wv-96F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chq-Ih-r3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719" y="1083"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pki-pZ-1GI">
