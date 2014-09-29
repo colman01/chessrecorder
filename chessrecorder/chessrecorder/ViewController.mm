@@ -14,6 +14,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#import "GPUImage/GPUImage.h"
 
 #include <vector>
 
@@ -43,6 +44,7 @@
     //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
     //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"nicely" ofType:@"jpg"]];
     //UIImage *imgSrc = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess-top-view" ofType:@"jpg"]];
+    
     
 }
 
