@@ -75,8 +75,8 @@
     UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
     UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
     UIImage *Iy = [derivativeYConv imageByFilteringImage:img];
-    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
-    UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
+//    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
+//    UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
     
     
     //    cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromImage:outputImage];
@@ -99,8 +99,8 @@
     UIImage *Ixy = [derivativeYConv imageByFilteringImage:I_45];
 //    UIImage *Ixy = [xyFilter imageByFilteringImage:I_45];
     
-    UIImage *I_45_x = [derivativeXConv imageByFilteringImage:I_45];
-    UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
+//    UIImage *I_45_x = [derivativeXConv imageByFilteringImage:I_45];
+//    UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
     
     
     //    I_45_x * cos(-pi/4)
