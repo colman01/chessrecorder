@@ -102,7 +102,7 @@
     
     cv::add(cvIx_cos, cvIy_sin, cvResult);
     
-    UIImage *I_45 = [self imageWithCVMat:cvResult];
+    UIImage *I_45 = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
     UIImage *Ixy = [derivativeYConv imageByFilteringImage:I_45];
     //    UIImage *Ixy = [xyFilter imageByFilteringImage:I_45];
     
@@ -169,7 +169,8 @@
     cv::subtract(RHS, LHS, cvResult);
     // I_n45
     //    [imageViewC45 setImage:[self imageWithCVMat:cvResult]];
-    [imageViewI setImage:[self imageWithCVMat:cvResult]];
+    ;
+    [imageViewI setImage:[CvMatUIImageConverter UIImageFromCVMat:cvResult]];
     
     //    cv::Mat mask = cvResult <= 0 ;
     //    cvResult.setTo(mask);
