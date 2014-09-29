@@ -23,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     
     GPUImageGaussianBlurFilter *gaussian = [[GPUImageGaussianBlurFilter alloc] init];
     gaussian.blurRadiusInPixels = 5.0;
@@ -71,18 +74,24 @@
     
     UIImage *outputImage  = [[UIImage alloc] init];
     
-//    UIImage *img = [UIImage imageNamed:@"Chess-board.jpg"];
+    cv::Mat image1, image2, image3, image4;
+    
+    //    UIImage *img = [UIImage imageNamed:@"Chess-board.jpg"];
     UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
+    
+    UIImage *gaussianImage = [gaussian imageByFilteringImage:img];
     UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
     UIImage *Iy = [derivativeYConv imageByFilteringImage:img];
-    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
-    UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
+    
+    
+    //    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
+    //    UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
     
     
     //    cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromImage:outputImage];
     cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];
-//    cv::Mat cvIx_cos = [CvMatUIImageConverter cvMatGrayFromUIImage:Ix_45_cos];
-//    cv::Mat cvIy_sin = [CvMatUIImageConverter cvMatGrayFromUIImage:Iy_45_sin];
+    //    cv::Mat cvIx_cos = [CvMatUIImageConverter cvMatGrayFromUIImage:Ix_45_cos];
+    //    cv::Mat cvIy_sin = [CvMatUIImageConverter cvMatGrayFromUIImage:Iy_45_sin];
     
     cv::Mat cv_Ix_ = [CvMatUIImageConverter cvMatFromUIImage:Ix];
     cv::Mat cv_Iy_ = [CvMatUIImageConverter cvMatFromUIImage:Iy];
@@ -91,39 +100,38 @@
     
     
     
-
+    
     
     cv::add(cvIx_cos, cvIy_sin, cvResult);
-
-    UIImage *I_45 = [self imageWithCVMat:cvResult];
-    UIImage *Ixy = [derivativeYConv imageByFilteringImage:I_45];
-//    UIImage *Ixy = [xyFilter imageByFilteringImage:I_45];
     
-    UIImage *I_45_x = [derivativeXConv imageByFilteringImage:I_45];
-    UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
+    UIImage *I_45 = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+    UIImage *Ixy = [derivativeYConv imageByFilteringImage:I_45];
+    //    UIImage *Ixy = [xyFilter imageByFilteringImage:I_45];
+    
+    //    UIImage *I_45_x = [derivativeXConv imageByFilteringImage:I_45];
+    //    UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
     
     
     //    I_45_x * cos(-pi/4)
     //    I_45_y * sin(-pi/4)
-//    UIImage *I_45_x_cos_n_pi4 = [negCosConv imageByFilteringImage:I_45_x];
-//    UIImage *I_45_y_sin_n_pi4 = [negSinConv imageByFilteringImage:I_45_y];
-
+    //    UIImage *I_45_x_cos_n_pi4 = [negCosConv imageByFilteringImage:I_45_x];
+    //    UIImage *I_45_y_sin_n_pi4 = [negSinConv imageByFilteringImage:I_45_y];
+    
     
     cv::Mat posCos = cv_Ix_*cosf(M_PI_4);
     cv::Mat posSin = cv_Iy_*sinf(M_PI_4);
     
     cv::Mat negCos = cv_Ix_*-cosf(M_PI_4);
     cv::Mat negSin = cv_Iy_*sinf(-M_PI_4);
-    
-    
-    UIImage *I_45_x_cos_n_pi4 = [self imageWithCVMat:negCos];
-    UIImage *I_45_y_sin_n_pi4 = [self imageWithCVMat:negSin];
-    
-    
 
+    UIImage *I_45_x_cos_n_pi4 = [CvMatUIImageConverter UIImageFromCVMat:negCos];
+    UIImage *I_45_y_sin_n_pi4 = [CvMatUIImageConverter UIImageFromCVMat:negSin];
+    
+//    cv::imshow("", negCos);
+    
+    
     
     cv::Mat cv_Ixy = [CvMatUIImageConverter cvMatFromUIImage:Ixy];
-    
     cv::Mat cv_I_45_x_cos_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_x_cos_n_pi4];
     cv::Mat cv_I_45_y_sin_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_y_sin_n_pi4];
     
@@ -134,19 +142,23 @@
     cv::Mat cv_Ix_45 = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];
     cv::Mat cv_Iy_45 = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];;
     cv::Mat cv_I_45 = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];;
-//    cv::add(cv_Ix_45, cv_Iy_45, cv_I_45);
+    //    cv::add(cv_Ix_45, cv_Iy_45, cv_I_45);
     cv::add(posCos, posSin, cv_I_45);
-    UIImage *I_45_ = [self imageWithCVMat:cv_I_45];
+    
+    UIImage *I_45_ = [CvMatUIImageConverter UIImageFromCVMat:cv_I_45];
     [self.imageViewI  setImage:I_45_];
     
     cv::Mat cv_I_n45 = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];
     cv::add(negCos, negSin, cv_I_n45);
-    UIImage *I_45_Neg = [self imageWithCVMat:cv_I_n45];
+    
+    UIImage *I_45_Neg = [CvMatUIImageConverter UIImageFromCVMat:cv_I_n45];
     [self.imageViewCxy setImage:I_45_Neg];
     
     //    I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
     cv::add(cv_I_45_x_cos_n_pi4, cv_I_45_y_sin_n_pi4, cvResult);
-    UIImage *I_45_45 = [self imageWithCVMat:cvResult];
+    UIImage *I_45_45 = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+    [imageViewC45 setImage:I_45_45];
+    
     cv::Mat cv_I_45_45 = [CvMatUIImageConverter cvMatFromUIImage:I_45_45];
     cv::Mat absIxy = cv::abs(cv_Ixy);
     cv::Mat abs_I_45 = cv::abs(cv_I_45_x_cos_n_pi4);
@@ -156,21 +168,24 @@
     cv::add(abs_I_45, abs_I_n45, LHS);
     LHS *= 2;
     cv::Mat RHS = 4*absIxy;
-    cv::subtract(RHS, LHS, cvResult);
+    cv::Mat I_n45;
+    cv::subtract(RHS, LHS, I_n45);
     // I_n45
-//    [imageViewC45 setImage:[self imageWithCVMat:cvResult]];
-    [imageViewI setImage:[self imageWithCVMat:cvResult]];
-    
-//    cv::Mat mask = cvResult <= 0 ;
-//    cvResult.setTo(mask);
-//    cv::Mat masked = cvResult.setTo(0, cvResult<0 );
-    
-//    Mat im = ReadSomeImage(...);
-//    Mat masked = im.setTo(0,im<0); /// <<<
 
-        UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
-//    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:masked];
-//    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
+    [imageViewI setImage:[CvMatUIImageConverter UIImageFromCVMat:I_n45]];
+    
+    image1 = I_n45;
+    
+    //    cv::Mat mask = cvResult <= 0 ;
+    //    cvResult.setTo(mask);
+    //    cv::Mat masked = cvResult.setTo(0, cvResult<0 );
+    
+    //    Mat im = ReadSomeImage(...);
+    //    Mat masked = im.setTo(0,im<0); /// <<<
+    
+//    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+    //    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:masked];
+    //    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
     cv::Mat absI4545 = cv::abs(cv_I_45_45);
     cv::Mat sigmaAbsI4545 = 4*absI4545;
     cv::Mat cv_Ix = [CvMatUIImageConverter cvMatFromUIImage:Ix];
@@ -181,7 +196,12 @@
     cv::add(absIx, absIy, LHS);
     LHS *= 2;
     RHS = 4*absI4545;
-    cv::subtract(RHS, LHS, cvResult);
+    cv::Mat cv_c45;
+    cv::subtract(RHS, LHS, cv_c45);
+    
+    image2 = cv_c45;
+    
+//    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cv_c45];
     
     // I_45 = Ix * cos(+PI/4) + Iy*sin(PI/4);
     //    I_45 = Ix * cos(-PI/4) + Iy*sin(-PI/4);
@@ -198,42 +218,25 @@
     //    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
     //    c45(c45 < 0) = 0;
     
+    image1 = cvResult;
+    UIImage *imageOne = [CvMatUIImageConverter UIImageFromCVMat:image1];
+    UIImage *imageTwo = [CvMatUIImageConverter UIImageFromCVMat:image2];
+    UIImage *imageThree = [CvMatUIImageConverter UIImageFromCVMat:image3];
+    UIImage *imageFour = [CvMatUIImageConverter UIImageFromCVMat:image4];
+//    UIImage *imageThree = [CvMatUIImageConverter UIImageFromCVMat:img];
+//    UIImage *imageFour = [CvMatUIImageConverter UIImageFromCVMat:Ix];
 
-    [imageView setImage:cvOutput];
-}
-
-- (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat
-{
-    NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize() * cvMat.total()];
     
-    CGColorSpaceRef colorSpace;
+//    [imageView setImage:imageOne];
+//    [imageViewC45 setImage:imageTwo];
+//    [imageViewCxy setImage:imageThree];
+//    [imageViewI setImage:imageFour];
+    [imageView setImage:I_45_];
+    [imageViewC45 setImage:Iy];
+    [imageViewCxy setImage:gaussianImage];
+    [imageViewI setImage:Ix];
     
-    if (cvMat.elemSize() == 1) {
-        colorSpace = CGColorSpaceCreateDeviceGray();
-    } else {
-        colorSpace = CGColorSpaceCreateDeviceRGB();
-    }
-    
-    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
-    
-    CGImageRef imageRef = CGImageCreate(cvMat.cols,                                     // Width
-                                        cvMat.rows,                                     // Height
-                                        8,                                              // Bits per component
-                                        8 * cvMat.elemSize(),                           // Bits per pixel
-                                        cvMat.step[0],                                  // Bytes per row
-                                        colorSpace,                                     // Colorspace
-                                        kCGImageAlphaNone | kCGBitmapByteOrderDefault,  // Bitmap info flags
-                                        provider,                                       // CGDataProviderRef
-                                        NULL,                                           // Decode
-                                        false,                                          // Should interpolate
-                                        kCGRenderingIntentDefault);                     // Intent
-    
-    UIImage *image = [[UIImage alloc] initWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    CGDataProviderRelease(provider);
-    CGColorSpaceRelease(colorSpace);
-    
-    return image;
+//    [imageViewI setImage:cvOutput];
 }
 
 - (void)didReceiveMemoryWarning {
