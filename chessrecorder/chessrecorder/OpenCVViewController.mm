@@ -78,6 +78,8 @@
     
     //    UIImage *img = [UIImage imageNamed:@"Chess-board.jpg"];
     UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
+    
+    img = [gaussian imageByFilteringImage:img];
     UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
     UIImage *Iy = [derivativeYConv imageByFilteringImage:img];
     //    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
@@ -122,6 +124,8 @@
 
     UIImage *I_45_x_cos_n_pi4 = [CvMatUIImageConverter UIImageFromCVMat:negCos];
     UIImage *I_45_y_sin_n_pi4 = [CvMatUIImageConverter UIImageFromCVMat:negSin];
+    
+//    cv::imshow("", negCos);
     
     
     
@@ -212,42 +216,6 @@
 //    [imageViewC45 setImage:image1];
 //    [imageViewCxy setImage:image1];
     [imageViewI setImage:cvOutput];
-    
-
-}
-
-- (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat
-{
-    NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize() * cvMat.total()];
-    
-    CGColorSpaceRef colorSpace;
-    
-    if (cvMat.elemSize() == 1) {
-        colorSpace = CGColorSpaceCreateDeviceGray();
-    } else {
-        colorSpace = CGColorSpaceCreateDeviceRGB();
-    }
-    
-    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
-    
-    CGImageRef imageRef = CGImageCreate(cvMat.cols,                                     // Width
-                                        cvMat.rows,                                     // Height
-                                        8,                                              // Bits per component
-                                        8 * cvMat.elemSize(),                           // Bits per pixel
-                                        cvMat.step[0],                                  // Bytes per row
-                                        colorSpace,                                     // Colorspace
-                                        kCGImageAlphaNone | kCGBitmapByteOrderDefault,  // Bitmap info flags
-                                        provider,                                       // CGDataProviderRef
-                                        NULL,                                           // Decode
-                                        false,                                          // Should interpolate
-                                        kCGRenderingIntentDefault);                     // Intent
-    
-    UIImage *image = [[UIImage alloc] initWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    CGDataProviderRelease(provider);
-    CGColorSpaceRelease(colorSpace);
-    
-    return image;
 }
 
 - (void)didReceiveMemoryWarning {
