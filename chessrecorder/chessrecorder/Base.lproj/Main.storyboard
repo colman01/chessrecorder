@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfs-N6-Xks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1514" y="-194"/>
+            <point key="canvasLocation" x="1668" y="-178"/>
         </scene>
         <!--Filter Preview Collection View Controller-->
         <scene sceneID="Jh4-ZV-ajH">
@@ -205,7 +205,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyR-vq-SBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1514" y="415"/>
+            <point key="canvasLocation" x="1668" y="415"/>
         </scene>
         <!--Detect Checkerboard View Controller-->
         <scene sceneID="JiK-JW-qRp">
@@ -267,15 +267,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.047118742970000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ApP-u6-CEF">
-                                <rect key="frame" x="34" y="165" width="240" height="128"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="ApP-u6-CEF" id="ObM-Fr-PCs"/>
                         <outlet property="view1" destination="19f-41-oh7" id="MCW-Zj-Tuq"/>
                         <outlet property="view2" destination="1zb-7E-lzS" id="65j-Mp-s5D"/>
                         <outlet property="view3" destination="mNA-aW-S4o" id="2zk-Ds-4e3"/>
@@ -299,7 +295,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwE-tD-B0C">
-                                <rect key="frame" x="33" y="80" width="227" height="349"/>
+                                <rect key="frame" x="0.0" y="64" width="151" height="176"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojU-8a-yS3">
+                                <rect key="frame" x="153" y="64" width="151" height="176"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3n-9e-kYh">
+                                <rect key="frame" x="0.0" y="256" width="151" height="176"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9Z-GK-0BT">
+                                <rect key="frame" x="153" y="256" width="151" height="176"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
