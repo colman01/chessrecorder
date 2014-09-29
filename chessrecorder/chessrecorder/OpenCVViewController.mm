@@ -203,7 +203,7 @@
 
     
     image1 = cvResult;
-    UIImage *imageOne = [CvMatUIImageConveIrter UIImageFromCVMat:image1];
+//    UIImage *imageOne = [CvMatUIImageConveIrter UIImageFromCVMat:image1];
     UIImage *imageTwo = [CvMatUIImageConverter UIImageFromCVMat:image2];
     UIImage *imageThree = [CvMatUIImageConverter UIImageFromCVMat:image3];
     UIImage *imageFour = [CvMatUIImageConverter UIImageFromCVMat:image4];
