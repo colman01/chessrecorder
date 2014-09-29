@@ -48,10 +48,10 @@
             break;
         case 2:
             srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
-            src[0] = cv::Point2f( 80,  84);
+            src[0] = cv::Point2f( 82,  84);
             src[1] = cv::Point2f(521, 141);
             src[2] = cv::Point2f(519, 636);
-            src[3] = cv::Point2f( 81, 696);
+            src[3] = cv::Point2f( 83, 696);
             break;
         case 3:
             srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Chess_table" ofType:@"jpg"]];
