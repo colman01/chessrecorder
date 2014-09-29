@@ -33,4 +33,6 @@ typedef struct {
 
 + (BOOL)isLineSegment:(CGLineSegment)line withinRadius:(CGFloat)radius fromPoint:(CGPoint)point ;
 
+@property IBOutlet UIImageView *imageView;
+
 @end

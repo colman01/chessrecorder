@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iZR-og-qWD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iZR-og-qWD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -27,41 +27,40 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbF-vc-FFe">
-                                <rect key="frame" x="16" y="77" width="288" height="301"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86c-PS-7Fm">
+                                <rect key="frame" x="12" y="225" width="58" height="30"/>
+                                <state key="normal" title="OpenCV">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <segue destination="kiT-U8-cxB" kind="embed" id="bhk-0L-0xI"/>
+                                    <segue destination="oix-Gn-fh6" kind="show" id="9eJ-9W-W4b"/>
                                 </connections>
-                            </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Original |" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Who-iH-hQK">
-                                <rect key="frame" x="16" y="54" width="68" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Corners Found |" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hO-F3-TMr">
-                                <rect key="frame" x="84" y="54" width="129" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transformed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cv-MT-6LQ">
-                                <rect key="frame" x="215" y="54" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Njq-RR-tEv">
-                                <rect key="frame" x="16" y="386" width="49" height="51"/>
-                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hdC-nU-IMV">
+                                <rect key="frame" x="12" y="112" width="103" height="69"/>
+                                <state key="normal" title="Chess collection view edge detection">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="kiT-U8-cxB" kind="show" id="Aot-aa-MAN"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcf-bh-sz0">
-                                <rect key="frame" x="200" y="430" width="107" height="30"/>
+                                <rect key="frame" x="201" y="132" width="107" height="30"/>
                                 <state key="normal" title="Filter Sequence">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="ScQ-Il-Ei1" kind="show" id="FwF-b4-sgP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W07-qT-xKa">
+                                <rect key="frame" x="201" y="225" width="82" height="30"/>
+                                <state key="normal" title="Homograph">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="PBU-cX-EOD" kind="show" id="GQK-Hf-qYi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,20 +72,44 @@
                     </view>
                     <navigationItem key="navigationItem" id="GXJ-r6-dmq"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="display" destination="Njq-RR-tEv" id="4GF-6B-CZz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111" y="415"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Qbx-5d-EmF">
+            <objects>
+                <viewController id="PBU-cX-EOD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5r8-io-yRh"/>
+                        <viewControllerLayoutGuide type="bottom" id="IOA-rK-brD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YoL-98-iga">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Transformation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMD-AO-mig">
+                                <rect key="frame" x="25" y="84" width="167" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tfs-N6-Xks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1668" y="-178"/>
         </scene>
         <!--Filter Preview Collection View Controller-->
         <scene sceneID="Jh4-ZV-ajH">
             <objects>
                 <collectionViewController id="kiT-U8-cxB" customClass="FilterPreviewCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5oI-1i-Sy1">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="301"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="3Nk-nR-AhO">
@@ -113,15 +136,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chess.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-nB-w5O">
-                                            <rect key="frame" x="0.0" y="15" width="80" height="65"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOs-B0-oRe">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chess.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-nB-w5O">
+                                            <rect key="frame" x="0.0" y="15" width="80" height="65"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -175,13 +198,14 @@
                             <outlet property="delegate" destination="kiT-U8-cxB" id="uVD-B7-xyJ"/>
                         </connections>
                     </collectionView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="5oI-1i-Sy1" id="APq-0W-070"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyR-vq-SBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1520" y="369.5"/>
+            <point key="canvasLocation" x="1668" y="415"/>
         </scene>
         <!--Detect Checkerboard View Controller-->
         <scene sceneID="JiK-JW-qRp">
@@ -257,6 +281,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4O-KP-sGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111" y="1083"/>
+        </scene>
+        <!--OpenCV View Controller-->
+        <scene sceneID="8uM-VC-757">
+            <objects>
+                <viewController id="oix-Gn-fh6" customClass="OpenCVViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VYt-WQ-eDh"/>
+                        <viewControllerLayoutGuide type="bottom" id="llv-zr-JYT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RYp-uM-2dT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwE-tD-B0C">
+                                <rect key="frame" x="0.0" y="64" width="151" height="176"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojU-8a-yS3">
+                                <rect key="frame" x="153" y="64" width="151" height="176"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3n-9e-kYh">
+                                <rect key="frame" x="0.0" y="256" width="151" height="176"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9Z-GK-0BT">
+                                <rect key="frame" x="153" y="256" width="151" height="176"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="jwE-tD-B0C" id="oz0-Wv-96F"/>
+                        <outlet property="imageViewC45" destination="ojU-8a-yS3" id="my4-pt-6bj"/>
+                        <outlet property="imageViewCxy" destination="o3n-9e-kYh" id="8g2-Dq-Y1F"/>
+                        <outlet property="imageViewI" destination="m9Z-GK-0BT" id="45i-Qf-fpg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chq-Ih-r3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719" y="1083"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pki-pZ-1GI">

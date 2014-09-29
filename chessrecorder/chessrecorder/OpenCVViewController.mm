@@ -1,0 +1,193 @@
+//
+//  OpenCVViewController.m
+//  chessrecorder
+//
+//  Created by colman on 28/09/14.
+//  Copyright (c) 2014 Colman Marcus-Quinn. All rights reserved.
+//
+
+#import "OpenCVViewController.h"
+#import "CvMatUIImageConverter.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+@interface OpenCVViewController ()
+
+@end
+
+@implementation OpenCVViewController
+
+@synthesize imageView, imageViewC45,imageViewCxy, imageViewI;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    GPUImageGaussianBlurFilter *gaussian = [[GPUImageGaussianBlurFilter alloc] init];
+    gaussian.blurRadiusInPixels = 5.0;
+    
+    GPUImage3x3ConvolutionFilter *derivativeXConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeXConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  0.0f, -1.0f},
+        {1.0f, 0.0f, -1.0f},
+        {1.0f,  0.0f, -1.0f}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *derivativeYConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeYConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  1.0f, 1.0f},
+        {0.0f, 0.0f, 0.0f},
+        {-1.0f,  -1.0f, -1.0f}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *cosConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)cosConv setConvolutionKernel:(GPUMatrix3x3){
+        {cosf(M_PI_4),  0.0f, 0.0f},
+        {0.0f, cosf(M_PI_4), 0.0f},
+        {0.0f,  0.0f, cosf(M_PI_4)}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *negCosConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)negCosConv setConvolutionKernel:(GPUMatrix3x3){
+        {-cosf(M_PI_4),  0.0f, 0.0f},
+        {0.0f, -cosf(M_PI_4), 0.0f},
+        {0.0f,  0.0f, -cosf(M_PI_4)}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *sinConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)sinConv setConvolutionKernel:(GPUMatrix3x3){
+        {sinf(M_PI_4),  0.0f, 0.0f},
+        {0.0f, sinf(M_PI_4), 0.0f},
+        {0.0f,  0.0f, sinf(M_PI_4)}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *negSinConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)sinConv setConvolutionKernel:(GPUMatrix3x3){
+        {sinf(M_PI_4),  0.0f, 0.0f},
+        {0.0f, sinf(M_PI_4), 0.0f},
+        {0.0f,  0.0f, sinf(M_PI_4)}
+    }];
+    
+    UIImage *outputImage  = [[UIImage alloc] init];
+    
+//    UIImage *img = [UIImage imageNamed:@"Chess-board.jpg"];
+    UIImage *img = [UIImage imageNamed:@"chess_rotate.jpg"];
+    UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
+    UIImage *Iy = [derivativeYConv imageByFilteringImage:img];
+    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
+    UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
+    
+    
+    //    cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromImage:outputImage];
+    cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];
+    cv::Mat cvIx_cos = [CvMatUIImageConverter cvMatGrayFromUIImage:Ix_45_cos];
+    cv::Mat cvIy_sin = [CvMatUIImageConverter cvMatGrayFromUIImage:Iy_45_sin];
+
+    
+    cv::add(cvIx_cos, cvIy_sin, cvResult);
+
+    UIImage *I_45 = [self imageWithCVMat:cvResult];
+    UIImage *Ixy = [derivativeYConv imageByFilteringImage:I_45];
+//    UIImage *Ixy = [xyFilter imageByFilteringImage:I_45];
+    
+    UIImage *I_45_x = [derivativeXConv imageByFilteringImage:I_45];
+    UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
+    
+    
+    //    I_45_x * cos(-pi/4)
+    //    I_45_y * sin(-pi/4)
+    UIImage *I_45_x_cos_n_pi4 = [negCosConv imageByFilteringImage:I_45_x];
+    UIImage *I_45_y_sin_n_pi4 = [negSinConv imageByFilteringImage:I_45_y];
+    
+    
+    cv::Mat cv_Ixy = [CvMatUIImageConverter cvMatFromUIImage:Ixy];
+    
+    cv::Mat cv_I_45_x_cos_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_x_cos_n_pi4];
+    cv::Mat cv_I_45_y_sin_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_y_sin_n_pi4];
+    
+    //    I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
+    cv::add(cv_I_45_x_cos_n_pi4, cv_I_45_y_sin_n_pi4, cvResult);
+    UIImage *I_45_45 = [self imageWithCVMat:cvResult];
+    cv::Mat cv_I_45_45 = [CvMatUIImageConverter cvMatFromUIImage:I_45_45];
+    cv::Mat absIxy = cv::abs(cv_Ixy);
+    cv::Mat abs_I_45 = cv::abs(cv_I_45_x_cos_n_pi4);
+    cv::Mat abs_I_n45 = cv::abs(cv_I_45_y_sin_n_pi4);
+    
+    cv::Mat LHS ;
+    cv::add(abs_I_45, abs_I_n45, LHS);
+    LHS *= 2;
+    cv::Mat RHS = 4*absIxy;
+    cv::subtract(RHS, LHS, cvResult);
+    
+    [imageViewC45 setImage:[self imageWithCVMat:cvResult]];
+    
+//    cv::Mat mask = cvResult <= 0 ;
+//    cvResult.setTo(mask);
+//    cv::Mat masked = cvResult.setTo(0, cvResult<0 );
+    
+//    Mat im = ReadSomeImage(...);
+//    Mat masked = im.setTo(0,im<0); /// <<<
+
+        UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+//    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:masked];
+//    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
+    cv::Mat absI4545 = cv::abs(cv_I_45_45);
+    cv::Mat sigmaAbsI4545 = 4*absI4545;
+    cv::Mat cv_Ix = [CvMatUIImageConverter cvMatFromUIImage:Ix];
+    cv::Mat cv_Iy = [CvMatUIImageConverter cvMatFromUIImage:Iy];
+    cv::Mat absIx, absIy;
+    absIx = cv::abs(cv_Ix);
+    absIy = cv::abs(cv_Iy);
+    cv::add(absIx, absIy, LHS);
+    LHS *= 2;
+    RHS = 4*absI4545;
+    cv::subtract(RHS, LHS, cvResult);
+    
+    [imageViewCxy setImage:[self imageWithCVMat:cvResult]];
+    
+
+    
+
+    [imageView setImage:cvOutput];
+}
+
+- (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat
+{
+    NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize() * cvMat.total()];
+    
+    CGColorSpaceRef colorSpace;
+    
+    if (cvMat.elemSize() == 1) {
+        colorSpace = CGColorSpaceCreateDeviceGray();
+    } else {
+        colorSpace = CGColorSpaceCreateDeviceRGB();
+    }
+    
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
+    
+    CGImageRef imageRef = CGImageCreate(cvMat.cols,                                     // Width
+                                        cvMat.rows,                                     // Height
+                                        8,                                              // Bits per component
+                                        8 * cvMat.elemSize(),                           // Bits per pixel
+                                        cvMat.step[0],                                  // Bytes per row
+                                        colorSpace,                                     // Colorspace
+                                        kCGImageAlphaNone | kCGBitmapByteOrderDefault,  // Bitmap info flags
+                                        provider,                                       // CGDataProviderRef
+                                        NULL,                                           // Decode
+                                        false,                                          // Should interpolate
+                                        kCGRenderingIntentDefault);                     // Intent
+    
+    UIImage *image = [[UIImage alloc] initWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    CGDataProviderRelease(provider);
+    CGColorSpaceRelease(colorSpace);
+    
+    return image;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+@end
