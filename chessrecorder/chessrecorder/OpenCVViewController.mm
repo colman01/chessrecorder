@@ -79,9 +79,11 @@
     //    UIImage *img = [UIImage imageNamed:@"Chess-board.jpg"];
     UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
     
-    img = [gaussian imageByFilteringImage:img];
+    UIImage *gaussianImage = [gaussian imageByFilteringImage:img];
     UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
     UIImage *Iy = [derivativeYConv imageByFilteringImage:img];
+    
+    
     //    UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
     //    UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
     
@@ -166,11 +168,13 @@
     cv::add(abs_I_45, abs_I_n45, LHS);
     LHS *= 2;
     cv::Mat RHS = 4*absIxy;
-    cv::subtract(RHS, LHS, cvResult);
+    cv::Mat I_n45;
+    cv::subtract(RHS, LHS, I_n45);
     // I_n45
-    //    [imageViewC45 setImage:[self imageWithCVMat:cvResult]];
-    ;
-    [imageViewI setImage:[CvMatUIImageConverter UIImageFromCVMat:cvResult]];
+
+    [imageViewI setImage:[CvMatUIImageConverter UIImageFromCVMat:I_n45]];
+    
+    image1 = I_n45;
     
     //    cv::Mat mask = cvResult <= 0 ;
     //    cvResult.setTo(mask);
@@ -179,7 +183,7 @@
     //    Mat im = ReadSomeImage(...);
     //    Mat masked = im.setTo(0,im<0); /// <<<
     
-    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+//    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
     //    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:masked];
     //    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
     cv::Mat absI4545 = cv::abs(cv_I_45_45);
@@ -192,7 +196,12 @@
     cv::add(absIx, absIy, LHS);
     LHS *= 2;
     RHS = 4*absI4545;
-    cv::subtract(RHS, LHS, cvResult);
+    cv::Mat cv_c45;
+    cv::subtract(RHS, LHS, cv_c45);
+    
+    image2 = cv_c45;
+    
+//    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cv_c45];
     
     // I_45 = Ix * cos(+PI/4) + Iy*sin(PI/4);
     //    I_45 = Ix * cos(-PI/4) + Iy*sin(-PI/4);
@@ -211,12 +220,23 @@
     
     image1 = cvResult;
     UIImage *imageOne = [CvMatUIImageConverter UIImageFromCVMat:image1];
+    UIImage *imageTwo = [CvMatUIImageConverter UIImageFromCVMat:image2];
+    UIImage *imageThree = [CvMatUIImageConverter UIImageFromCVMat:image3];
+    UIImage *imageFour = [CvMatUIImageConverter UIImageFromCVMat:image4];
+//    UIImage *imageThree = [CvMatUIImageConverter UIImageFromCVMat:img];
+//    UIImage *imageFour = [CvMatUIImageConverter UIImageFromCVMat:Ix];
 
     
-    [imageView setImage:imageOne];
-//    [imageViewC45 setImage:image1];
-//    [imageViewCxy setImage:image1];
-    [imageViewI setImage:cvOutput];
+//    [imageView setImage:imageOne];
+//    [imageViewC45 setImage:imageTwo];
+//    [imageViewCxy setImage:imageThree];
+//    [imageViewI setImage:imageFour];
+    [imageView setImage:I_45_];
+    [imageViewC45 setImage:Iy];
+    [imageViewCxy setImage:gaussianImage];
+    [imageViewI setImage:Ix];
+    
+//    [imageViewI setImage:cvOutput];
 }
 
 - (void)didReceiveMemoryWarning {
