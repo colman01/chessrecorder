@@ -74,6 +74,8 @@
     
     UIImage *outputImage  = [[UIImage alloc] init];
     
+    cv::Mat image1, image2, image3, image4;
+    
     //    UIImage *img = [UIImage imageNamed:@"Chess-board.jpg"];
     UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
     UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
@@ -117,16 +119,13 @@
     
     cv::Mat negCos = cv_Ix_*-cosf(M_PI_4);
     cv::Mat negSin = cv_Iy_*sinf(-M_PI_4);
-    
-    
-    UIImage *I_45_x_cos_n_pi4 = [self imageWithCVMat:negCos];
-    UIImage *I_45_y_sin_n_pi4 = [self imageWithCVMat:negSin];
-    
+
+    UIImage *I_45_x_cos_n_pi4 = [CvMatUIImageConverter UIImageFromCVMat:negCos];
+    UIImage *I_45_y_sin_n_pi4 = [CvMatUIImageConverter UIImageFromCVMat:negSin];
     
     
     
     cv::Mat cv_Ixy = [CvMatUIImageConverter cvMatFromUIImage:Ixy];
-    
     cv::Mat cv_I_45_x_cos_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_x_cos_n_pi4];
     cv::Mat cv_I_45_y_sin_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_y_sin_n_pi4];
     
@@ -139,17 +138,21 @@
     cv::Mat cv_I_45 = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];;
     //    cv::add(cv_Ix_45, cv_Iy_45, cv_I_45);
     cv::add(posCos, posSin, cv_I_45);
-    UIImage *I_45_ = [self imageWithCVMat:cv_I_45];
+    
+    UIImage *I_45_ = [CvMatUIImageConverter UIImageFromCVMat:cv_I_45];
     [self.imageViewI  setImage:I_45_];
     
     cv::Mat cv_I_n45 = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];
     cv::add(negCos, negSin, cv_I_n45);
-    UIImage *I_45_Neg = [self imageWithCVMat:cv_I_n45];
+    
+    UIImage *I_45_Neg = [CvMatUIImageConverter UIImageFromCVMat:cv_I_n45];
     [self.imageViewCxy setImage:I_45_Neg];
     
     //    I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
     cv::add(cv_I_45_x_cos_n_pi4, cv_I_45_y_sin_n_pi4, cvResult);
-    UIImage *I_45_45 = [self imageWithCVMat:cvResult];
+    UIImage *I_45_45 = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+    [imageViewC45 setImage:I_45_45];
+    
     cv::Mat cv_I_45_45 = [CvMatUIImageConverter cvMatFromUIImage:I_45_45];
     cv::Mat absIxy = cv::abs(cv_Ixy);
     cv::Mat abs_I_45 = cv::abs(cv_I_45_x_cos_n_pi4);
@@ -201,8 +204,15 @@
     //    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
     //    c45(c45 < 0) = 0;
     
+    image1 = cvResult;
+    UIImage *imageOne = [CvMatUIImageConverter UIImageFromCVMat:image1];
+
     
-    [imageView setImage:cvOutput];
+    [imageView setImage:imageOne];
+//    [imageViewC45 setImage:image1];
+//    [imageViewCxy setImage:image1];
+    [imageViewI setImage:cvOutput];
+    
 
 }
 
