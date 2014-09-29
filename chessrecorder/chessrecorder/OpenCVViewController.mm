@@ -19,7 +19,7 @@
 
 @implementation OpenCVViewController
 
-@synthesize imageView;
+@synthesize imageView, imageViewC45,imageViewCxy, imageViewI;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -116,10 +116,21 @@
     
     cv::Mat LHS ;
     cv::add(abs_I_45, abs_I_n45, LHS);
-    LHS = 2*LHS;
+    LHS *= 2;
     cv::Mat RHS = 4*absIxy;
     cv::subtract(RHS, LHS, cvResult);
-    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+    
+    [imageViewC45 setImage:[self imageWithCVMat:cvResult]];
+    
+//    cv::Mat mask = cvResult <= 0 ;
+//    cvResult.setTo(mask);
+//    cv::Mat masked = cvResult.setTo(0, cvResult<0 );
+    
+//    Mat im = ReadSomeImage(...);
+//    Mat masked = im.setTo(0,im<0); /// <<<
+
+        UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+//    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:masked];
 //    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
     cv::Mat absI4545 = cv::abs(cv_I_45_45);
     cv::Mat sigmaAbsI4545 = 4*absI4545;
@@ -129,10 +140,13 @@
     absIx = cv::abs(cv_Ix);
     absIy = cv::abs(cv_Iy);
     cv::add(absIx, absIy, LHS);
-    LHS = 2*LHS;
+    LHS *= 2;
     RHS = 4*absI4545;
-    
     cv::subtract(RHS, LHS, cvResult);
+    
+    [imageViewCxy setImage:[self imageWithCVMat:cvResult]];
+    
+
     
 
     [imageView setImage:cvOutput];

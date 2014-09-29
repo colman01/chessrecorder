@@ -15,5 +15,9 @@
 
 @property IBOutlet UIImageView *imageView;
 
+@property IBOutlet UIImageView *imageViewCxy;
+@property IBOutlet UIImageView *imageViewC45;
+@property IBOutlet UIImageView *imageViewI;
+
 
 @end

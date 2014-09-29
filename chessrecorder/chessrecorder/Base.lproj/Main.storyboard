@@ -312,6 +312,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="jwE-tD-B0C" id="oz0-Wv-96F"/>
+                        <outlet property="imageViewC45" destination="ojU-8a-yS3" id="my4-pt-6bj"/>
+                        <outlet property="imageViewCxy" destination="o3n-9e-kYh" id="8g2-Dq-Y1F"/>
+                        <outlet property="imageViewI" destination="m9Z-GK-0BT" id="45i-Qf-fpg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chq-Ih-r3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
