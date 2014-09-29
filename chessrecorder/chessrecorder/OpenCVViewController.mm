@@ -13,6 +13,10 @@
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include <opencv2/legacy/legacy.hpp>
+
+#include <vector>
+
 @interface OpenCVViewController ()
 
 @end
@@ -180,6 +184,8 @@
 //    cv::Mat mask = I_n45 <= 0 ;
 //    cv::Mat masked = cvResult.setTo(0, cvResult<0 );
 //    I_n45 = I_n45.setTo(0, I_n45<= 0);
+    
+    cv::Mat mask = (I_n45 <= 0);
 
  
 //    I_n45 = I_n45.setTo(0.5,mask);
@@ -216,10 +222,34 @@
 //    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cv_c45];
     [imageView setImage:Ix];
     [imageViewC45 setImage:Iy];
-    [imageViewCxy setImage:[CvMatUIImageConverter UIImageFromCVMat:Img_45_45]]; //cv_I_n45
+//    [imageViewCxy setImage:[CvMatUIImageConverter UIImageFromCVMat:Img_45_45]]; //cv_I_n45
+    [imageViewCxy setImage:[CvMatUIImageConverter UIImageFromCVMat:mask]]; //cv_I_n45
     [imageViewI setImage:[CvMatUIImageConverter UIImageFromCVMat:cv_c45]]; //I_n45
 //    [imageViewI setImage:cvOutput];
 }
+
+//- (void) returnNoZero  {
+////    cv::Mat m = (cv::Mat)n;
+////
+//////    cv::Mat someMat(1, 4, CV_64F, &someData);;
+////    cv::Matiterator_<double> _it = m.begin<double>();
+////    for(;_it!=m.end<double>(); _it++){
+////        std::cout << *_it << std::endl;
+////    }
+//    cv::Mat m;
+//    for(int i = 0; i < m.rows; i++) {
+////        double* mi = m.at<cvScalar>(i);
+//        double* mi = m.ptr<CvScalar>(i);
+//        
+//        
+//        for(int j = 0; j < m.cols; j++) {
+//            if (mi[j] < 0) {
+//                printf("changing [%i, %i] from %8.1f to 0\n", i, j, mi[j]);
+//                mi[j] = cvScalar(0,0,0);
+//            }
+//        }
+//    }
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
