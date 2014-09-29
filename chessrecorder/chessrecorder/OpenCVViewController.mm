@@ -30,6 +30,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+
     
     GPUImageGaussianBlurFilter *gaussian = [[GPUImageGaussianBlurFilter alloc] init];
     gaussian.blurRadiusInPixels = 5.0;
@@ -81,6 +82,10 @@
     cv::Mat image1, image2, image3, image4;
     
     UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
+    
+    
+    
+//    UIImage *img = [UIImage imageNamed:@"Chess_table.jpg"];
     
     cv::Mat grayImage = [CvMatUIImageConverter cvMatGrayFromUIImage:img];
     
@@ -225,7 +230,262 @@
 //    [imageViewI setImage:[CvMatUIImageConverter UIImageFromCVMat:cv_c45]]; //I_n45
                        
 //    [imageViewI setImage:cvOutput];
+    
+    [imageViewI setImage:[self matlab_I_cxy:img]];
 }
+
+
+
+
+
+
+- (UIImage *) matlab_I_45:(UIImage *) image {
+    GPUImageGaussianBlurFilter *gaussianFilter = [[GPUImageGaussianBlurFilter alloc ] init];
+    UIImage *Ig = [gaussianFilter imageByFilteringImage:image];
+    
+    GPUImage3x3ConvolutionFilter *derivativeXConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeXConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  0.0f, -1.0f},
+        {1.0f, 0.0f, -1.0f},
+        {1.0f,  0.0f, -1.0f}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *derivativeYConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeYConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  1.0f, 1.0f},
+        {0.0f, 0.0f, 0.0f},
+        {-1.0f,  -1.0f, -1.0f}
+    }];
+    
+    UIImage *Ix = [derivativeXConv imageByFilteringImage:Ig];
+    UIImage *Iy = [derivativeYConv imageByFilteringImage:Ig];
+    
+    cv::Mat cv_Ix = [CvMatUIImageConverter cvMatFromUIImage:Ix];
+    cv::Mat cv_Iy = [CvMatUIImageConverter cvMatFromUIImage:Iy];
+    
+    cv::Mat Ix45 = cv_Ix*cosf(M_PI_4);
+    cv::Mat Iy45 = cv_Iy*sinf(M_PI_4);
+    
+    cv::Mat I_45;
+    cv::add(Ix45,Iy45, I_45);
+    
+    
+    cv::Mat Ixn45 = cv_Ix*cosf(-M_PI_4);
+    cv::Mat Iyn45 = cv_Iy*sin(-M_PI_4);
+    
+    cv::Mat I_45_45;
+    cv::Mat mask = (I_45 <= 0);
+    
+    return [CvMatUIImageConverter UIImageFromCVMat:mask];
+    
+//    cv::Mat I_n45 =
+    
+    
+}
+
+
+
+
+//% Low-pass filter the image
+//G = fspecial('gaussian', round(sigma * 7)+1, sigma);
+//Ig = imfilter(I, G, 'conv');
+//
+//derivFilter = [-1 0 1];
+//
+//% first derivatives
+//Iy = imfilter(Ig, derivFilter', 'conv');
+//              Ix = imfilter(Ig, derivFilter, 'conv');
+//              
+//              % first derivative at 45 degrees
+//              I_45 = Ix * cos(pi/4) + Iy * sin(pi/4);
+//              I_n45 = Ix * cos(-pi/4) + Iy * sin(-pi/4);
+//              
+//              % second derivative
+//              Ixy = imfilter(Ix, derivFilter', 'conv');
+//                             
+//                             I_45_x = imfilter(I_45, derivFilter, 'conv');
+//                             I_45_y = imfilter(I_45, derivFilter', 'conv');
+//                                               
+//                                               I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
+//                                               
+//                                               % suppress the outer corners
+//                                               cxy = sigma^2 * abs(Ixy) - sigma * (abs(I_45) + abs(I_n45));
+//                                               cxy(cxy < 0) = 0;
+//                                               c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
+//                                               c45(c45 < 0) = 0;
+
+                                               
+- (UIImage *) matlab_I_45_45:(UIImage *) image {
+    GPUImageGaussianBlurFilter *gaussianFilter = [[GPUImageGaussianBlurFilter alloc ] init];
+    UIImage *Ig = [gaussianFilter imageByFilteringImage:image];
+    
+    GPUImage3x3ConvolutionFilter *derivativeXConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeXConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  0.0f, -1.0f},
+        {1.0f, 0.0f, -1.0f},
+        {1.0f,  0.0f, -1.0f}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *derivativeYConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeYConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  1.0f, 1.0f},
+        {0.0f, 0.0f, 0.0f},
+        {-1.0f,  -1.0f, -1.0f}
+    }];
+    
+    UIImage *Ix = [derivativeXConv imageByFilteringImage:Ig];
+    UIImage *Iy = [derivativeYConv imageByFilteringImage:Ig];
+    
+    cv::Mat cv_Ix = [CvMatUIImageConverter cvMatFromUIImage:Ix];
+    cv::Mat cv_Iy = [CvMatUIImageConverter cvMatFromUIImage:Iy];
+    
+    cv::Mat Ix45 = cv_Ix*cosf(M_PI_4);
+    cv::Mat Iy45 = cv_Iy*sinf(M_PI_4);
+    
+    cv::Mat I_45;
+    cv::add(Ix45,Iy45, I_45);
+    
+    
+    cv::Mat Ixn45 = cv_Ix*cosf(-M_PI_4);
+    cv::Mat Iyn45 = cv_Iy*sinf(-M_PI_4);
+    
+    cv::Mat I_45_45;
+    
+    cv::Mat Ix_n45 = Ix45*cosf(-M_PI_4);
+    cv::Mat Iy_n45 = Ix45*sinf(-M_PI_4);
+    
+    cv::add(Ix_n45, Iy_n45, I_45_45);
+    
+    
+    cv::Mat mask = (I_45_45 <= 0);
+    
+    
+    return [CvMatUIImageConverter UIImageFromCVMat:mask];
+    
+    //    cv::Mat I_n45 =
+    
+    
+}
+
+//% Low-pass filter the image
+//G = fspecial('gaussian', round(sigma * 7)+1, sigma);
+//Ig = imfilter(I, G, 'conv');
+//
+//derivFilter = [-1 0 1];
+//
+//% first derivatives
+//Iy = imfilter(Ig, derivFilter', 'conv');
+//              Ix = imfilter(Ig, derivFilter, 'conv');
+//
+//              % first derivative at 45 degrees
+//              I_45 = Ix * cos(pi/4) + Iy * sin(pi/4);
+//              I_n45 = Ix * cos(-pi/4) + Iy * sin(-pi/4);
+//
+//              % second derivative
+//              Ixy = imfilter(Ix, derivFilter', 'conv');
+//
+//                             I_45_x = imfilter(I_45, derivFilter, 'conv');
+//                             I_45_y = imfilter(I_45, derivFilter', 'conv');
+//
+//                                               I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
+//
+//                                               % suppress the outer corners
+//                                               cxy = sigma^2 * abs(Ixy) - sigma * (abs(I_45) + abs(I_n45));
+//                                               cxy(cxy < 0) = 0;
+//                                               c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
+//                                               c45(c45 < 0) = 0;
+
+
+- (UIImage *) matlab_I_cxy:(UIImage *) image {
+    GPUImageGaussianBlurFilter *gaussianFilter = [[GPUImageGaussianBlurFilter alloc ] init];
+    UIImage *Ig = [gaussianFilter imageByFilteringImage:image];
+    
+    GPUImage3x3ConvolutionFilter *derivativeXConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeXConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  0.0f, -1.0f},
+        {1.0f, 0.0f, -1.0f},
+        {1.0f,  0.0f, -1.0f}
+    }];
+    
+    GPUImage3x3ConvolutionFilter *derivativeYConv = [[GPUImage3x3ConvolutionFilter alloc] init];
+    [(GPUImage3x3ConvolutionFilter *)derivativeYConv setConvolutionKernel:(GPUMatrix3x3){
+        {1.0f,  1.0f, 1.0f},
+        {0.0f, 0.0f, 0.0f},
+        {-1.0f,  -1.0f, -1.0f}
+    }];
+    
+    UIImage *Ix = [derivativeXConv imageByFilteringImage:Ig];
+    UIImage *Iy = [derivativeYConv imageByFilteringImage:Ig];
+    
+    UIImage *Ixy = [derivativeYConv imageByFilteringImage:Iy];
+    
+    cv::Mat cv_Ixy = [CvMatUIImageConverter cvMatFromUIImage:Ixy];
+    
+    cv::Mat cv_Ix = [CvMatUIImageConverter cvMatFromUIImage:Ix];
+    cv::Mat cv_Iy = [CvMatUIImageConverter cvMatFromUIImage:Iy];
+    
+    cv::Mat Ix45 = cv_Ix*cosf(M_PI_4);
+    cv::Mat Iy45 = cv_Iy*sinf(M_PI_4);
+    
+    cv::Mat I_45;
+    cv::add(Ix45,Iy45, I_45);
+    
+    
+    cv::Mat Ixn45 = cv_Ix*cosf(-M_PI_4);
+    cv::Mat Iyn45 = cv_Iy*sinf(-M_PI_4);
+    
+    cv::Mat I_45_45;
+    
+    cv::Mat Ix_n45 = Ix45*cosf(-M_PI_4);
+    cv::Mat Iy_n45 = Ix45*sinf(-M_PI_4);
+    
+    cv::Mat I_n45;
+    cv::add(Ix_n45, Iy_n45, I_n45);
+    
+    
+//    cv::Mat mask = (I_45_45 <= 0);
+    
+    float sigmaSquared = 4.0;
+    cv::Mat abs_Ixy = cv::abs(cv_Ixy);
+    cv::Mat LHS = sigmaSquared*abs_Ixy;
+    cv::Mat product;
+    cv::add(cv::abs(I_45), cv::abs(I_n45), product);
+    cv::Mat RHS = 2*product;
+    cv::Mat cxy;
+    cv::add(LHS, RHS,cxy);
+    cv::Mat mask = (cxy <= 0);
+    
+//    cv:Mast mask = 
+//    cv::Mat absIx, absIy;
+//    absIx = cv::abs(cv_Ix);
+//    absIy = cv::abs(cv_Iy);
+    
+    cv::Mat c45;
+    cv::Mat absI_45_45 = cv::abs(I_45_45);
+    cv::Mat abs_Ix = cv::abs(cv_Ix);
+    cv::Mat abs_Iy = cv::abs(cv_Iy);
+    
+    cv::Mat IxIy;
+    cv::add(abs_Ix, abs_Iy, IxIy);
+    
+    IxIy *= 2;
+    
+    absI_45_45 *= 4;
+    
+    cv::subtract(IxIy, absI_45_45, c45);
+    
+    mask = (c45 <= 0);
+
+    
+    
+    
+    return [CvMatUIImageConverter UIImageFromCVMat:mask];
+    
+    //    cv::Mat I_n45 =
+    
+    
+}
+
 
 
 
