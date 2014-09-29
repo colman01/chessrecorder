@@ -73,26 +73,23 @@
     
 //    UIImage *img = [UIImage imageNamed:@"Chess-board.jpg"];
     UIImage *img = [UIImage imageNamed:@"chess_rotate.jpg"];
-    
     UIImage *Ix = [derivativeXConv imageByFilteringImage:img];
     UIImage *Iy = [derivativeYConv imageByFilteringImage:img];
-    
     UIImage *Ix_45_cos = [cosConv imageByFilteringImage:Ix];
     UIImage *Iy_45_sin = [sinConv imageByFilteringImage:Iy];
-    
     
     
     //    cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromImage:outputImage];
     cv::Mat cvResult = [CvMatUIImageConverter cvMatGrayFromUIImage:outputImage];
     cv::Mat cvIx_cos = [CvMatUIImageConverter cvMatGrayFromUIImage:Ix_45_cos];
     cv::Mat cvIy_sin = [CvMatUIImageConverter cvMatGrayFromUIImage:Iy_45_sin];
-    //    cv::Mat cvIx = [CvMatUIImageConverter cvMatGrayFromImage:Ix_45];
-    //    cv::Mat cvIy = [CvMatUIImageConverter cvMatGrayFromImage:Iy_45];
+
     
     cv::add(cvIx_cos, cvIy_sin, cvResult);
 
     UIImage *I_45 = [self imageWithCVMat:cvResult];
     UIImage *Ixy = [derivativeYConv imageByFilteringImage:I_45];
+//    UIImage *Ixy = [xyFilter imageByFilteringImage:I_45];
     
     UIImage *I_45_x = [derivativeXConv imageByFilteringImage:I_45];
     UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
@@ -104,22 +101,41 @@
     UIImage *I_45_y_sin_n_pi4 = [negSinConv imageByFilteringImage:I_45_y];
     
     
+    cv::Mat cv_Ixy = [CvMatUIImageConverter cvMatFromUIImage:Ixy];
+    
     cv::Mat cv_I_45_x_cos_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_x_cos_n_pi4];
     cv::Mat cv_I_45_y_sin_n_pi4 = [CvMatUIImageConverter cvMatFromUIImage:I_45_y_sin_n_pi4];
     
     //    I_45_45 = I_45_x * cos(-pi/4) + I_45_y * sin(-pi/4);
     cv::add(cv_I_45_x_cos_n_pi4, cv_I_45_y_sin_n_pi4, cvResult);
-    
     UIImage *I_45_45 = [self imageWithCVMat:cvResult];
+    cv::Mat cv_I_45_45 = [CvMatUIImageConverter cvMatFromUIImage:I_45_45];
+    cv::Mat absIxy = cv::abs(cv_Ixy);
+    cv::Mat abs_I_45 = cv::abs(cv_I_45_x_cos_n_pi4);
+    cv::Mat abs_I_n45 = cv::abs(cv_I_45_y_sin_n_pi4);
     
+    cv::Mat LHS ;
+    cv::add(abs_I_45, abs_I_n45, LHS);
+    LHS = 2*LHS;
+    cv::Mat RHS = 4*absIxy;
+    cv::subtract(RHS, LHS, cvResult);
+    UIImage *cvOutput = [CvMatUIImageConverter UIImageFromCVMat:cvResult];
+//    c45 = sigma^2 * abs(I_45_45) - sigma * (abs(Ix) + abs(Iy));
+    cv::Mat absI4545 = cv::abs(cv_I_45_45);
+    cv::Mat sigmaAbsI4545 = 4*absI4545;
+    cv::Mat cv_Ix = [CvMatUIImageConverter cvMatFromUIImage:Ix];
+    cv::Mat cv_Iy = [CvMatUIImageConverter cvMatFromUIImage:Iy];
+    cv::Mat absIx, absIy;
+    absIx = cv::abs(cv_Ix);
+    absIy = cv::abs(cv_Iy);
+    cv::add(absIx, absIy, LHS);
+    LHS = 2*LHS;
+    RHS = 4*absI4545;
     
+    cv::subtract(RHS, LHS, cvResult);
     
-    
-    
-    //    + (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat
-    UIImage *cvOutput = [self imageWithCVMat:cvResult];
+
     [imageView setImage:cvOutput];
-    
 }
 
 - (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat

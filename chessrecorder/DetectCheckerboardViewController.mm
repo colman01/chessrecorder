@@ -133,11 +133,6 @@
     [imageView setImage:cvOutput];
     
     
-    
-    
-
-    
-    
 
     
     GPUImageBrightnessFilter *brightnessFilter = [[GPUImageBrightnessFilter alloc] init];
