@@ -15,6 +15,7 @@
 		0481AE5F19D4685200F2DE80 /* perfect_checkerboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE5E19D4685200F2DE80 /* perfect_checkerboard.png */; };
 		0481AE6119D473D700F2DE80 /* nicely.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0481AE6019D473D700F2DE80 /* nicely.jpg */; };
 		0481AE6419D5DC0A00F2DE80 /* DetectCheckerboardViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0481AE6319D5DC0A00F2DE80 /* DetectCheckerboardViewController.mm */; };
+		0481AE6B19D9854A00F2DE80 /* HomographyVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481AE6A19D9854A00F2DE80 /* HomographyVc.m */; };
 		C000B0ED19D02842009A8019 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EC19D02842009A8019 /* GPUImage.framework */; };
 		C000B0EE19D028CE009A8019 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C000B0EA19D0276F009A8019 /* libGPUImage.a */; };
 		C002E05319D035B100948635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C025714019CC5D7B00624F0E /* Main.storyboard */; };
@@ -69,6 +70,8 @@
 		0481AE6019D473D700F2DE80 /* nicely.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nicely.jpg; sourceTree = "<group>"; };
 		0481AE6219D5DC0A00F2DE80 /* DetectCheckerboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetectCheckerboardViewController.h; path = ../DetectCheckerboardViewController.h; sourceTree = "<group>"; };
 		0481AE6319D5DC0A00F2DE80 /* DetectCheckerboardViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DetectCheckerboardViewController.mm; path = ../DetectCheckerboardViewController.mm; sourceTree = "<group>"; };
+		0481AE6919D9854A00F2DE80 /* HomographyVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomographyVc.h; sourceTree = "<group>"; };
+		0481AE6A19D9854A00F2DE80 /* HomographyVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomographyVc.m; sourceTree = "<group>"; };
 		C000984019D0196E009A8019 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
 		C000B0EA19D0276F009A8019 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = ../libGPUImage.a; sourceTree = "<group>"; };
 		C000B0EC19D02842009A8019 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../GPUImage.framework; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 				C025714319CC5D7B00624F0E /* Images.xcassets */,
 				C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */,
 				C025713319CC5D7B00624F0E /* Supporting Files */,
+				0481AE6919D9854A00F2DE80 /* HomographyVc.h */,
+				0481AE6A19D9854A00F2DE80 /* HomographyVc.m */,
 			);
 			path = chessrecorder;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
 				C0D8FC3B19D86310005C4ADC /* OpenCVViewController.mm in Sources */,
 				C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */,
+				0481AE6B19D9854A00F2DE80 /* HomographyVc.m in Sources */,
 				C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */,
 				C025713F19CC5D7B00624F0E /* ViewController.mm in Sources */,
 				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
