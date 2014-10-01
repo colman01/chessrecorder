@@ -99,17 +99,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mtk-al-0JX">
-                                <rect key="frame" x="0.0" y="66" width="213" height="249"/>
+                                <rect key="frame" x="0.0" y="20" width="213" height="249"/>
                                 <connections>
                                     <segue destination="gFl-9s-NL6" kind="embed" id="e7c-XS-6jT"/>
                                 </connections>
                             </containerView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ngY-70-Udi">
-                                <rect key="frame" x="214" y="67" width="90" height="400"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ngY-70-Udi">
+                                <rect key="frame" x="219" y="20" width="90" height="403"/>
                                 <color key="backgroundColor" red="0.0" green="0.49969387620651551" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="iaC-tr-2Qg"/>
-                                </constraints>
                                 <mutableString key="text">[Event "F/S Return Match"]
 [Site "Belgrade, Serbia Yugoslavia|JUG"]
 [Date "1992.11.04"]
@@ -130,18 +127,13 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBs-mh-ziM">
-                                <rect key="frame" x="0.0" y="315" width="213" height="152"/>
+                                <rect key="frame" x="0.0" y="272" width="213" height="152"/>
                                 <connections>
                                     <segue destination="qpD-eY-ail" kind="embed" id="aou-3E-BtI"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="coQ-IQ-qqX" firstAttribute="top" secondItem="ngY-70-Udi" secondAttribute="bottom" constant="13" id="3cY-ND-cLP"/>
-                            <constraint firstItem="ngY-70-Udi" firstAttribute="trailing" secondItem="vBm-eF-EAM" secondAttribute="trailingMargin" id="FYK-fy-P7s"/>
-                            <constraint firstItem="ngY-70-Udi" firstAttribute="top" secondItem="iWe-7f-GpX" secondAttribute="bottom" constant="3" id="q8K-O0-UzO"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="UO3-qb-lDV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -557,23 +549,17 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perfect_checkerboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="qRK-Bc-mbg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="perfect_checkerboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="qRK-Bc-mbg">
                                 <rect key="frame" x="0.0" y="0.0" width="213" height="203"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv9-wu-rBL">
-                                <rect key="frame" x="3" y="212" width="46" height="29"/>
+                                <rect key="frame" x="0.0" y="212" width="46" height="29"/>
                                 <state key="normal" title="| &lt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qRK-Bc-mbg" firstAttribute="leading" secondItem="9rz-Ew-BOH" secondAttribute="leadingMargin" constant="-16" id="NhA-zp-83g"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qRK-Bc-mbg" secondAttribute="trailing" constant="-16" id="fJP-kV-7cf"/>
-                            <constraint firstItem="m5D-6z-2Rr" firstAttribute="top" secondItem="qRK-Bc-mbg" secondAttribute="bottom" constant="46" id="pGt-xq-Y48"/>
-                            <constraint firstItem="qRK-Bc-mbg" firstAttribute="top" secondItem="3IN-ef-9Bi" secondAttribute="bottom" id="vbD-JA-WmR"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                 </viewController>
