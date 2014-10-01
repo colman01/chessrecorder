@@ -54,6 +54,7 @@
 		C066205F19DC641B002F7B2C /* AugmentedRealityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */; };
 		C066206319DC69D0002F7B2C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066206219DC69D0002F7B2C /* HomeViewController.m */; };
 		C066206519DC6A87002F7B2C /* IMG_0004.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C066206419DC6A87002F7B2C /* IMG_0004.JPG */; };
+		C066206C19DC75E3002F7B2C /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066206B19DC75E3002F7B2C /* InfoViewController.m */; };
 		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
@@ -143,6 +144,8 @@
 		C066206119DC69D0002F7B2C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C066206219DC69D0002F7B2C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C066206419DC6A87002F7B2C /* IMG_0004.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0004.JPG; sourceTree = "<group>"; };
+		C066206A19DC75E3002F7B2C /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		C066206B19DC75E3002F7B2C /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess_rotate.jpg; sourceTree = "<group>"; };
 		C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoFilterViewController.h; sourceTree = "<group>"; };
 		C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoFilterViewController.m; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 		C066204219DBF899002F7B2C /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				C066206919DC75D2002F7B2C /* Info */,
 				C066206819DC7263002F7B2C /* Lower Videoview */,
 				C066206719DC724D002F7B2C /* Standard Upper View  */,
 				C066206619DC723D002F7B2C /* Home Tab Controller */,
@@ -405,6 +409,15 @@
 				C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */,
 			);
 			name = "Lower Videoview";
+			sourceTree = "<group>";
+		};
+		C066206919DC75D2002F7B2C /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				C066206A19DC75E3002F7B2C /* InfoViewController.h */,
+				C066206B19DC75E3002F7B2C /* InfoViewController.m */,
+			);
+			name = Info;
 			sourceTree = "<group>";
 		};
 		C0D8FC3819D862E4005C4ADC /* OpenCV and GPUImage Filters */ = {
@@ -559,6 +572,7 @@
 				C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */,
 				C025713F19CC5D7B00624F0E /* ViewController.mm in Sources */,
 				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
+				C066206C19DC75E3002F7B2C /* InfoViewController.m in Sources */,
 				C066206319DC69D0002F7B2C /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
