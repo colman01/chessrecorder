@@ -52,6 +52,8 @@
 		C066205919DC5B48002F7B2C /* multiBoards48_32.png in Resources */ = {isa = PBXBuildFile; fileRef = C066205819DC5B48002F7B2C /* multiBoards48_32.png */; };
 		C066205C19DC63F7002F7B2C /* StandardChessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066205B19DC63F7002F7B2C /* StandardChessViewController.m */; };
 		C066205F19DC641B002F7B2C /* AugmentedRealityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */; };
+		C066206319DC69D0002F7B2C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066206219DC69D0002F7B2C /* HomeViewController.m */; };
+		C066206519DC6A87002F7B2C /* IMG_0004.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C066206419DC6A87002F7B2C /* IMG_0004.JPG */; };
 		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
@@ -138,6 +140,9 @@
 		C066205B19DC63F7002F7B2C /* StandardChessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardChessViewController.m; sourceTree = "<group>"; };
 		C066205D19DC641B002F7B2C /* AugmentedRealityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AugmentedRealityViewController.h; sourceTree = "<group>"; };
 		C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AugmentedRealityViewController.m; sourceTree = "<group>"; };
+		C066206119DC69D0002F7B2C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		C066206219DC69D0002F7B2C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		C066206419DC6A87002F7B2C /* IMG_0004.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0004.JPG; sourceTree = "<group>"; };
 		C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess_rotate.jpg; sourceTree = "<group>"; };
 		C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoFilterViewController.h; sourceTree = "<group>"; };
 		C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoFilterViewController.m; sourceTree = "<group>"; };
@@ -216,6 +221,7 @@
 		C002E0AC19D1A68A00948635 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				C066206419DC6A87002F7B2C /* IMG_0004.JPG */,
 				C066205819DC5B48002F7B2C /* multiBoards48_32.png */,
 				C066205619DC5AED002F7B2C /* multiBoards48_32.jpg */,
 				C066205419DC5A42002F7B2C /* multiBoards.jpg */,
@@ -337,6 +343,7 @@
 		C066204219DBF899002F7B2C /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				C066206019DC69BA002F7B2C /* Home */,
 				C066204319DBF8D0002F7B2C /* MainscreenViewController.h */,
 				C066204419DBF8D0002F7B2C /* MainscreenViewController.m */,
 				C066205A19DC63F7002F7B2C /* StandardChessViewController.h */,
@@ -365,6 +372,15 @@
 				C066205219DC56CA002F7B2C /* NavigationBar.m */,
 			);
 			name = NavigationCon;
+			sourceTree = "<group>";
+		};
+		C066206019DC69BA002F7B2C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C066206119DC69D0002F7B2C /* HomeViewController.h */,
+				C066206219DC69D0002F7B2C /* HomeViewController.m */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		C0D8FC3819D862E4005C4ADC /* OpenCV and GPUImage Filters */ = {
@@ -459,6 +475,7 @@
 				C002E09B19D06E6E00948635 /* Shader1.fsh in Resources */,
 				C002E0AB19D1A17500948635 /* chess-top-view.jpg in Resources */,
 				C002E09C19D06E6E00948635 /* Shader2.fsh in Resources */,
+				C066206519DC6A87002F7B2C /* IMG_0004.JPG in Resources */,
 				C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */,
 				C025714419CC5D7B00624F0E /* Images.xcassets in Resources */,
 				C002E05319D035B100948635 /* Main.storyboard in Resources */,
@@ -518,6 +535,7 @@
 				C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */,
 				C025713F19CC5D7B00624F0E /* ViewController.mm in Sources */,
 				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
+				C066206319DC69D0002F7B2C /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

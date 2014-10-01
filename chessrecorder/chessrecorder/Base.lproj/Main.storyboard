@@ -89,7 +89,7 @@
         <!--Home-->
         <scene sceneID="8CH-EQ-43b">
             <objects>
-                <viewController title="Home" id="jvL-sD-K8i" sceneMemberID="viewController">
+                <viewController title="Home" id="jvL-sD-K8i" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iWe-7f-GpX"/>
                         <viewControllerLayoutGuide type="bottom" id="coQ-IQ-qqX"/>
@@ -132,6 +132,15 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                     <segue destination="qpD-eY-ail" kind="embed" id="aou-3E-BtI"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFE-Tk-kYz">
+                                <rect key="frame" x="7" y="433" width="46" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="jvL-sD-K8i" eventType="touchUpInside" id="zUE-zV-HjH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -181,6 +190,17 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                     <view key="view" contentMode="scaleToFill" id="rOV-jJ-a6J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Info " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vn-ae-Zqd">
+                                <rect key="frame" x="139" y="86" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_0004.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Wv5-qa-w6w">
+                                <rect key="frame" x="26" y="137" width="268" height="229"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Info" id="l3D-ly-M2w"/>
@@ -201,8 +221,8 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xbw-2G-UfV">
-                                <rect key="frame" x="0.0" y="72" width="320" height="339"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xbw-2G-UfV">
+                                <rect key="frame" x="0.0" y="33" width="320" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GameCell" id="Tro-jV-u0x">
@@ -258,13 +278,6 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="xbw-2G-UfV" firstAttribute="top" secondItem="gxX-yC-LSO" secondAttribute="bottom" constant="8" symbolic="YES" id="czk-1t-HAj"/>
-                            <constraint firstItem="xbw-2G-UfV" firstAttribute="trailing" secondItem="gxX-yC-LSO" secondAttribute="trailing" id="g2M-DN-Ba0"/>
-                            <constraint firstItem="xbw-2G-UfV" firstAttribute="leading" secondItem="gxX-yC-LSO" secondAttribute="leading" id="l8D-KU-NTP"/>
-                            <constraint firstItem="0rn-Cf-WO4" firstAttribute="top" secondItem="xbw-2G-UfV" secondAttribute="bottom" constant="20" id="yo4-Jm-PpC"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="multiBoards48_32.png" id="hXn-2l-mJh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -618,12 +631,13 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
     </scenes>
     <resources>
         <image name="Chess_board_top.jpg" width="800" height="800"/>
+        <image name="IMG_0004.JPG" width="640" height="480"/>
         <image name="chess-top-view.jpg" width="1300" height="1390"/>
         <image name="chess.jpg" width="800" height="604"/>
         <image name="multiBoards48_32.png" width="48" height="32"/>
         <image name="perfect_checkerboard.png" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8aK-Sw-nqg"/>
+        <segue reference="TSU-88-lXV"/>
     </inferredMetricsTieBreakers>
 </document>
