@@ -135,12 +135,12 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="UO3-qb-lDV"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="UO3-qb-lDV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkR-cR-www" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429" y="-247"/>
+            <point key="canvasLocation" x="2525" y="37"/>
         </scene>
         <!--Homography-->
         <scene sceneID="Qbx-5d-EmF">
@@ -169,6 +169,25 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfs-N6-Xks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1722" y="415"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="pxH-Ma-oIX">
+            <objects>
+                <viewController title="Info" id="JyP-mS-vsx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BxT-eb-Yvv"/>
+                        <viewControllerLayoutGuide type="bottom" id="tRB-HW-FE7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rOV-jJ-a6J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Info" id="l3D-ly-M2w"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aZp-sd-3aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2525" y="-1312"/>
         </scene>
         <!--History-->
         <scene sceneID="R25-dW-bam">
@@ -247,7 +266,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                             <constraint firstItem="0rn-Cf-WO4" firstAttribute="top" secondItem="xbw-2G-UfV" secondAttribute="bottom" constant="20" id="yo4-Jm-PpC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="hXn-2l-mJh"/>
+                    <tabBarItem key="tabBarItem" title="History" image="multiBoards48_32.png" id="hXn-2l-mJh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="gameList" destination="xbw-2G-UfV" id="zit-1f-hWC"/>
@@ -255,7 +274,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="602-3Y-4To" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429" y="-970"/>
+            <point key="canvasLocation" x="2525" y="-686"/>
         </scene>
         <!--Filter Preview Collection View Controller-->
         <scene sceneID="Jh4-ZV-ajH">
@@ -449,6 +468,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                     <connections>
                         <segue destination="jvL-sD-K8i" kind="relationship" relationship="viewControllers" id="8aK-Sw-nqg"/>
                         <segue destination="HE9-gh-Oac" kind="relationship" relationship="viewControllers" id="uu1-wG-fp7"/>
+                        <segue destination="JyP-mS-vsx" kind="relationship" relationship="viewControllers" id="dPp-q3-gt5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrM-Rf-XJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -565,7 +585,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SA1-0a-94q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3120.5" y="-175.5"/>
+            <point key="canvasLocation" x="3164.5" y="-94.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Mab-S7-qh3">
@@ -595,13 +615,14 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvG-kH-IIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3120.5" y="-455"/>
+            <point key="canvasLocation" x="3164.5" y="226"/>
         </scene>
     </scenes>
     <resources>
         <image name="Chess_board_top.jpg" width="800" height="800"/>
         <image name="chess-top-view.jpg" width="1300" height="1390"/>
         <image name="chess.jpg" width="800" height="604"/>
+        <image name="multiBoards48_32.png" width="48" height="32"/>
         <image name="nicely.jpg" width="1024" height="768"/>
         <image name="perfect_checkerboard.png" width="1000" height="1000"/>
     </resources>
