@@ -465,6 +465,12 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="un8-eb-IYf">
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                                <connections>
+                                    <segue destination="0Kd-j8-itG" kind="embed" id="kSg-ty-6YL"/>
+                                </connections>
+                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd3-II-pjt">
                                 <rect key="frame" x="24" y="72" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -473,6 +479,12 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="un8-eb-IYf" firstAttribute="top" secondItem="DCy-ua-uqg" secondAttribute="bottom" id="76L-7v-RpJ"/>
+                            <constraint firstItem="un8-eb-IYf" firstAttribute="leading" secondItem="YdL-jp-uqL" secondAttribute="leading" id="bne-7E-l54"/>
+                            <constraint firstItem="un8-eb-IYf" firstAttribute="bottom" secondItem="YdL-jp-uqL" secondAttribute="top" id="dka-6J-Mar"/>
+                            <constraint firstItem="un8-eb-IYf" firstAttribute="trailing" secondItem="YdL-jp-uqL" secondAttribute="trailing" id="tJw-ZR-EHb"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" id="ClY-je-bqa" userLabel="History"/>
                 </viewController>
@@ -492,6 +504,12 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmp-Nl-BuD">
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                                <connections>
+                                    <segue destination="huQ-G5-304" kind="embed" id="CAv-1W-Fai"/>
+                                </connections>
+                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ync-GM-Hmp">
                                 <rect key="frame" x="16" y="72" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -500,6 +518,12 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bmp-Nl-BuD" firstAttribute="bottom" secondItem="hXH-Rk-ZSw" secondAttribute="top" id="JW2-gk-mFf"/>
+                            <constraint firstItem="bmp-Nl-BuD" firstAttribute="leading" secondItem="hXH-Rk-ZSw" secondAttribute="leading" id="LSh-bg-hYQ"/>
+                            <constraint firstItem="bmp-Nl-BuD" firstAttribute="trailing" secondItem="hXH-Rk-ZSw" secondAttribute="trailing" id="w7Y-Rb-dhp"/>
+                            <constraint firstItem="bmp-Nl-BuD" firstAttribute="top" secondItem="4Sb-RA-4DV" secondAttribute="bottom" id="x3g-YQ-WTX"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="wNr-JO-eOd" userLabel="Home"/>
                 </viewController>
@@ -674,6 +698,44 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvG-kH-IIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2332.5" y="-637"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6AI-sm-aSc">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0Kd-j8-itG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9lM-He-Mbu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qos-Kn-8gw"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Y8T-UO-LPJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zJC-Q6-ibF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3120" y="1699"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="w1a-ee-eas">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="huQ-G5-304" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ioi-v8-YiR"/>
+                        <viewControllerLayoutGuide type="bottom" id="x26-Cg-Dga"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6xP-hR-8TM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RkX-ob-xab" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3120" y="2279"/>
         </scene>
     </scenes>
     <resources>
