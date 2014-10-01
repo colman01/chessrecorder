@@ -72,24 +72,6 @@
                                     <segue destination="z31-Et-z91" kind="show" id="7zR-U9-wtv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRV-hH-PYE">
-                                <rect key="frame" x="16" y="163" width="94" height="30"/>
-                                <state key="normal" title="Home Screen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="jvL-sD-K8i" kind="show" id="vfG-CL-f4C"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-OX-lZc">
-                                <rect key="frame" x="188" y="163" width="53" height="30"/>
-                                <state key="normal" title="History ">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="HE9-gh-Oac" kind="show" id="iSo-9k-L5F"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -633,6 +615,5 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8aK-Sw-nqg"/>
-        <segue reference="uu1-wG-fp7"/>
     </inferredMetricsTieBreakers>
 </document>
