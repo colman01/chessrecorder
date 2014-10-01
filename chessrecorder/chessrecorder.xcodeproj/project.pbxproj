@@ -50,6 +50,8 @@
 		C066205519DC5A42002F7B2C /* multiBoards.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C066205419DC5A42002F7B2C /* multiBoards.jpg */; };
 		C066205719DC5AED002F7B2C /* multiBoards48_32.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C066205619DC5AED002F7B2C /* multiBoards48_32.jpg */; };
 		C066205919DC5B48002F7B2C /* multiBoards48_32.png in Resources */ = {isa = PBXBuildFile; fileRef = C066205819DC5B48002F7B2C /* multiBoards48_32.png */; };
+		C066205C19DC63F7002F7B2C /* StandardChessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066205B19DC63F7002F7B2C /* StandardChessViewController.m */; };
+		C066205F19DC641B002F7B2C /* AugmentedRealityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */; };
 		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
@@ -132,6 +134,10 @@
 		C066205419DC5A42002F7B2C /* multiBoards.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = multiBoards.jpg; sourceTree = "<group>"; };
 		C066205619DC5AED002F7B2C /* multiBoards48_32.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = multiBoards48_32.jpg; sourceTree = "<group>"; };
 		C066205819DC5B48002F7B2C /* multiBoards48_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiBoards48_32.png; sourceTree = "<group>"; };
+		C066205A19DC63F7002F7B2C /* StandardChessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardChessViewController.h; sourceTree = "<group>"; };
+		C066205B19DC63F7002F7B2C /* StandardChessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardChessViewController.m; sourceTree = "<group>"; };
+		C066205D19DC641B002F7B2C /* AugmentedRealityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AugmentedRealityViewController.h; sourceTree = "<group>"; };
+		C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AugmentedRealityViewController.m; sourceTree = "<group>"; };
 		C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess_rotate.jpg; sourceTree = "<group>"; };
 		C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoFilterViewController.h; sourceTree = "<group>"; };
 		C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoFilterViewController.m; sourceTree = "<group>"; };
@@ -333,6 +339,10 @@
 			children = (
 				C066204319DBF8D0002F7B2C /* MainscreenViewController.h */,
 				C066204419DBF8D0002F7B2C /* MainscreenViewController.m */,
+				C066205A19DC63F7002F7B2C /* StandardChessViewController.h */,
+				C066205B19DC63F7002F7B2C /* StandardChessViewController.m */,
+				C066205D19DC641B002F7B2C /* AugmentedRealityViewController.h */,
+				C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */,
 			);
 			name = "Main Screen";
 			sourceTree = "<group>";
@@ -495,7 +505,9 @@
 				C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */,
 				C025D00A19D4515A003EC2D0 /* ChessModel.mm in Sources */,
 				C066204C19DC0F54002F7B2C /* GameHistoryViewController.m in Sources */,
+				C066205C19DC63F7002F7B2C /* StandardChessViewController.m in Sources */,
 				0481AE6419D5DC0A00F2DE80 /* DetectCheckerboardViewController.mm in Sources */,
+				C066205F19DC641B002F7B2C /* AugmentedRealityViewController.m in Sources */,
 				C066204519DBF8D0002F7B2C /* MainscreenViewController.m in Sources */,
 				C025713619CC5D7B00624F0E /* main.m in Sources */,
 				C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */,
