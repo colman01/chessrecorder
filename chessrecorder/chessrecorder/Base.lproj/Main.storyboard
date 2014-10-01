@@ -165,7 +165,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkR-cR-www" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="-849"/>
+            <point key="canvasLocation" x="1870" y="-637"/>
         </scene>
         <!--Homography-->
         <scene sceneID="Qbx-5d-EmF">
@@ -193,7 +193,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfs-N6-Xks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="-178"/>
+            <point key="canvasLocation" x="1722" y="415"/>
         </scene>
         <!--Game History View Controller-->
         <scene sceneID="R25-dW-bam">
@@ -273,7 +273,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="602-3Y-4To" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2720" y="-849"/>
+            <point key="canvasLocation" x="1072" y="-637"/>
         </scene>
         <!--Filter Preview Collection View Controller-->
         <scene sceneID="Jh4-ZV-ajH">
@@ -376,7 +376,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyR-vq-SBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="415"/>
+            <point key="canvasLocation" x="2102" y="1363"/>
         </scene>
         <!--Detect Checkerboard View Controller-->
         <scene sceneID="JiK-JW-qRp">
@@ -451,12 +451,12 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4O-KP-sGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111" y="1083"/>
+            <point key="canvasLocation" x="1199" y="1987"/>
         </scene>
-        <!--Item 2-->
+        <!--Title Item2-->
         <scene sceneID="x2d-Qf-EVM">
             <objects>
-                <viewController id="SzG-yT-rn0" sceneMemberID="viewController">
+                <viewController title="Title Item2" id="SzG-yT-rn0" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DCy-ua-uqg"/>
                         <viewControllerLayoutGuide type="bottom" id="YdL-jp-uqL"/>
@@ -464,18 +464,26 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                     <view key="view" contentMode="scaleToFill" id="mz7-Tj-bHu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd3-II-pjt">
+                                <rect key="frame" x="24" y="72" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="ClY-je-bqa"/>
+                    <tabBarItem key="tabBarItem" title="History" id="ClY-je-bqa" userLabel="History"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kzk-jl-kF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2519" y="1438"/>
+            <point key="canvasLocation" x="2692" y="1861"/>
         </scene>
         <!--Home Screen-->
         <scene sceneID="r3V-Im-L41">
             <objects>
-                <viewController id="UTR-1a-LoY" userLabel="Home Screen" sceneMemberID="viewController">
+                <viewController title="Title Item 1" id="UTR-1a-LoY" userLabel="Home Screen" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Sb-RA-4DV"/>
                         <viewControllerLayoutGuide type="bottom" id="hXH-Rk-ZSw"/>
@@ -483,13 +491,21 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                     <view key="view" contentMode="scaleToFill" id="eag-fM-wNM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ync-GM-Hmp">
+                                <rect key="frame" x="16" y="72" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="wNr-JO-eOd"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="wNr-JO-eOd" userLabel="Home"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPs-4B-IqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2519" y="776"/>
+            <point key="canvasLocation" x="2692" y="2403"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="W0X-jP-O3W">
@@ -509,7 +525,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrM-Rf-XJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1699" y="1107"/>
+            <point key="canvasLocation" x="1931" y="2179"/>
         </scene>
         <!--OpenCV View Controller-->
         <scene sceneID="8uM-VC-757">
@@ -554,7 +570,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chq-Ih-r3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="1083"/>
+            <point key="canvasLocation" x="807" y="1987"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JeN-kv-atM">
@@ -627,7 +643,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SA1-0a-94q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2162.5" y="-849.5"/>
+            <point key="canvasLocation" x="2638.5" y="-313.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Mab-S7-qh3">
@@ -657,7 +673,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvG-kH-IIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2162.5" y="-1249"/>
+            <point key="canvasLocation" x="2332.5" y="-637"/>
         </scene>
     </scenes>
     <resources>
