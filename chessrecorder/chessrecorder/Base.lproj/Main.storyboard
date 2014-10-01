@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="1111" y="415"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="8CH-EQ-43b">
             <objects>
-                <viewController id="jvL-sD-K8i" sceneMemberID="viewController">
+                <viewController title="Home" id="jvL-sD-K8i" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iWe-7f-GpX"/>
                         <viewControllerLayoutGuide type="bottom" id="coQ-IQ-qqX"/>
@@ -443,10 +443,10 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
             </objects>
             <point key="canvasLocation" x="1111" y="1243"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Mainscreen View Controller-->
         <scene sceneID="W0X-jP-O3W">
             <objects>
-                <tabBarController id="z31-Et-z91" sceneMemberID="viewController">
+                <tabBarController id="z31-Et-z91" customClass="MainscreenViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WBi-p7-5EV">
@@ -508,10 +508,10 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
             </objects>
             <point key="canvasLocation" x="719" y="1243"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="JeN-kv-atM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iZR-og-qWD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iZR-og-qWD" customClass="NavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0te-ap-MeW">
@@ -620,6 +620,6 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
         <image name="perfect_checkerboard.png" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TSU-88-lXV"/>
+        <segue reference="8aK-Sw-nqg"/>
     </inferredMetricsTieBreakers>
 </document>

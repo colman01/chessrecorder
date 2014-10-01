@@ -1,32 +1,31 @@
 //
-//  MainscreenViewController.m
+//  NavigationViewController.m
 //  chessrecorder
 //
 //  Created by colman on 01/10/14.
 //  Copyright (c) 2014 Colman Marcus-Quinn. All rights reserved.
 //
 
-#import "MainscreenViewController.h"
+#import "NavigationViewController.h"
 
-@interface MainscreenViewController ()
+
+@interface NavigationViewController ()
 
 @end
 
-@implementation MainscreenViewController
+@implementation NavigationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES];
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
 }
+
 
 /*
 #pragma mark - Navigation
