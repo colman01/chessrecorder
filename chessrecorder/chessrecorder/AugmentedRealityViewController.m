@@ -15,6 +15,7 @@
 @implementation AugmentedRealityViewController
 
 @synthesize cameraView;
+@synthesize historyViewer, working;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,11 +32,13 @@
 //    primaryView.backgroundColor = [UIColor blueColor];
 //    self.view = primaryView;
     
-    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    pipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:nil input:videoCamera output:self.cameraView];
+    if(!historyViewer) {
+        videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+        videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+        pipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:nil input:videoCamera output:self.cameraView];
     
-    [videoCamera startCameraCapture];
+        [videoCamera startCameraCapture];
+    }
 }
 
 /*

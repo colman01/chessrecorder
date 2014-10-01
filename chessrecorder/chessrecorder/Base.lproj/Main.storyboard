@@ -129,7 +129,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBs-mh-ziM">
                                 <rect key="frame" x="0.0" y="272" width="213" height="152"/>
                                 <connections>
-                                    <segue destination="qpD-eY-ail" kind="embed" id="aou-3E-BtI"/>
+                                    <segue destination="qpD-eY-ail" kind="embed" identifier="Camera" id="aou-3E-BtI"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFE-Tk-kYz">

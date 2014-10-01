@@ -18,5 +18,8 @@
 
 @property IBOutlet GPUImageView *cameraView;
 
+@property BOOL historyViewer;
+@property (nonatomic, assign) BOOL working;
+
 
 @end

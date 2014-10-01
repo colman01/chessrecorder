@@ -12,5 +12,6 @@
 
 
 - (IBAction)goBack:(id)sender;
+@property bool showHistory;
 
 @end
