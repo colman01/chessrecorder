@@ -197,7 +197,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_0004.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Wv5-qa-w6w">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chess-board.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Wv5-qa-w6w">
                                 <rect key="frame" x="26" y="137" width="268" height="229"/>
                             </imageView>
                         </subviews>
@@ -630,8 +630,8 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Chess-board.jpg" width="400" height="400"/>
         <image name="Chess_board_top.jpg" width="800" height="800"/>
-        <image name="IMG_0004.JPG" width="640" height="480"/>
         <image name="chess-top-view.jpg" width="1300" height="1390"/>
         <image name="chess.jpg" width="800" height="604"/>
         <image name="multiBoards48_32.png" width="48" height="32"/>
