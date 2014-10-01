@@ -195,10 +195,10 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
             </objects>
             <point key="canvasLocation" x="1668" y="-178"/>
         </scene>
-        <!--View Controller-->
+        <!--Game History View Controller-->
         <scene sceneID="R25-dW-bam">
             <objects>
-                <viewController id="HE9-gh-Oac" sceneMemberID="viewController">
+                <viewController id="HE9-gh-Oac" customClass="GameHistoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gxX-yC-LSO"/>
                         <viewControllerLayoutGuide type="bottom" id="0rn-Cf-WO4"/>
@@ -206,9 +206,70 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                     <view key="view" contentMode="scaleToFill" id="cWL-lO-wdH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xbw-2G-UfV">
+                                <rect key="frame" x="0.0" y="26" width="320" height="385"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="385" id="O8l-rt-vVm"/>
+                                    <constraint firstAttribute="width" constant="320" id="idT-p2-DFK"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GameCell" id="Tro-jV-u0x">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tro-jV-u0x" id="RfG-Cx-Lqq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-A1-gbm">
+                                                    <rect key="frame" x="8" y="11" width="67" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v64-u3-teb">
+                                                    <rect key="frame" x="83" y="11" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0A-cs-xkp">
+                                                    <rect key="frame" x="127" y="11" width="38" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="W/l/R/U" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmI-UD-LuX">
+                                                    <rect key="frame" x="173" y="11" width="61" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="jvL-sD-K8i" kind="show" id="TSU-88-lXV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HE9-gh-Oac" id="TD5-Cg-iZN"/>
+                                    <outlet property="delegate" destination="HE9-gh-Oac" id="EN1-0F-Q7r"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0rn-Cf-WO4" firstAttribute="top" secondItem="xbw-2G-UfV" secondAttribute="bottom" constant="69" id="MOT-4U-RNF"/>
+                            <constraint firstItem="xbw-2G-UfV" firstAttribute="leading" secondItem="cWL-lO-wdH" secondAttribute="leadingMargin" constant="-16" id="Vvy-9R-bQ2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xbw-2G-UfV" secondAttribute="trailing" constant="-16" id="bQu-3s-zvT"/>
+                            <constraint firstItem="xbw-2G-UfV" firstAttribute="top" secondItem="cWL-lO-wdH" secondAttribute="topMargin" constant="26" id="n2l-Fb-JKl"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="gameList" destination="xbw-2G-UfV" id="zit-1f-hWC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="602-3Y-4To" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -606,4 +667,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
         <image name="nicely.jpg" width="1024" height="768"/>
         <image name="perfect_checkerboard.png" width="1000" height="1000"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TSU-88-lXV"/>
+    </inferredMetricsTieBreakers>
 </document>
