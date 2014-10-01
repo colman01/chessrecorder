@@ -343,13 +343,10 @@
 		C066204219DBF899002F7B2C /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				C066206819DC7263002F7B2C /* Lower Videoview */,
+				C066206719DC724D002F7B2C /* Standard Upper View  */,
+				C066206619DC723D002F7B2C /* Home Tab Controller */,
 				C066206019DC69BA002F7B2C /* Home */,
-				C066204319DBF8D0002F7B2C /* MainscreenViewController.h */,
-				C066204419DBF8D0002F7B2C /* MainscreenViewController.m */,
-				C066205A19DC63F7002F7B2C /* StandardChessViewController.h */,
-				C066205B19DC63F7002F7B2C /* StandardChessViewController.m */,
-				C066205D19DC641B002F7B2C /* AugmentedRealityViewController.h */,
-				C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */,
 			);
 			name = "Main Screen";
 			sourceTree = "<group>";
@@ -381,6 +378,33 @@
 				C066206219DC69D0002F7B2C /* HomeViewController.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		C066206619DC723D002F7B2C /* Home Tab Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C066204319DBF8D0002F7B2C /* MainscreenViewController.h */,
+				C066204419DBF8D0002F7B2C /* MainscreenViewController.m */,
+			);
+			name = "Home Tab Controller";
+			sourceTree = "<group>";
+		};
+		C066206719DC724D002F7B2C /* Standard Upper View  */ = {
+			isa = PBXGroup;
+			children = (
+				C066205A19DC63F7002F7B2C /* StandardChessViewController.h */,
+				C066205B19DC63F7002F7B2C /* StandardChessViewController.m */,
+			);
+			name = "Standard Upper View ";
+			sourceTree = "<group>";
+		};
+		C066206819DC7263002F7B2C /* Lower Videoview */ = {
+			isa = PBXGroup;
+			children = (
+				C066205D19DC641B002F7B2C /* AugmentedRealityViewController.h */,
+				C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */,
+			);
+			name = "Lower Videoview";
 			sourceTree = "<group>";
 		};
 		C0D8FC3819D862E4005C4ADC /* OpenCV and GPUImage Filters */ = {
