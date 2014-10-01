@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86c-PS-7Fm">
-                                <rect key="frame" x="12" y="225" width="58" height="30"/>
+                                <rect key="frame" x="188" y="115" width="58" height="30"/>
                                 <state key="normal" title="OpenCV">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -37,7 +37,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hdC-nU-IMV">
-                                <rect key="frame" x="12" y="112" width="103" height="69"/>
+                                <rect key="frame" x="16" y="391" width="103" height="69"/>
                                 <state key="normal" title="Chess collection view edge detection">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcf-bh-sz0">
-                                <rect key="frame" x="201" y="132" width="107" height="30"/>
+                                <rect key="frame" x="188" y="411" width="107" height="30"/>
                                 <state key="normal" title="Filter Sequence">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W07-qT-xKa">
-                                <rect key="frame" x="201" y="225" width="82" height="30"/>
+                                <rect key="frame" x="16" y="115" width="82" height="30"/>
                                 <state key="normal" title="Homograph">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1I-uv-gWA">
-                                <rect key="frame" x="12" y="275" width="96" height="30"/>
+                                <rect key="frame" x="19" y="334" width="96" height="30"/>
                                 <state key="normal" title="Tab Controller">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -73,12 +73,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRV-hH-PYE">
-                                <rect key="frame" x="201" y="275" width="94" height="30"/>
+                                <rect key="frame" x="16" y="163" width="94" height="30"/>
                                 <state key="normal" title="Home Screen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="jvL-sD-K8i" kind="show" id="vfG-CL-f4C"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-OX-lZc">
+                                <rect key="frame" x="188" y="163" width="53" height="30"/>
+                                <state key="normal" title="History ">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HE9-gh-Oac" kind="show" id="iSo-9k-L5F"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -185,6 +194,25 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</mutableString>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfs-N6-Xks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1668" y="-178"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="R25-dW-bam">
+            <objects>
+                <viewController id="HE9-gh-Oac" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gxX-yC-LSO"/>
+                        <viewControllerLayoutGuide type="bottom" id="0rn-Cf-WO4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cWL-lO-wdH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="602-3Y-4To" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2720" y="-849"/>
         </scene>
         <!--Filter Preview Collection View Controller-->
         <scene sceneID="Jh4-ZV-ajH">
