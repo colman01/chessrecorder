@@ -107,7 +107,7 @@
     }
     
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
-//    self.imgView.image = combinedImg;
+    return combinedImg;
 }
 
 
