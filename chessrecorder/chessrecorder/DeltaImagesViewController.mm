@@ -26,13 +26,16 @@
     [super viewDidLoad];
     
     images = [[NSMutableArray alloc] init];
-    [self readImages];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+- (void) viewDidAppear:(BOOL)animated   {
+    [self readImages];
+    [self computeDeltaImage];
+}
 
 
 -(void) readImages {
@@ -53,19 +56,12 @@
     [images addObject:image];
 }
 
-
 - (void) computeDeltaImage {
-    
+    cv::Mat delta1 = [CvMatUIImageConverter cvMatGrayFromUIImage:[self.images objectAtIndex:0]];
+    cv::Mat delta2 = [CvMatUIImageConverter cvMatGrayFromUIImage:[self.images objectAtIndex:1]];
+    cv::Mat delta;
+    cv::subtract(delta1, delta2, delta);
+    imageView.image = [CvMatUIImageConverter UIImageFromCVMat:delta];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
