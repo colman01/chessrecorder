@@ -7,13 +7,20 @@
 //
 
 #import "DeltaImagesViewController.h"
+#import "CvMatUIImageConverter.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+#include <opencv2/legacy/legacy.hpp>
 
 @interface DeltaImagesViewController ()
 
 @end
 
 @implementation DeltaImagesViewController
-@synthesize images;
+@synthesize images, imageView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,6 +53,10 @@
     [images addObject:image];
 }
 
+
+- (void) computeDeltaImage {
+    
+}
 
 /*
 #pragma mark - Navigation

@@ -12,4 +12,6 @@
 
 @property NSMutableArray *images;
 
+@property IBOutlet UIImageView *imageView;
+
 @end
