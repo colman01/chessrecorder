@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HomographyTransform.h"
+#import <GPUImage/GPUImage.h>
 
 @interface DeltaImagesViewController : UIViewController
 
