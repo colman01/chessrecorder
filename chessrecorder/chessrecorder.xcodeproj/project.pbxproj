@@ -49,8 +49,9 @@
 		C030F35A19DD27D6008A1C02 /* 2_w_B_f4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35219DD27D6008A1C02 /* 2_w_B_f4.JPG */; };
 		C030F35B19DD27D6008A1C02 /* 3_b_B_b4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35319DD27D6008A1C02 /* 3_b_B_b4.JPG */; };
 		C030F35C19DD27D6008A1C02 /* 3_w_e3.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35419DD27D6008A1C02 /* 3_w_e3.JPG */; };
-		C030F35D19DD27D6008A1C02 /* 4_n_Q_h4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35519DD27D6008A1C02 /* 4_n_Q_h4.JPG */; };
+		C030F35D19DD27D6008A1C02 /* 4_b_Q_h4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35519DD27D6008A1C02 /* 4_b_Q_h4.JPG */; };
 		C030F35E19DD27D6008A1C02 /* 4_w_K_d2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */; };
+		C030F36319DD2A85008A1C02 /* DeltaImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C030F36219DD2A85008A1C02 /* DeltaImagesViewController.m */; };
 		C066204519DBF8D0002F7B2C /* MainscreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204419DBF8D0002F7B2C /* MainscreenViewController.m */; };
 		C066204C19DC0F54002F7B2C /* GameHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204B19DC0F54002F7B2C /* GameHistoryViewController.m */; };
 		C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204F19DC5324002F7B2C /* NavigationViewController.m */; };
@@ -139,8 +140,10 @@
 		C030F35219DD27D6008A1C02 /* 2_w_B_f4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_w_B_f4.JPG; sourceTree = "<group>"; };
 		C030F35319DD27D6008A1C02 /* 3_b_B_b4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3_b_B_b4.JPG; sourceTree = "<group>"; };
 		C030F35419DD27D6008A1C02 /* 3_w_e3.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3_w_e3.JPG; sourceTree = "<group>"; };
-		C030F35519DD27D6008A1C02 /* 4_n_Q_h4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4_n_Q_h4.JPG; sourceTree = "<group>"; };
+		C030F35519DD27D6008A1C02 /* 4_b_Q_h4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4_b_Q_h4.JPG; sourceTree = "<group>"; };
 		C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4_w_K_d2.JPG; sourceTree = "<group>"; };
+		C030F36119DD2A85008A1C02 /* DeltaImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeltaImagesViewController.h; sourceTree = "<group>"; };
+		C030F36219DD2A85008A1C02 /* DeltaImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeltaImagesViewController.m; sourceTree = "<group>"; };
 		C066204319DBF8D0002F7B2C /* MainscreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainscreenViewController.h; sourceTree = "<group>"; };
 		C066204419DBF8D0002F7B2C /* MainscreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainscreenViewController.m; sourceTree = "<group>"; };
 		C066204A19DC0F54002F7B2C /* GameHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHistoryViewController.h; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 		C002E0A119D1806C00948635 /* Custom filter */ = {
 			isa = PBXGroup;
 			children = (
+				C030F36019DD2A70008A1C02 /* Delta */,
 				C030F35F19DD2A0E008A1C02 /* Showcase variants */,
 				0481AE6519D5DC1300F2DE80 /* DetectCheckerboard */,
 				C0D8FC3819D862E4005C4ADC /* OpenCV and GPUImage Filters */,
@@ -240,7 +244,7 @@
 				C030F35219DD27D6008A1C02 /* 2_w_B_f4.JPG */,
 				C030F35319DD27D6008A1C02 /* 3_b_B_b4.JPG */,
 				C030F35419DD27D6008A1C02 /* 3_w_e3.JPG */,
-				C030F35519DD27D6008A1C02 /* 4_n_Q_h4.JPG */,
+				C030F35519DD27D6008A1C02 /* 4_b_Q_h4.JPG */,
 				C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */,
 				C066205819DC5B48002F7B2C /* multiBoards48_32.png */,
 				C066205619DC5AED002F7B2C /* multiBoards48_32.jpg */,
@@ -370,6 +374,15 @@
 				C002E0A319D1862E00948635 /* ChessFilterViewController.m */,
 			);
 			name = "Showcase variants";
+			sourceTree = "<group>";
+		};
+		C030F36019DD2A70008A1C02 /* Delta */ = {
+			isa = PBXGroup;
+			children = (
+				C030F36119DD2A85008A1C02 /* DeltaImagesViewController.h */,
+				C030F36219DD2A85008A1C02 /* DeltaImagesViewController.m */,
+			);
+			name = Delta;
 			sourceTree = "<group>";
 		};
 		C066204219DBF899002F7B2C /* Main Screen */ = {
@@ -553,7 +566,7 @@
 				C030F35A19DD27D6008A1C02 /* 2_w_B_f4.JPG in Resources */,
 				C030F35C19DD27D6008A1C02 /* 3_w_e3.JPG in Resources */,
 				C002E0A919D19D9100948635 /* chess.jpg in Resources */,
-				C030F35D19DD27D6008A1C02 /* 4_n_Q_h4.JPG in Resources */,
+				C030F35D19DD27D6008A1C02 /* 4_b_Q_h4.JPG in Resources */,
 				C066205519DC5A42002F7B2C /* multiBoards.jpg in Resources */,
 				C002E09719D0650800948635 /* realIcond40.png in Resources */,
 				C066205919DC5B48002F7B2C /* multiBoards48_32.png in Resources */,
@@ -588,6 +601,7 @@
 				C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */,
 				C066205319DC56CA002F7B2C /* NavigationBar.m in Sources */,
 				C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */,
+				C030F36319DD2A85008A1C02 /* DeltaImagesViewController.m in Sources */,
 				C002E0A419D1862E00948635 /* ChessFilterViewController.m in Sources */,
 				0481AE5D19D44D9500F2DE80 /* CvMatUIImageConverter.mm in Sources */,
 				C002E09119D051A100948635 /* ShowcaseFilterViewController.m in Sources */,

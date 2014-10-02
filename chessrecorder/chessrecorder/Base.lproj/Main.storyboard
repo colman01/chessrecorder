@@ -485,10 +485,10 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
             </objects>
             <point key="canvasLocation" x="1111" y="1243"/>
         </scene>
-        <!--View Controller-->
+        <!--Delta Images View Controller-->
         <scene sceneID="P7y-yZ-5MW">
             <objects>
-                <viewController id="3Sm-7f-ztS" sceneMemberID="viewController">
+                <viewController id="3Sm-7f-ztS" customClass="DeltaImagesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cNe-H2-K9n"/>
                         <viewControllerLayoutGuide type="bottom" id="bCi-mt-Kcg"/>
