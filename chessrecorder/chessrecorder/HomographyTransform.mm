@@ -23,10 +23,24 @@
     
 
     srcImgUi = sourceImage;
-    src[0] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:0];
-    src[1] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:1];
-    src[2] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:2];
-    src[3] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:3];
+    
+    NSValue *p1 = [chosenPoints objectAtIndex:0];
+    NSValue *p2 = [chosenPoints objectAtIndex:1];
+    NSValue *p3 = [chosenPoints objectAtIndex:2];
+    NSValue *p4 = [chosenPoints objectAtIndex:3];
+    
+    
+    
+    src[0] = cv::Point2f([p1 CGPointValue].x, [p1 CGPointValue].y);
+    src[1] = cv::Point2f([p2 CGPointValue].x, [p2 CGPointValue].y);
+    src[2] = cv::Point2f([p3 CGPointValue].x, [p3 CGPointValue].y);
+    src[3] = cv::Point2f([p4 CGPointValue].x, [p4 CGPointValue].y);
+
+    
+//    src[0] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:0];
+//    src[1] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:1];
+//    src[2] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:2];
+//    src[3] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:3];
     
     //    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
 //    src[0] = cv::Point2f(81, 308);

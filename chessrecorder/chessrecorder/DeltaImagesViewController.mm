@@ -65,8 +65,43 @@
 }
 
 - (void) transformImage {
+    
+//    510 340 top left
+//    560 2120 bottom left
+//    2333 270 top right
+//    2360 2152 bottom right
+    
+    
     NSMutableArray *pointsSet1 = [[NSMutableArray alloc] init];
-//    [pointsSet1 addObject:cv::Point2f(534, 279)];
+    CGPoint p1 = CGPointMake(510, 340);
+    [pointsSet1 addObject:[NSValue valueWithCGPoint:p1]];
+    
+    CGPoint p2 = CGPointMake(0, 0);
+    [pointsSet1 addObject:[NSValue valueWithCGPoint:p2]];
+    
+    CGPoint p3 = CGPointMake(0, 0);
+    [pointsSet1 addObject:[NSValue valueWithCGPoint:p3]];
+    
+    CGPoint p4 = CGPointMake(0, 0);
+    [pointsSet1 addObject:[NSValue valueWithCGPoint:p4]];
+    
+    
+    NSMutableArray *pointsSet2 = [[NSMutableArray alloc] init];
+    p1 = CGPointMake(0, 0);
+    [pointsSet2 addObject:[NSValue valueWithCGPoint:p1]];
+    
+    p2 = CGPointMake(0, 0);
+    [pointsSet2 addObject:[NSValue valueWithCGPoint:p2]];
+    
+    p3 = CGPointMake(0, 0);
+    [pointsSet2 addObject:[NSValue valueWithCGPoint:p3]];
+    
+    p4 = CGPointMake(0, 0);
+    [pointsSet2 addObject:[NSValue valueWithCGPoint:p4]];
+    
+    
+    
+    
 }
 
 @end
