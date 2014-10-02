@@ -230,7 +230,6 @@
 		C002E0A119D1806C00948635 /* Custom filter */ = {
 			isa = PBXGroup;
 			children = (
-				C030F36019DD2A70008A1C02 /* Delta */,
 				C030F35F19DD2A0E008A1C02 /* Showcase variants */,
 				0481AE6519D5DC1300F2DE80 /* DetectCheckerboard */,
 				C0D8FC3819D862E4005C4ADC /* OpenCV and GPUImage Filters */,
@@ -305,13 +304,11 @@
 		C025713219CC5D7B00624F0E /* chessrecorder */ = {
 			isa = PBXGroup;
 			children = (
-				C030F36519DD4533008A1C02 /* Transform */,
-				C066204D19DC5308002F7B2C /* NavigationCon */,
-				C066204619DC0EFE002F7B2C /* History */,
-				C066204219DBF899002F7B2C /* Main Screen */,
+				C030F37419DD6720008A1C02 /* View Controllers */,
+				C030F37319DD66F5008A1C02 /* iOS Objects */,
+				C030F37219DD66CA008A1C02 /* imported files */,
+				C030F37119DD6680008A1C02 /* Image Processing */,
 				C025D00B19D45160003EC2D0 /* Chess Model */,
-				C002E0A119D1806C00948635 /* Custom filter */,
-				C002E0A019D1803F00948635 /* Files from multiview project */,
 				C025713719CC5D7B00624F0E /* AppDelegate.h */,
 				C025713819CC5D7B00624F0E /* AppDelegate.m */,
 				0481AE5B19D44D9500F2DE80 /* CvMatUIImageConverter.h */,
@@ -380,13 +377,13 @@
 			name = "Showcase variants";
 			sourceTree = "<group>";
 		};
-		C030F36019DD2A70008A1C02 /* Delta */ = {
+		C030F36019DD2A70008A1C02 /* Delta Image */ = {
 			isa = PBXGroup;
 			children = (
 				C030F36119DD2A85008A1C02 /* DeltaImagesViewController.h */,
 				C030F36219DD2A85008A1C02 /* DeltaImagesViewController.mm */,
 			);
-			name = Delta;
+			name = "Delta Image";
 			sourceTree = "<group>";
 		};
 		C030F36519DD4533008A1C02 /* Transform */ = {
@@ -398,9 +395,44 @@
 			name = Transform;
 			sourceTree = "<group>";
 		};
+		C030F37119DD6680008A1C02 /* Image Processing */ = {
+			isa = PBXGroup;
+			children = (
+				C002E0A119D1806C00948635 /* Custom filter */,
+				C030F36019DD2A70008A1C02 /* Delta Image */,
+				C030F36519DD4533008A1C02 /* Transform */,
+			);
+			name = "Image Processing";
+			sourceTree = "<group>";
+		};
+		C030F37219DD66CA008A1C02 /* imported files */ = {
+			isa = PBXGroup;
+			children = (
+				C002E0A019D1803F00948635 /* Files from multiview project */,
+			);
+			name = "imported files";
+			sourceTree = "<group>";
+		};
+		C030F37319DD66F5008A1C02 /* iOS Objects */ = {
+			isa = PBXGroup;
+			children = (
+				C066204D19DC5308002F7B2C /* NavigationCon */,
+			);
+			name = "iOS Objects";
+			sourceTree = "<group>";
+		};
+		C030F37419DD6720008A1C02 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C066204219DBF899002F7B2C /* Main Screen */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		C066204219DBF899002F7B2C /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				C066204619DC0EFE002F7B2C /* History */,
 				C066206919DC75D2002F7B2C /* Info */,
 				C066206819DC7263002F7B2C /* Lower Videoview */,
 				C066206719DC724D002F7B2C /* Standard Upper View  */,
