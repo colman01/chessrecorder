@@ -20,12 +20,15 @@
 @end
 
 @implementation DeltaImagesViewController
-@synthesize images, imageView;
+@synthesize images, imageView, transform;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     images = [[NSMutableArray alloc] init];
+    transform = [[HomographyTransform alloc] init];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,7 +37,7 @@
 
 - (void) viewDidAppear:(BOOL)animated   {
     [self readImages];
-    [self computeDeltaImage];
+    [self transformImage];
 }
 
 
@@ -56,48 +59,52 @@
     [images addObject:image];
 }
 
-- (void) computeDeltaImage {
-    cv::Mat delta1 = [CvMatUIImageConverter cvMatGrayFromUIImage:[self.images objectAtIndex:0]];
-    cv::Mat delta2 = [CvMatUIImageConverter cvMatGrayFromUIImage:[self.images objectAtIndex:1]];
+- (void) computeDeltaImage:(UIImage *)I_1 withImageTwo:(UIImage *)I_2 {
+    cv::Mat delta1 = [CvMatUIImageConverter cvMatGrayFromUIImage:I_1];
+    cv::Mat delta2 = [CvMatUIImageConverter cvMatGrayFromUIImage:I_2];
     cv::Mat delta;
     cv::subtract(delta1, delta2, delta);
     imageView.image = [CvMatUIImageConverter UIImageFromCVMat:delta];
 }
 
 - (void) transformImage {
-    
+    // first image
 //    510 340 top left
 //    560 2120 bottom left
 //    2333 270 top right
 //    2360 2152 bottom right
     
+    // second image
+//    445 358 top left
+//    2254 350  top right
+//    430 2130 bottom left
+//    2220 2200 bottom right
+    
     
     NSMutableArray *pointsSet1 = [[NSMutableArray alloc] init];
     CGPoint p1 = CGPointMake(510, 340);
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p1]];
-    
-    CGPoint p2 = CGPointMake(0, 0);
+    CGPoint p2 = CGPointMake(2333, 270);
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p2]];
-    
-    CGPoint p3 = CGPointMake(0, 0);
+    CGPoint p3 = CGPointMake(560, 2120);
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p3]];
-    
-    CGPoint p4 = CGPointMake(0, 0);
+    CGPoint p4 = CGPointMake(2360, 2152);
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p4]];
     
-    
     NSMutableArray *pointsSet2 = [[NSMutableArray alloc] init];
-    p1 = CGPointMake(0, 0);
+    p1 = CGPointMake(445, 358);
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p1]];
-    
-    p2 = CGPointMake(0, 0);
+    p2 = CGPointMake(2254, 350);
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p2]];
-    
-    p3 = CGPointMake(0, 0);
+    p3 = CGPointMake(430, 2130);
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p3]];
-    
-    p4 = CGPointMake(0, 0);
+    p4 = CGPointMake(2220, 2200);
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p4]];
+    
+    UIImage *img2 = [self.transform transform:pointsSet1 withImage:[images objectAtIndex:0 ]];
+    UIImage *img1 = [self.transform transform:pointsSet2 withImage:[images objectAtIndex:1 ]];
+    
+    [self computeDeltaImage:img1 withImageTwo:img2];
     
     
     
