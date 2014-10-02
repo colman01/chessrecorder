@@ -52,6 +52,7 @@
 		C030F35D19DD27D6008A1C02 /* 4_b_Q_h4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35519DD27D6008A1C02 /* 4_b_Q_h4.JPG */; };
 		C030F35E19DD27D6008A1C02 /* 4_w_K_d2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */; };
 		C030F36319DD2A85008A1C02 /* DeltaImagesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C030F36219DD2A85008A1C02 /* DeltaImagesViewController.mm */; };
+		C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = C030F36E19DD464B008A1C02 /* HomographyTransform.mm */; };
 		C066204519DBF8D0002F7B2C /* MainscreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204419DBF8D0002F7B2C /* MainscreenViewController.m */; };
 		C066204C19DC0F54002F7B2C /* GameHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204B19DC0F54002F7B2C /* GameHistoryViewController.m */; };
 		C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204F19DC5324002F7B2C /* NavigationViewController.m */; };
@@ -144,6 +145,8 @@
 		C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4_w_K_d2.JPG; sourceTree = "<group>"; };
 		C030F36119DD2A85008A1C02 /* DeltaImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeltaImagesViewController.h; sourceTree = "<group>"; };
 		C030F36219DD2A85008A1C02 /* DeltaImagesViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DeltaImagesViewController.mm; sourceTree = "<group>"; };
+		C030F36D19DD464B008A1C02 /* HomographyTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomographyTransform.h; sourceTree = "<group>"; };
+		C030F36E19DD464B008A1C02 /* HomographyTransform.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HomographyTransform.mm; sourceTree = "<group>"; };
 		C066204319DBF8D0002F7B2C /* MainscreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainscreenViewController.h; sourceTree = "<group>"; };
 		C066204419DBF8D0002F7B2C /* MainscreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainscreenViewController.m; sourceTree = "<group>"; };
 		C066204A19DC0F54002F7B2C /* GameHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHistoryViewController.h; sourceTree = "<group>"; };
@@ -302,6 +305,7 @@
 		C025713219CC5D7B00624F0E /* chessrecorder */ = {
 			isa = PBXGroup;
 			children = (
+				C030F36519DD4533008A1C02 /* Transform */,
 				C066204D19DC5308002F7B2C /* NavigationCon */,
 				C066204619DC0EFE002F7B2C /* History */,
 				C066204219DBF899002F7B2C /* Main Screen */,
@@ -383,6 +387,15 @@
 				C030F36219DD2A85008A1C02 /* DeltaImagesViewController.mm */,
 			);
 			name = Delta;
+			sourceTree = "<group>";
+		};
+		C030F36519DD4533008A1C02 /* Transform */ = {
+			isa = PBXGroup;
+			children = (
+				C030F36D19DD464B008A1C02 /* HomographyTransform.h */,
+				C030F36E19DD464B008A1C02 /* HomographyTransform.mm */,
+			);
+			name = Transform;
 			sourceTree = "<group>";
 		};
 		C066204219DBF899002F7B2C /* Main Screen */ = {
@@ -617,6 +630,7 @@
 				C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */,
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
 				C0D8FC3B19D86310005C4ADC /* OpenCVViewController.mm in Sources */,
+				C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */,
 				C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */,
 				0481AE6B19D9854A00F2DE80 /* HomographyVc.mm in Sources */,
 				C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */,
