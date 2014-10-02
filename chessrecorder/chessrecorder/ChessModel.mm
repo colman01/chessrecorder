@@ -35,4 +35,53 @@ static ChessModel *sharedInstance;
     return (x+y)%2;
 }
 
+
+
+- (NSString *) getSymbolForFigure :(ChessPiece) chessPiece{
+    NSString *symbol = @"";
+    switch (chessPiece.type) {
+        case PAWN:
+            symbol = @"p";
+            break;
+        case KNIGHT:
+            symbol = @"K";
+            break;
+        case BISHOP:
+            symbol = @"B";
+            break;
+        case ROOK:
+            symbol = @"R";
+            break;
+        case QUEEN:
+            symbol = @"Q";
+            break;
+        case KING:
+            symbol = @"K";
+            break;
+        default:
+            break;
+    }
+    return symbol;
+}
+
+
+- (NSString *) figure:(ChessPiece) playedChessPiece tookFigure:(ChessPiece) capturedPiece onField:(NSString *) field{
+    NSString *symbolPlayed = [self getSymbolForFigure:playedChessPiece];
+    symbolPlayed = [symbolPlayed stringByAppendingString:@"x"];
+    NSString *symbolCaptured = [self getSymbolForFigure:capturedPiece];
+    symbolPlayed = [symbolPlayed stringByAppendingString:symbolCaptured];
+    symbolPlayed = [symbolPlayed stringByAppendingString:field];
+    return  symbolPlayed;
+}
+
+
+- (NSString *) figure:(ChessPiece) playedChessPiece onField:(NSString *) field{
+    NSString *notation;
+    if (playedChessPiece.type != PAWN) {
+        NSString *symbol = [self getSymbolForFigure:playedChessPiece];
+        notation = [symbol stringByAppendingString:field];
+    }
+    return notation;
+}
+
 @end

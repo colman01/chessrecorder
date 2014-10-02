@@ -32,5 +32,6 @@ typedef struct {
 
 
 - (bool) checkColorOfPositionX:(int) x andPositionY:(int) y;
+- (NSString *) getSymbolForFigure :(ChessPiece) chessPiece;
 
 @end
