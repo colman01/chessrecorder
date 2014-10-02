@@ -44,7 +44,7 @@ static ChessModel *sharedInstance;
             symbol = @"p";
             break;
         case KNIGHT:
-            symbol = @"K";
+            symbol = @"N";
             break;
         case BISHOP:
             symbol = @"B";
