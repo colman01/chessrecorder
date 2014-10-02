@@ -43,6 +43,14 @@
 		C025714419CC5D7B00624F0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C025714319CC5D7B00624F0E /* Images.xcassets */; };
 		C025715319CC5D7B00624F0E /* chessrecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C025715219CC5D7B00624F0E /* chessrecorderTests.m */; };
 		C025D00A19D4515A003EC2D0 /* ChessModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = C025D00919D4515A003EC2D0 /* ChessModel.mm */; };
+		C030F35719DD27D6008A1C02 /* 1_b_d5.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F34F19DD27D6008A1C02 /* 1_b_d5.JPG */; };
+		C030F35819DD27D6008A1C02 /* 1_w_d4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35019DD27D6008A1C02 /* 1_w_d4.JPG */; };
+		C030F35919DD27D6008A1C02 /* 2_b_e6.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35119DD27D6008A1C02 /* 2_b_e6.JPG */; };
+		C030F35A19DD27D6008A1C02 /* 2_w_B_f4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35219DD27D6008A1C02 /* 2_w_B_f4.JPG */; };
+		C030F35B19DD27D6008A1C02 /* 3_b_B_b4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35319DD27D6008A1C02 /* 3_b_B_b4.JPG */; };
+		C030F35C19DD27D6008A1C02 /* 3_w_e3.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35419DD27D6008A1C02 /* 3_w_e3.JPG */; };
+		C030F35D19DD27D6008A1C02 /* 4_n_Q_h4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35519DD27D6008A1C02 /* 4_n_Q_h4.JPG */; };
+		C030F35E19DD27D6008A1C02 /* 4_w_K_d2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */; };
 		C066204519DBF8D0002F7B2C /* MainscreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204419DBF8D0002F7B2C /* MainscreenViewController.m */; };
 		C066204C19DC0F54002F7B2C /* GameHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204B19DC0F54002F7B2C /* GameHistoryViewController.m */; };
 		C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204F19DC5324002F7B2C /* NavigationViewController.m */; };
@@ -126,6 +134,14 @@
 		C025715219CC5D7B00624F0E /* chessrecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chessrecorderTests.m; sourceTree = "<group>"; };
 		C025D00819D4515A003EC2D0 /* ChessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChessModel.h; sourceTree = "<group>"; };
 		C025D00919D4515A003EC2D0 /* ChessModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChessModel.mm; sourceTree = "<group>"; };
+		C030F34F19DD27D6008A1C02 /* 1_b_d5.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1_b_d5.JPG; sourceTree = "<group>"; };
+		C030F35019DD27D6008A1C02 /* 1_w_d4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1_w_d4.JPG; sourceTree = "<group>"; };
+		C030F35119DD27D6008A1C02 /* 2_b_e6.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_b_e6.JPG; sourceTree = "<group>"; };
+		C030F35219DD27D6008A1C02 /* 2_w_B_f4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_w_B_f4.JPG; sourceTree = "<group>"; };
+		C030F35319DD27D6008A1C02 /* 3_b_B_b4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3_b_B_b4.JPG; sourceTree = "<group>"; };
+		C030F35419DD27D6008A1C02 /* 3_w_e3.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3_w_e3.JPG; sourceTree = "<group>"; };
+		C030F35519DD27D6008A1C02 /* 4_n_Q_h4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4_n_Q_h4.JPG; sourceTree = "<group>"; };
+		C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4_w_K_d2.JPG; sourceTree = "<group>"; };
 		C066204319DBF8D0002F7B2C /* MainscreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainscreenViewController.h; sourceTree = "<group>"; };
 		C066204419DBF8D0002F7B2C /* MainscreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainscreenViewController.m; sourceTree = "<group>"; };
 		C066204A19DC0F54002F7B2C /* GameHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHistoryViewController.h; sourceTree = "<group>"; };
@@ -224,6 +240,14 @@
 		C002E0AC19D1A68A00948635 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				C030F34F19DD27D6008A1C02 /* 1_b_d5.JPG */,
+				C030F35019DD27D6008A1C02 /* 1_w_d4.JPG */,
+				C030F35119DD27D6008A1C02 /* 2_b_e6.JPG */,
+				C030F35219DD27D6008A1C02 /* 2_w_B_f4.JPG */,
+				C030F35319DD27D6008A1C02 /* 3_b_B_b4.JPG */,
+				C030F35419DD27D6008A1C02 /* 3_w_e3.JPG */,
+				C030F35519DD27D6008A1C02 /* 4_n_Q_h4.JPG */,
+				C030F35619DD27D6008A1C02 /* 4_w_K_d2.JPG */,
 				C066206419DC6A87002F7B2C /* IMG_0004.JPG */,
 				C066205819DC5B48002F7B2C /* multiBoards48_32.png */,
 				C066205619DC5AED002F7B2C /* multiBoards48_32.jpg */,
@@ -509,16 +533,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C030F35E19DD27D6008A1C02 /* 4_w_K_d2.JPG in Resources */,
 				C002E09B19D06E6E00948635 /* Shader1.fsh in Resources */,
+				C030F35B19DD27D6008A1C02 /* 3_b_B_b4.JPG in Resources */,
 				C002E0AB19D1A17500948635 /* chess-top-view.jpg in Resources */,
 				C002E09C19D06E6E00948635 /* Shader2.fsh in Resources */,
 				C066206519DC6A87002F7B2C /* IMG_0004.JPG in Resources */,
+				C030F35919DD27D6008A1C02 /* 2_b_e6.JPG in Resources */,
 				C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */,
 				C025714419CC5D7B00624F0E /* Images.xcassets in Resources */,
 				C002E05319D035B100948635 /* Main.storyboard in Resources */,
 				C066205719DC5AED002F7B2C /* multiBoards48_32.jpg in Resources */,
 				C002E05419D035B400948635 /* LaunchScreen.xib in Resources */,
+				C030F35819DD27D6008A1C02 /* 1_w_d4.JPG in Resources */,
+				C030F35A19DD27D6008A1C02 /* 2_w_B_f4.JPG in Resources */,
+				C030F35C19DD27D6008A1C02 /* 3_w_e3.JPG in Resources */,
 				C002E0A919D19D9100948635 /* chess.jpg in Resources */,
+				C030F35D19DD27D6008A1C02 /* 4_n_Q_h4.JPG in Resources */,
 				C066205519DC5A42002F7B2C /* multiBoards.jpg in Resources */,
 				C002E09719D0650800948635 /* realIcond40.png in Resources */,
 				C066205919DC5B48002F7B2C /* multiBoards48_32.png in Resources */,
@@ -528,6 +559,7 @@
 				0481AE5F19D4685200F2DE80 /* perfect_checkerboard.png in Resources */,
 				0481AE5419D4376800F2DE80 /* chessboard_01.jpg in Resources */,
 				C002E0B019D1ABA700948635 /* Chess_board_opening.jpg in Resources */,
+				C030F35719DD27D6008A1C02 /* 1_b_d5.JPG in Resources */,
 				0481AE6119D473D700F2DE80 /* nicely.jpg in Resources */,
 				C002E0AE19D1A6B600948635 /* Chess_board_top.jpg in Resources */,
 				C002E0B419D1ABF500948635 /* Chess_table.jpg in Resources */,
