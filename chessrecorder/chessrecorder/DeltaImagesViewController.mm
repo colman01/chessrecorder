@@ -92,9 +92,9 @@
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p1]];
     CGPoint p2 = CGPointMake(2105, 510);
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p2]];
-    CGPoint p3 = CGPointMake(310, 2343);
+    CGPoint p3 = CGPointMake(2160, 2320);
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p3]];
-    CGPoint p4 = CGPointMake(2160, 2320);
+    CGPoint p4 = CGPointMake(310, 2343);
     [pointsSet1 addObject:[NSValue valueWithCGPoint:p4]];
     
     NSMutableArray *pointsSet2 = [[NSMutableArray alloc] init];
@@ -102,9 +102,9 @@
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p1]];
     p2 = CGPointMake(2100, 444);
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p2]];
-    p3 = CGPointMake(245, 2222);
+    p3 = CGPointMake(2100, 2250);
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p3]];
-    p4 = CGPointMake(2100, 2250);
+    p4 = CGPointMake(245, 2222);
     [pointsSet2 addObject:[NSValue valueWithCGPoint:p4]];
     
     UIImage *img2 = [self.transform transform:pointsSet1 withImage:[images objectAtIndex:0 ]];

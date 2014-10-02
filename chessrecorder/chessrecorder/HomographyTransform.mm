@@ -120,7 +120,7 @@
         printf("board is adjusted top-bottom, thus there is no need to rotate it by 90deg\n");
     }
     
-    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
+    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:plainBoardImg];
     return combinedImg;
 }
 
