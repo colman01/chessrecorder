@@ -23,10 +23,10 @@
     
 
     srcImgUi = sourceImage;
-    src[0] = [chosenPoints objectAtIndex:0];
-    src[1] = [chosenPoints objectAtIndex:1];
-    src[2] = [chosenPoints objectAtIndex:2];
-    src[3] = [chosenPoints objectAtIndex:3];
+    src[0] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:0];
+    src[1] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:1];
+    src[2] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:2];
+    src[3] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:3];
     
     //    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
 //    src[0] = cv::Point2f(81, 308);
