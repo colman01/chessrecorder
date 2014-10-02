@@ -16,12 +16,9 @@
 
 - (UIImage *) transform:(NSMutableArray *) chosenPoints withImage:(UIImage *)sourceImage {
     int dstImgSize = 400;
-    
     UIImage* srcImgUi;
     cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
-    
-
     srcImgUi = sourceImage;
     
     NSValue *p1 = [chosenPoints objectAtIndex:0];
@@ -30,23 +27,11 @@
     NSValue *p4 = [chosenPoints objectAtIndex:3];
     
     
-    
     src[0] = cv::Point2f([p1 CGPointValue].x, [p1 CGPointValue].y);
     src[1] = cv::Point2f([p2 CGPointValue].x, [p2 CGPointValue].y);
     src[2] = cv::Point2f([p3 CGPointValue].x, [p3 CGPointValue].y);
     src[3] = cv::Point2f([p4 CGPointValue].x, [p4 CGPointValue].y);
 
-    
-//    src[0] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:0];
-//    src[1] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:1];
-//    src[2] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:2];
-//    src[3] = *(__bridge cv::Point2f*)[chosenPoints objectAtIndex:3];
-    
-    //    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chessboard_03" ofType:@"jpg"]];
-//    src[0] = cv::Point2f(81, 308);
-//    src[1] = cv::Point2f(534, 279);
-//    src[2] = cv::Point2f(934, 406);
-//    src[3] = cv::Point2f(377, 542);
 
     dst[0] = cv::Point2f(         0,          0);
     dst[1] = cv::Point2f(dstImgSize,          0);

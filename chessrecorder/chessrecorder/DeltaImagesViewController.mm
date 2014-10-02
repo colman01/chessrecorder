@@ -74,18 +74,6 @@
 }
 
 - (void) transformImage {
-    // first image
-//    510 340 top left
-//    560 2120 bottom left
-//    2333 270 top right
-//    2360 2152 bottom right
-    
-    // second image
-//    445 358 top left
-//    2254 350  top right
-//    430 2130 bottom left
-//    2220 2200 bottom right
-    
     
     NSMutableArray *pointsSet1 = [[NSMutableArray alloc] init];
     CGPoint p1 = CGPointMake(310, 560);
