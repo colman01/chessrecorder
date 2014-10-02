@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iZR-og-qWD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iZR-og-qWD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -70,6 +70,15 @@
                                 </state>
                                 <connections>
                                     <segue destination="z31-Et-z91" kind="show" id="7zR-U9-wtv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1j-NS-Ys7">
+                                <rect key="frame" x="188" y="334" width="90" height="30"/>
+                                <state key="normal" title="Image Deltas">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="3Sm-7f-ztS" kind="show" id="Ojn-tv-EDb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -475,6 +484,24 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4O-KP-sGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111" y="1243"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="P7y-yZ-5MW">
+            <objects>
+                <viewController id="3Sm-7f-ztS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cNe-H2-K9n"/>
+                        <viewControllerLayoutGuide type="bottom" id="bCi-mt-Kcg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ny6-js-lKy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ckw-eC-5z1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1111" y="-221"/>
         </scene>
         <!--Mainscreen View Controller-->
         <scene sceneID="W0X-jP-O3W">
