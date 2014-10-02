@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomographyTransform.h"
 
 @interface DeltaImagesViewController : UIViewController
 
 @property NSMutableArray *images;
 
 @property IBOutlet UIImageView *imageView;
+
+@property HomographyTransform * transform;
 
 @end

@@ -64,4 +64,9 @@
     imageView.image = [CvMatUIImageConverter UIImageFromCVMat:delta];
 }
 
+- (void) transformImage {
+    NSMutableArray *pointsSet1 = [[NSMutableArray alloc] init];
+//    [pointsSet1 addObject:cv::Point2f(534, 279)];
+}
+
 @end
