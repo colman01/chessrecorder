@@ -45,7 +45,6 @@
     [self.whitePlayer setText:game.white];
     [self.blackPlayer setText:game.black];
     [self.result setText:game.result];
-
 }
 
 
