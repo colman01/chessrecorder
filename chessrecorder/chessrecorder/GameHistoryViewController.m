@@ -22,6 +22,7 @@
     [super viewDidLoad];
     self.gameList.delegate = self;
     self.fetchedRecordsArray = [[GameDao instance] getAllGames];
+    self.gameList.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.gameList.bounds.size.width, 10.01f)];
 }
 
 - (void)didReceiveMemoryWarning {
