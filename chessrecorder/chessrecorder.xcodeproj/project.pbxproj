@@ -55,6 +55,8 @@
 		C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = C030F36E19DD464B008A1C02 /* HomographyTransform.mm */; };
 		C030F37819DD6EF8008A1C02 /* NotationWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C030F37719DD6EF8008A1C02 /* NotationWriter.m */; };
 		C030F37C19DD9A26008A1C02 /* PlayerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C030F37B19DD9A26008A1C02 /* PlayerInfoViewController.m */; };
+		C061FBEA19DFEABE007E9FDD /* GameDao.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBE919DFEABE007E9FDD /* GameDao.m */; };
+		C061FBEE19DFEB4B007E9FDD /* DmGameInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBED19DFEB4B007E9FDD /* DmGameInformation.m */; };
 		C066204519DBF8D0002F7B2C /* MainscreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204419DBF8D0002F7B2C /* MainscreenViewController.m */; };
 		C066204C19DC0F54002F7B2C /* GameHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204B19DC0F54002F7B2C /* GameHistoryViewController.m */; };
 		C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204F19DC5324002F7B2C /* NavigationViewController.m */; };
@@ -153,6 +155,11 @@
 		C030F37719DD6EF8008A1C02 /* NotationWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotationWriter.m; sourceTree = "<group>"; };
 		C030F37A19DD9A26008A1C02 /* PlayerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInfoViewController.h; sourceTree = "<group>"; };
 		C030F37B19DD9A26008A1C02 /* PlayerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerInfoViewController.m; sourceTree = "<group>"; };
+		C061FBE819DFEABE007E9FDD /* GameDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDao.h; sourceTree = "<group>"; };
+		C061FBE919DFEABE007E9FDD /* GameDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDao.m; sourceTree = "<group>"; };
+		C061FBEB19DFEB33007E9FDD /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		C061FBEC19DFEB4B007E9FDD /* DmGameInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DmGameInformation.h; sourceTree = "<group>"; };
+		C061FBED19DFEB4B007E9FDD /* DmGameInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DmGameInformation.m; sourceTree = "<group>"; };
 		C066204319DBF8D0002F7B2C /* MainscreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainscreenViewController.h; sourceTree = "<group>"; };
 		C066204419DBF8D0002F7B2C /* MainscreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainscreenViewController.m; sourceTree = "<group>"; };
 		C066204A19DC0F54002F7B2C /* GameHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHistoryViewController.h; sourceTree = "<group>"; };
@@ -310,6 +317,8 @@
 		C025713219CC5D7B00624F0E /* chessrecorder */ = {
 			isa = PBXGroup;
 			children = (
+				C061FBE719DFEA98007E9FDD /* Services */,
+				C061FBE619DFEA8D007E9FDD /* DmModel */,
 				C030F37519DD6EB9008A1C02 /* Chess Moves */,
 				C030F37419DD6720008A1C02 /* View Controllers */,
 				C030F37319DD66F5008A1C02 /* iOS Objects */,
@@ -453,6 +462,25 @@
 				C030F37B19DD9A26008A1C02 /* PlayerInfoViewController.m */,
 			);
 			name = "Player Info ";
+			sourceTree = "<group>";
+		};
+		C061FBE619DFEA8D007E9FDD /* DmModel */ = {
+			isa = PBXGroup;
+			children = (
+				C061FBEC19DFEB4B007E9FDD /* DmGameInformation.h */,
+				C061FBED19DFEB4B007E9FDD /* DmGameInformation.m */,
+				C061FBEB19DFEB33007E9FDD /* Data.h */,
+			);
+			name = DmModel;
+			sourceTree = "<group>";
+		};
+		C061FBE719DFEA98007E9FDD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C061FBE819DFEABE007E9FDD /* GameDao.h */,
+				C061FBE919DFEABE007E9FDD /* GameDao.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		C066204219DBF899002F7B2C /* Main Screen */ = {
@@ -679,6 +707,7 @@
 				C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */,
 				C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */,
 				C025D00A19D4515A003EC2D0 /* ChessModel.mm in Sources */,
+				C061FBEE19DFEB4B007E9FDD /* DmGameInformation.m in Sources */,
 				C066204C19DC0F54002F7B2C /* GameHistoryViewController.m in Sources */,
 				C066205C19DC63F7002F7B2C /* StandardChessViewController.m in Sources */,
 				0481AE6419D5DC0A00F2DE80 /* DetectCheckerboardViewController.mm in Sources */,
@@ -689,6 +718,7 @@
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
 				C0D8FC3B19D86310005C4ADC /* OpenCVViewController.mm in Sources */,
 				C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */,
+				C061FBEA19DFEABE007E9FDD /* GameDao.m in Sources */,
 				C030F37819DD6EF8008A1C02 /* NotationWriter.m in Sources */,
 				C030F37C19DD9A26008A1C02 /* PlayerInfoViewController.m in Sources */,
 				C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */,
