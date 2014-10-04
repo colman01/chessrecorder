@@ -90,7 +90,17 @@
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
      if (editingStyle == UITableViewCellEditingStyleDelete) {
          // Delete the row from the data source
-         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         
+         [tableView reloadData];
+         
+         [[GameDao instance] remove:[self.fetchedRecordsArray objectAtIndex:indexPath.row]];
+         AppDelegate *appDelegate =  [UIApplication sharedApplication].delegate;
+         [appDelegate saveContext];
+         
+         self.fetchedRecordsArray = [[GameDao instance] getAllGames];
+         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         
+         
      } else if (editingStyle == UITableViewCellEditingStyleInsert) {
  // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
  }
@@ -116,12 +126,9 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    
     UITableViewCell *selectedGameCell = (UITableViewCell *)sender;
     NSIndexPath *cellPath = [self.gameList indexPathForCell:selectedGameCell];
     NSNumber *gameNumber = [NSNumber numberWithInteger:cellPath.row];
-    
     
     id dest = [segue destinationViewController];
     HomeViewController *home = (HomeViewController *)dest;
