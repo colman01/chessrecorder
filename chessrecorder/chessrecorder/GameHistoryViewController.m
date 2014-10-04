@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.gameList.delegate = self;
+    self.fetchedRecordsArray = [[GameDao instance] getAllGames];
 }
 
 - (void)didReceiveMemoryWarning {

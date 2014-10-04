@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameDao.h"
+
 
 @interface GameHistoryViewController : UIViewController <UITableViewDelegate>
 
 
 @property IBOutlet UITableView *gameList;
+@property (strong, nonatomic) NSArray* fetchedRecordsArray;
+
 @end
