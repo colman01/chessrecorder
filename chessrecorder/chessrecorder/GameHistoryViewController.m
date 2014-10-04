@@ -49,16 +49,19 @@
      UILabel *time = (UILabel *)[cell viewWithTag:3];
      UILabel *outcome = (UILabel *)[cell viewWithTag:4];
      
+     UILabel *white = (UILabel *)[cell viewWithTag:5];
+     UILabel *black = (UILabel *)[cell viewWithTag:6];
      
      [location setText:gameInfo.site];
-     
      NSDateFormatter *f = [[NSDateFormatter alloc] init];
      [f setDateFormat:@"yyyy-mmm-dd"];
      [date setText:[f stringFromDate:gameInfo.date]];
      [time setText:@""];
+     [white setText:gameInfo.white];
+     [black setText:gameInfo.black];
+     
      [outcome setText:gameInfo.result];
      
- 
      return cell;
  }
 

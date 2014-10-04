@@ -15,11 +15,16 @@
 
 @implementation HomeViewController
 @synthesize showHistory;
+@synthesize notationView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (!self.gameNumber)
+    if (!self.gameNumber) {
         self.gameNumber = [NSNumber numberWithInt:0];
+    } else {
+        DmGameInformation *gameData = [[GameDao instance] loadById:self.gameNumber];
+        [self.notationView setText:gameData.notation];
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {

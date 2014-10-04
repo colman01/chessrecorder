@@ -164,6 +164,9 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="UO3-qb-lDV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="notationView" destination="ngY-70-Udi" id="kGb-Iv-gdD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkR-cR-www" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -258,8 +261,8 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tro-jV-u0x" id="RfG-Cx-Lqq">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-A1-gbm">
-                                                    <rect key="frame" x="8" y="11" width="41" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-A1-gbm">
+                                                    <rect key="frame" x="8" y="17" width="41" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="QS3-QI-Awj"/>
                                                     </constraints>
@@ -268,28 +271,50 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v64-u3-teb">
-                                                    <rect key="frame" x="8" y="34" width="36" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="W/l/R/U" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmI-UD-LuX">
-                                                    <rect key="frame" x="177" y="34" width="61" height="21"/>
+                                                    <rect key="frame" x="8" y="39" width="36" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0A-cs-xkp">
-                                                    <rect key="frame" x="241" y="11" width="38" height="21"/>
+                                                    <rect key="frame" x="241" y="16" width="38" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="W/l/R/U" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmI-UD-LuX">
+                                                    <rect key="frame" x="177" y="39" width="61" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="White" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BR3-lU-npv">
+                                                    <rect key="frame" x="8" y="3" width="76" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="GtN-NR-r0s"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Black" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIq-fK-lHU">
+                                                    <rect key="frame" x="191" y="3" width="88" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="E2O-eE-nGd"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="i0A-cs-xkp" firstAttribute="leading" secondItem="12Y-A1-gbm" secondAttribute="trailing" constant="166" id="9zg-lq-Z5L"/>
+                                                <constraint firstItem="BR3-lU-npv" firstAttribute="leading" secondItem="RfG-Cx-Lqq" secondAttribute="leadingMargin" id="2VX-Oz-5VG"/>
+                                                <constraint firstItem="i0A-cs-xkp" firstAttribute="leading" secondItem="12Y-A1-gbm" secondAttribute="trailing" constant="192" id="9zg-lq-Z5L"/>
+                                                <constraint firstItem="NIq-fK-lHU" firstAttribute="top" secondItem="RfG-Cx-Lqq" secondAttribute="topMargin" constant="-5" id="QaZ-ul-hXL"/>
+                                                <constraint firstItem="NIq-fK-lHU" firstAttribute="trailing" secondItem="RfG-Cx-Lqq" secondAttribute="trailingMargin" id="VuV-jp-1Tw"/>
+                                                <constraint firstItem="BR3-lU-npv" firstAttribute="top" secondItem="RfG-Cx-Lqq" secondAttribute="topMargin" constant="-5" id="p8x-HI-yRP"/>
                                                 <constraint firstItem="12Y-A1-gbm" firstAttribute="leading" secondItem="RfG-Cx-Lqq" secondAttribute="leadingMargin" id="q5t-ic-5bq"/>
-                                                <constraint firstItem="12Y-A1-gbm" firstAttribute="top" secondItem="RfG-Cx-Lqq" secondAttribute="topMargin" constant="3" id="qaW-ND-VZS"/>
+                                                <constraint firstItem="12Y-A1-gbm" firstAttribute="top" secondItem="RfG-Cx-Lqq" secondAttribute="topMargin" constant="8" id="qaW-ND-VZS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -312,7 +337,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="602-3Y-4To" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2525" y="-686"/>
+            <point key="canvasLocation" x="2525" y="-688"/>
         </scene>
         <!--Filter Preview Collection View Controller-->
         <scene sceneID="Jh4-ZV-ajH">

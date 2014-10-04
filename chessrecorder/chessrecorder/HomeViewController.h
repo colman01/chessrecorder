@@ -17,4 +17,6 @@
 
 @property NSNumber *gameNumber;
 
+@property IBOutlet UITextView *notationView;
+
 @end
