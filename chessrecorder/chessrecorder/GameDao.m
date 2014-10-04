@@ -45,8 +45,6 @@ static GameDao *instance = NULL;
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"GameInformation" inManagedObjectContext:[appDelegate  managedObjectContext]];
     [fetchRequest setEntity:entity];
 //    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"identifier = %@", identifier];
-    
-    
 //    [fetchRequest setPredicate:predicate];
     NSError* error;
     // Query on managedObjectContext With Generated fetchRequest
