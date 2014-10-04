@@ -18,8 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (!self.gameEntry)
-        self.gameEntry = [NSNumber numberWithInt:0];
+    if (!self.gameNumber)
+        self.gameNumber = [NSNumber numberWithInt:0];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -58,7 +58,7 @@
         id dest = [segue destinationViewController];
         PlayerInfoViewController *infoView = (PlayerInfoViewController *) dest;
         
-        infoView.gameNumber = self.gameEntry;
+        infoView.gameNumber = self.gameNumber;
     }
     
 

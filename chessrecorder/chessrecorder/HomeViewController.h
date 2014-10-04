@@ -15,6 +15,6 @@
 - (IBAction)goBack:(id)sender;
 @property bool showHistory;
 
-@property NSNumber *gameEntry;
+@property NSNumber *gameNumber;
 
 @end

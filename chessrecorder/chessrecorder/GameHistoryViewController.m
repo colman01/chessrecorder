@@ -36,15 +36,30 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.fetchedRecordsArray.count;
 }
 
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell" forIndexPath:indexPath];
  
+     DmGameInformation *gameInfo = [self.fetchedRecordsArray objectAtIndex:indexPath.row];
+     UILabel *location = (UILabel *)[cell viewWithTag:1];
+     UILabel *date = (UILabel *)[cell viewWithTag:2];
+     UILabel *time = (UILabel *)[cell viewWithTag:3];
+     UILabel *outcome = (UILabel *)[cell viewWithTag:4];
+     
+     
+     [location setText:gameInfo.site];
+     
+     NSDateFormatter *f = [[NSDateFormatter alloc] init];
+     [f setDateFormat:@"yyyy-mmm-dd"];
+     [date setText:[f stringFromDate:gameInfo.date]];
+     [time setText:@""];
+     [outcome setText:gameInfo.result];
+     
  
- return cell;
+     return cell;
  }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,7 +69,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 64;
 }
 
 
@@ -66,17 +81,17 @@
  }
  */
 
-/*
+
  // Override to support editing the table view.
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+     if (editingStyle == UITableViewCellEditingStyleDelete) {
+         // Delete the row from the data source
+         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
  // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
  }
  }
- */
+
 
 /*
  // Override to support rearranging the table view.
@@ -97,9 +112,17 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    UITableViewCell *selectedGameCell = (UITableViewCell *)sender;
+    NSIndexPath *cellPath = [self.gameList indexPathForCell:selectedGameCell];
+    NSNumber *gameNumber = [NSNumber numberWithInteger:cellPath.row];
+    
+    
     id dest = [segue destinationViewController];
     HomeViewController *home = (HomeViewController *)dest;
     home.showHistory = YES;
+    home.gameNumber = gameNumber;
 }
 
 
