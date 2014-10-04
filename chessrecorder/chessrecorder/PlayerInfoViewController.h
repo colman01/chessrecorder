@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameDao.h"
 
 @interface PlayerInfoViewController : UIViewController
 
@@ -18,7 +19,9 @@
 @property IBOutlet UITextView *whitePlayer;
 @property IBOutlet UITextView *blackPlayer;
 @property IBOutlet UITextView *result;
+@property NSNumber *gameNumber;
 
+- (void) setupGameInfo:(NSNumber *) gameNumber;
 
 
 @end

@@ -18,20 +18,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.gameNumber)
+        [self setupGameInfo:self.gameNumber];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-/*
-#pragma mark - Navigation
+- (void) setupGameInfo:(NSNumber *) gameNumber  {
+    DmGameInformation *game = [[GameDao instance] loadById:gameNumber];
+    
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateFormat:@"yyyy/mm/dd"];
+    
+    [self.event setText:game.event];
+    [self.location setText:game.site];
+    [self.date setText:[f stringFromDate:game.date]];
+    [self.round setText:[game.round stringValue]];
+    [self.whitePlayer setText:game.white];
+    [self.blackPlayer setText:game.black];
+    [self.result setText:game.result];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
