@@ -5,7 +5,7 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="result" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="round" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="site" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="white" optional="YES" attributeType="String" syncable="YES"/>

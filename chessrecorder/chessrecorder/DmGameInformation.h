@@ -19,6 +19,6 @@
 @property (nonatomic, retain) NSNumber * round;
 @property (nonatomic, retain) NSString * white;
 @property (nonatomic, retain) NSString * black;
-@property (nonatomic, retain) NSNumber * result;
+@property (nonatomic, retain) NSString * result;
 
 @end
