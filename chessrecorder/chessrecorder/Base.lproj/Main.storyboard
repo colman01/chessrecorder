@@ -156,7 +156,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Pr4-px-U9B" kind="show" id="S1E-AL-f4h"/>
+                                    <segue destination="Pr4-px-U9B" kind="show" identifier="GameInfo" id="S1E-AL-f4h"/>
                                 </connections>
                             </button>
                         </subviews>

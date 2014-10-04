@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreateSampleGameData.h"
+#import "GameDao.h"
 
 @interface MainscreenViewController : UITabBarController
 

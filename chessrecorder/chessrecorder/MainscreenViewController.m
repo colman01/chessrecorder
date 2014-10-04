@@ -16,6 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSMutableArray *records = [[GameDao instance ] getAllGames];
+    if (records.count < 1) {
+        CreateSampleGameData *createData = [[CreateSampleGameData alloc] init];
+        [createData createSampleData];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

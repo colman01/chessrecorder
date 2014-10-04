@@ -12,4 +12,6 @@
 
 @interface CreateSampleGameData : NSObject
 
+- (void) createSampleData;
+    
 @end

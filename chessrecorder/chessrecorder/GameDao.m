@@ -44,8 +44,10 @@ static GameDao *instance = NULL;
     //Setting Entity to be Queried
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"GameInformation" inManagedObjectContext:[appDelegate  managedObjectContext]];
     [fetchRequest setEntity:entity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"identifier = %@", identifier];
-    [fetchRequest setPredicate:predicate];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"identifier = %@", identifier];
+    
+    
+//    [fetchRequest setPredicate:predicate];
     NSError* error;
     // Query on managedObjectContext With Generated fetchRequest
     NSArray *result = [[appDelegate managedObjectContext] executeFetchRequest:fetchRequest error:&error];
@@ -55,7 +57,7 @@ static GameDao *instance = NULL;
         return nil;
     }
     if (result.count > 0)
-        return  result[0];
+        return  result[[identifier intValue]];
     return nil;
 }
 

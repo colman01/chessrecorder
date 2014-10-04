@@ -18,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (!self.gameEntry)
+        self.gameEntry = [NSNumber numberWithInt:0];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -51,6 +53,15 @@
         }
 
     }
+    
+    if ([[segue identifier] isEqualToString:@"GameInfo"]) {
+        id dest = [segue destinationViewController];
+        PlayerInfoViewController *infoView = (PlayerInfoViewController *) dest;
+        
+        infoView.gameNumber = self.gameEntry;
+    }
+    
+
 }
 
 

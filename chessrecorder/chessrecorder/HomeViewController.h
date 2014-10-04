@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlayerInfoViewController.h"
 
 @interface HomeViewController : UIViewController
 
 
 - (IBAction)goBack:(id)sender;
 @property bool showHistory;
+
+@property NSNumber *gameEntry;
 
 @end
