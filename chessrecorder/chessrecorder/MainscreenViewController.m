@@ -21,6 +21,13 @@
         CreateSampleGameData *createData = [[CreateSampleGameData alloc] init];
         [createData createSampleData];
     }
+    
+
+    UITabBar *tabBar = self.tabBar;
+    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
+    [tabBarItem1 setImage:[UIImage imageNamed:@"realIcond30.png"]];
+    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
+    [tabBarItem3 setImage:[UIImage imageNamed:@"Info.png"]];
 }
 
 - (void)didReceiveMemoryWarning {

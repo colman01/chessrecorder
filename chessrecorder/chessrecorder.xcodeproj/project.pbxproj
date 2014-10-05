@@ -238,6 +238,9 @@
 		C061FD5919E046F3007E9FDD /* XBoardWQueen@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C061FCA519E046F3007E9FDD /* XBoardWQueen@2x.tiff */; };
 		C061FD5A19E046F3007E9FDD /* XBoardWRook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C061FCA619E046F3007E9FDD /* XBoardWRook.tiff */; };
 		C061FD5B19E046F3007E9FDD /* XBoardWRook@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C061FCA719E046F3007E9FDD /* XBoardWRook@2x.tiff */; };
+		C061FD5D19E150E5007E9FDD /* realIcond30.png in Resources */ = {isa = PBXBuildFile; fileRef = C061FD5C19E150E5007E9FDD /* realIcond30.png */; };
+		C061FD6119E152CD007E9FDD /* HomeTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FD6019E152CD007E9FDD /* HomeTabBarItem.m */; };
+		C061FD6319E15490007E9FDD /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = C061FD6219E15490007E9FDD /* info.png */; };
 		C066204519DBF8D0002F7B2C /* MainscreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204419DBF8D0002F7B2C /* MainscreenViewController.m */; };
 		C066204C19DC0F54002F7B2C /* GameHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204B19DC0F54002F7B2C /* GameHistoryViewController.m */; };
 		C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066204F19DC5324002F7B2C /* NavigationViewController.m */; };
@@ -523,6 +526,10 @@
 		C061FCA519E046F3007E9FDD /* XBoardWQueen@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "XBoardWQueen@2x.tiff"; sourceTree = "<group>"; };
 		C061FCA619E046F3007E9FDD /* XBoardWRook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = XBoardWRook.tiff; sourceTree = "<group>"; };
 		C061FCA719E046F3007E9FDD /* XBoardWRook@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "XBoardWRook@2x.tiff"; sourceTree = "<group>"; };
+		C061FD5C19E150E5007E9FDD /* realIcond30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = realIcond30.png; sourceTree = "<group>"; };
+		C061FD5F19E152CD007E9FDD /* HomeTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTabBarItem.h; sourceTree = "<group>"; };
+		C061FD6019E152CD007E9FDD /* HomeTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTabBarItem.m; sourceTree = "<group>"; };
+		C061FD6219E15490007E9FDD /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		C066204319DBF8D0002F7B2C /* MainscreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainscreenViewController.h; sourceTree = "<group>"; };
 		C066204419DBF8D0002F7B2C /* MainscreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainscreenViewController.m; sourceTree = "<group>"; };
 		C066204A19DC0F54002F7B2C /* GameHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHistoryViewController.h; sourceTree = "<group>"; };
@@ -583,6 +590,8 @@
 		C002E09519D0650000948635 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				C061FD6219E15490007E9FDD /* info.png */,
+				C061FD5C19E150E5007E9FDD /* realIcond30.png */,
 				C002E09619D0650800948635 /* realIcond40.png */,
 			);
 			name = icons;
@@ -796,6 +805,7 @@
 		C030F37319DD66F5008A1C02 /* iOS Objects */ = {
 			isa = PBXGroup;
 			children = (
+				C061FD5E19E152AF007E9FDD /* Tab Item */,
 				C066204D19DC5308002F7B2C /* NavigationCon */,
 			);
 			name = "iOS Objects";
@@ -1042,6 +1052,15 @@
 				C061FCA719E046F3007E9FDD /* XBoardWRook@2x.tiff */,
 			);
 			name = "game images";
+			sourceTree = "<group>";
+		};
+		C061FD5E19E152AF007E9FDD /* Tab Item */ = {
+			isa = PBXGroup;
+			children = (
+				C061FD5F19E152CD007E9FDD /* HomeTabBarItem.h */,
+				C061FD6019E152CD007E9FDD /* HomeTabBarItem.m */,
+			);
+			name = "Tab Item";
 			sourceTree = "<group>";
 		};
 		C066204219DBF899002F7B2C /* Main Screen */ = {
@@ -1333,6 +1352,7 @@
 				C061FCC819E046F3007E9FDD /* BerlinBQueen.tiff in Resources */,
 				C061FD3019E046F3007E9FDD /* USCFBKnight.tiff in Resources */,
 				C066205519DC5A42002F7B2C /* multiBoards.jpg in Resources */,
+				C061FD5D19E150E5007E9FDD /* realIcond30.png in Resources */,
 				C061FCF319E046F3007E9FDD /* DarkMarble@2x.tiff in Resources */,
 				C002E09719D0650800948635 /* realIcond40.png in Resources */,
 				C061FD0319E046F3007E9FDD /* LeipzigWBishop@2x.tiff in Resources */,
@@ -1381,6 +1401,7 @@
 				C061FCD319E046F3007E9FDD /* BerlinWPawn@2x.tiff in Resources */,
 				C061FCB219E046F3007E9FDD /* AlphaBRook.tiff in Resources */,
 				C061FD2819E046F3007E9FDD /* ModernWQueen.tiff in Resources */,
+				C061FD6319E15490007E9FDD /* info.png in Resources */,
 				C061FD3719E046F3007E9FDD /* USCFBRook@2x.tiff in Resources */,
 				C061FD1A19E046F3007E9FDD /* ModernBPawn.tiff in Resources */,
 				C061FCDA19E046F3007E9FDD /* CheqBKing.tiff in Resources */,
@@ -1441,6 +1462,7 @@
 				C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */,
 				C066205319DC56CA002F7B2C /* NavigationBar.m in Sources */,
 				C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */,
+				C061FD6119E152CD007E9FDD /* HomeTabBarItem.m in Sources */,
 				C030F36319DD2A85008A1C02 /* DeltaImagesViewController.mm in Sources */,
 				C002E0A419D1862E00948635 /* ChessFilterViewController.m in Sources */,
 				0481AE5D19D44D9500F2DE80 /* CvMatUIImageConverter.mm in Sources */,

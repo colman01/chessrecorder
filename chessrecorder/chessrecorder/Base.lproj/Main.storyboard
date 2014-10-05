@@ -233,7 +233,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" id="l3D-ly-M2w"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="Info.png" id="l3D-ly-M2w"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZp-sd-3aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,7 +329,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                             </tableView>
                         </subviews>
                     </view>
-                    <tabBarItem key="tabBarItem" title="History" image="multiBoards48_32.png" id="hXn-2l-mJh"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="hXn-2l-mJh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="gameList" destination="xbw-2G-UfV" id="zit-1f-hWC"/>
@@ -821,9 +821,9 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
     <resources>
         <image name="Chess-board.jpg" width="400" height="400"/>
         <image name="Chess_board_top.jpg" width="800" height="800"/>
+        <image name="Info.png" width="400" height="400"/>
         <image name="chess-top-view.jpg" width="1300" height="1390"/>
         <image name="chess.jpg" width="800" height="604"/>
-        <image name="multiBoards48_32.png" width="48" height="32"/>
         <image name="perfect_checkerboard.png" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
