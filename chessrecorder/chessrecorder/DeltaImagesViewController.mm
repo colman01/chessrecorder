@@ -61,16 +61,27 @@
 }
 
 - (void) computeDeltaImage:(UIImage *)I_1 withImageTwo:(UIImage *)I_2 {
-    cv::Mat delta1 = [CvMatUIImageConverter cvMatGrayFromUIImage:I_1];
-    cv::Mat delta2 = [CvMatUIImageConverter cvMatGrayFromUIImage:I_2];
-    cv::Mat delta;
-    cv::subtract(delta1, delta2, delta);
+//    cv::Mat delta1 = [CvMatUIImageConverter cvMatGrayFromUIImage:I_1];
+//    cv::Mat delta2 = [CvMatUIImageConverter cvMatGrayFromUIImage:I_2];
+//    cv::Mat delta;
+//    cv::subtract(delta1, delta2, delta);
+    
+    GPUImageSubtractBlendFilter *subtractFilter = [[GPUImageSubtractBlendFilter alloc] init];
 //    imageView.image = [CvMatUIImageConverter UIImageFromCVMat:delta];
+//    UIImage *inputImage = [UIImage imageNamed:@""];
+    GPUImagePicture *sourcePicture;
+    sourcePicture = [[GPUImagePicture alloc] initWithImage:I_1 smoothlyScaleOutput:YES];
+    [sourcePicture processImage];
+    [sourcePicture addTarget:subtractFilter];
+    UIImage *res = [subtractFilter imageByFilteringImage:I_2];
+     
+    [imageView setImage:res]; //I_n45
     
-    GPUImageBrightnessFilter *bright = [[GPUImageBrightnessFilter alloc] init];
-    [bright setBrightness:0.15];
     
-    [imageView setImage:[bright imageByFilteringImage:[CvMatUIImageConverter UIImageFromCVMat:delta]]]; //I_n45
+//    GPUImageBrightnessFilter *bright = [[GPUImageBrightnessFilter alloc] init];
+//    [bright setBrightness:0.15];
+    
+//    [imageView setImage:[bright imageByFilteringImage:[CvMatUIImageConverter UIImageFromCVMat:delta]]]; //I_n45
 }
 
 - (void) transformImage {
@@ -99,10 +110,6 @@
     UIImage *img1 = [self.transform transform:pointsSet2 withImage:[images objectAtIndex:1 ]];
     
     [self computeDeltaImage:img1 withImageTwo:img2];
-    
-    
-    
-    
 }
 
 @end

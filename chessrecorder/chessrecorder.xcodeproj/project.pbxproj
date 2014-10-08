@@ -56,6 +56,7 @@
 		C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = C030F36E19DD464B008A1C02 /* HomographyTransform.mm */; };
 		C030F37819DD6EF8008A1C02 /* NotationWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C030F37719DD6EF8008A1C02 /* NotationWriter.m */; };
 		C030F37C19DD9A26008A1C02 /* PlayerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C030F37B19DD9A26008A1C02 /* PlayerInfoViewController.m */; };
+		C05B836319E558D10070286F /* Shader3.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C05B836219E558D10070286F /* Shader3.fsh */; };
 		C061FBEA19DFEABE007E9FDD /* GameDao.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBE919DFEABE007E9FDD /* GameDao.m */; };
 		C061FBEE19DFEB4B007E9FDD /* DmGameInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBED19DFEB4B007E9FDD /* DmGameInformation.m */; };
 		C061FBF219DFF404007E9FDD /* CreateSampleGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBF119DFF404007E9FDD /* CreateSampleGameData.m */; };
@@ -342,6 +343,7 @@
 		C030F37719DD6EF8008A1C02 /* NotationWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotationWriter.m; sourceTree = "<group>"; };
 		C030F37A19DD9A26008A1C02 /* PlayerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInfoViewController.h; sourceTree = "<group>"; };
 		C030F37B19DD9A26008A1C02 /* PlayerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerInfoViewController.m; sourceTree = "<group>"; };
+		C05B836219E558D10070286F /* Shader3.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader3.fsh; sourceTree = "<group>"; };
 		C061FBE819DFEABE007E9FDD /* GameDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDao.h; sourceTree = "<group>"; };
 		C061FBE919DFEABE007E9FDD /* GameDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDao.m; sourceTree = "<group>"; };
 		C061FBEB19DFEB33007E9FDD /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 			children = (
 				C025714519CC5D7B00624F0E /* LaunchScreen.xib */,
 				C002E09919D06E6E00948635 /* Shader1.fsh */,
+				C05B836219E558D10070286F /* Shader3.fsh */,
 				C002E09A19D06E6E00948635 /* Shader2.fsh */,
 				C002E08F19D051A100948635 /* ShowcaseFilterViewController.h */,
 				C002E09019D051A100948635 /* ShowcaseFilterViewController.m */,
@@ -1241,6 +1244,7 @@
 				C030F35E19DD27D6008A1C02 /* 4_w_K_d2.JPG in Resources */,
 				C002E09B19D06E6E00948635 /* Shader1.fsh in Resources */,
 				C061FCA919E046F3007E9FDD /* AlphaBBishop@2x.tiff in Resources */,
+				C05B836319E558D10070286F /* Shader3.fsh in Resources */,
 				C061FCC619E046F3007E9FDD /* BerlinBPawn.tiff in Resources */,
 				C061FD1719E046F3007E9FDD /* ModernBKing@2x.tiff in Resources */,
 				C061FD5019E046F3007E9FDD /* XBoardWBishop.tiff in Resources */,
