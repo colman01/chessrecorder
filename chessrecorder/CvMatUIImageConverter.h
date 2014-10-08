@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 
 @interface CvMatUIImageConverter : NSObject
+
 
 + (cv::Mat) cvMatFromUIImage:(UIImage *)image;
 + (cv::Mat) cvMatGrayFromUIImage:(UIImage *)image;

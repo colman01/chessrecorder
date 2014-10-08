@@ -61,40 +61,40 @@
     printf("done\n");
 }
 
-- (void) warpSpeedImage {
-    
-    DHWarpView *warpView = [[DHWarpView alloc] initWithFrame:CGRectMake(0, 0, 1400, 1400)];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chess_rotate.jpg"]];
-    
-    warpView.frame = self.display.bounds;
-    warpView.contentMode = UIViewContentModeScaleAspectFit; 
-    warpView.autoresizingMask = UIViewAutoresizingNone;
-    self.display.autoresizingMask = UIViewAutoresizingNone;
-    
-    [warpView addSubview:imageView];
-    [self.display addSubview:warpView];
-    warpView.topLeft = CGPointMake(27, 26);
-    warpView.topRight = CGPointMake(550, -30);
-    warpView.bottomLeft = CGPointMake(20, 400);
-    warpView.bottomRight = CGPointMake(555, 700);
-    
-    CGRect center = self.display.frame;
-    center.origin.x -= 50;
-    center.origin.y -= 400;
-    [warpView setFrame:center];
-    
-
-    self.display.layer.cornerRadius = 10.0;
-    self.display.layer.shadowRadius = 10.0;
-    self.display.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.display.layer.shadowOpacity = 1.0;
-    self.display.layer.shadowRadius = 5.0;
-    self.display.layer.shadowOffset = CGSizeMake(0, 3);
-    self.display.clipsToBounds = NO;
-    
-
-    [warpView warp];
-}
+//- (void) warpSpeedImage {
+//    
+//    DHWarpView *warpView = [[DHWarpView alloc] initWithFrame:CGRectMake(0, 0, 1400, 1400)];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chess_rotate.jpg"]];
+//    
+//    warpView.frame = self.display.bounds;
+//    warpView.contentMode = UIViewContentModeScaleAspectFit; 
+//    warpView.autoresizingMask = UIViewAutoresizingNone;
+//    self.display.autoresizingMask = UIViewAutoresizingNone;
+//    
+//    [warpView addSubview:imageView];
+//    [self.display addSubview:warpView];
+//    warpView.topLeft = CGPointMake(27, 26);
+//    warpView.topRight = CGPointMake(550, -30);
+//    warpView.bottomLeft = CGPointMake(20, 400);
+//    warpView.bottomRight = CGPointMake(555, 700);
+//    
+//    CGRect center = self.display.frame;
+//    center.origin.x -= 50;
+//    center.origin.y -= 400;
+//    [warpView setFrame:center];
+//    
+//
+//    self.display.layer.cornerRadius = 10.0;
+//    self.display.layer.shadowRadius = 10.0;
+//    self.display.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.display.layer.shadowOpacity = 1.0;
+//    self.display.layer.shadowRadius = 5.0;
+//    self.display.layer.shadowOffset = CGSizeMake(0, 3);
+//    self.display.clipsToBounds = NO;
+//    
+//
+//    [warpView warp];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
