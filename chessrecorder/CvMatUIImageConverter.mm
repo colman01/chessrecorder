@@ -8,6 +8,7 @@
 
 #import "CvMatUIImageConverter.h"
 
+
 @implementation CvMatUIImageConverter
 
 + (cv::Mat) cvMatFromUIImage:(UIImage *)image {
