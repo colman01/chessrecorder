@@ -9,6 +9,7 @@
 #import "HomographyVc.h"
 #import "CvMatUIImageConverter.h"
 #include <opencv2/imgproc/imgproc.hpp>
+#include "CheckerboardDetector.h"
 
 @interface HomographyVc ()
 
@@ -69,10 +70,25 @@
             break;
     }
 
-    dst[0] = cv::Point2f(         0,          0);
-    dst[1] = cv::Point2f(dstImgSize,          0);
-    dst[2] = cv::Point2f(dstImgSize, dstImgSize);
-    dst[3] = cv::Point2f(         0, dstImgSize);
+//    dst[0] = cv::Point2f(         0,          0);
+//    dst[1] = cv::Point2f(dstImgSize,          0);
+//    dst[2] = cv::Point2f(dstImgSize, dstImgSize);
+//    dst[3] = cv::Point2f(         0, dstImgSize);
+    
+    
+    
+    dst[0] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8    );
+    dst[1] = cv::Point2f(dstImgSize / 8 * 7, dstImgSize / 8    );
+    dst[2] = cv::Point2f(dstImgSize / 8 * 7, dstImgSize / 8 * 7);
+    dst[3] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8 * 7);
+    
+    cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:srcImgUi];
+    
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
+    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
+        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+        src[i] = detectedCorners[i];
+    }
     
     printf("getPerspectiveTransform\n");
     printf("    input\n");
@@ -94,14 +110,9 @@
     free(dst);
     free(src);
     
-    cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:srcImgUi];
-    
     cv::Mat plainBoardImg;
     cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
     
-    cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
-    plainBoardImg.copyTo(sub);
-
     cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
     cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
     cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
@@ -136,11 +147,14 @@
     double brightnessType1 = sqrtl(meanPixel.dot(meanPixel));
     
     if (brightnessType0 < brightnessType1) {
-        printf("board is adjusted left-right, thus it needs to be rotated 90deg\n");
-    } else {
-        printf("board is adjusted top-bottom, thus there is no need to rotate it by 90deg\n");
+        //printf("board is adjusted left-right, thus it needs to be rotated 90deg\n");
+        cv::transpose(plainBoardImg, plainBoardImg);
+        cv::flip(plainBoardImg, plainBoardImg, 0);
     }
     
+    cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
+    plainBoardImg.copyTo(sub);
+
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     self.imgView.image = combinedImg;
 }
