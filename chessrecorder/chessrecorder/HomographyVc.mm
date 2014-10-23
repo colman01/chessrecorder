@@ -21,9 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     [self transform];
 }
+
 
 - (void) transform {
     int dstImgSize = 400;
