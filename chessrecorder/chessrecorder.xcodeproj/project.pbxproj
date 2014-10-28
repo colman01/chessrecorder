@@ -37,6 +37,7 @@
 		C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0B919D1C8F300948635 /* FreeTransformController.m */; };
 		C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BB19D1C8F300948635 /* UIView+Quadrilateral.m */; };
 		C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BF19D1D54E00948635 /* DHWarpView.m */; };
+		C01DED0D19FA75A700F3F002 /* FieldwiseHomographyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C01DED0C19FA75A700F3F002 /* FieldwiseHomographyViewController.mm */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
 		C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */; };
@@ -311,6 +312,8 @@
 		C002E0BB19D1C8F300948635 /* UIView+Quadrilateral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Quadrilateral.m"; sourceTree = "<group>"; };
 		C002E0BE19D1D54E00948635 /* DHWarpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHWarpView.h; sourceTree = "<group>"; };
 		C002E0BF19D1D54E00948635 /* DHWarpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHWarpView.m; sourceTree = "<group>"; };
+		C01DED0B19FA75A700F3F002 /* FieldwiseHomographyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldwiseHomographyViewController.h; sourceTree = "<group>"; };
+		C01DED0C19FA75A700F3F002 /* FieldwiseHomographyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldwiseHomographyViewController.mm; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025713419CC5D7B00624F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C025713519CC5D7B00624F0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -672,6 +675,15 @@
 			name = Transform;
 			sourceTree = "<group>";
 		};
+		C01DED0A19FA754F00F3F002 /* Fieldwise Homography */ = {
+			isa = PBXGroup;
+			children = (
+				C01DED0B19FA75A700F3F002 /* FieldwiseHomographyViewController.h */,
+				C01DED0C19FA75A700F3F002 /* FieldwiseHomographyViewController.mm */,
+			);
+			name = "Fieldwise Homography";
+			sourceTree = "<group>";
+		};
 		C025712719CC5D7B00624F0E = {
 			isa = PBXGroup;
 			children = (
@@ -712,12 +724,12 @@
 				0481AE5C19D44D9500F2DE80 /* CvMatUIImageConverter.mm */,
 				C025713D19CC5D7B00624F0E /* ViewController.h */,
 				C025713E19CC5D7B00624F0E /* ViewController.mm */,
+				0481AE6919D9854A00F2DE80 /* HomographyVc.h */,
+				0481AE6A19D9854A00F2DE80 /* HomographyVc.mm */,
 				C025714019CC5D7B00624F0E /* Main.storyboard */,
 				C025714319CC5D7B00624F0E /* Images.xcassets */,
 				C025713A19CC5D7B00624F0E /* chessrecorder.xcdatamodeld */,
 				C025713319CC5D7B00624F0E /* Supporting Files */,
-				0481AE6919D9854A00F2DE80 /* HomographyVc.h */,
-				0481AE6A19D9854A00F2DE80 /* HomographyVc.mm */,
 			);
 			path = chessrecorder;
 			sourceTree = "<group>";
@@ -822,6 +834,7 @@
 		C030F37419DD6720008A1C02 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C01DED0A19FA754F00F3F002 /* Fieldwise Homography */,
 				C030F37919DD9A05008A1C02 /* Player Info  */,
 				C066204219DBF899002F7B2C /* Main Screen */,
 			);
@@ -1491,6 +1504,7 @@
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
 				C0D8FC3B19D86310005C4ADC /* OpenCVViewController.mm in Sources */,
 				C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */,
+				C01DED0D19FA75A700F3F002 /* FieldwiseHomographyViewController.mm in Sources */,
 				C061FBEA19DFEABE007E9FDD /* GameDao.m in Sources */,
 				C030F37819DD6EF8008A1C02 /* NotationWriter.m in Sources */,
 				C030F37C19DD9A26008A1C02 /* PlayerInfoViewController.m in Sources */,

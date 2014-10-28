@@ -1,24 +1,23 @@
 //
-//  HomographyVc.m
+//  FieldwiseHomographyViewController.m
 //  chessrecorder
 //
-//  Created by Mac on 29.09.14.
+//  Created by colman on 24/10/14.
 //  Copyright (c) 2014 Colman Marcus-Quinn. All rights reserved.
 //
 
-#import "HomographyVc.h"
+#import "FieldwiseHomographyViewController.h"
 #import "CvMatUIImageConverter.h"
 #include <opencv2/imgproc/imgproc.hpp>
 #include "CheckerboardDetector.h"
 
-@interface HomographyVc ()
-
+@interface FieldwiseHomographyViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIImageView *subView;
 
 @end
 
-@implementation HomographyVc
+@implementation FieldwiseHomographyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +25,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [self transform];
+    //    [self transform];
     [self transformField];
 }
 
@@ -75,11 +74,11 @@
             src[3] = cv::Point2f( 86, 711);
             break;
     }
-
-//    dst[0] = cv::Point2f(         0,          0);
-//    dst[1] = cv::Point2f(dstImgSize,          0);
-//    dst[2] = cv::Point2f(dstImgSize, dstImgSize);
-//    dst[3] = cv::Point2f(         0, dstImgSize);
+    
+    //    dst[0] = cv::Point2f(         0,          0);
+    //    dst[1] = cv::Point2f(dstImgSize,          0);
+    //    dst[2] = cv::Point2f(dstImgSize, dstImgSize);
+    //    dst[3] = cv::Point2f(         0, dstImgSize);
     
     
     
@@ -101,7 +100,7 @@
     for (int i = 0; i < 4; i++) {
         printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
     }
-
+    
     cv::Mat m = cv::getPerspectiveTransform(src, dst);
     
     printf("    output\n");
@@ -161,10 +160,10 @@
     cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
     plainBoardImg.copyTo(sub);
     
-//    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
+    //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
     [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
     
-
+    
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     self.imgView.image = combinedImg;
 }
@@ -176,40 +175,40 @@
     cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     
-//    image = [UIImage imageNamed:@"2_w_B_f4.JPG"];
-//    [images addObject:image];
-//    image = [UIImage imageNamed:@"2_b_e6.JPG"];
+    //    image = [UIImage imageNamed:@"2_w_B_f4.JPG"];
+    //    [images addObject:image];
+    //    image = [UIImage imageNamed:@"2_b_e6.JPG"];
     
-//    NSMutableArray *pointsSet3 = [[NSMutableArray alloc] init];
-//    p1 = CGPointMake(310, 425);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p1]];
-//    p2 = CGPointMake(2100, 444);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p2]];
-//    p3 = CGPointMake(2150, 2222);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p3]];
-//    p4 = CGPointMake(270, 2250);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p4]];
-//    
-//    NSMutableArray *pointsSet4 = [[NSMutableArray alloc] init];
-//    p1 = CGPointMake(300, 480);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p1]];
-//    p2 = CGPointMake(2220, 430);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p2]];
-//    p3 = CGPointMake(2300, 2400);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p3]];
-//    p4 = CGPointMake(290, 2420);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p4]];
+    //    NSMutableArray *pointsSet3 = [[NSMutableArray alloc] init];
+    //    p1 = CGPointMake(310, 425);
+    //    [pointsSet3 addObject:[NSValue valueWithCGPoint:p1]];
+    //    p2 = CGPointMake(2100, 444);
+    //    [pointsSet3 addObject:[NSValue valueWithCGPoint:p2]];
+    //    p3 = CGPointMake(2150, 2222);
+    //    [pointsSet3 addObject:[NSValue valueWithCGPoint:p3]];
+    //    p4 = CGPointMake(270, 2250);
+    //    [pointsSet3 addObject:[NSValue valueWithCGPoint:p4]];
+    //
+    //    NSMutableArray *pointsSet4 = [[NSMutableArray alloc] init];
+    //    p1 = CGPointMake(300, 480);
+    //    [pointsSet4 addObject:[NSValue valueWithCGPoint:p1]];
+    //    p2 = CGPointMake(2220, 430);
+    //    [pointsSet4 addObject:[NSValue valueWithCGPoint:p2]];
+    //    p3 = CGPointMake(2300, 2400);
+    //    [pointsSet4 addObject:[NSValue valueWithCGPoint:p3]];
+    //    p4 = CGPointMake(290, 2420);
+    //    [pointsSet4 addObject:[NSValue valueWithCGPoint:p4]];
     srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
     src[0] = cv::Point2f( 82,  84);
     src[1] = cv::Point2f(521, 141);
     src[2] = cv::Point2f(519, 636);
     src[3] = cv::Point2f( 83, 696);
     
-//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
-//    src[0] = cv::Point2f( 82,  84);
-//    src[1] = cv::Point2f(521, 141);
-//    src[2] = cv::Point2f(519, 636);
-//    src[3] = cv::Point2f( 83, 696);
+    //    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
+    //    src[0] = cv::Point2f( 82,  84);
+    //    src[1] = cv::Point2f(521, 141);
+    //    src[2] = cv::Point2f(519, 636);
+    //    src[3] = cv::Point2f( 83, 696);
     
     //    dst[0] = cv::Point2f(         0,          0);
     //    dst[1] = cv::Point2f(dstImgSize,          0);
@@ -327,8 +326,13 @@
 }
 
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+
+
+
 
 @end

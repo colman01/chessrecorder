@@ -28,6 +28,8 @@
     images = [[NSMutableArray alloc] init];
     transform = [[HomographyTransform alloc] init];
     
+    [self.navigationController setNavigationBarHidden:YES];
+    
     
 }
 
@@ -179,8 +181,8 @@
     
 
     UIImage *img1, *img2;
-    img2 = [self.transform transform:pointsSet1 withImage:[images objectAtIndex:0 ]];
-    img1 = [self.transform transform:pointsSet2 withImage:[images objectAtIndex:1 ]];
+//    img2 = [self.transform transform:pointsSet1 withImage:[images objectAtIndex:0 ]];
+//    img1 = [self.transform transform:pointsSet2 withImage:[images objectAtIndex:1 ]];
 //
 //    img2 = [self.transform transform:pointsSet2 withImage:[images objectAtIndex:1 ]];
 //    img1 = [self.transform transform:pointsSet3 withImage:[images objectAtIndex:2 ]];
@@ -198,9 +200,12 @@
 //    img1 = [self.transform transform:pointsSet7 withImage:[images objectAtIndex:6 ]];
     
 //    img2 = [self.transform transform:pointsSet7 withImage:[images objectAtIndex:6 ]];
-//    img1 = [self.transform transform:pointsSet8 withImage:[images objectAtIndex:7 ]];
+    img1 = [self.transform transform:pointsSet8 withImage:[images objectAtIndex:7 ]];
     
-    [self computeDeltaImage:img1 withImageTwo:img2];
+//    [self computeDeltaImage:img1 withImageTwo:img2];
+    
+    [imageView setImage:img1];
+    
 }
 
 @end
