@@ -14,18 +14,31 @@
 @interface FieldwiseHomographyViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIImageView *subView;
+@property NSMutableArray *board;
 
 @end
 
 @implementation FieldwiseHomographyViewController
 
+@synthesize a1,a2,a3,a4,a5,a6,a7,a8;
+@synthesize b1,b2,b3,b4,b5,b6,b7,b8;
+@synthesize c1,c2,c3,c4,c5,c6,c7,c8;
+@synthesize d1,d2,d3,d4,d5,d6,d7,d8;
+@synthesize e1,e2,e3,e4,e5,e6,e7,e8;
+@synthesize f1,f2,f3,f4,f5,f6,f7,f8;
+@synthesize g1,g2,g3,g4,g5,g6,g7,g8;
+@synthesize h1,h2,h3,h4,h5,h6,h7,h8;
+@synthesize board;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    board = [[NSMutableArray alloc] initWithObjects:a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8,c1,c2,c3,c4,c5,c6,c7,c8,d1,d2,d3,d4,d5,d6,d7,d8,e1,e2,e3,e4,e5,e6,e7,e8,f1,f2,f3,f4,f5,f6,f7,f8,g1,g2,g3,g4,g5,g6,g7,g8,h1,h2,h3,h4,h5,h6,h7,h8, nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    //    [self transform];
     [self transformField];
 }
 
@@ -273,7 +286,6 @@
         }
     }
     
-    
     NSMutableArray *fields = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < 8; i++) {
@@ -294,6 +306,12 @@
             }
         }
     }
+    
+    for (int i=0; i < fields.count; i++) {
+        UIImageView *Iv = [board objectAtIndex:i];
+        Iv.image = [fields objectAtIndex:i];
+    }
+
     
     fieldRect.x = 0; fieldRect.y = 0;
     fieldType0Mean.copyTo(srcImg(fieldRect));
@@ -319,7 +337,6 @@
     
     //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
     [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
-    
     
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     self.imgView.image = combinedImg;
