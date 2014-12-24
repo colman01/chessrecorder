@@ -17,6 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *subView;
 @property (weak, nonatomic) IBOutlet UIImageView *meanField0;
 @property (weak, nonatomic) IBOutlet UIImageView *meanField1;
+
+@property (weak, nonatomic) IBOutlet UIImageView *testField1;
+@property (weak, nonatomic) IBOutlet UIImageView *testField2;
+@property (weak, nonatomic) IBOutlet UIImageView *testField3;
+@property (weak, nonatomic) IBOutlet UIImageView *testField4;
 //@property (weak, nonatomic) IBOutlet UIImageView *sampleFieldImage;
 
 @end
@@ -291,25 +296,47 @@
             
             cv::Mat field(plainBoardImg, fieldRect);
             field.convertTo(field, CV_16UC4);
-            field /= 32;
-            
             [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
+            
+            field /= 32;
+
             
             if ((i + j) % 2 == 0) {
                 fieldType0Mean += field;
             } else {
                 fieldType1Mean += field;
             }
+            
+//            UIImage *testFieldImage = [CvMatUIImageConverter UIImageFromCVMat:field];
+//            if (self.testField2.image == nil) {
+////                [self.testField2 setImage:testFieldImage];
+//                UIImage* tempImage = [CvMatUIImageConverter UIImageFromCVMat:field];
+//                self.testField2.image = tempImage;
+//            }
+//            if (self.testField2.image != nil && self.testField3.image == nil) {
+//                [self.testField3 setImage:testFieldImage];
+//            }
+//            [fields addObject:testFieldImage];
+
         }
     }
     
-    fieldRect.x = 0; fieldRect.y = 0;
-    fieldType0Mean.copyTo(srcImg(fieldRect));
-    fieldRect.x = fieldRect.width; fieldRect.y = 0;
-    fieldType1Mean.copyTo(srcImg(fieldRect));
     
-    [self.meanField0 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
-    [self.meanField1 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType1Mean]];
+    [self.testField1 setImage:[fields objectAtIndex:0]];
+    [self.testField2 setImage:[fields objectAtIndex:1]];
+    [self.testField3 setImage:[fields objectAtIndex:2]];
+    [self.testField4 setImage:[fields objectAtIndex:3]];
+    
+//    fieldRect.x = 0; fieldRect.y = 0;
+//    fieldType0Mean.copyTo(srcImg(fieldRect)); // this is the top right subimage
+//    fieldRect.x = fieldRect.width; fieldRect.y = 0;
+//    fieldType1Mean.copyTo(srcImg(fieldRect));
+    
+
+    
+//    [self.meanField0 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
+//    [self.meanField0 setImage:[CvMatUIImageConverter UIImageFromCVMat:srcImg(fieldRect)]];
+//    [self.meanField1 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType1Mean]];
     
     cv::Scalar meanPixel = cv::mean(fieldType0Mean);
     meanPixel.val[3] = 0;
@@ -328,17 +355,24 @@
     cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
     plainBoardImg.copyTo(sub);
     
+//    cv::Rect sampleFieldRectangle = cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
+    cv::Rect sampleFieldRectangle = cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
+    cv::Mat internalData = srcImg(sampleFieldRectangle);
+//    internalData.convertTo(internalData, CV_16UC4);
+    internalData.convertTo(internalData, CV_16SC1);
+//    internalData /= 2;
+    UIImage* uiimageInternalData = [CvMatUIImageConverter UIImageFromCVMat:internalData];
+//    [self.meanField0 setContentMode:UIViewContentModeScaleAspectFill];
+    [self.meanField0 setImage:uiimageInternalData];
+    
 //    [_sampleFieldImage setImage:[CvMatUIImageConverter UIImageFromCVMat:sub]];
 //    [self.meanField0 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
 //    [self.meanField1 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType1Mean]];
 //    [self.meanField0 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
 //    [self.meanField1 setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType1Mean]];
     
-    
     //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
     [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
-    
-    
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     self.imgView.image = combinedImg;
 }
