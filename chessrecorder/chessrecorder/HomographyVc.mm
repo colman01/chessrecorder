@@ -281,7 +281,6 @@ NSMutableArray *imageViewFieldArray;
     
     
     NSMutableArray *fields = [[NSMutableArray alloc] init];
-    
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             fieldRect.x = fieldRect.width * i;
@@ -291,11 +290,11 @@ NSMutableArray *imageViewFieldArray;
             field.convertTo(field, CV_16UC4);
             [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
             
-//            UIImageView* tempField = [imageViewFieldArray objectAtIndex:i+j];
-//            tempField.image = [CvMatUIImageConverter UIImageFromCVMat:field];
+            //            UIImageView* tempField = [imageViewFieldArray objectAtIndex:i+j];
+            //            tempField.image = [CvMatUIImageConverter UIImageFromCVMat:field];
             
             field /= 32;
-
+            
             if ((i + j) % 2 == 0) {
                 fieldType0Mean += field;
             } else {
@@ -303,6 +302,28 @@ NSMutableArray *imageViewFieldArray;
             }
         }
     }
+    
+//    for (int i = 0; i < 8; i++) {
+//        for (int j = 0; j < 8; j++) {
+//            fieldRect.x = fieldRect.width * i;
+//            fieldRect.y = fieldRect.height * j;
+//            
+//            cv::Mat field(plainBoardImg, fieldRect);
+//            field.convertTo(field, CV_16UC4);
+//            [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
+//            
+////            UIImageView* tempField = [imageViewFieldArray objectAtIndex:i+j];
+////            tempField.image = [CvMatUIImageConverter UIImageFromCVMat:field];
+//            
+//            field /= 32;
+//
+//            if ((i + j) % 2 == 0) {
+//                fieldType0Mean += field;
+//            } else {
+//                fieldType1Mean += field;
+//            }
+//        }
+//    }
     
     
 //    [self.testField1 setImage:[fields objectAtIndex:0]];
