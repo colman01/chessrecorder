@@ -11,6 +11,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include "CheckerboardDetector.h"
 
+
 @interface HomographyVc ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
@@ -94,7 +95,7 @@ NSMutableArray *imageViewFieldArray;
     
     std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
-        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+//        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
     }
     
@@ -195,7 +196,7 @@ NSMutableArray *imageViewFieldArray;
     
     std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
-        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+//        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
     }
     
@@ -268,7 +269,11 @@ NSMutableArray *imageViewFieldArray;
     for (UIImageView *img in imageViewFieldArray) {
         UIImage* tempField = [fields objectAtIndex:i];
         i++;
-        img.image = tempField;
+        GPUImageCannyEdgeDetectionFilter* filter = [[GPUImageCannyEdgeDetectionFilter alloc] init];
+        [filter setBlurTexelSpacingMultiplier:.01];
+        CGImageRef res = [filter newCGImageByFilteringCGImage:tempField.CGImage];
+        img.image = [UIImage imageWithCGImage:res];
+        
     }
     
     cv::Scalar meanPixel = cv::mean(fieldType0Mean);
@@ -292,6 +297,14 @@ NSMutableArray *imageViewFieldArray;
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     self.imgView.image = combinedImg;
 }
+
+//- (UIImage *)imageByFilteringImage:(UIImage *)imageToFilter;
+//{
+//    CGImageRef image = [self newCGImageByFilteringCGImage:[imageToFilter CGImage] orientation:[imageToFilter imageOrientation]];
+//    UIImage *processedImage = [UIImage imageWithCGImage:image scale:[imageToFilter scale] orientation:[imageToFilter imageOrientation]];
+//    CGImageRelease(image);
+//    return processedImage;
+//}
 
 - (void) createMatrix {
     imageViewFieldArray = [[NSMutableArray alloc] init];
