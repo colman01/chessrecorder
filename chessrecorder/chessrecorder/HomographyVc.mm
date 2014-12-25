@@ -178,29 +178,6 @@ NSMutableArray *imageViewFieldArray;
     cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     
-//    image = [UIImage imageNamed:@"2_w_B_f4.JPG"];
-//    [images addObject:image];
-//    image = [UIImage imageNamed:@"2_b_e6.JPG"];
-    
-//    NSMutableArray *pointsSet3 = [[NSMutableArray alloc] init];
-//    p1 = CGPointMake(310, 425);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p1]];
-//    p2 = CGPointMake(2100, 444);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p2]];
-//    p3 = CGPointMake(2150, 2222);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p3]];
-//    p4 = CGPointMake(270, 2250);
-//    [pointsSet3 addObject:[NSValue valueWithCGPoint:p4]];
-//    
-//    NSMutableArray *pointsSet4 = [[NSMutableArray alloc] init];
-//    p1 = CGPointMake(300, 480);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p1]];
-//    p2 = CGPointMake(2220, 430);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p2]];
-//    p3 = CGPointMake(2300, 2400);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p3]];
-//    p4 = CGPointMake(290, 2420);
-//    [pointsSet4 addObject:[NSValue valueWithCGPoint:p4]];
     srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
 //    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Chess_table" ofType:@"jpg"]];
     
@@ -208,19 +185,6 @@ NSMutableArray *imageViewFieldArray;
     src[1] = cv::Point2f(521, 141);
     src[2] = cv::Point2f(519, 636);
     src[3] = cv::Point2f( 83, 696);
-    
-//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
-//    src[0] = cv::Point2f( 82,  84);
-//    src[1] = cv::Point2f(521, 141);
-//    src[2] = cv::Point2f(519, 636);
-//    src[3] = cv::Point2f( 83, 696);
-    
-    //    dst[0] = cv::Point2f(         0,          0);
-    //    dst[1] = cv::Point2f(dstImgSize,          0);
-    //    dst[2] = cv::Point2f(dstImgSize, dstImgSize);
-    //    dst[3] = cv::Point2f(         0, dstImgSize);
-    
-    
     
     dst[0] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8    );
     dst[1] = cv::Point2f(dstImgSize / 8 * 7, dstImgSize / 8    );
@@ -300,44 +264,12 @@ NSMutableArray *imageViewFieldArray;
         }
     }
     
-//    UIImageView* tempField = [imageViewFieldArray objectAtIndex:i+j];
-//    tempField.image = [CvMatUIImageConverter UIImageFromCVMat:field];
-    
     int i =0;
     for (UIImageView *img in imageViewFieldArray) {
         UIImage* tempField = [fields objectAtIndex:i];
         i++;
         img.image = tempField;
     }
-    
-//    for (int i = 0; i < 8; i++) {
-//        for (int j = 0; j < 8; j++) {
-//            fieldRect.x = fieldRect.width * i;
-//            fieldRect.y = fieldRect.height * j;
-//            
-//            cv::Mat field(plainBoardImg, fieldRect);
-//            field.convertTo(field, CV_16UC4);
-//            [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
-//            
-////            UIImageView* tempField = [imageViewFieldArray objectAtIndex:i+j];
-////            tempField.image = [CvMatUIImageConverter UIImageFromCVMat:field];
-//            
-//            field /= 32;
-//
-//            if ((i + j) % 2 == 0) {
-//                fieldType0Mean += field;
-//            } else {
-//                fieldType1Mean += field;
-//            }
-//        }
-//    }
-    
-    
-//    [self.testField1 setImage:[fields objectAtIndex:0]];
-//    [self.testField2 setImage:[fields objectAtIndex:1]];
-//    [self.testField3 setImage:[fields objectAtIndex:2]];
-//    [self.testField4 setImage:[fields objectAtIndex:3]];
-    
     
     cv::Scalar meanPixel = cv::mean(fieldType0Mean);
     meanPixel.val[3] = 0;
@@ -355,15 +287,7 @@ NSMutableArray *imageViewFieldArray;
     
     cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
     plainBoardImg.copyTo(sub);
-    
-//    cv::Rect sampleFieldRectangle = cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
-//    cv::Mat internalData = srcImg(sampleFieldRectangle);
-//    internalData.convertTo(internalData, CV_16SC1);
-//    UIImage* uiimageInternalData = [CvMatUIImageConverter UIImageFromCVMat:internalData];
-//    [self.meanField0 setImage:uiimageInternalData];
-    
-    
-    //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
+
     [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     self.imgView.image = combinedImg;
