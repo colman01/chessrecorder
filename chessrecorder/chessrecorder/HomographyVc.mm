@@ -290,9 +290,6 @@ NSMutableArray *imageViewFieldArray;
             field.convertTo(field, CV_16UC4);
             [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
             
-            //            UIImageView* tempField = [imageViewFieldArray objectAtIndex:i+j];
-            //            tempField.image = [CvMatUIImageConverter UIImageFromCVMat:field];
-            
             field /= 32;
             
             if ((i + j) % 2 == 0) {
@@ -301,6 +298,16 @@ NSMutableArray *imageViewFieldArray;
                 fieldType1Mean += field;
             }
         }
+    }
+    
+//    UIImageView* tempField = [imageViewFieldArray objectAtIndex:i+j];
+//    tempField.image = [CvMatUIImageConverter UIImageFromCVMat:field];
+    
+    int i =0;
+    for (UIImageView *img in imageViewFieldArray) {
+        UIImage* tempField = [fields objectAtIndex:i];
+        i++;
+        img.image = tempField;
     }
     
 //    for (int i = 0; i < 8; i++) {
