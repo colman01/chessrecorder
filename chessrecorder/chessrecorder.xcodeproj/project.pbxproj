@@ -259,6 +259,24 @@
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
 		C0D8FC3B19D86310005C4ADC /* OpenCVViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C0D8FC3A19D86310005C4ADC /* OpenCVViewController.mm */; };
+		F38540FD1A4CAD18008A66D7 /* image_test.png in Resources */ = {isa = PBXBuildFile; fileRef = F38540FC1A4CAD18008A66D7 /* image_test.png */; };
+		F38540FF1A4CAD92008A66D7 /* image_test_rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = F38540FE1A4CAD92008A66D7 /* image_test_rotate.png */; };
+		F3872B251A4CBEC5001D161F /* cut.png in Resources */ = {isa = PBXBuildFile; fileRef = F3872B241A4CBEC5001D161F /* cut.png */; };
+		F3872B2D1A4CC100001D161F /* rotate_1_b_d5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B261A4CC100001D161F /* rotate_1_b_d5.jpg */; };
+		F3872B2E1A4CC100001D161F /* rotate_1_w_d4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B271A4CC100001D161F /* rotate_1_w_d4.jpg */; };
+		F3872B2F1A4CC100001D161F /* rotate_2_b_e5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B281A4CC100001D161F /* rotate_2_b_e5.jpg */; };
+		F3872B301A4CC100001D161F /* rotate_2_w_B_f5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B291A4CC100001D161F /* rotate_2_w_B_f5.jpg */; };
+		F3872B311A4CC100001D161F /* rotate_3_b_QxB_f5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B2A1A4CC100001D161F /* rotate_3_b_QxB_f5.jpg */; };
+		F3872B321A4CC100001D161F /* rotate_3_w_Q_d2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B2B1A4CC100001D161F /* rotate_3_w_Q_d2.jpg */; };
+		F3872B331A4CC100001D161F /* rotate_game.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B2C1A4CC100001D161F /* rotate_game.jpg */; };
+		F3872B351A4CC210001D161F /* cut_r_1_b_d6.png in Resources */ = {isa = PBXBuildFile; fileRef = F3872B341A4CC210001D161F /* cut_r_1_b_d6.png */; };
+		F3872B371A4CC267001D161F /* cut_r_1_w_d4.png in Resources */ = {isa = PBXBuildFile; fileRef = F3872B361A4CC267001D161F /* cut_r_1_w_d4.png */; };
+		F3872B391A4CC2DE001D161F /* cut_rotate_2_w_B_f5.png in Resources */ = {isa = PBXBuildFile; fileRef = F3872B381A4CC2DE001D161F /* cut_rotate_2_w_B_f5.png */; };
+		F3872B3B1A4CC332001D161F /* data_dammit.png in Resources */ = {isa = PBXBuildFile; fileRef = F3872B3A1A4CC332001D161F /* data_dammit.png */; };
+		F3872B3D1A4D8C1B001D161F /* game_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B3C1A4D8C1B001D161F /* game_2.jpg */; };
+		F3872B3F1A4D8C89001D161F /* test_1_w_d2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B3E1A4D8C89001D161F /* test_1_w_d2.jpg */; };
+		F3872B421A4D8CF8001D161F /* test_1_b_g6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B401A4D8CF8001D161F /* test_1_b_g6.jpg */; };
+		F3872B431A4D8CF8001D161F /* test_2_w_B_f4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3872B411A4D8CF8001D161F /* test_2_w_B_f4.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -563,6 +581,24 @@
 		C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVideoFilterViewController.xib; sourceTree = "<group>"; };
 		C0D8FC3919D86310005C4ADC /* OpenCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCVViewController.h; sourceTree = "<group>"; };
 		C0D8FC3A19D86310005C4ADC /* OpenCVViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVViewController.mm; sourceTree = "<group>"; };
+		F38540FC1A4CAD18008A66D7 /* image_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_test.png; sourceTree = "<group>"; };
+		F38540FE1A4CAD92008A66D7 /* image_test_rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_test_rotate.png; sourceTree = "<group>"; };
+		F3872B241A4CBEC5001D161F /* cut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cut.png; sourceTree = "<group>"; };
+		F3872B261A4CC100001D161F /* rotate_1_b_d5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotate_1_b_d5.jpg; sourceTree = "<group>"; };
+		F3872B271A4CC100001D161F /* rotate_1_w_d4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotate_1_w_d4.jpg; sourceTree = "<group>"; };
+		F3872B281A4CC100001D161F /* rotate_2_b_e5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotate_2_b_e5.jpg; sourceTree = "<group>"; };
+		F3872B291A4CC100001D161F /* rotate_2_w_B_f5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotate_2_w_B_f5.jpg; sourceTree = "<group>"; };
+		F3872B2A1A4CC100001D161F /* rotate_3_b_QxB_f5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotate_3_b_QxB_f5.jpg; sourceTree = "<group>"; };
+		F3872B2B1A4CC100001D161F /* rotate_3_w_Q_d2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotate_3_w_Q_d2.jpg; sourceTree = "<group>"; };
+		F3872B2C1A4CC100001D161F /* rotate_game.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotate_game.jpg; sourceTree = "<group>"; };
+		F3872B341A4CC210001D161F /* cut_r_1_b_d6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cut_r_1_b_d6.png; sourceTree = "<group>"; };
+		F3872B361A4CC267001D161F /* cut_r_1_w_d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cut_r_1_w_d4.png; sourceTree = "<group>"; };
+		F3872B381A4CC2DE001D161F /* cut_rotate_2_w_B_f5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cut_rotate_2_w_B_f5.png; sourceTree = "<group>"; };
+		F3872B3A1A4CC332001D161F /* data_dammit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = data_dammit.png; sourceTree = "<group>"; };
+		F3872B3C1A4D8C1B001D161F /* game_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = game_2.jpg; sourceTree = "<group>"; };
+		F3872B3E1A4D8C89001D161F /* test_1_w_d2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_1_w_d2.jpg; sourceTree = "<group>"; };
+		F3872B401A4D8CF8001D161F /* test_1_b_g6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_1_b_g6.jpg; sourceTree = "<group>"; };
+		F3872B411A4D8CF8001D161F /* test_2_w_B_f4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_2_w_B_f4.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -634,6 +670,24 @@
 		C002E0AC19D1A68A00948635 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				F3872B401A4D8CF8001D161F /* test_1_b_g6.jpg */,
+				F3872B411A4D8CF8001D161F /* test_2_w_B_f4.jpg */,
+				F3872B3E1A4D8C89001D161F /* test_1_w_d2.jpg */,
+				F3872B3C1A4D8C1B001D161F /* game_2.jpg */,
+				F3872B3A1A4CC332001D161F /* data_dammit.png */,
+				F3872B381A4CC2DE001D161F /* cut_rotate_2_w_B_f5.png */,
+				F3872B361A4CC267001D161F /* cut_r_1_w_d4.png */,
+				F3872B341A4CC210001D161F /* cut_r_1_b_d6.png */,
+				F3872B261A4CC100001D161F /* rotate_1_b_d5.jpg */,
+				F3872B271A4CC100001D161F /* rotate_1_w_d4.jpg */,
+				F3872B281A4CC100001D161F /* rotate_2_b_e5.jpg */,
+				F3872B291A4CC100001D161F /* rotate_2_w_B_f5.jpg */,
+				F3872B2A1A4CC100001D161F /* rotate_3_b_QxB_f5.jpg */,
+				F3872B2B1A4CC100001D161F /* rotate_3_w_Q_d2.jpg */,
+				F3872B2C1A4CC100001D161F /* rotate_game.jpg */,
+				F3872B241A4CBEC5001D161F /* cut.png */,
+				F38540FE1A4CAD92008A66D7 /* image_test_rotate.png */,
+				F38540FC1A4CAD18008A66D7 /* image_test.png */,
 				C061FBF319E046D0007E9FDD /* game images */,
 				C030F34F19DD27D6008A1C02 /* 1_b_d5.JPG */,
 				C030F35019DD27D6008A1C02 /* 1_w_d4.JPG */,
@@ -1261,8 +1315,10 @@
 				C061FCC619E046F3007E9FDD /* BerlinBPawn.tiff in Resources */,
 				C061FD1719E046F3007E9FDD /* ModernBKing@2x.tiff in Resources */,
 				C061FD5019E046F3007E9FDD /* XBoardWBishop.tiff in Resources */,
+				F3872B391A4CC2DE001D161F /* cut_rotate_2_w_B_f5.png in Resources */,
 				C061FCCE19E046F3007E9FDD /* BerlinWKing.tiff in Resources */,
 				C030F35B19DD27D6008A1C02 /* 3_b_B_b4.JPG in Resources */,
+				F3872B431A4D8CF8001D161F /* test_2_w_B_f4.jpg in Resources */,
 				C061FCF819E046F3007E9FDD /* LeipzigBKing.tiff in Resources */,
 				C061FD2B19E046F3007E9FDD /* ModernWRook@2x.tiff in Resources */,
 				C061FD4A19E046F3007E9FDD /* XBoardBPawn.tiff in Resources */,
@@ -1279,8 +1335,11 @@
 				C002E09C19D06E6E00948635 /* Shader2.fsh in Resources */,
 				C061FD0019E046F3007E9FDD /* LeipzigBRook.tiff in Resources */,
 				C061FD5919E046F3007E9FDD /* XBoardWQueen@2x.tiff in Resources */,
+				F3872B321A4CC100001D161F /* rotate_3_w_Q_d2.jpg in Resources */,
+				F3872B311A4CC100001D161F /* rotate_3_b_QxB_f5.jpg in Resources */,
 				C061FCF619E046F3007E9FDD /* LeipzigBBishop.tiff in Resources */,
 				C061FD3D19E046F3007E9FDD /* USCFWKnight@2x.tiff in Resources */,
+				F3872B3B1A4CC332001D161F /* data_dammit.png in Resources */,
 				C061FCDE19E046F3007E9FDD /* CheqBPawn.tiff in Resources */,
 				C061FCAD19E046F3007E9FDD /* AlphaBKnight@2x.tiff in Resources */,
 				C061FD5219E046F3007E9FDD /* XBoardWKing.tiff in Resources */,
@@ -1291,6 +1350,7 @@
 				C061FCBB19E046F3007E9FDD /* AlphaWPawn@2x.tiff in Resources */,
 				C061FD2319E046F3007E9FDD /* ModernWKing@2x.tiff in Resources */,
 				C061FD0919E046F3007E9FDD /* LeipzigWPawn@2x.tiff in Resources */,
+				F3872B351A4CC210001D161F /* cut_r_1_b_d6.png in Resources */,
 				C061FCB919E046F3007E9FDD /* AlphaWKnight@2x.tiff in Resources */,
 				C061FD2719E046F3007E9FDD /* ModernWPawn@2x.tiff in Resources */,
 				C061FCE219E046F3007E9FDD /* CheqBRook.tiff in Resources */,
@@ -1306,6 +1366,7 @@
 				C061FCF019E046F3007E9FDD /* DarkGreenMarble.tiff in Resources */,
 				C030F35919DD27D6008A1C02 /* 2_b_e6.JPG in Resources */,
 				C061FCB819E046F3007E9FDD /* AlphaWKnight.tiff in Resources */,
+				F38540FF1A4CAD92008A66D7 /* image_test_rotate.png in Resources */,
 				C061FD1F19E046F3007E9FDD /* ModernBRook@2x.tiff in Resources */,
 				C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */,
 				C061FCCD19E046F3007E9FDD /* BerlinWBishop@2x.tiff in Resources */,
@@ -1324,6 +1385,7 @@
 				C061FCB119E046F3007E9FDD /* AlphaBQueen@2x.tiff in Resources */,
 				C061FD4719E046F3007E9FDD /* XBoardBKing@2x.tiff in Resources */,
 				C061FD4219E046F3007E9FDD /* USCFWRook.tiff in Resources */,
+				F3872B371A4CC267001D161F /* cut_r_1_w_d4.png in Resources */,
 				C061FD3419E046F3007E9FDD /* USCFBQueen.tiff in Resources */,
 				C061FD1119E046F3007E9FDD /* LightMarble@2x.tiff in Resources */,
 				C061FCCA19E046F3007E9FDD /* BerlinBRook.tiff in Resources */,
@@ -1340,6 +1402,7 @@
 				C061FD0719E046F3007E9FDD /* LeipzigWKnight@2x.tiff in Resources */,
 				C066205719DC5AED002F7B2C /* multiBoards48_32.jpg in Resources */,
 				C061FD5819E046F3007E9FDD /* XBoardWQueen.tiff in Resources */,
+				F3872B3F1A4D8C89001D161F /* test_1_w_d2.jpg in Resources */,
 				C061FD5619E046F3007E9FDD /* XBoardWPawn.tiff in Resources */,
 				C061FD5319E046F3007E9FDD /* XBoardWKing@2x.tiff in Resources */,
 				C061FCBD19E046F3007E9FDD /* AlphaWQueen@2x.tiff in Resources */,
@@ -1350,6 +1413,7 @@
 				C061FD5519E046F3007E9FDD /* XBoardWKnight@2x.tiff in Resources */,
 				C061FCDF19E046F3007E9FDD /* CheqBPawn@2x.tiff in Resources */,
 				C061FD3219E046F3007E9FDD /* USCFBPawn.tiff in Resources */,
+				F38540FD1A4CAD18008A66D7 /* image_test.png in Resources */,
 				C061FCEE19E046F3007E9FDD /* CheqWRook.tiff in Resources */,
 				C030F35819DD27D6008A1C02 /* 1_w_d4.JPG in Resources */,
 				C061FD3E19E046F3007E9FDD /* USCFWPawn.tiff in Resources */,
@@ -1375,12 +1439,15 @@
 				C061FD3019E046F3007E9FDD /* USCFBKnight.tiff in Resources */,
 				C066205519DC5A42002F7B2C /* multiBoards.jpg in Resources */,
 				C061FD5D19E150E5007E9FDD /* realIcond30.png in Resources */,
+				F3872B3D1A4D8C1B001D161F /* game_2.jpg in Resources */,
 				C061FCF319E046F3007E9FDD /* DarkMarble@2x.tiff in Resources */,
+				F3872B421A4D8CF8001D161F /* test_1_b_g6.jpg in Resources */,
 				C002E09719D0650800948635 /* realIcond40.png in Resources */,
 				C061FD0319E046F3007E9FDD /* LeipzigWBishop@2x.tiff in Resources */,
 				C061FD4B19E046F3007E9FDD /* XBoardBPawn@2x.tiff in Resources */,
 				C061FD2019E046F3007E9FDD /* ModernWBishop.tiff in Resources */,
 				C066205919DC5B48002F7B2C /* multiBoards48_32.png in Resources */,
+				F3872B2F1A4CC100001D161F /* rotate_2_b_e5.jpg in Resources */,
 				C061FCA819E046F3007E9FDD /* AlphaBBishop.tiff in Resources */,
 				C061FD1319E046F3007E9FDD /* LightWood@2x.tiff in Resources */,
 				C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */,
@@ -1391,6 +1458,7 @@
 				C061FD0619E046F3007E9FDD /* LeipzigWKnight.tiff in Resources */,
 				0481AE5619D4376800F2DE80 /* chessboard_03.jpg in Resources */,
 				C061FD1D19E046F3007E9FDD /* ModernBQueen@2x.tiff in Resources */,
+				F3872B301A4CC100001D161F /* rotate_2_w_B_f5.jpg in Resources */,
 				C061FCFF19E046F3007E9FDD /* LeipzigBQueen@2x.tiff in Resources */,
 				C061FD2A19E046F3007E9FDD /* ModernWRook.tiff in Resources */,
 				C061FD0D19E046F3007E9FDD /* LeipzigWRook@2x.tiff in Resources */,
@@ -1424,6 +1492,7 @@
 				C061FCB219E046F3007E9FDD /* AlphaBRook.tiff in Resources */,
 				C061FD2819E046F3007E9FDD /* ModernWQueen.tiff in Resources */,
 				C061FD6319E15490007E9FDD /* info.png in Resources */,
+				F3872B331A4CC100001D161F /* rotate_game.jpg in Resources */,
 				C061FD3719E046F3007E9FDD /* USCFBRook@2x.tiff in Resources */,
 				C061FD1A19E046F3007E9FDD /* ModernBPawn.tiff in Resources */,
 				C061FCDA19E046F3007E9FDD /* CheqBKing.tiff in Resources */,
@@ -1433,6 +1502,7 @@
 				C061FCEA19E046F3007E9FDD /* CheqWPawn.tiff in Resources */,
 				C061FCBE19E046F3007E9FDD /* AlphaWRook.tiff in Resources */,
 				C061FD1419E046F3007E9FDD /* ModernBBishop.tiff in Resources */,
+				F3872B251A4CBEC5001D161F /* cut.png in Resources */,
 				C061FD3F19E046F3007E9FDD /* USCFWPawn@2x.tiff in Resources */,
 				C030F35719DD27D6008A1C02 /* 1_b_d5.JPG in Resources */,
 				0481AE6119D473D700F2DE80 /* nicely.jpg in Resources */,
@@ -1445,10 +1515,12 @@
 				C061FD2919E046F3007E9FDD /* ModernWQueen@2x.tiff in Resources */,
 				C061FCBC19E046F3007E9FDD /* AlphaWQueen.tiff in Resources */,
 				C061FCF219E046F3007E9FDD /* DarkMarble.tiff in Resources */,
+				F3872B2D1A4CC100001D161F /* rotate_1_b_d5.jpg in Resources */,
 				C061FD0A19E046F3007E9FDD /* LeipzigWQueen.tiff in Resources */,
 				C061FD1619E046F3007E9FDD /* ModernBKing.tiff in Resources */,
 				C061FD4519E046F3007E9FDD /* XBoardBBishop@2x.tiff in Resources */,
 				C061FCE619E046F3007E9FDD /* CheqWKing.tiff in Resources */,
+				F3872B2E1A4CC100001D161F /* rotate_1_w_d4.jpg in Resources */,
 				C061FD4619E046F3007E9FDD /* XBoardBKing.tiff in Resources */,
 				C061FCEB19E046F3007E9FDD /* CheqWPawn@2x.tiff in Resources */,
 				C061FCDD19E046F3007E9FDD /* CheqBKnight@2x.tiff in Resources */,

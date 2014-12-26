@@ -179,8 +179,48 @@ NSMutableArray *imageViewFieldArray;
     cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     
-    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chess_rotate" ofType:@"jpg"]];
 //    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Chess_table" ofType:@"jpg"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"4_w_K_d2" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_test" ofType:@"png"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_test_rotate" ofType:@"png"]];
+    
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1_b_d5" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1_w_d4" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"2_w_B_f4" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"2_b_e6" ofType:@"JPG"]];
+//    
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"3_w_e3" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"3_b_B_b4" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"4_w_K_d2" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"4_b_Q_h4" ofType:@"JPG"]];
+    
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"rotate_1_b_d5" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"rotate_1_w_d4" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"rotate_2_w_B_f5" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"rotate_2_b_e5" ofType:@"JPG"]];
+//
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"rotate_3_Q_d2" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"rotate_3_b_QxB_f5" ofType:@"JPG"]];
+    
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cut_4_w_K_d2" ofType:@"JPG"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cut_4_b_Q_h4" ofType:@"JPG"]];
+    
+//        srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"x_3_w_Q_d2" ofType:@"jpg"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cut" ofType:@"png"]];
+    
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cut_r_1_w_d4" ofType:@"png"]];
+//        srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cut_r_1_b_d6" ofType:@"png"]];
+//        srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"data_dammit" ofType:@"png"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"rotate_game" ofType:@"jpg"]];
+    
+//        srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"game_2" ofType:@"jpg"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test_1_w_d2" ofType:@"jpg"]];
+//    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test_1_b_g6" ofType:@"jpg"]];
+    srcImgUi = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test_2_w_B_f4" ofType:@"jpg"]];
+    
+    
+
     
     src[0] = cv::Point2f( 82,  84);
     src[1] = cv::Point2f(521, 141);
@@ -272,7 +312,53 @@ NSMutableArray *imageViewFieldArray;
         GPUImageCannyEdgeDetectionFilter* filter = [[GPUImageCannyEdgeDetectionFilter alloc] init];
         [filter setBlurTexelSpacingMultiplier:.01];
         CGImageRef res = [filter newCGImageByFilteringCGImage:tempField.CGImage];
+        
+//        GPUImageCrosshairGenerator *crosshairGenerator = [[GPUImageCrosshairGenerator alloc] init];
+//        crosshairGenerator.crosshairWidth = 15.0;
+//        [crosshairGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
+//        
+//        [(GPUImageHarrisCornerDetectionFilter *)filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
+//            [crosshairGenerator renderCrosshairsFromArray:cornerArray count:cornersDetected frameTime:frameTime];
+//            NSLog(@"hum");
+//        }];
+//        
+//        [filter newCGImageByFilteringCGImage:tempField.CGImage];
+        
+//        GPUImageHistogramFilter* histogram = [[GPUImageHistogramFilter alloc] init];
+//        [histogram ]
+//        UIImage* fieldImage = [UIImage imageWithCGImage:res];
+//        NSData *data = (NSData *)CFBridgingRelease(CGDataProviderCopyData(CGImageGetDataProvider(res)));
+//        const char *bytes = (const char *)[data bytes];
+//        int len = [data length];
+//        
+//        // Note: this assumes 32bit RGBA
+//        for (int i = 0; i < len; i += 4) {
+//            char r = bytes[i];
+//            char g = bytes[i+1];
+//            char b = bytes[i+2];
+//            char a = bytes[i+3];
+//        }
+//        fieldImage.
         img.image = [UIImage imageWithCGImage:res];
+        UIColor *result = [self averageColor:res];
+        CGColorRef comps = [result CGColor];
+//        CGColor comps = [result CGColor];
+        const CGFloat *comp = CGColorGetComponents(comps);
+        
+        CGFloat red = comp[0];
+        CGFloat green = comp[1];
+        CGFloat blue = comp[2];
+
+        float threshold = 0.49;
+        if ( green < threshold) {
+            img.image = nil;
+            
+        }
+//        if (red < threshold | green < threshold | blue < threshold) {
+//            img.image = nil;
+//            
+//        }
+        
         
     }
     
@@ -305,6 +391,33 @@ NSMutableArray *imageViewFieldArray;
 //    CGImageRelease(image);
 //    return processedImage;
 //}
+
+- (UIColor *)averageColor:(CGImageRef ) CGImage {
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char rgba[4];
+    CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), CGImage);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    if(rgba[3] == 0) {
+        CGFloat alpha = ((CGFloat)rgba[3])/255.0;
+        CGFloat multiplier = alpha/255.0;
+        return [UIColor colorWithRed:((CGFloat)rgba[0])*multiplier
+                               green:((CGFloat)rgba[1])*multiplier
+                                blue:((CGFloat)rgba[2])*multiplier
+                               alpha:alpha];
+    }
+    else {
+        return [UIColor colorWithRed:((CGFloat)rgba[0])/255.0
+                               green:((CGFloat)rgba[1])/255.0
+                                blue:((CGFloat)rgba[2])/255.0
+                               alpha:((CGFloat)rgba[3])/255.0];
+    }
+}
+
 
 - (void) createMatrix {
     imageViewFieldArray = [[NSMutableArray alloc] init];
