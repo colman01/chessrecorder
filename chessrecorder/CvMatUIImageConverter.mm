@@ -25,7 +25,9 @@
     CGColorSpaceRef colorSpace;
     
     if (type == CV_8UC4) {
-        colorSpace = CGImageGetColorSpace(image.CGImage);
+//        colorSpace = CGImageGetColorSpace(image.CGImage);
+          colorSpace = CGColorSpaceCreateDeviceRGB();
+//        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     } else if (type == CV_8UC1) {
         colorSpace = CGColorSpaceCreateDeviceGray();
     }

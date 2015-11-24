@@ -95,7 +95,7 @@ bool done = NO;
                 imgView.image = [origImages objectAtIndex:row];
                 
                 UILabel *lbl = (UILabel *)[cell viewWithTag:2];
-                [lbl setText:[NSString stringWithFormat:@"%i %@", indexPath.row, @"Before"]];
+                [lbl setText:[NSString stringWithFormat:@"%li %@", (long)indexPath.row, @"Before"]];
                 
                 break;
             }
@@ -105,7 +105,7 @@ bool done = NO;
                 UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
                 imgView.image = [foundCornersImages objectAtIndex:row];
                 UILabel *lbl = (UILabel *)[cell viewWithTag:2];
-                [lbl setText:[NSString stringWithFormat:@"%i %@", indexPath.row, @"Corner"]];
+                [lbl setText:[NSString stringWithFormat:@"%li %@", (long)indexPath.row, @"Corner"]];
                 
                 break;
             }
@@ -117,7 +117,7 @@ bool done = NO;
                 UIImageView *imgView = (UIImageView *)[cell viewWithTag:3];
                 imgView.image = [transformedImages objectAtIndex:row];
                 UILabel *lbl = (UILabel *)[cell viewWithTag:2];
-                [lbl setText:[NSString stringWithFormat:@"%i %@", indexPath.row, @"Transformed"]];
+                [lbl setText:[NSString stringWithFormat:@"%li %@", (long)indexPath.row, @"Transformed"]];
                 break;
             }
                 

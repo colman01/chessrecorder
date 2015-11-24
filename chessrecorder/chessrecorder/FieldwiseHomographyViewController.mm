@@ -311,6 +311,8 @@
         UIImageView *Iv = [board objectAtIndex:i];
         Iv.image = [fields objectAtIndex:i];
     }
+    
+    self.subView.image = [fields objectAtIndex:0];
 
     
     fieldRect.x = 0; fieldRect.y = 0;
@@ -336,7 +338,7 @@
     plainBoardImg.copyTo(sub);
     
     //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
-    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
+//    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
     
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     self.imgView.image = combinedImg;

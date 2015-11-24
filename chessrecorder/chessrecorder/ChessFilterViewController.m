@@ -19,7 +19,9 @@
     
 
 //    filterType = GPUIMAGE_CANNYEDGEDETECTION;
-    filterType =GPUIMAGE_TRANSFORM3D;
+    
+    filterType =GPUIMAGE_CONVOLUTION;
+//    filterType =GPUIMAGE_TRANSFORM3D;
     
     [self setupFilter];
 }
@@ -575,11 +577,31 @@
             //                {-1.0f,  1.0f, 1.0f},
             //                { 0.0f,  1.0f, 2.0f}
             //            }];
+            
+            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
+            //                {0.0f, 1.0f, 0.0f},
+            //                {1.0f,  1.0f, 1.0f},
+            //                { 0.0f,  1.0f, 0.0f}
+            //            }];
+            
+            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
+            //                {1.0f, 1.0f, 1.0f},
+            //                {1.0f,  1.0f, 1.0f},
+            //                { 1.0f,  1.0f, 1.0f}
+            //            }];
+            
+//            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
+//                {-1.0f,  0.0f, 1.0f},
+//                {-2.0f, 0.0f, 2.0f},
+//                {-1.0f,  0.0f, 1.0f}
+//            }];
+            
             [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-                {-1.0f,  0.0f, 1.0f},
-                {-2.0f, 0.0f, 2.0f},
-                {-1.0f,  0.0f, 1.0f}
+                {0.0f, 1.0f, 0.0f},
+                {1.0f,  1.0f, 1.0f},
+                { 0.0f,  1.0f, 0.0f}
             }];
+            
             
             //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
             //                {1.0f,  1.0f, 1.0f},

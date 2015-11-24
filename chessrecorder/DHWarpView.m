@@ -32,7 +32,7 @@ typedef struct
 }
 
 - (void)getGaussianElimination:(CGFloat *)input count:(int)n {
-    float * A = input;
+    float * A = (float *)input;
 	int i = 0;
 	int j = 0;
 	int m = n-1;
@@ -97,7 +97,7 @@ typedef struct
         {  0,   0,  0, -src.p4.x, -src.p4.y, -1, src.p4.x*dst.p4.y, src.p4.y*dst.p4.y, -dst.p4.y }, // h32
     };
     
-    [self getGaussianElimination:&P[0][0] count:9];
+    [self getGaussianElimination:(double *)&P[0][0] count:9];
     
     CATransform3D matrix = CATransform3DIdentity;
     

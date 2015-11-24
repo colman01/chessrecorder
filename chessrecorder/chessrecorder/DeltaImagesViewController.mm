@@ -180,7 +180,8 @@
     
     
 
-    UIImage *img1, *img2;
+    UIImage *img1;
+//    UIImage *img1, *img2;
 //    img2 = [self.transform transform:pointsSet1 withImage:[images objectAtIndex:0 ]];
 //    img1 = [self.transform transform:pointsSet2 withImage:[images objectAtIndex:1 ]];
 //

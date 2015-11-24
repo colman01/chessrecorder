@@ -401,7 +401,7 @@ namespace CheckDet {
     }
     
     Mat vecToMat(vector<float> vec) {
-        Mat result(1, vec.size(), CV_32FC1);
+        Mat result(1, (float)vec.size(), CV_32FC1);
         
         for (int i = 0; i < vec.size(); i++) {
             result.at<float>(0, i) = vec[i];
@@ -660,7 +660,7 @@ namespace CheckDet {
         }
         
         for (int i = 0; i < result.size(); i++) {
-            for (int j = result.size() - 1; j > i; j--) {
+            for (int j = (int)result.size() - 1; j > i; j--) {
                 if (difference(result[i], result[j]) < 1) {
                     result.erase(result.begin() + j);
                 }
