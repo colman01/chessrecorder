@@ -24,7 +24,7 @@
 		C002E09719D0650800948635 /* realIcond40.png in Resources */ = {isa = PBXBuildFile; fileRef = C002E09619D0650800948635 /* realIcond40.png */; };
 		C002E09B19D06E6E00948635 /* Shader1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C002E09919D06E6E00948635 /* Shader1.fsh */; };
 		C002E09C19D06E6E00948635 /* Shader2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C002E09A19D06E6E00948635 /* Shader2.fsh */; };
-		C002E0A419D1862E00948635 /* ChessFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0A319D1862E00948635 /* ChessFilterViewController.m */; };
+		C002E0A419D1862E00948635 /* ChessFilterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C002E0A319D1862E00948635 /* ChessFilterViewController.mm */; };
 		C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0A619D18D1F00948635 /* FilterPreviewCollectionViewController.m */; };
 		C002E0A919D19D9100948635 /* chess.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0A819D19D9100948635 /* chess.jpg */; };
 		C002E0AB19D1A17500948635 /* chess-top-view.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C002E0AA19D1A17500948635 /* chess-top-view.jpg */; };
@@ -254,6 +254,9 @@
 		C066206319DC69D0002F7B2C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066206219DC69D0002F7B2C /* HomeViewController.m */; };
 		C066206C19DC75E3002F7B2C /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066206B19DC75E3002F7B2C /* InfoViewController.m */; };
 		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
+		C0C38E001C06EAAF00E473CC /* CustomGpuImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C38DFF1C06EAAF00E473CC /* CustomGpuImageView.m */; };
+		C0C38E031C06EB8400E473CC /* CustomGpuImageVidCam.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C38E021C06EB8400E473CC /* CustomGpuImageVidCam.m */; };
+		C0C38E061C07134700E473CC /* ShowFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C38E051C07134700E473CC /* ShowFrameViewController.m */; };
 		C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */; };
 		C0CF587319CF0768000B98E1 /* SimpleVideoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */; };
 		C0D8FC3B19D86310005C4ADC /* OpenCVViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C0D8FC3A19D86310005C4ADC /* OpenCVViewController.mm */; };
@@ -301,7 +304,7 @@
 		C002E09919D06E6E00948635 /* Shader1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader1.fsh; sourceTree = "<group>"; };
 		C002E09A19D06E6E00948635 /* Shader2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader2.fsh; sourceTree = "<group>"; };
 		C002E0A219D1862E00948635 /* ChessFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChessFilterViewController.h; sourceTree = "<group>"; };
-		C002E0A319D1862E00948635 /* ChessFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChessFilterViewController.m; sourceTree = "<group>"; };
+		C002E0A319D1862E00948635 /* ChessFilterViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChessFilterViewController.mm; sourceTree = "<group>"; };
 		C002E0A519D18D1F00948635 /* FilterPreviewCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterPreviewCollectionViewController.h; sourceTree = "<group>"; };
 		C002E0A619D18D1F00948635 /* FilterPreviewCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterPreviewCollectionViewController.m; sourceTree = "<group>"; };
 		C002E0A819D19D9100948635 /* chess.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess.jpg; sourceTree = "<group>"; };
@@ -562,6 +565,12 @@
 		C066206A19DC75E3002F7B2C /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		C066206B19DC75E3002F7B2C /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess_rotate.jpg; sourceTree = "<group>"; };
+		C0C38DFE1C06EAAF00E473CC /* CustomGpuImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGpuImageView.h; sourceTree = "<group>"; };
+		C0C38DFF1C06EAAF00E473CC /* CustomGpuImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGpuImageView.m; sourceTree = "<group>"; };
+		C0C38E011C06EB8400E473CC /* CustomGpuImageVidCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGpuImageVidCam.h; sourceTree = "<group>"; };
+		C0C38E021C06EB8400E473CC /* CustomGpuImageVidCam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGpuImageVidCam.m; sourceTree = "<group>"; };
+		C0C38E041C07134700E473CC /* ShowFrameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowFrameViewController.h; sourceTree = "<group>"; };
+		C0C38E051C07134700E473CC /* ShowFrameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowFrameViewController.m; sourceTree = "<group>"; };
 		C0CF586F19CF060A000B98E1 /* SimpleVideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoFilterViewController.h; sourceTree = "<group>"; };
 		C0CF587019CF060A000B98E1 /* SimpleVideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoFilterViewController.m; sourceTree = "<group>"; };
 		C0CF587219CF0768000B98E1 /* SimpleVideoFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVideoFilterViewController.xib; sourceTree = "<group>"; };
@@ -798,7 +807,9 @@
 				C002E09219D05CF700948635 /* FilterViewController.h */,
 				C002E09319D05CF700948635 /* FilterViewController.m */,
 				C002E0A219D1862E00948635 /* ChessFilterViewController.h */,
-				C002E0A319D1862E00948635 /* ChessFilterViewController.m */,
+				C002E0A319D1862E00948635 /* ChessFilterViewController.mm */,
+				C0C38E041C07134700E473CC /* ShowFrameViewController.h */,
+				C0C38E051C07134700E473CC /* ShowFrameViewController.m */,
 			);
 			name = "Showcase variants";
 			sourceTree = "<group>";
@@ -1165,8 +1176,12 @@
 		C066206819DC7263002F7B2C /* Lower Videoview */ = {
 			isa = PBXGroup;
 			children = (
+				C0C38DFE1C06EAAF00E473CC /* CustomGpuImageView.h */,
+				C0C38DFF1C06EAAF00E473CC /* CustomGpuImageView.m */,
 				C066205D19DC641B002F7B2C /* AugmentedRealityViewController.h */,
 				C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */,
+				C0C38E011C06EB8400E473CC /* CustomGpuImageVidCam.h */,
+				C0C38E021C06EB8400E473CC /* CustomGpuImageVidCam.m */,
 			);
 			name = "Lower Videoview";
 			sourceTree = "<group>";
@@ -1505,12 +1520,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */,
+				C0C38E061C07134700E473CC /* ShowFrameViewController.m in Sources */,
 				C066205319DC56CA002F7B2C /* NavigationBar.m in Sources */,
 				C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */,
 				C061FD6119E152CD007E9FDD /* HomeTabBarItem.m in Sources */,
 				043FDA0919E4C7C40093160F /* CheckerboardDetector.cpp in Sources */,
 				C030F36319DD2A85008A1C02 /* DeltaImagesViewController.mm in Sources */,
-				C002E0A419D1862E00948635 /* ChessFilterViewController.m in Sources */,
+				C002E0A419D1862E00948635 /* ChessFilterViewController.mm in Sources */,
 				0481AE5D19D44D9500F2DE80 /* CvMatUIImageConverter.mm in Sources */,
 				C002E09119D051A100948635 /* ShowcaseFilterViewController.m in Sources */,
 				C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */,
@@ -1528,6 +1544,7 @@
 				C0D8FC3B19D86310005C4ADC /* OpenCVViewController.mm in Sources */,
 				C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */,
 				C01DED0D19FA75A700F3F002 /* FieldwiseHomographyViewController.mm in Sources */,
+				C0C38E001C06EAAF00E473CC /* CustomGpuImageView.m in Sources */,
 				C061FBEA19DFEABE007E9FDD /* GameDao.m in Sources */,
 				C030F37819DD6EF8008A1C02 /* NotationWriter.m in Sources */,
 				C030F37C19DD9A26008A1C02 /* PlayerInfoViewController.m in Sources */,
@@ -1539,6 +1556,7 @@
 				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
 				C066206C19DC75E3002F7B2C /* InfoViewController.m in Sources */,
 				C066206319DC69D0002F7B2C /* HomeViewController.m in Sources */,
+				C0C38E031C06EB8400E473CC /* CustomGpuImageVidCam.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

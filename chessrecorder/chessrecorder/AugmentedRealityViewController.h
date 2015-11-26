@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <GPUImage/GPUImage.h>
-
+#import "CustomGpuImageVidCam.h"
 
 @interface AugmentedRealityViewController : UIViewController<GPUImageVideoCameraDelegate> {
-    GPUImageVideoCamera *videoCamera;
+//    GPUImageVideoCamera *videoCamera;
+    CustomGpuImageVidCam *videoCamera;
     GPUImageOutput<GPUImageInput> *filter;
     GPUImageFilterPipeline *pipeline;
 }
 
 @property IBOutlet GPUImageView *cameraView;
+
+@property IBOutlet UIImageView *showImage;
+@property UIImage *imageFrame;
 
 @property BOOL historyViewer;
 @property (nonatomic, assign) BOOL working;

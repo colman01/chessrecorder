@@ -7,12 +7,21 @@
 //
 
 #import "ChessFilterViewController.h"
+#import "ShowFrameViewController.h"
+#import "CvMatUIImageConverter.h"
+#include <opencv2/imgproc/imgproc.hpp>
+#include "CheckerboardDetector.h"
+
 
 @interface ChessFilterViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UIImageView *subView;
 
 @end
 
 @implementation ChessFilterViewController
+
+@synthesize someImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,8 +29,10 @@
 
 //    filterType = GPUIMAGE_CANNYEDGEDETECTION;
     
-    filterType =GPUIMAGE_CONVOLUTION;
+//    filterType =GPUIMAGE_CONVOLUTION;
 //    filterType =GPUIMAGE_TRANSFORM3D;
+    
+    filterType = GPUIMAGE_FACES;
     
     [self setupFilter];
 }
@@ -1125,7 +1136,18 @@
             
         case GPUIMAGE_FACES:
         {
+            [videoCamera rotateCamera];
+            self.title = @"Face Detection";
+            self.filterSettingsSlider.hidden = YES;
+            
+            [self.filterSettingsSlider setValue:1.0];
+            [self.filterSettingsSlider setMinimumValue:0.0];
+            [self.filterSettingsSlider setMaximumValue:2.0];
+            
+            filter = [[GPUImageSaturationFilter alloc] init];
+            [videoCamera setDelegate:self];
             break;
+//            break;
         }
             
         default: filter = [[GPUImageSepiaFilter alloc] init]; break;
@@ -1453,8 +1475,315 @@
 
 #pragma mark - Face Detection Delegate Callback
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
+    UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
+//    if(img) {
+//        self.someImage.image = img;
+//        ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+//        parent.imgView.image = img;
+//    }
+//    [self parseBuffer:sampleBuffer];
+    
+    
+//    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+//    OSType format = CVPixelBufferGetPixelFormatType(pixelBuffer);
+//    
+//    // Set the following dict on AVCaptureVideoDataOutput's videoSettings to get YUV output
+//    // @{ kCVPixelBufferPixelFormatTypeKey : kCVPixelFormatType_420YpCbCr8BiPlanarFullRange }
+//    
+//    NSAssert(format == kCVPixelFormatType_420YpCbCr8BiPlanarFullRange, @"Only YUV is supported");
+//    
+//    // The first plane / channel (at index 0) is the grayscale plane
+//    // See more infomation about the YUV format
+//    // http://en.wikipedia.org/wiki/YUV
+//    CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+//    void *baseaddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0);
+//    
+//    CGFloat width = CVPixelBufferGetWidth(pixelBuffer);
+//    CGFloat height = CVPixelBufferGetHeight(pixelBuffer);
+//    
+//    cv::Mat mat(height, width, CV_8UC4, baseaddress, 0);
+//    
+//    // Use the mat here
+//    
+//    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+    
+    cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
+    
+    cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    
+    int dstImgSize = 400;
+    
+
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
+    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
+        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+        src[i] = detectedCorners[i];
+    }
+    
+    printf("getPerspectiveTransform\n");
+    printf("    input\n");
+    for (int i = 0; i < 4; i++) {
+        printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
+    }
+    
+    cv::Mat m = cv::getPerspectiveTransform(src, dst);
+    
+    printf("    output\n");
+    for(int i = 0; i < m.rows; i++) {
+        const double* mi = m.ptr<double>(i);
+        printf("        ( ");
+        for(int j = 0; j < m.cols; j++) {
+            printf("%8.1f ", mi[j]);
+        }
+        printf(")\n");
+    }
+    free(dst);
+    free(src);
+    
+    cv::Mat plainBoardImg;
+    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
+    
+    cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
+    cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+    cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            fieldRect.x = fieldRect.width * i;
+            fieldRect.y = fieldRect.height * j;
+            
+            cv::Mat field(plainBoardImg, fieldRect);
+            field.convertTo(field, CV_16UC4);
+            field /= 32;
+            
+            if ((i + j) % 2 == 0) {
+                fieldType0Mean += field;
+            } else {
+                fieldType1Mean += field;
+            }
+        }
+    }
+    
+    
+    NSMutableArray *fields = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            fieldRect.x = fieldRect.width * i;
+            fieldRect.y = fieldRect.height * j;
+            
+            cv::Mat field(plainBoardImg, fieldRect);
+            field.convertTo(field, CV_16UC4);
+            field /= 32;
+            
+            [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
+            
+            if ((i + j) % 2 == 0) {
+                fieldType0Mean += field;
+            } else {
+                fieldType1Mean += field;
+            }
+        }
+    }
+    
+    fieldRect.x = 0; fieldRect.y = 0;
+    fieldType0Mean.copyTo(srcImg(fieldRect));
+    fieldRect.x = fieldRect.width; fieldRect.y = 0;
+    fieldType1Mean.copyTo(srcImg(fieldRect));
+    
+    cv::Scalar meanPixel = cv::mean(fieldType0Mean);
+    meanPixel.val[3] = 0;
+    double brightnessType0 = sqrtl(meanPixel.dot(meanPixel));
+    
+    meanPixel = cv::mean(fieldType1Mean);
+    meanPixel.val[3] = 0;
+    double brightnessType1 = sqrtl(meanPixel.dot(meanPixel));
+    
+    if (brightnessType0 < brightnessType1) {
+        //printf("board is adjusted left-right, thus it needs to be rotated 90deg\n");
+        cv::transpose(plainBoardImg, plainBoardImg);
+        cv::flip(plainBoardImg, plainBoardImg, 0);
+    }
+    
+    cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
+    plainBoardImg.copyTo(sub);
+    
+    //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
+    
+    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+//    parent.imgView.image = img;
+//    parent.subView.image = img;
+    
+    [parent.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
+    
+//    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:plainBoardImg]];
+    
+    
+    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
+    
+    [parent.imgView setImage:combinedImg];
+//    self.imgView.image = combinedImg;
+    
+    
 }
 
+
+- (void) parseBuffer:(CMSampleBufferRef) sampleBuffer
+{
+    CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    
+    CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
+    
+    
+    //Processing here
+    int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
+    int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
+    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
+    
+    // put buffer in open cv, no memory copied
+    cv::Mat mat = cv::Mat(bufferHeight,bufferWidth,CV_8UC4,pixel);
+    
+    //End processing
+    CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
+    
+    cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    
+    int dstImgSize = 400;
+
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(mat);
+    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
+        cv::circle(mat, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+        src[i] = detectedCorners[i];
+    }
+
+    printf("getPerspectiveTransform\n");
+    printf("    input\n");
+    for (int i = 0; i < 4; i++) {
+        printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
+    }
+    
+    cv::Mat m = cv::getPerspectiveTransform(src, dst);
+    
+    printf("    output\n");
+    for(int i = 0; i < m.rows; i++) {
+        const double* mi = m.ptr<double>(i);
+        printf("        ( ");
+        for(int j = 0; j < m.cols; j++) {
+            printf("%8.1f ", mi[j]);
+        }
+        printf(")\n");
+    }
+    free(dst);
+    free(src);
+    
+    
+}
+
+//- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+//{
+//    CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+//    
+//    CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
+//    
+//    int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
+//    int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
+//    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
+//    cv::Mat image = cv::Mat(bufferHeight,bufferWidth,CV_8UC4,pixel); //put buffer in open cv, no memory copied
+//    //Processing here
+//    
+//    //End processing
+//    CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
+//}
+
+
+// Create a UIImage from sample buffer data
+// Works only if pixel format is kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+-(UIImage *) imageFromSamplePlanerPixelBuffer:(CMSampleBufferRef) sampleBuffer{
+    
+    @autoreleasepool {
+        // Get a CMSampleBuffer's Core Video image buffer for the media data
+        CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+        // Lock the base address of the pixel buffer
+        CVPixelBufferLockBaseAddress(imageBuffer, 0);
+        
+        // Get the number of bytes per row for the plane pixel buffer
+        void *baseAddress = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0);
+        
+        // Get the number of bytes per row for the plane pixel buffer
+        size_t bytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(imageBuffer,0);
+        // Get the pixel buffer width and height
+        size_t width = CVPixelBufferGetWidth(imageBuffer);
+        size_t height = CVPixelBufferGetHeight(imageBuffer);
+        
+        // Create a device-dependent gray color space
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+        
+        // Create a bitmap graphics context with the sample buffer data
+        CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
+                                                     bytesPerRow, colorSpace, kCGImageAlphaNone);
+        // Create a Quartz image from the pixel data in the bitmap graphics context
+        CGImageRef quartzImage = CGBitmapContextCreateImage(context);
+        // Unlock the pixel buffer
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+        
+        // Free up the context and color space
+        CGContextRelease(context);
+        CGColorSpaceRelease(colorSpace);
+        
+        // Create an image object from the Quartz image
+        UIImage *image = [UIImage imageWithCGImage:quartzImage];
+        
+        // Release the Quartz image
+        CGImageRelease(quartzImage);
+        
+        
+        return (image);
+    }
+}
+
+
+- (CVPixelBufferRef) rotateBuffer: (CMSampleBufferRef) sampleBuffer
+{
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(imageBuffer,0);
+    
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    
+    void *src_buff = CVPixelBufferGetBaseAddress(imageBuffer);
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], kCVPixelBufferCGImageCompatibilityKey,
+                             [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey,
+                             nil];
+    
+    CVPixelBufferRef pxbuffer = NULL;
+    //CVReturn status = CVPixelBufferPoolCreatePixelBuffer (NULL, _pixelWriter.pixelBufferPool, &pxbuffer);
+    CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, width,
+                                          height, kCVPixelFormatType_32BGRA, (__bridge CFDictionaryRef) options,
+                                          &pxbuffer);
+    
+    NSParameterAssert(status == kCVReturnSuccess && pxbuffer != NULL);
+    
+    CVPixelBufferLockBaseAddress(pxbuffer, 0);
+    void *dest_buff = CVPixelBufferGetBaseAddress(pxbuffer);
+    NSParameterAssert(dest_buff != NULL);
+    
+    int *src = (int*) src_buff ;
+    int *dest= (int*) dest_buff ;
+    size_t count = (bytesPerRow * height) / 4 ;
+    while (count--) {
+        *dest++ = *src++;
+    }
+    
+    //Test straight copy.
+    //memcpy(pxdata, baseAddress, width * height * 4) ;
+    CVPixelBufferUnlockBaseAddress(pxbuffer, 0);
+    CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+    return pxbuffer;
+}
 
 - (void)GPUVCWillOutputFeatures:(NSArray*)featureArray forClap:(CGRect)clap
                  andOrientation:(UIDeviceOrientation)curDeviceOrientation

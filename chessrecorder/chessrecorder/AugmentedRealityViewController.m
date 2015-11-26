@@ -16,6 +16,7 @@
 
 @synthesize cameraView;
 @synthesize historyViewer, working;
+@synthesize imageFrame, showImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +40,48 @@
     
         [videoCamera startCameraCapture];
     }
+    
+//    self.imageFrame = videoCamera.imageFrame;
+//    self.showImage.image = videoCamera.imageFrame;
+    [self.showImage setImage:imageFrame];
 }
+
+//- (void)processVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+
+//- (void)captureOutput:(AVCaptureOutput *)captureOutput
+//didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
+//       fromConnection:(AVCaptureConnection *)connection
+//{
+//    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+//    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+//    
+//    // For the iOS the luma is contained in full plane (8-bit)
+//    size_t width = CVPixelBufferGetWidthOfPlane(imageBuffer, 0);
+//    size_t height = CVPixelBufferGetHeightOfPlane(imageBuffer, 0);
+//    size_t bytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(imageBuffer, 0);
+//    
+//    Pixel_8 *lumaBuffer = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0);
+//    
+//    const vImage_Buffer inImage = { lumaBuffer, height, width, bytesPerRow };
+//    
+//    Pixel_8 *outBuffer = (Pixel_8 *)calloc(width*height, sizeof(Pixel_8));
+//    const vImage_Buffer outImage = { outBuffer, height, width, bytesPerRow };
+//    [self maxFromImage:inImage toImage:outImage];
+//    
+//    CGColorSpaceRef grayColorSpace = CGColorSpaceCreateDeviceGray();
+//    CGContextRef context = CGBitmapContextCreate(outImage.data, width, height, 8, bytesPerRow, grayColorSpace, kCGBitmapByteOrderDefault);
+//    CGImageRef dstImageFilter = CGBitmapContextCreateImage(context);
+//    
+//    dispatch_sync(dispatch_get_main_queue(), ^{
+//        _customPreviewLayer.contents = (__bridge id)dstImageFilter;
+//    });
+//    
+//    free(outBuffer);
+//    CGImageRelease(dstImageFilter);
+//    CGContextRelease(context);
+//    CGColorSpaceRelease(grayColorSpace);
+//}
+
 
 /*
 #pragma mark - Navigation
