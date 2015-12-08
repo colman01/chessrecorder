@@ -1660,123 +1660,123 @@
 
 #pragma mark - Face Detection Delegate Callback
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
-//    UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
-//    
-//    cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
-//    
-//    cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
-//    cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
-//    
-//    int dstImgSize = 400;
-//    
-//
-//    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
-//    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
-//        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
-//        src[i] = detectedCorners[i];
+    UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
+    
+    cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
+    
+    cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    
+    int dstImgSize = 400;
+    
+
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
+    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
+        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+        src[i] = detectedCorners[i];
+    }
+    
+//    printf("getPerspectiveTransform\n");
+//    printf("    input\n");
+//    for (int i = 0; i < 4; i++) {
+//        printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
+//    }
+    
+    cv::Mat m = cv::getPerspectiveTransform(src, dst);
+    
+//    printf("    output\n");
+//    for(int i = 0; i < m.rows; i++) {
+//        const double* mi = m.ptr<double>(i);
+//        printf("        ( ");
+//        for(int j = 0; j < m.cols; j++) {
+//            printf("%8.1f ", mi[j]);
+//        }
+//        printf(")\n");
+//    }
+    free(dst);
+    free(src);
+    
+    cv::Mat plainBoardImg;
+    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
+    
+//    cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
+//    cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+//    cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+//    for (int i = 0; i < 8; i++) {
+//        for (int j = 0; j < 8; j++) {
+//            fieldRect.x = fieldRect.width * i;
+//            fieldRect.y = fieldRect.height * j;
+//            
+//            cv::Mat field(plainBoardImg, fieldRect);
+//            field.convertTo(field, CV_16UC4);
+//            field /= 32;
+//            
+//            if ((i + j) % 2 == 0) {
+//                fieldType0Mean += field;
+//            } else {
+//                fieldType1Mean += field;
+//            }
+//        }
 //    }
 //    
-////    printf("getPerspectiveTransform\n");
-////    printf("    input\n");
-////    for (int i = 0; i < 4; i++) {
-////        printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
-////    }
+//    NSMutableArray *fields = [[NSMutableArray alloc] init];
 //    
-//    cv::Mat m = cv::getPerspectiveTransform(src, dst);
-//    
-////    printf("    output\n");
-////    for(int i = 0; i < m.rows; i++) {
-////        const double* mi = m.ptr<double>(i);
-////        printf("        ( ");
-////        for(int j = 0; j < m.cols; j++) {
-////            printf("%8.1f ", mi[j]);
-////        }
-////        printf(")\n");
-////    }
-//    free(dst);
-//    free(src);
-//    
-//    cv::Mat plainBoardImg;
-//    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
-//    
-////    cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
-////    cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
-////    cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
-////    for (int i = 0; i < 8; i++) {
-////        for (int j = 0; j < 8; j++) {
-////            fieldRect.x = fieldRect.width * i;
-////            fieldRect.y = fieldRect.height * j;
-////            
-////            cv::Mat field(plainBoardImg, fieldRect);
-////            field.convertTo(field, CV_16UC4);
-////            field /= 32;
-////            
-////            if ((i + j) % 2 == 0) {
-////                fieldType0Mean += field;
-////            } else {
-////                fieldType1Mean += field;
-////            }
-////        }
-////    }
-////    
-////    NSMutableArray *fields = [[NSMutableArray alloc] init];
-////    
-////    for (int i = 0; i < 8; i++) {
-////        for (int j = 0; j < 8; j++) {
-////            fieldRect.x = fieldRect.width * i;
-////            fieldRect.y = fieldRect.height * j;
-////            
-////            cv::Mat field(plainBoardImg, fieldRect);
-////            field.convertTo(field, CV_16UC4);
-////            field /= 32;
-////            
-////            [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
-////            
-////            if ((i + j) % 2 == 0) {
-////                fieldType0Mean += field;
-////            } else {
-////                fieldType1Mean += field;
-////            }
-////        }
-////    }
-//    
-////    fieldRect.x = 0; fieldRect.y = 0;
-////    fieldType0Mean.copyTo(srcImg(fieldRect));
-////    fieldRect.x = fieldRect.width; fieldRect.y = 0;
-////    fieldType1Mean.copyTo(srcImg(fieldRect));
-//    
-////    cv::Scalar meanPixel = cv::mean(fieldType0Mean);
-////    meanPixel.val[3] = 0;
-////    double brightnessType0 = sqrtl(meanPixel.dot(meanPixel));
-////    
-////    meanPixel = cv::mean(fieldType1Mean);
-////    meanPixel.val[3] = 0;
-////    double brightnessType1 = sqrtl(meanPixel.dot(meanPixel));
-////    
-////    if (brightnessType0 < brightnessType1) {
-////        //printf("board is adjusted left-right, thus it needs to be rotated 90deg\n");
-////        cv::transpose(plainBoardImg, plainBoardImg);
-////        cv::flip(plainBoardImg, plainBoardImg, 0);
-////    }
-//    
-////    cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
-////    plainBoardImg.copyTo(sub);
-//    
-//    //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
-//    
-//    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
-//
-//    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
-////    UIImage* plain = [CvMatUIImageConverter UIImageFromCVMat:plainBoardImg];
-////    UIImageFromCVMat
-//    UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
-//    // plainBoardImg
-////
-////    [parent.imgView setImage:combinedImg];
-//    
-//    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
+//    for (int i = 0; i < 8; i++) {
+//        for (int j = 0; j < 8; j++) {
+//            fieldRect.x = fieldRect.width * i;
+//            fieldRect.y = fieldRect.height * j;
+//            
+//            cv::Mat field(plainBoardImg, fieldRect);
+//            field.convertTo(field, CV_16UC4);
+//            field /= 32;
+//            
+//            [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
+//            
+//            if ((i + j) % 2 == 0) {
+//                fieldType0Mean += field;
+//            } else {
+//                fieldType1Mean += field;
+//            }
+//        }
+//    }
     
-//    self.imgView.image = combinedImg;
+//    fieldRect.x = 0; fieldRect.y = 0;
+//    fieldType0Mean.copyTo(srcImg(fieldRect));
+//    fieldRect.x = fieldRect.width; fieldRect.y = 0;
+//    fieldType1Mean.copyTo(srcImg(fieldRect));
+    
+//    cv::Scalar meanPixel = cv::mean(fieldType0Mean);
+//    meanPixel.val[3] = 0;
+//    double brightnessType0 = sqrtl(meanPixel.dot(meanPixel));
+//    
+//    meanPixel = cv::mean(fieldType1Mean);
+//    meanPixel.val[3] = 0;
+//    double brightnessType1 = sqrtl(meanPixel.dot(meanPixel));
+//    
+//    if (brightnessType0 < brightnessType1) {
+//        //printf("board is adjusted left-right, thus it needs to be rotated 90deg\n");
+//        cv::transpose(plainBoardImg, plainBoardImg);
+//        cv::flip(plainBoardImg, plainBoardImg, 0);
+//    }
+    
+//    cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
+//    plainBoardImg.copyTo(sub);
+    
+    //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
+    
+    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+
+    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
+//    UIImage* plain = [CvMatUIImageConverter UIImageFromCVMat:plainBoardImg];
+//    UIImageFromCVMat
+    UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
+    // plainBoardImg
+//
+//    [parent.imgView setImage:combinedImg];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
+    
+    self.imgView.image = combinedImg;
     
     
 }
