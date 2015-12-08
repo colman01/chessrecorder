@@ -1218,18 +1218,18 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPK-1E-4EX">
-                                <rect key="frame" x="27" y="97" width="260" height="220"/>
+                                <rect key="frame" x="30" y="64" width="247" height="156"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="4Hc-ey-eaa" kind="embed" id="Oht-vl-41J"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOe-fI-bgd">
-                                <rect key="frame" x="169" y="364" width="146" height="108"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-ZK-sZw">
+                                <rect key="frame" x="0.0" y="336" width="50" height="47"/>
                                 <animations/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-ZK-sZw">
-                                <rect key="frame" x="15" y="364" width="146" height="108"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOe-fI-bgd">
+                                <rect key="frame" x="58" y="228" width="252" height="239"/>
                                 <animations/>
                             </imageView>
                         </subviews>
@@ -1378,7 +1378,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
             <objects>
                 <viewController id="4Hc-ey-eaa" customClass="ChessFilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vFM-UB-eIq" customClass="GPUImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="220"/>
+                        <rect key="frame" x="0.0" y="0.0" width="247" height="156"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

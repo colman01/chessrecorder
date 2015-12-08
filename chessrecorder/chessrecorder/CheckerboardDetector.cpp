@@ -9,8 +9,35 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <algorithm>
+#include <Accelerate/Accelerate.h>
+
 
 namespace CheckDet {
+    
+//    -(int) matrix_invert:(int) N andWithMatrix:(double*)matrix
+//    {
+//        int error=0;
+//        int *pivot = malloc(N*N*sizeof(int));
+//        double *workspace = malloc(N*sizeof(double));
+//        
+//        dgetrf_(&N, &N, matrix, &N, pivot, &error);
+//        
+//        if (error != 0) {
+//            NSLog(@"Error 1");
+//            return error;
+//        }
+//        
+//        dgetri_(&N, matrix, &N, pivot, workspace, &N, &error);
+//        
+//        if (error != 0) {
+//            NSLog(@"Error 2");
+//            return error;
+//        }
+//        
+//        free(pivot);
+//        free(workspace);
+//        return error;
+//    }
     
     float getCheckerboardCornerHeat(Mat& mat, int rowIdx, int colIdx, int maxRadius) {
         float diffResponse = 0;
@@ -61,6 +88,8 @@ namespace CheckDet {
             float* lefPtr = mat.ptr<float>(row1) + col0;
             float* topEnd = rigPtr;
             int cols = mat.cols;
+            
+            
             
             if (mat.isContinuous()) {
                 for (; topPtr < topEnd;) {
@@ -967,5 +996,7 @@ namespace CheckDet {
         gettimeofday(&t1, NULL);
         c = clock();
     }
+    
+
     
 }
