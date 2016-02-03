@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ak0-KX-n5t">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="iye-fd-2qu">
+            <objects>
+                <viewController id="F45-gR-WeC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RMC-3l-Gql"/>
+                        <viewControllerLayoutGuide type="bottom" id="tOO-RY-nKz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mFC-4A-uhE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BvH-7n-u5U">
+                                <rect key="frame" x="132" y="113" width="240" height="128"/>
+                                <connections>
+                                    <segue destination="EyH-rt-8pL" kind="embed" id="pXa-cY-lOE"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CGS-EG-R3D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LJn-Ld-sIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1193" y="-82"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VjQ-tU-MaZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ak0-KX-n5t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hNa-X7-D0L">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="F45-gR-WeC" kind="relationship" relationship="rootViewController" id="LCP-Ln-Pia"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TPh-aq-XDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="381" y="-82"/>
+        </scene>
+        <!--Chess Filter View Controller-->
+        <scene sceneID="WX5-vu-JRY">
+            <objects>
+                <viewController id="EyH-rt-8pL" customClass="ChessFilterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ghs-QV-Ofq"/>
+                        <viewControllerLayoutGuide type="bottom" id="bmR-PT-RrV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="msJ-jE-IiA" customClass="GPUImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vec-bD-rf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1133" y="442"/>
+        </scene>
+    </scenes>
+</document>

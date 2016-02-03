@@ -26,17 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    filterType = GPUIMAGE_XYGRADIENT;
-
-//    filterType = GPUIMAGE_CANNYEDGEDETECTION;
-//    filterType =GPUIMAGE_CONVOLUTION;
-//    filterType =GPUIMAGE_TRANSFORM3D;
     filterType = GPUIMAGE_FACES;
-    
-//    
-//    filterType = GPUIMAGE_FILECONFIG;
-//    filterType = GPUIMAGE_COLORINVERT;
-    
+//    filterType = GPUIMAGE_HARRISCORNERDETECTION;
     [self setupFilter];
 }
 
@@ -44,22 +35,9 @@
     [super didReceiveMemoryWarning];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (void)setupFilter;
 {
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1920x1080 cameraPosition:AVCaptureDevicePositionBack];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
 
     BOOL needsSecondImage = NO;
@@ -220,8 +198,7 @@
             [self.filterSettingsSlider setValue:1.0];
             
             filter = [[GPUImageUnsharpMaskFilter alloc] init];
-            
-            //            [(GPUImageUnsharpMaskFilter *)filter setIntensity:3.0];
+
         }; break;
         case GPUIMAGE_GAMMA:
         {
@@ -446,37 +423,6 @@
         }; break;
         case GPUIMAGE_CANNYEDGEDETECTION:
         {
-//            self.title = @"Canny Edge Detection";
-//            self.filterSettingsSlider.hidden = NO;
-//            
-//            [self.filterSettingsSlider setMinimumValue:0.0];
-//            [self.filterSettingsSlider setMaximumValue:1.0];
-//            [self.filterSettingsSlider setValue:1.0];
-//            
-//            filter = [[GPUImageCannyEdgeDetectionFilter alloc] init];
-            
-//            self.filterSettingsSlider.hidden = NO;
-//            
-//            [self.filterSettingsSlider setMinimumValue:0.01];
-//            [self.filterSettingsSlider setMaximumValue:0.70];
-//            [self.filterSettingsSlider setValue:0.20];
-//            
-//            filter = [[GPUImageFilterGroup alloc] init];
-//
-//            GPUImageHarrisCornerDetectionFilter *harrisCorner = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-//            [(GPUImageHarrisCornerDetectionFilter *)harrisCorner setThreshold:0.001];
-//            [(GPUImageFilterGroup *)filter addFilter:harrisCorner];
-//            
-//            GPUImageHoughTransformLineDetector *houghFilter = [[GPUImageHoughTransformLineDetector alloc] init];
-//            [(GPUImageHoughTransformLineDetector *)houghFilter setLineDetectionThreshold:0.01];
-//            [(GPUImageFilterGroup *)filter addFilter:houghFilter];
-//            
-//            [harrisCorner addTarget:houghFilter];
-//            
-//            [(GPUImageFilterGroup *)filter setInitialFilters:[NSArray arrayWithObject:harrisCorner]];
-//            [(GPUImageFilterGroup *)filter setTerminalFilter:houghFilter];
-
-            
             self.filterSettingsSlider.hidden = NO;
             
             [self.filterSettingsSlider setMinimumValue:0.01];
@@ -488,9 +434,6 @@
             GPUImageXYDerivativeFilter *xyF = [[GPUImageXYDerivativeFilter alloc] init];
             [(GPUImageFilterGroup *)filter addFilter:xyF];
             
-//            GPUImageCannyEdgeDetectionFilter * cannyEdge = [[GPUImageCannyEdgeDetectionFilter alloc] init];
-//            [(GPUImageFilterGroup *)filter addFilter:cannyEdge];
-            
             GPUImageHarrisCornerDetectionFilter *harrisCorner = [[GPUImageHarrisCornerDetectionFilter alloc] init];
             [(GPUImageHarrisCornerDetectionFilter *)harrisCorner setThreshold:0.001];
             [(GPUImageFilterGroup *)filter addFilter:harrisCorner];
@@ -498,11 +441,6 @@
             GPUImageHoughTransformLineDetector *houghFilter = [[GPUImageHoughTransformLineDetector alloc] init];
             [(GPUImageHoughTransformLineDetector *)houghFilter setLineDetectionThreshold:0.004];
             [(GPUImageFilterGroup *)filter addFilter:houghFilter];
-            
-//            [xyF addTarget:harrisCorner];
-//            [harrisCorner addTarget:houghFilter];
-            
-//            [houghFilter addTarget:harrisCorner];
             
             [xyF addTarget:harrisCorner];
             
@@ -643,47 +581,11 @@
             self.filterSettingsSlider.hidden = YES;
             
             filter = [[GPUImage3x3ConvolutionFilter alloc] init];
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {-2.0f, -1.0f, 0.0f},
-            //                {-1.0f,  1.0f, 1.0f},
-            //                { 0.0f,  1.0f, 2.0f}
-            //            }];
-            
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {0.0f, 1.0f, 0.0f},
-            //                {1.0f,  1.0f, 1.0f},
-            //                { 0.0f,  1.0f, 0.0f}
-            //            }];
-            
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {1.0f, 1.0f, 1.0f},
-            //                {1.0f,  1.0f, 1.0f},
-            //                { 1.0f,  1.0f, 1.0f}
-            //            }];
-            
-//            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-//                {-1.0f,  0.0f, 1.0f},
-//                {-2.0f, 0.0f, 2.0f},
-//                {-1.0f,  0.0f, 1.0f}
-//            }];
-            
             [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
                 {0.0f, 1.0f, 0.0f},
                 {1.0f,  1.0f, 1.0f},
                 { 0.0f,  1.0f, 0.0f}
             }];
-            
-            
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {1.0f,  1.0f, 1.0f},
-            //                {1.0f, -8.0f, 1.0f},
-            //                {1.0f,  1.0f, 1.0f}
-            //            }];
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                { 0.11f,  0.11f, 0.11f},
-            //                { 0.11f,  0.11f, 0.11f},
-            //                { 0.11f,  0.11f, 0.11f}
-            //            }];
         }; break;
         case GPUIMAGE_EMBOSS:
         {
@@ -851,8 +753,6 @@
             filter = [[GPUImageMosaicFilter alloc] init];
             [(GPUImageMosaicFilter *)filter setTileSet:@"squares.png"];
             [(GPUImageMosaicFilter *)filter setColorOn:NO];
-            //[(GPUImageMosaicFilter *)filter setTileSet:@"dotletterstiles.png"];
-            //[(GPUImageMosaicFilter *)filter setTileSet:@"curvies.png"];
             
         }; break;
         case GPUIMAGE_CHROMAKEY:
@@ -1196,17 +1096,65 @@
             
         case GPUIMAGE_FACES:
         {
-//            [videoCamera rotateCamera];
-            self.title = @"Face Detection";
-//            self.filterSettingsSlider.hidden = YES;
-//            
-//            [self.filterSettingsSlider setValue:1.0];
-//            [self.filterSettingsSlider setMinimumValue:0.0];
-//            [self.filterSettingsSlider setMaximumValue:2.0];
-//            
-//            filter = [[GPUImageSaturationFilter alloc] init];
-            [self.filterSettingsSlider setValue:0.5];
-            filter = [[GPUImageBrightnessFilter alloc] init];
+            self.title = @"Harris Corner Detection";
+            
+            filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
+            [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.02];
+            
+            [(GPUImageHarrisCornerDetectionFilter *)filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
+                
+
+                int asdf = sizeof(cornerArray)/sizeof(*cornerArray);
+                NSLog(@"size of entry %i", asdf);
+//                printf << "Length of array = " << (sizeof(cornerArray)/sizeof(*cornerArray)) << std::endl;
+                
+               int numberOfCorners = sizeof(cornerArray);
+                
+                for (int i =0; i<numberOfCorners; i++) {
+                    GLfloat* entry = &cornerArray[i];
+                    float pos_x = entry[0];
+                    float pos_y = entry[1];
+//                    float pos_z = entry[2];
+                    
+                    int numberOfEntriesInObject = sizeof(entry);
+//                    NSLog(@"number of entries  %i", numberOfEntriesInObject);
+                    NSLog(@"harris pos x %f and pos y %f", pos_x, pos_y);
+                    float x_real = pos_x*640;
+                    float y_real = pos_y*480;
+                    NSLog(@"pixel harris pos x %f and pos y %f", x_real, y_real);
+                    
+//                    // TODO:: This doesn't work for some reason; give 4 as the size
+//                    NSLog(@"number of entries  %i",numberOfEntriesInObject);
+//                    for (int j=0; j<numberOfEntriesInObject; j++) {
+//                        
+////                        int q = sizeof(entry[j]);
+////                        NSLog(@"howmany  %i",q);
+////                        
+////                        float subEntry = entry[j];
+////                        
+////                        for (int k=0; k<q; q++) {
+////                            // 0..3
+////                            float data = subEntry[k];
+////                            NSLog(@"data  %f",data);
+////                            
+////                        }
+//                        
+//                        float val = entry[j];
+//                        NSLog(@"value of entry  %f",val);
+//                        
+////                        int quant = sizeof(val);
+////                        for (int k=0; k<quant; k++) {
+//////                            float someVal = val[k];
+//////                            int quantity = sizeof(someVal);
+////                            NSLog(@"sizeof entry  %i", quantity);
+////                            NSLog(@"value of entry  %f",val[k]);
+////                        }
+//
+//                    }
+//                    NSLog(@">>>>>>>>> %i <<<<<<<<<", i);
+                }
+
+            }];
             
             [videoCamera setDelegate:self];
             break;
@@ -1224,326 +1172,96 @@
             
             filter = [[GPUImageCannyEdgeDetectionFilter alloc] init];
         }; break;
-            
+    }
+    if (filterType != GPUIMAGE_VORONOI)
+    {
+        [videoCamera addTarget:filter];
+    }
+     
+    videoCamera.runBenchmark = YES;
+    GPUImageView *filterView = (GPUImageView *)self.view;
     
-//        {
-//            self.filterSettingsSlider.hidden = NO;
-//            
-//            [self.filterSettingsSlider setMinimumValue:0.01];
-//            [self.filterSettingsSlider setMaximumValue:0.70];
-//            [self.filterSettingsSlider setValue:0.20];
-//            
-//            filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-//            [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.20];
-//
-//        }; break;
-//        default: filter = [[GPUImageSepiaFilter alloc] init]; break;
+    [filter addTarget:filterView];
+    [videoCamera startCameraCapture];
+}
+
+#pragma mark - Face Detection Delegate Callback
+- (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
+    UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
+    
+    CGSize s = img.size;
+    
+    cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
+    
+    cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
+    
+    int dstImgSize = 400;
+    
+    // if not 49 points then its not a full board
+    int numberOfPoints = 0;
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg, numberOfPoints);
+    printf("number of point %d\n", numberOfPoints);
+    if(numberOfPoints < 44) {
+        return;
+    }
+    
+    for (int i=0; i<numberOfPoints; i++) {
+        
+        // image res last checked was 640*480
+        // x/640 and y/480 for normalisation maybe
+        float x = detectedCorners[i].x/s.width;
+        float y = detectedCorners[i].y/s.height;
+        NSLog(@"algo returns %i x %f, y %f",numberOfPoints, x, y);
+
+    }
+    
+    // do comparision and id the the 47points in the harris corner detector array
+    
+    
+    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
+        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+        src[i] = detectedCorners[i];
     }
     
     
-//case GPUIMAGE_GAUSSIAN_POSITION:
-//    {
-//        self.title = @"Selective Blur";
-//        self.filterSettingsSlider.hidden = NO;
-//        
-//        [self.filterSettingsSlider setMinimumValue:0.0];
-//        [self.filterSettingsSlider setMaximumValue:.75f];
-//        [self.filterSettingsSlider setValue:40.0/320.0];
-//        
-//        filter = [[GPUImageGaussianBlurPositionFilter alloc] init];
-//        [(GPUImageGaussianBlurPositionFilter*)filter setBlurRadius:40.0/320.0];
-//    }; break;
+    cv::Mat m = cv::getPerspectiveTransform(src, dst);
     
-//    if (filterType == GPUIMAGE_FILECONFIG:
-//    {
-//        self.filterSettingsSlider.hidden = NO;
-//        
-//        [self.filterSettingsSlider setMinimumValue:0.01];
-//        [self.filterSettingsSlider setMaximumValue:0.70];
-//        [self.filterSettingsSlider setValue:0.20];
-//        
-//        filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-//        [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.20];
+    free(dst);
+    free(src);
     
-//        [videoCamera setDelegate:self];
-//        [videoCamera startCameraCapture];
-//        return;
-        
-//        GPUImageFilterGroup *groupFilter = [[GPUImageFilterGroup alloc] init];
-//        GPUImageHarrisCornerDetectionFilter *harrisCorner = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-////        [contrastFilter setContrast:3.5]; // 0 - 4
-////        [(GPUImageFilterGroup *)filter addFilter:harrisCorner];
-//        [(GPUImageHarrisCornerDetectionFilter *)harrisCorner setThreshold:0.20];
-//        
-//        GPUImageHoughTransformLineDetector *houghFilter = [[GPUImageHoughTransformLineDetector alloc] init];
-//        [(GPUImageHoughTransformLineDetector *)houghFilter setLineDetectionThreshold:0.60];
-//        
-//        [harrisCorner addTarget:houghFilter];
-//        
-//        [(GPUImageFilterGroup *)groupFilter setInitialFilters:[NSArray arrayWithObject:harrisCorner]];
-//        [(GPUImageFilterGroup *)groupFilter setTerminalFilter:houghFilter];
-//        
-//        [videoCamera addTarget:harrisCorner];
-//        [videoCamera out]
-//        
-//        
-////        GPUImageDifferenceBlendFilter *blendFilter = [[GPUImageDifferenceBlendFilter alloc] init];
-////        
-////        [videoCamera removeTarget:filter];
-////        
-////        GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-////        [videoCamera addTarget:gammaFilter];
-////        [gammaFilter addTarget:blendFilter];
-////        [videoCamera addTarget:filter];
-////        
-////        [filter addTarget:blendFilter];
-////        
-////        [blendFilter addTarget:filterView];
-//        
-////        GPUImageView *filterView = (GPUImageView *)self.view;
-////        filterView.view.setFilter(groupFilter);
-//        
-//
-//        
-////        gpuImageView
-////        super.view.setFilter(groupFilter);
-//        
-//
-//        
-////        self.title = @"File Configuration";
-////        pipeline = [[GPUImageFilterPipeline alloc] initWithConfigurationFile:[[NSBundle mainBundle] URLForResource:@"SampleConfiguration" withExtension:@"plist"]
-////                                                                       input:videoCamera output:(GPUImageView*)self.view];
-////        
-////        
-//////        [pipeline addFilter:rotationFilter atIndex:0];
-//////        [pipeline addFilter:rotationFilter atIndex:0];
-////        
-////        self.title = @"Line Detection";
-////        self.filterSettingsSlider.hidden = NO;
-////        [self.filterSettingsSlider setMinimumValue:0.2];
-////        [self.filterSettingsSlider setMaximumValue:1.0];
-////        [self.filterSettingsSlider setValue:0.6];
-////        
-////        filter = [[GPUImageHoughTransformLineDetector alloc] init];
-////        [(GPUImageHoughTransformLineDetector *)filter setLineDetectionThreshold:0.60];
-////        
-////        [pipeline addFilter:filter atIndex:0];
-////        
-////        self.filterSettingsSlider.hidden = NO;
-////        [self.filterSettingsSlider setMinimumValue:0.01];
-////        [self.filterSettingsSlider setMaximumValue:0.70];
-////        [self.filterSettingsSlider setValue:0.20];
-////        
-////        filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-////        [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.20];
-////        [pipeline addFilter:filter atIndex:1];
-//        
-//        [videoCamera setDelegate:self];
-//        [videoCamera startCameraCapture];
-//
-//        return;
-        
-        
-//    }
-
+    cv::Mat plainBoardImg;
+    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
     
-//
-        if (filterType != GPUIMAGE_VORONOI)
-        {
-            [videoCamera addTarget:filter];
-        }
-        
-        videoCamera.runBenchmark = YES;
-        GPUImageView *filterView = (GPUImageView *)self.view;
-        
-//        if (needsSecondImage)
-//        {
-//            UIImage *inputImage;
-//            
-//            if (filterType == GPUIMAGE_MASK)
-//            {
-//                inputImage = [UIImage imageNamed:@"mask"];
-//            }
-//            /*
-//             else if (filterType == GPUIMAGE_VORONOI) {
-//             inputImage = [UIImage imageNamed:@"voroni_points.png"];
-//             }*/
-//            else {
-//                // The picture is only used for two-image blend filters
-//                inputImage = [UIImage imageNamed:@"WID-small.jpg"];
-//            }
-//            
-//            //            sourcePicture = [[GPUImagePicture alloc] initWithImage:inputImage smoothlyScaleOutput:NO];
-//            sourcePicture = [[GPUImagePicture alloc] initWithImage:inputImage smoothlyScaleOutput:YES];
-//            [sourcePicture processImage];
-//            [sourcePicture addTarget:filter];
-//        }
-//        
-//        
-//        if (filterType == GPUIMAGE_HISTOGRAM)
-//        {
-//            // I'm adding an intermediary filter because glReadPixels() requires something to be rendered for its glReadPixels() operation to work
-//            [videoCamera removeTarget:filter];
-//            GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-//            [videoCamera addTarget:gammaFilter];
-//            [gammaFilter addTarget:filter];
-//            
-//            GPUImageHistogramGenerator *histogramGraph = [[GPUImageHistogramGenerator alloc] init];
-//            
-//            [histogramGraph forceProcessingAtSize:CGSizeMake(256.0, 330.0)];
-//            [filter addTarget:histogramGraph];
-//            
-//            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-//            blendFilter.mix = 0.75;
-//            [blendFilter forceProcessingAtSize:CGSizeMake(256.0, 330.0)];
-//            
-//            [videoCamera addTarget:blendFilter];
-//            [histogramGraph addTarget:blendFilter];
-//            
-//            [blendFilter addTarget:filterView];
-//        }
-//        else if ( (filterType == GPUIMAGE_HARRISCORNERDETECTION) || (filterType == GPUIMAGE_NOBLECORNERDETECTION) || (filterType == GPUIMAGE_SHITOMASIFEATUREDETECTION) )
-//        {
-//            GPUImageCrosshairGenerator *crosshairGenerator = [[GPUImageCrosshairGenerator alloc] init];
-//            crosshairGenerator.crosshairWidth = 60.0;
-//            [crosshairGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-//            
-//            [(GPUImageHarrisCornerDetectionFilter *)filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
-//                [crosshairGenerator renderCrosshairsFromArray:cornerArray count:cornersDetected frameTime:frameTime];
-//            }];
-//            
-//            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-//            [blendFilter forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-//            GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-//            [videoCamera addTarget:gammaFilter];
-//            [gammaFilter addTarget:blendFilter];
-//            
-//            [crosshairGenerator addTarget:blendFilter];
-//            
-//            [blendFilter addTarget:filterView];
-//        }
-//        else if (filterType == GPUIMAGE_HOUGHTRANSFORMLINEDETECTOR)
-//        {
-//            GPUImageLineGenerator *lineGenerator = [[GPUImageLineGenerator alloc] init];
-//            //            lineGenerator.crosshairWidth = 15.0;
-//            [lineGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-//            [lineGenerator setLineColorRed:1.0 green:0.0 blue:0.0];
-//            [(GPUImageHoughTransformLineDetector *)filter setLinesDetectedBlock:^(GLfloat* lineArray, NSUInteger linesDetected, CMTime frameTime){
-//                [lineGenerator renderLinesFromArray:lineArray count:linesDetected frameTime:frameTime];
-//            }];
-//            
-//            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-//            [blendFilter forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-//            GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-//            [videoCamera addTarget:gammaFilter];
-//            [gammaFilter addTarget:blendFilter];
-//            
-//            [lineGenerator addTarget:blendFilter];
-//            
-//            [blendFilter addTarget:filterView];
-//        }
-//        else if (filterType == GPUIMAGE_UIELEMENT)
-//        {
-//            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-//            blendFilter.mix = 1.0;
-//            
-//            NSDate *startTime = [NSDate date];
-//            
-//            UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 240.0f, 320.0f)];
-//            timeLabel.font = [UIFont systemFontOfSize:17.0f];
-//            timeLabel.text = @"Time: 0.0 s";
-//            //            timeLabel.textAlignment = UITextAlignmentCenter;
-//            timeLabel.backgroundColor = [UIColor clearColor];
-//            timeLabel.textColor = [UIColor whiteColor];
-//            
-//            uiElementInput = [[GPUImageUIElement alloc] initWithView:timeLabel];
-//            
-//            [filter addTarget:blendFilter];
-//            [uiElementInput addTarget:blendFilter];
-//            
-//            [blendFilter addTarget:filterView];
-//            
-//            __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
-//            
-//            [filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
-//                timeLabel.text = [NSString stringWithFormat:@"Time: %f s", -[startTime timeIntervalSinceNow]];
-//                [weakUIElementInput update];
-//            }];
-//        }
-//        else if (filterType == GPUIMAGE_BUFFER)
-//        {
-//            GPUImageDifferenceBlendFilter *blendFilter = [[GPUImageDifferenceBlendFilter alloc] init];
-//            
-//            [videoCamera removeTarget:filter];
-//            
-//            GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-//            [videoCamera addTarget:gammaFilter];
-//            [gammaFilter addTarget:blendFilter];
-//            [videoCamera addTarget:filter];
-//            
-//            [filter addTarget:blendFilter];
-//            
-//            [blendFilter addTarget:filterView];
-//        }
-//        else if ( (filterType == GPUIMAGE_OPACITY) || (filterType == GPUIMAGE_CHROMAKEYNONBLEND) )
-//        {
-//            [sourcePicture removeTarget:filter];
-//            [videoCamera removeTarget:filter];
-//            [videoCamera addTarget:filter];
-//            
-//            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-//            blendFilter.mix = 1.0;
-//            [sourcePicture addTarget:blendFilter];
-//            [filter addTarget:blendFilter];
-//            
-//            [blendFilter addTarget:filterView];
-//        }
-//        else if ( (filterType == GPUIMAGE_SPHEREREFRACTION) || (filterType == GPUIMAGE_GLASSSPHERE) )
-//        {
-//            // Provide a blurred image for a cool-looking background
-//            GPUImageGaussianBlurFilter *gaussianBlur = [[GPUImageGaussianBlurFilter alloc] init];
-//            [videoCamera addTarget:gaussianBlur];
-//            gaussianBlur.blurRadiusInPixels = 5.0;
-//            
-//            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-//            blendFilter.mix = 1.0;
-//            [gaussianBlur addTarget:blendFilter];
-//            [filter addTarget:blendFilter];
-//            
-//            [blendFilter addTarget:filterView];
-//            
-//        }
-//        else if (filterType == GPUIMAGE_AVERAGECOLOR)
-//        {
-//            GPUImageSolidColorGenerator *colorGenerator = [[GPUImageSolidColorGenerator alloc] init];
-//            [colorGenerator forceProcessingAtSize:[filterView sizeInPixels]];
-//            
-//            [(GPUImageAverageColor *)filter setColorAverageProcessingFinishedBlock:^(CGFloat redComponent, CGFloat greenComponent, CGFloat blueComponent, CGFloat alphaComponent, CMTime frameTime) {
-//                [colorGenerator setColorRed:redComponent green:greenComponent blue:blueComponent alpha:alphaComponent];
-//                //                NSLog(@"Average color: %f, %f, %f, %f", redComponent, greenComponent, blueComponent, alphaComponent);
-//            }];
-//            
-//            [colorGenerator addTarget:filterView];
-//        }
-//        else if (filterType == GPUIMAGE_LUMINOSITY)
-//        {
-//            GPUImageSolidColorGenerator *colorGenerator = [[GPUImageSolidColorGenerator alloc] init];
-//            [colorGenerator forceProcessingAtSize:[filterView sizeInPixels]];
-//            
-//            [(GPUImageLuminosity *)filter setLuminosityProcessingFinishedBlock:^(CGFloat luminosity, CMTime frameTime) {
-//                [colorGenerator setColorRed:luminosity green:luminosity blue:luminosity alpha:1.0];
-//            }];
-//            
-//            [colorGenerator addTarget:filterView];
-//        }
-//        else
-//        {
-//            [filter addTarget:filterView];
-//        }
-//    
-
-    [filter addTarget:filterView];
-    [videoCamera startCameraCapture];
+    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+    
+    cv::transpose(srcImg, srcImg);
+//    cv::flip(srcImg,srcImg,flipMode=1);
+        cv::flip(srcImg,srcImg,1);
+    
+    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
+    
+    UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
+    
+//    CIImage *inputImage = [[CIImage alloc] initWithImage:currentImage];
+//    CIFilter * controlsFilter = [CIFilter filterWithName:@"CIAffineTransform"];
+//    [controlsFilter setValue:inputImage forKey:kCIInputImageKey];
+//    [controlsFilter setValue:[NSNumber numberWithFloat:slider.value] forKey:@"inputAngle"];
+//    CIImage *displayImage = controlsFilter.outputImage;
+//    UIImage *finalImage = [UIImage imageWithCIImage:displayImage];
+    
+//    CIImage *inputImage = [[CIImage alloc] initWithImage:combinedImg];
+//    CIFilter * controlsFilter = [CIFilter filterWithName:@"CIAffineTransform"];
+//    [controlsFilter setValue:inputImage forKey:kCIInputImageKey];
+//    [controlsFilter setValue:[NSNumber numberWithFloat:0.50] forKey:@"inputAngle"];
+//    CIImage *displayImage = controlsFilter.outputImage;
+//    combinedImg = [UIImage imageWithCIImage:displayImage];
+    
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
+    
+    self.imgView.image = combinedImg;
 }
 
 #pragma mark -
@@ -1658,128 +1376,7 @@
     }
 }
 
-#pragma mark - Face Detection Delegate Callback
-- (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
-    UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
-    
-    cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
-    
-    cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
-    cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
-    
-    int dstImgSize = 400;
-    
 
-    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
-    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
-        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
-        src[i] = detectedCorners[i];
-    }
-    
-//    printf("getPerspectiveTransform\n");
-//    printf("    input\n");
-//    for (int i = 0; i < 4; i++) {
-//        printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
-//    }
-    
-    cv::Mat m = cv::getPerspectiveTransform(src, dst);
-    
-//    printf("    output\n");
-//    for(int i = 0; i < m.rows; i++) {
-//        const double* mi = m.ptr<double>(i);
-//        printf("        ( ");
-//        for(int j = 0; j < m.cols; j++) {
-//            printf("%8.1f ", mi[j]);
-//        }
-//        printf(")\n");
-//    }
-    free(dst);
-    free(src);
-    
-    cv::Mat plainBoardImg;
-    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
-    
-//    cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
-//    cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
-//    cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
-//    for (int i = 0; i < 8; i++) {
-//        for (int j = 0; j < 8; j++) {
-//            fieldRect.x = fieldRect.width * i;
-//            fieldRect.y = fieldRect.height * j;
-//            
-//            cv::Mat field(plainBoardImg, fieldRect);
-//            field.convertTo(field, CV_16UC4);
-//            field /= 32;
-//            
-//            if ((i + j) % 2 == 0) {
-//                fieldType0Mean += field;
-//            } else {
-//                fieldType1Mean += field;
-//            }
-//        }
-//    }
-//    
-//    NSMutableArray *fields = [[NSMutableArray alloc] init];
-//    
-//    for (int i = 0; i < 8; i++) {
-//        for (int j = 0; j < 8; j++) {
-//            fieldRect.x = fieldRect.width * i;
-//            fieldRect.y = fieldRect.height * j;
-//            
-//            cv::Mat field(plainBoardImg, fieldRect);
-//            field.convertTo(field, CV_16UC4);
-//            field /= 32;
-//            
-//            [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
-//            
-//            if ((i + j) % 2 == 0) {
-//                fieldType0Mean += field;
-//            } else {
-//                fieldType1Mean += field;
-//            }
-//        }
-//    }
-    
-//    fieldRect.x = 0; fieldRect.y = 0;
-//    fieldType0Mean.copyTo(srcImg(fieldRect));
-//    fieldRect.x = fieldRect.width; fieldRect.y = 0;
-//    fieldType1Mean.copyTo(srcImg(fieldRect));
-    
-//    cv::Scalar meanPixel = cv::mean(fieldType0Mean);
-//    meanPixel.val[3] = 0;
-//    double brightnessType0 = sqrtl(meanPixel.dot(meanPixel));
-//    
-//    meanPixel = cv::mean(fieldType1Mean);
-//    meanPixel.val[3] = 0;
-//    double brightnessType1 = sqrtl(meanPixel.dot(meanPixel));
-//    
-//    if (brightnessType0 < brightnessType1) {
-//        //printf("board is adjusted left-right, thus it needs to be rotated 90deg\n");
-//        cv::transpose(plainBoardImg, plainBoardImg);
-//        cv::flip(plainBoardImg, plainBoardImg, 0);
-//    }
-    
-//    cv::Mat sub = srcImg(cv::Rect(srcImg.cols - plainBoardImg.cols, 0, plainBoardImg.cols, plainBoardImg.rows));
-//    plainBoardImg.copyTo(sub);
-    
-    //    [self.subView setImage:[CvMatUIImageConverter UIImageFromCVMat:fieldType0Mean]];
-    
-    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
-
-    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
-//    UIImage* plain = [CvMatUIImageConverter UIImageFromCVMat:plainBoardImg];
-//    UIImageFromCVMat
-    UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
-    // plainBoardImg
-//
-//    [parent.imgView setImage:combinedImg];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
-    
-    self.imgView.image = combinedImg;
-    
-    
-}
 
 -(UIImage *)UIImageFromCVMat:(cv::Mat)cvMat
 {
@@ -1787,12 +1384,6 @@
     CGColorSpaceRef colorSpace;
     
     colorSpace = CGColorSpaceCreateDeviceGray();
-    
-//    if (cvMat.elemSize() == 1) {
-//        colorSpace = CGColorSpaceCreateDeviceGray();
-//    } else {
-//        colorSpace = CGColorSpaceCreateDeviceRGB();
-//    }
     
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
     
@@ -1843,30 +1434,16 @@
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     
     int dstImgSize = 400;
+    int numberOfPoints =0;
 
-    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(mat);
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(mat, numberOfPoints);
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
         cv::circle(mat, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
     }
-
-//    printf("getPerspectiveTransform\n");
-//    printf("    input\n");
-//    for (int i = 0; i < 4; i++) {
-//        printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
-//    }
     
     cv::Mat m = cv::getPerspectiveTransform(src, dst);
     
-//    printf("    output\n");
-//    for(int i = 0; i < m.rows; i++) {
-//        const double* mi = m.ptr<double>(i);
-//        printf("        ( ");
-//        for(int j = 0; j < m.cols; j++) {
-//            printf("%8.1f ", mi[j]);
-//        }
-//        printf(")\n");
-//    }
     free(dst);
     free(src);
     
@@ -1917,6 +1494,14 @@
         return (image);
     }
 }
+
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"chessFilterView"]) {
+        return;
+    }
+}
+
 
 
 

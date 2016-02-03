@@ -27,9 +27,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
 //    [self detectChessboard];
     
     //[self warpSpeedImage];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+//    NSArray *segueTemplates = [self valueForKey:@"storyboardSegueTemplates"];
+//
+//    [self performSegueWithIdentifier:@"homography" sender:nil];
+//    [self performSegueWithIdentifier:@"chessFilterView" sender:self];
+
 }
 
 - (void) detectChessboard {
@@ -95,6 +104,20 @@
 //
 //    [warpView warp];
 //}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+//    // Make sure your segue name in storyboard is the same as this line
+//    if ([[segue identifier] isEqualToString:@"YOUR_SEGUE_NAME_HERE"])
+//    {
+//        // Get reference to the destination view controller
+//        YourViewController *vc = [segue destinationViewController];
+//        
+//        // Pass any objects to the view controller here, like...
+//        [vc setMyObjectHere:object];
+//    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

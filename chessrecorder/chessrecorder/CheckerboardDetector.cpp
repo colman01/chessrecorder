@@ -14,6 +14,12 @@
 
 namespace CheckDet {
     
+//    public:
+//    bool fullBoard = false;
+    struct S {
+        bool fullBoard = false;
+    };
+    
 //    -(int) matrix_invert:(int) N andWithMatrix:(double*)matrix
 //    {
 //        int error=0;
@@ -739,6 +745,8 @@ namespace CheckDet {
             }
         }
         
+
+        
         return result;
     }
     
@@ -836,8 +844,9 @@ namespace CheckDet {
         return vector<Point2f>();
     }
     
-    vector<Point2f> getOuterCheckerboardCorners(Mat& mat) {
-        vector<Point2fSt> cornerList = CheckDet::getLooseCheckerboardCorners(mat);
+    // think about adding an argument to store the number of points found
+    vector<Point2f> getOuterCheckerboardCorners(Mat& mat, int &value) {
+        vector<Point2fSt> cornerList = CheckDet::getLooseCheckerboardCorners(mat, value);
         vector<LineFSt> lineList = CheckDet::getLinesThroughPoints(cornerList, 3, 5);
         vector<LineFSt> borderingLineList = CheckDet::getBorderingLines(lineList, cornerList, 5);
         vector<Point2f> outerCornerList = CheckDet::getIntersections(borderingLineList);
@@ -867,7 +876,7 @@ namespace CheckDet {
         return outerCornerList;
     }
 
-    vector<Point2fSt> getLooseCheckerboardCorners(Mat& mat) {
+    vector<Point2fSt> getLooseCheckerboardCorners(Mat& mat, int& numberOfPointsDetected) {
         const int MAX_RADIUS = 8;
         
         Mat tmp;
@@ -882,6 +891,12 @@ namespace CheckDet {
         vector<Point2fSt> cornerList = getHeatSourcesForHeatmap(tmp, 150);
         
         applyDistanceFilters(cornerList);
+        
+        // you want the ref to this value
+        numberOfPointsDetected = cornerList.size();
+//        value = numberOfPoints;
+//        value = cornerList.size();
+        
         
         return cornerList;
     }
@@ -995,6 +1010,10 @@ namespace CheckDet {
         
         gettimeofday(&t1, NULL);
         c = clock();
+    }
+    
+    bool getWasBoardFull() {
+        return fullBoard;
     }
     
 
