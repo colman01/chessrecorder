@@ -7,6 +7,8 @@
 //
 
 #import "ShowFrameViewController.h"
+#import "AppDelegate.h"
+#import "Data.h"
 
 @interface ShowFrameViewController ()
 
@@ -67,6 +69,17 @@ static NSString * const reuseIdentifier = @"Cell";
     if (chessImages) {
         UIImage *image = [chessImages objectAtIndex:indexPath.row];
         [imgV setImage:image];
+        
+//        AppDelegate *appDelegate =  [UIApplication sharedApplication].delegate;
+//        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+//        DmGameInformation *gameInfo = [NSEntityDescription insertNewObjectForEntityForName:@"GameInformation" inManagedObjectContext:context];
+//        NSMutableArray *array = gameInfo.images;
+//        if (!array) {
+//            array    = [[NSMutableArray alloc] init];
+//            [array addObject:image];
+//        }
+//        [appDelegate saveContext];
+        
     }
 
     

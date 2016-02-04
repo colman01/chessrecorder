@@ -34,6 +34,8 @@
 		C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BB19D1C8F300948635 /* UIView+Quadrilateral.m */; };
 		C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BF19D1D54E00948635 /* DHWarpView.m */; };
 		C01295491C6239EB00D1827E /* SomeimageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01295481C6239EB00D1827E /* SomeimageCollectionViewController.m */; };
+		C012954E1C63A93A00D1827E /* DmGameInformation+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C012954B1C63A93A00D1827E /* DmGameInformation+CoreDataProperties.m */; };
+		C012954F1C63A93A00D1827E /* DmGameInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C012954D1C63A93A00D1827E /* DmGameInformation.m */; };
 		C01DED0D19FA75A700F3F002 /* FieldwiseHomographyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C01DED0C19FA75A700F3F002 /* FieldwiseHomographyViewController.mm */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
@@ -57,7 +59,6 @@
 		C049B6621C4D11F3004DE213 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C049B6611C4D11F3004DE213 /* iPad.storyboard */; };
 		C05B836319E558D10070286F /* Shader3.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C05B836219E558D10070286F /* Shader3.fsh */; };
 		C061FBEA19DFEABE007E9FDD /* GameDao.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBE919DFEABE007E9FDD /* GameDao.m */; };
-		C061FBEE19DFEB4B007E9FDD /* DmGameInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBED19DFEB4B007E9FDD /* DmGameInformation.m */; };
 		C061FBF219DFF404007E9FDD /* CreateSampleGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = C061FBF119DFF404007E9FDD /* CreateSampleGameData.m */; };
 		C061FCA819E046F3007E9FDD /* AlphaBBishop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C061FBF419E046F2007E9FDD /* AlphaBBishop.tiff */; };
 		C061FCA919E046F3007E9FDD /* AlphaBBishop@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C061FBF519E046F2007E9FDD /* AlphaBBishop@2x.tiff */; };
@@ -308,6 +309,10 @@
 		C002E0BF19D1D54E00948635 /* DHWarpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHWarpView.m; sourceTree = "<group>"; };
 		C01295471C6239EB00D1827E /* SomeimageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeimageCollectionViewController.h; sourceTree = "<group>"; };
 		C01295481C6239EB00D1827E /* SomeimageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeimageCollectionViewController.m; sourceTree = "<group>"; };
+		C012954A1C63A93A00D1827E /* DmGameInformation+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DmGameInformation+CoreDataProperties.h"; path = "../DmGameInformation+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C012954B1C63A93A00D1827E /* DmGameInformation+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DmGameInformation+CoreDataProperties.m"; path = "../DmGameInformation+CoreDataProperties.m"; sourceTree = "<group>"; };
+		C012954C1C63A93A00D1827E /* DmGameInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DmGameInformation.h; path = ../DmGameInformation.h; sourceTree = "<group>"; };
+		C012954D1C63A93A00D1827E /* DmGameInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DmGameInformation.m; path = ../DmGameInformation.m; sourceTree = "<group>"; };
 		C01DED0B19FA75A700F3F002 /* FieldwiseHomographyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldwiseHomographyViewController.h; sourceTree = "<group>"; };
 		C01DED0C19FA75A700F3F002 /* FieldwiseHomographyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldwiseHomographyViewController.mm; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,8 +352,6 @@
 		C061FBE819DFEABE007E9FDD /* GameDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDao.h; sourceTree = "<group>"; };
 		C061FBE919DFEABE007E9FDD /* GameDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDao.m; sourceTree = "<group>"; };
 		C061FBEB19DFEB33007E9FDD /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
-		C061FBEC19DFEB4B007E9FDD /* DmGameInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DmGameInformation.h; sourceTree = "<group>"; };
-		C061FBED19DFEB4B007E9FDD /* DmGameInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DmGameInformation.m; sourceTree = "<group>"; };
 		C061FBF019DFF404007E9FDD /* CreateSampleGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSampleGameData.h; sourceTree = "<group>"; };
 		C061FBF119DFF404007E9FDD /* CreateSampleGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSampleGameData.m; sourceTree = "<group>"; };
 		C061FBF419E046F2007E9FDD /* AlphaBBishop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = AlphaBBishop.tiff; sourceTree = "<group>"; };
@@ -852,8 +855,10 @@
 		C061FBE619DFEA8D007E9FDD /* DmModel */ = {
 			isa = PBXGroup;
 			children = (
-				C061FBEC19DFEB4B007E9FDD /* DmGameInformation.h */,
-				C061FBED19DFEB4B007E9FDD /* DmGameInformation.m */,
+				C012954A1C63A93A00D1827E /* DmGameInformation+CoreDataProperties.h */,
+				C012954B1C63A93A00D1827E /* DmGameInformation+CoreDataProperties.m */,
+				C012954C1C63A93A00D1827E /* DmGameInformation.h */,
+				C012954D1C63A93A00D1827E /* DmGameInformation.m */,
 				C061FBEB19DFEB33007E9FDD /* Data.h */,
 			);
 			name = DmModel;
@@ -1415,10 +1420,11 @@
 				C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */,
 				C0CF587119CF060A000B98E1 /* SimpleVideoFilterViewController.m in Sources */,
 				C025D00A19D4515A003EC2D0 /* ChessModel.mm in Sources */,
-				C061FBEE19DFEB4B007E9FDD /* DmGameInformation.m in Sources */,
 				C025713619CC5D7B00624F0E /* main.m in Sources */,
 				C066205019DC5324002F7B2C /* NavigationViewController.m in Sources */,
 				C002E09419D05CF700948635 /* FilterViewController.m in Sources */,
+				C012954E1C63A93A00D1827E /* DmGameInformation+CoreDataProperties.m in Sources */,
+				C012954F1C63A93A00D1827E /* DmGameInformation.m in Sources */,
 				C030F36F19DD464B008A1C02 /* HomographyTransform.mm in Sources */,
 				C01DED0D19FA75A700F3F002 /* FieldwiseHomographyViewController.mm in Sources */,
 				C061FBEA19DFEABE007E9FDD /* GameDao.m in Sources */,
