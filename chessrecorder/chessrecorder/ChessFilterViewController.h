@@ -42,6 +42,7 @@
 @property IBOutlet GPUImageView *gpuImageView;
 
 @property IBOutlet UIImageView *someImage;
+@property NSMutableArray *imagesToProcess;
 
 
 @end

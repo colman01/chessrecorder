@@ -525,25 +525,102 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-ZK-sZw">
-                                <rect key="frame" x="0.0" y="336" width="50" height="47"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zOe-fI-bgd">
+                                <rect key="frame" x="191" y="123" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="3q6-jA-lbA"/>
+                                    <constraint firstAttribute="height" constant="180" id="hhN-dH-FVs"/>
+                                    <constraint firstAttribute="height" constant="180" id="iSV-ux-r1E"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hhN-dH-FVs"/>
+                                    </mask>
+                                </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOe-fI-bgd">
-                                <rect key="frame" x="58" y="228" width="250" height="250"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-ZK-sZw">
+                                <rect key="frame" x="31" y="72" width="50" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6sg-fJ-yPu"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekb-Jt-cbn">
-                                <rect key="frame" x="214" y="572" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPK-1E-4EX">
-                                <rect key="frame" x="28" y="64" width="250" height="150"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPK-1E-4EX">
+                                <rect key="frame" x="3" y="123" width="180" height="180"/>
                                 <connections>
                                     <segue destination="4Hc-ey-eaa" kind="embed" identifier="" id="Oht-vl-41J"/>
                                 </connections>
                             </containerView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uho-pi-iFU">
+                                <rect key="frame" x="3" y="325" width="372" height="302"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RXZ-T7-6z8">
+                                    <size key="itemSize" width="180" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="E8d-aA-BGh">
+                                        <rect key="frame" x="0.0" y="93" width="180" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlphaWPawn.tiff" translatesAutoresizingMaskIntoConstraints="NO" id="ucw-R7-xHc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="ucw-R7-xHc" firstAttribute="top" secondItem="E8d-aA-BGh" secondAttribute="top" id="IQN-AO-lB1"/>
+                                            <constraint firstItem="ucw-R7-xHc" firstAttribute="leading" secondItem="E8d-aA-BGh" secondAttribute="leading" id="RaV-zU-aGr"/>
+                                            <constraint firstAttribute="trailing" secondItem="ucw-R7-xHc" secondAttribute="trailing" id="pmz-4g-eg8"/>
+                                            <constraint firstAttribute="bottom" secondItem="ucw-R7-xHc" secondAttribute="bottom" id="x2J-GN-blh"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6by-1U-63g" id="M4A-f1-1nh"/>
+                                    <outlet property="delegate" destination="6by-1U-63g" id="8JM-gv-w8D"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zOe-fI-bgd" firstAttribute="top" secondItem="7Qk-q4-Gcm" secondAttribute="bottom" constant="59" id="3Fi-Jl-TmI"/>
+                            <constraint firstItem="Uho-pi-iFU" firstAttribute="top" secondItem="Yqg-ZK-sZw" secondAttribute="bottom" constant="78" id="4zl-qF-1N6"/>
+                            <constraint firstItem="RPK-1E-4EX" firstAttribute="leading" secondItem="tJZ-Zp-Cxs" secondAttribute="leadingMargin" constant="-14" id="Dfu-nk-fE7"/>
+                            <constraint firstItem="Yqg-ZK-sZw" firstAttribute="top" secondItem="7Qk-q4-Gcm" secondAttribute="bottom" constant="8" symbolic="YES" id="Fz9-OX-yon"/>
+                            <constraint firstItem="5z8-5S-iNS" firstAttribute="top" secondItem="Uho-pi-iFU" secondAttribute="bottom" constant="40" id="G51-PC-8D4"/>
+                            <constraint firstItem="Yqg-ZK-sZw" firstAttribute="top" secondItem="RPK-1E-4EX" secondAttribute="bottom" constant="8" symbolic="YES" id="HDW-Tq-2xX"/>
+                            <constraint firstItem="Uho-pi-iFU" firstAttribute="leading" secondItem="RPK-1E-4EX" secondAttribute="leading" id="HOY-7q-0Zf"/>
+                            <constraint firstItem="Uho-pi-iFU" firstAttribute="top" secondItem="RPK-1E-4EX" secondAttribute="bottom" constant="22" id="IBP-xM-aFQ"/>
+                            <constraint firstItem="zOe-fI-bgd" firstAttribute="top" secondItem="RPK-1E-4EX" secondAttribute="top" id="KnD-k6-sHl"/>
+                            <constraint firstItem="RPK-1E-4EX" firstAttribute="leading" secondItem="tJZ-Zp-Cxs" secondAttribute="leadingMargin" constant="-18" id="KuR-X1-N9v"/>
+                            <constraint firstItem="Uho-pi-iFU" firstAttribute="top" secondItem="RPK-1E-4EX" secondAttribute="bottom" constant="59" id="PJr-9d-Yna"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zOe-fI-bgd" secondAttribute="trailing" constant="-12" id="Q0Z-Dr-3sp"/>
+                            <constraint firstItem="RPK-1E-4EX" firstAttribute="bottom" secondItem="zOe-fI-bgd" secondAttribute="bottom" id="pOb-1Y-a1O"/>
+                            <constraint firstItem="RPK-1E-4EX" firstAttribute="top" secondItem="Yqg-ZK-sZw" secondAttribute="bottom" constant="4" id="qSE-hd-Gei"/>
+                            <constraint firstItem="Yqg-ZK-sZw" firstAttribute="leading" secondItem="tJZ-Zp-Cxs" secondAttribute="leadingMargin" constant="15" id="riK-dN-qXl"/>
+                            <constraint firstItem="RPK-1E-4EX" firstAttribute="leading" secondItem="tJZ-Zp-Cxs" secondAttribute="leadingMargin" constant="-13" id="tuV-Sx-zU2"/>
+                            <constraint firstAttribute="trailing" secondItem="Uho-pi-iFU" secondAttribute="trailing" id="udw-TG-dTV"/>
+                            <constraint firstItem="zOe-fI-bgd" firstAttribute="leading" secondItem="RPK-1E-4EX" secondAttribute="trailing" constant="8" symbolic="YES" id="w7R-9z-fXS"/>
+                            <constraint firstItem="RPK-1E-4EX" firstAttribute="top" secondItem="zOe-fI-bgd" secondAttribute="top" id="xlY-fe-035"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HDW-Tq-2xX"/>
+                                <exclude reference="Dfu-nk-fE7"/>
+                                <exclude reference="KuR-X1-N9v"/>
+                                <exclude reference="KnD-k6-sHl"/>
+                                <exclude reference="4zl-qF-1N6"/>
+                                <exclude reference="PJr-9d-Yna"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="imgView" destination="zOe-fI-bgd" id="QAY-uO-xm9"/>
                         <outlet property="subView" destination="Yqg-ZK-sZw" id="Pau-BG-8va"/>
@@ -562,7 +639,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WtS-bq-r34"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vFM-UB-eIq" customClass="GPUImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -995,6 +1072,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AlphaWPawn.tiff" width="40" height="40"/>
         <image name="Chess-board.jpg" width="400" height="400"/>
         <image name="DarkGreenMarble.tiff" width="40" height="40"/>
         <image name="Info.png" width="400" height="400"/>

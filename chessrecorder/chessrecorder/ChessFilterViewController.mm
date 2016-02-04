@@ -22,13 +22,20 @@
 @implementation ChessFilterViewController
 
 @synthesize someImage;
+@synthesize imagesToProcess;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    imagesToProcess = [[NSMutableArray alloc] init];
+    
     filterType = GPUIMAGE_FACES;
 //    filterType = GPUIMAGE_HARRISCORNERDETECTION;
+    
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(processArray) userInfo:nil repeats:YES];
+    
     [self setupFilter];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -1098,62 +1105,37 @@
         {
             self.title = @"Harris Corner Detection";
             
+//        case GPUIMAGE_XYGRADIENT:
+//            {
+//                self.title = @"XY Derivative";
+//                self.filterSettingsSlider.hidden = YES;
+//                
+//                filter = [[GPUImageXYDerivativeFilter alloc] init];
+//            }; break;
+//            
             filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-            [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.02];
+            [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.005];
             
             [(GPUImageHarrisCornerDetectionFilter *)filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
-                
-
-                int asdf = sizeof(cornerArray)/sizeof(*cornerArray);
-                NSLog(@"size of entry %i", asdf);
-//                printf << "Length of array = " << (sizeof(cornerArray)/sizeof(*cornerArray)) << std::endl;
-                
                int numberOfCorners = sizeof(cornerArray);
-                
-                for (int i =0; i<numberOfCorners; i++) {
-                    GLfloat* entry = &cornerArray[i];
-                    float pos_x = entry[0];
-                    float pos_y = entry[1];
-//                    float pos_z = entry[2];
-                    
-                    int numberOfEntriesInObject = sizeof(entry);
-//                    NSLog(@"number of entries  %i", numberOfEntriesInObject);
-                    NSLog(@"harris pos x %f and pos y %f", pos_x, pos_y);
-                    float x_real = pos_x*640;
-                    float y_real = pos_y*480;
-                    NSLog(@"pixel harris pos x %f and pos y %f", x_real, y_real);
-                    
-//                    // TODO:: This doesn't work for some reason; give 4 as the size
-//                    NSLog(@"number of entries  %i",numberOfEntriesInObject);
-//                    for (int j=0; j<numberOfEntriesInObject; j++) {
-//                        
-////                        int q = sizeof(entry[j]);
-////                        NSLog(@"howmany  %i",q);
-////                        
-////                        float subEntry = entry[j];
-////                        
-////                        for (int k=0; k<q; q++) {
-////                            // 0..3
-////                            float data = subEntry[k];
-////                            NSLog(@"data  %f",data);
-////                            
-////                        }
-//                        
-//                        float val = entry[j];
-//                        NSLog(@"value of entry  %f",val);
-//                        
-////                        int quant = sizeof(val);
-////                        for (int k=0; k<quant; k++) {
-//////                            float someVal = val[k];
-//////                            int quantity = sizeof(someVal);
-////                            NSLog(@"sizeof entry  %i", quantity);
-////                            NSLog(@"value of entry  %f",val[k]);
-////                        }
-//
-//                    }
-//                    NSLog(@">>>>>>>>> %i <<<<<<<<<", i);
-                }
+               for (int i =0; i<numberOfCorners; i++) {
+                   GLfloat* entry = &cornerArray[i];
+                   float pos_x = entry[0];
+                   float pos_y = entry[1];
+                   int num = sizeof(entry);
+                   
+                   // Every entry has at least eight values; 
 
+//                   for (int j=0; j<num; j++) {
+//                       float f = entry[j];
+//                       NSLog(@"entry: %f ", f);
+//                   }
+
+
+//                    NSLog(@"harris pos x %f and pos y %f", pos_x, pos_y);
+//                    float x_real = pos_x*640;
+//                    float y_real = pos_y*480;
+                }
             }];
             
             [videoCamera setDelegate:self];
@@ -1184,11 +1166,24 @@
     [filter addTarget:filterView];
     [videoCamera startCameraCapture];
 }
-
+bool lastNumOfPoints;
 #pragma mark - Face Detection Delegate Callback
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
     UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
-    
+    [self findBoardMove:img];
+}
+
+int position=0;
+- (void) processArray {
+    if (imagesToProcess.count > 1) {
+        for (int i = position; position<imagesToProcess.count; i++) {
+            UIImage *img = [imagesToProcess objectAtIndex:i];
+            [self findBoardMove:img];
+        }
+    }
+
+}
+-(void)findBoardMove:(UIImage *) img {
     CGSize s = img.size;
     
     cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
@@ -1201,10 +1196,23 @@
     // if not 49 points then its not a full board
     int numberOfPoints = 0;
     std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg, numberOfPoints);
+    
+    //    vector<Point2fSt> cornerList = CheckDet::getLooseCheckerboardCorners(mat, value);
+    //    vector<LineFSt> lineList = CheckDet::getLinesThroughPoints(cornerList, 3, 5);
+    //    vector<LineFSt> borderingLineList = CheckDet::getBorderingLines(lineList, cornerList, 5);
+    //    vector<Point2f> outerCornerList = CheckDet::getIntersections(borderingLineList);
+    
     printf("number of point %d\n", numberOfPoints);
-    if(numberOfPoints < 44) {
+    if(numberOfPoints < 42 ) {
+        lastNumOfPoints = NO;
         return;
     }
+    
+    if (lastNumOfPoints) {
+        return;
+    }
+    
+    lastNumOfPoints = YES;
     
     for (int i=0; i<numberOfPoints; i++) {
         
@@ -1212,18 +1220,22 @@
         // x/640 and y/480 for normalisation maybe
         float x = detectedCorners[i].x/s.width;
         float y = detectedCorners[i].y/s.height;
-        NSLog(@"algo returns %i x %f, y %f",numberOfPoints, x, y);
-
+//        NSLog(@"algo returns %i x %f, y %f",numberOfPoints, x, y);
+        
     }
     
     // do comparision and id the the 47points in the harris corner detector array
     
     
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
-        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
+        //        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
     }
     
+    dst[0] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8    );
+    dst[1] = cv::Point2f(dstImgSize / 8 * 7, dstImgSize / 8    );
+    dst[2] = cv::Point2f(dstImgSize / 8 * 7, dstImgSize / 8 * 7);
+    dst[3] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8 * 7);
     
     cv::Mat m = cv::getPerspectiveTransform(src, dst);
     
@@ -1236,26 +1248,56 @@
     ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
     
     cv::transpose(srcImg, srcImg);
-//    cv::flip(srcImg,srcImg,flipMode=1);
-        cv::flip(srcImg,srcImg,1);
+    //    cv::flip(srcImg,srcImg,flipMode=1);
+    cv::flip(srcImg,srcImg,1);
     
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     
+    cv::transpose(plainBoardImg, plainBoardImg);
+    cv::flip(plainBoardImg, plainBoardImg, 1);
+    
     UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
     
-//    CIImage *inputImage = [[CIImage alloc] initWithImage:currentImage];
-//    CIFilter * controlsFilter = [CIFilter filterWithName:@"CIAffineTransform"];
-//    [controlsFilter setValue:inputImage forKey:kCIInputImageKey];
-//    [controlsFilter setValue:[NSNumber numberWithFloat:slider.value] forKey:@"inputAngle"];
-//    CIImage *displayImage = controlsFilter.outputImage;
-//    UIImage *finalImage = [UIImage imageWithCIImage:displayImage];
+    //    NSMutableArray *chessImages = self.parentViewController.chessImages;
+    if(!parent.chessImages)
+        parent.chessImages = [[NSMutableArray alloc] init];
+    //    [parent.chessImages addObject:combinedImg];
+    [parent.chessImages addObject:plain];
+    int position = (int)parent.chessImages.count -1;
     
-//    CIImage *inputImage = [[CIImage alloc] initWithImage:combinedImg];
-//    CIFilter * controlsFilter = [CIFilter filterWithName:@"CIAffineTransform"];
-//    [controlsFilter setValue:inputImage forKey:kCIInputImageKey];
-//    [controlsFilter setValue:[NSNumber numberWithFloat:0.50] forKey:@"inputAngle"];
-//    CIImage *displayImage = controlsFilter.outputImage;
-//    combinedImg = [UIImage imageWithCIImage:displayImage];
+    //    if (parent.chessImages.count > 1) {
+    //
+    //        int position_before = position -1;
+    //        UIImage *res = [subtractFilter imageByFilteringImage:[parent.chessImages objectAtIndex:position]];
+    //        [parent.chessImages addObject:res];
+    //    }
+    
+    
+    
+    
+    
+    [parent.collectionView reloadData];
+    
+    [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    
+    
+    
+    
+    
+    
+    //    CIImage *inputImage = [[CIImage alloc] initWithImage:currentImage];
+    //    CIFilter * controlsFilter = [CIFilter filterWithName:@"CIAffineTransform"];
+    //    [controlsFilter setValue:inputImage forKey:kCIInputImageKey];
+    //    [controlsFilter setValue:[NSNumber numberWithFloat:slider.value] forKey:@"inputAngle"];
+    //    CIImage *displayImage = controlsFilter.outputImage;
+    //    UIImage *finalImage = [UIImage imageWithCIImage:displayImage];
+    
+    //    CIImage *inputImage = [[CIImage alloc] initWithImage:combinedImg];
+    //    CIFilter * controlsFilter = [CIFilter filterWithName:@"CIAffineTransform"];
+    //    [controlsFilter setValue:inputImage forKey:kCIInputImageKey];
+    //    [controlsFilter setValue:[NSNumber numberWithFloat:0.50] forKey:@"inputAngle"];
+    //    CIImage *displayImage = controlsFilter.outputImage;
+    //    combinedImg = [UIImage imageWithCIImage:displayImage];
     
     
     

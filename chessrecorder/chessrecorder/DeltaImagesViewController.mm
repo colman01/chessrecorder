@@ -87,7 +87,7 @@
     
 //    GPUImageBrightnessFilter *bright = [[GPUImageBrightnessFilter alloc] init];
 //    [bright setBrightness:0.15];
-    
+//    
 //    [imageView setImage:[bright imageByFilteringImage:[CvMatUIImageConverter UIImageFromCVMat:delta]]]; //I_n45
 }
 

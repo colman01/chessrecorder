@@ -33,6 +33,7 @@
 		C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0B919D1C8F300948635 /* FreeTransformController.m */; };
 		C002E0BD19D1C8F300948635 /* UIView+Quadrilateral.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BB19D1C8F300948635 /* UIView+Quadrilateral.m */; };
 		C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C002E0BF19D1D54E00948635 /* DHWarpView.m */; };
+		C01295491C6239EB00D1827E /* SomeimageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01295481C6239EB00D1827E /* SomeimageCollectionViewController.m */; };
 		C01DED0D19FA75A700F3F002 /* FieldwiseHomographyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C01DED0C19FA75A700F3F002 /* FieldwiseHomographyViewController.mm */; };
 		C025713619CC5D7B00624F0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713519CC5D7B00624F0E /* main.m */; };
 		C025713919CC5D7B00624F0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C025713819CC5D7B00624F0E /* AppDelegate.m */; };
@@ -305,6 +306,8 @@
 		C002E0BB19D1C8F300948635 /* UIView+Quadrilateral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Quadrilateral.m"; sourceTree = "<group>"; };
 		C002E0BE19D1D54E00948635 /* DHWarpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHWarpView.h; sourceTree = "<group>"; };
 		C002E0BF19D1D54E00948635 /* DHWarpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHWarpView.m; sourceTree = "<group>"; };
+		C01295471C6239EB00D1827E /* SomeimageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeimageCollectionViewController.h; sourceTree = "<group>"; };
+		C01295481C6239EB00D1827E /* SomeimageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeimageCollectionViewController.m; sourceTree = "<group>"; };
 		C01DED0B19FA75A700F3F002 /* FieldwiseHomographyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldwiseHomographyViewController.h; sourceTree = "<group>"; };
 		C01DED0C19FA75A700F3F002 /* FieldwiseHomographyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldwiseHomographyViewController.mm; sourceTree = "<group>"; };
 		C025713019CC5D7B00624F0E /* chessrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chessrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -668,6 +671,8 @@
 		C025712719CC5D7B00624F0E = {
 			isa = PBXGroup;
 			children = (
+				C01295471C6239EB00D1827E /* SomeimageCollectionViewController.h */,
+				C01295481C6239EB00D1827E /* SomeimageCollectionViewController.m */,
 				C0E712F81C03817600197189 /* libGPUImage.a */,
 				C0E712F41C037F3800197189 /* GPUImage.framework */,
 				C0E712F21C037EFC00197189 /* libGPUImage.a */,
@@ -1404,6 +1409,7 @@
 				043FDA0919E4C7C40093160F /* CheckerboardDetector.cpp in Sources */,
 				C030F36319DD2A85008A1C02 /* DeltaImagesViewController.mm in Sources */,
 				C002E0A419D1862E00948635 /* ChessFilterViewController.mm in Sources */,
+				C01295491C6239EB00D1827E /* SomeimageCollectionViewController.m in Sources */,
 				0481AE5D19D44D9500F2DE80 /* CvMatUIImageConverter.mm in Sources */,
 				C002E09119D051A100948635 /* ShowcaseFilterViewController.m in Sources */,
 				C002E0C019D1D54E00948635 /* DHWarpView.m in Sources */,
