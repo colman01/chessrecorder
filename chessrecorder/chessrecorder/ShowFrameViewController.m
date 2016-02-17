@@ -21,6 +21,10 @@ static NSString * const reuseIdentifier = @"Cell";
 @synthesize imgView;
 @synthesize subView;
 @synthesize chessImages;
+@synthesize slider;
+@synthesize numberOfCorners;
+@synthesize saveImages;
+@synthesize averageColor;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,12 +32,27 @@ static NSString * const reuseIdentifier = @"Cell";
         imgView = [[UIImageView alloc] init];
         chessImages = [[NSMutableArray alloc] init];
     }
+    [slider addTarget:self action:@selector(handleValueChanged:event:) forControlEvents:UIControlEventValueChanged];
 }
+
+- (void)handleValueChanged:(id)sender event:(id)event {
+    UITouch *touchEvent = [[event allTouches] anyObject]; // there's only one touch
+    if (touchEvent.phase == UITouchPhaseEnded) {
+        /* place your code here */
+        numberOfCorners = [[NSNumber alloc] initWithFloat:slider.value];
+    }}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Slider Number of points
+//[slider addTarget:self action:@selector(handleValueChanged:event:) forControlEvents:UIControlEventValueChanged];
+//
+//- (void)handleValueChanged:(id)sender event:(id)event {
+//    UITouch *touchEvent = [[event allTouches] anyObject]; // there's only one touch
+//    if (touchEvent.phase == UITouchPhaseEnded) { /* place your code here */ }}
 
 #pragma mark - Navigation
 
@@ -69,6 +88,11 @@ static NSString * const reuseIdentifier = @"Cell";
     if (chessImages) {
         UIImage *image = [chessImages objectAtIndex:indexPath.row];
         [imgV setImage:image];
+        
+        if (saveImages.isOn) {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        }
+        
         
 //        AppDelegate *appDelegate =  [UIApplication sharedApplication].delegate;
 //        NSManagedObjectContext *context = [appDelegate managedObjectContext];

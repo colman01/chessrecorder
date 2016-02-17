@@ -44,7 +44,12 @@
 
 - (void)setupFilter;
 {
+//    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+//        videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionBack];
+    
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+    
+    
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
 
     BOOL needsSecondImage = NO;
@@ -1129,7 +1134,7 @@
             
 //            [(GPUImageHarrisCornerDetectionFilter *)filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
 //            }];
-            
+
             [videoCamera setDelegate:self];
             break;
         }
@@ -1165,8 +1170,22 @@ int i=0, j=0;
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
     
     UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
+//    UIImage *img = [self imageFromSampleBuffer:sampleBuffer];
+//
+    
+//    UIImage* image = [self imageFromSampleBuffer:sampleBuffer];
+//    unsigned char* pixels = [image rgbaPixels];
+//    double totalLuminance = 0.0;
+//    for(int p=0;p<image.size.width*image.size.height*4;p+=4)
+//    {
+//        totalLuminance += pixels[p]*0.299 + pixels[p+1]*0.587 + pixels[p+2]*0.114;
+//    }
+//    totalLuminance /= (image.size.width*image.size.height);
+//    totalLuminance /= 255.0;
+//    NSLog(@"totalLuminance %f",totalLuminance);
+    
 
-    if (!busy) {
+    if (!busy && img != nil) {
         [self.imagesToProcess addObject:img];
         [self performSelectorInBackground:@selector(processArray) withObject:nil];
     } else {
@@ -1212,7 +1231,10 @@ int position=0;
 //}
 -(void)findBoardMove:(UIImage *) img {
     
+    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+    
     cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
+//    UIImage* colorImage = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     
     cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
@@ -1224,7 +1246,7 @@ int position=0;
     std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg, numberOfPoints);
     
     printf("number of point %d\n", numberOfPoints);
-    if(numberOfPoints < 42 ) {
+    if(numberOfPoints < [parent.numberOfCorners intValue] ) {
         lastNumOfPoints = NO;
         return;
     }
@@ -1254,18 +1276,27 @@ int position=0;
     free(src);
     
     cv::Mat plainBoardImg;
-    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
+
     
-    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
-    
-    cv::transpose(srcImg, srcImg);
+    cv::Mat srcImgCopy = [CvMatUIImageConverter cvMatFromUIImage:img];
+    cv::warpPerspective(srcImgCopy, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
+    cv::transpose(srcImgCopy, srcImg);
     //    cv::flip(srcImg,srcImg,flipMode=1);
-    cv::flip(srcImg,srcImg,1);
+    cv::flip(srcImgCopy,srcImg,1);
     
-    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
+    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImgCopy];
+
+    // origional method
+//    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
+//    cv::transpose(srcImg, srcImg);
+//    //    cv::flip(srcImg,srcImg,flipMode=1);
+//    cv::flip(srcImg,srcImg,1);
+//    
+//    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     
     cv::transpose(plainBoardImg, plainBoardImg);
     cv::flip(plainBoardImg, plainBoardImg, 1);
+
     
     UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
     
@@ -1277,9 +1308,152 @@ int position=0;
     [parent.collectionView reloadData];
     [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     
-    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
+    UIImage* firstField = [self lightOrDarkPiece:plain];
+    UIColor* average = [self averageColor:firstField];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:firstField]; [parent.averageColor setBackgroundColor:average];});
+// original method
+//    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
     self.imgView.image = combinedImg;
 }
+
+-(UIImage *)lightOrDarkPiece:(UIImage *)img{
+    int widthOfField = img.size.width/8;
+    int heightOfField = img.size.height/8;
+    
+    /*
+     1 2 3 4 5 6 7 8
+     1 2 3 4 5 6 7 8
+     1 2 3 4 5 6 7 8
+     1 2 3 4 5 6 7 8
+     1 2 3 4 5 6 7 8
+     1 2 3 4 5 6 7 8
+     1 2 3 4 5 6 7 8
+     1 2 3 4 5 6 7 8
+     */
+    
+    int position_top_left_x = 0;
+    int position_top_left_y = 0;
+    
+    int position_top_right_x = img.size.width - img.size.width/8;
+    int position_top_right_y = 0;
+    
+    int position_bottom_left_x = 0;
+    int position_bottom_left_y = img.size.height - img.size.height/8;
+    
+    int position_bottom_right_x = img.size.width - img.size.width/8;
+    int position_bottom_right_y = img.size.height - img.size.height/8;
+    
+    CGRect topRightRect = CGRectMake(position_top_right_x, 0, img.size.width/8, img.size.height/8);
+    CGRect bottomLeftRect = CGRectMake(0, position_bottom_left_y, img.size.width/8, img.size.height/8);
+    CGRect bottomRightRect = CGRectMake(position_bottom_right_x, position_bottom_right_y, img.size.width/8, img.size.height/8);
+    
+    CGRect fromRect = bottomRightRect;
+    // original code
+//    CGRect fromRect = CGRectMake(0, 0, img.size.width/8, img.size.height/8);
+    
+    CGImageRef drawImage = CGImageCreateWithImageInRect(img.CGImage, fromRect);
+    UIImage *newImage = [UIImage imageWithCGImage:drawImage];
+    CGImageRelease(drawImage);
+    return newImage;
+}
+
+
+- (UIColor *)averageColor:(UIImage *)img {
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char rgba[4];
+    CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), img.CGImage);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    if(rgba[3] == 0) {
+        CGFloat alpha = ((CGFloat)rgba[3])/255.0;
+        CGFloat multiplier = alpha/255.0;
+        return [UIColor colorWithRed:((CGFloat)rgba[0])*multiplier
+                               green:((CGFloat)rgba[1])*multiplier
+                                blue:((CGFloat)rgba[2])*multiplier
+                               alpha:alpha];
+    }
+    else {
+        return [UIColor colorWithRed:((CGFloat)rgba[0])/255.0
+                               green:((CGFloat)rgba[1])/255.0
+                                blue:((CGFloat)rgba[2])/255.0
+                               alpha:((CGFloat)rgba[3])/255.0];
+    }
+}
+//-(void) checkColorOfPieceOnField:(UIImage *)img {
+
+
+//    //YUV(NV12)-->CIImage--->UIImage Conversion
+//    NSDictionary *pixelAttributes = @{(id)kCVPixelBufferIOSurfacePropertiesKey : @{}};
+//    CVPixelBufferRef pixelBuffer = NULL;
+//    
+//    CVReturn result = CVPixelBufferCreate(kCFAllocatorDefault,
+//                                          640,
+//                                          480,
+//                                          kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange,
+//                                          (__bridge CFDictionaryRef)(pixelAttributes),
+//                                          &pixelBuffer);
+//    CVPixelBufferLockBaseAddress(pixelBuffer,0);
+//    unsigned char *yDestPlane = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0);
+//    memcpy(yDestPlane, y_ch0, 640 * 480); //Here y_ch0 is Y-Plane of YUV(NV12) data.
+//    unsigned char *uvDestPlane = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 1);
+//    memcpy(uvDestPlane, y_ch1, 640*480/2); //Here y_ch1 is UV-Plane of YUV(NV12) data.
+//    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+//    
+//    if (result != kCVReturnSuccess) {
+//        NSLog(@"Unable to create cvpixelbuffer %d", result);
+//    }
+//    
+//    CIImage *coreImage = [CIImage imageWithCVPixelBuffer:pixelBuffer];//CIImage Conversion DONE!!!!
+//    
+//    CIContext *MytemporaryContext = [CIContext contextWithOptions:nil];
+//    CGImageRef MyvideoImage = [MytemporaryContext
+//                               createCGImage:coreImage
+//                               fromRect:CGRectMake(0, 0,
+//                                                   640,
+//                                                   480)];
+//    
+//    UIImage *Mynnnimage = [[UIImage alloc] initWithCGImage:MyvideoImage scale:1.0 orientation:UIImageOrientationRight];//UIImage Conversion DONE!!!
+//    CVPixelBufferRelease(pixelBuffer);
+//    CGImageRelease(MyvideoImage);
+//}
+
+
+
+//-(void) checkColorOfPieceOnField:(cv::Mat )plainBoardImg {
+//
+//    NSMutableArray *fields = [[NSMutableArray alloc] init];
+//    cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
+//    cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+//    cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+//    
+//    for (int i = 0; i < 8; i++) {
+//        for (int j = 0; j < 8; j++) {
+//            fieldRect.x = fieldRect.width * i;
+//            fieldRect.y = fieldRect.height * j;
+//            cv::Mat field(plainBoardImg, fieldRect);
+//            field.convertTo(field, CV_16UC4);
+//            field /= 32;
+//            
+//            if ((i + j) % 2 == 0) {
+//                fieldType0Mean += field;
+//            } else {
+//                fieldType1Mean += field;
+//            }
+//            
+//            [fields addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
+//            
+//            ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+//            if(!parent.chessImages)
+//                parent.chessImages = [[NSMutableArray alloc] init];
+//            [parent.chessImages addObject:[CvMatUIImageConverter UIImageFromCVMat:field]];
+//        }
+//    }
+//}
 
 #pragma mark -
 #pragma mark Filter adjustments
@@ -1468,6 +1642,60 @@ int position=0;
 }
 
 // Create a UIImage from sample buffer data
+- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
+{
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+    
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+    
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    
+    NSLog(@"w: %zu h: %zu bytesPerRow:%zu", width, height, bytesPerRow);
+    
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress,
+                                                 width,
+                                                 height,
+                                                 8,
+                                                 bytesPerRow,
+                                                 colorSpace,
+                                                 kCGBitmapByteOrder32Little
+                                                 | kCGImageAlphaPremultipliedFirst);
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context);
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    // Free up the context and color space
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    // Create an image object from the Quartz image
+    //UIImage *image = [UIImage imageWithCGImage:quartzImage];
+    UIImage *image = [UIImage imageWithCGImage:quartzImage 
+                                         scale:1.0f 
+                                   orientation:UIImageOrientationRight];
+    
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    
+    return (image);
+}
+
+// Create a UIImage from sample buffer data
 // Works only if pixel format is kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
 -(UIImage *) imageFromSamplePlanerPixelBuffer:(CMSampleBufferRef) sampleBuffer{
     
@@ -1492,6 +1720,16 @@ int position=0;
         // Create a bitmap graphics context with the sample buffer data
         CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
                                                      bytesPerRow, colorSpace, kCGImageAlphaNone);
+    
+//        CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+//        CGContextRef context =  CGBitmapContextCreate(NULL,
+//                                                         640,
+//                                                         480,
+//                                                         8,
+//                                                         4 * 680,
+//                                                         colorSpace,
+//                                                         kCGImageAlphaPremultipliedLast);
+        
         // Create a Quartz image from the pixel data in the bitmap graphics context
         CGImageRef quartzImage = CGBitmapContextCreateImage(context);
         // Unlock the pixel buffer
@@ -1512,6 +1750,23 @@ int position=0;
     }
 }
 
+-(UIImage *) convertBuffer:(CMSampleBufferRef)sampleBuffer {
+    CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
+    
+    //Processing here
+    int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
+    int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
+    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
+    
+    // put buffer in open cv, no memory copied
+    cv::Mat mat = cv::Mat(bufferHeight,bufferWidth,CV_8UC4,pixel);
+    
+    //End processing
+    CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
+    return [CvMatUIImageConverter UIImageFromCVMat:mat];
+    
+}
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"chessFilterView"]) {

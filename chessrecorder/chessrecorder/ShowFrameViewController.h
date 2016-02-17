@@ -12,9 +12,18 @@
 
 @property IBOutlet UIImageView *imgView;
 @property IBOutlet UIImageView *subView;
+@property IBOutlet UISlider *slider;
+@property IBOutlet UISwitch *saveImages;
+@property IBOutlet UIView *averageColor;
+
+
 
 @property NSMutableArray *chessImages;
 
 @property UICollectionView *collectionView;
+
+@property NSNumber *numberOfCorners;
+
+
 
 @end
