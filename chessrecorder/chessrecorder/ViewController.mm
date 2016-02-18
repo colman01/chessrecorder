@@ -123,35 +123,35 @@
     [super didReceiveMemoryWarning];
 }
 
-bool dragging;
-CGFloat oldX, oldY;
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:touch.view];
-    if ([[touch.view class] isSubclassOfClass:[UIView class]]) {
-        dragging = YES;
-        oldX = touchLocation.x;
-        oldY = touchLocation.y;
-    }
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    dragging = NO;
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:touch.view];
-    if ([[touch.view class] isSubclassOfClass:[UIView class]]) {
-        UIImageView *label = (UIImageView *)touch.view;
-        if (dragging) {
-            CGRect frame = label.frame;
-            frame.origin.x = label.frame.origin.x + touchLocation.x - oldX;
-            frame.origin.y = label.frame.origin.y + touchLocation.y - oldY;
-            label.frame = frame;
-        }
-    }
-}
+//bool dragging;
+//CGFloat oldX, oldY;
+//
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    UITouch *touch = [[event allTouches] anyObject];
+//    CGPoint touchLocation = [touch locationInView:touch.view];
+//    if ([[touch.view class] isSubclassOfClass:[UIView class]]) {
+//        dragging = YES;
+//        oldX = touchLocation.x;
+//        oldY = touchLocation.y;
+//    }
+//}
+//
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//    dragging = NO;
+//}
+//
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+//    UITouch *touch = [[event allTouches] anyObject];
+//    CGPoint touchLocation = [touch locationInView:touch.view];
+//    if ([[touch.view class] isSubclassOfClass:[UIView class]]) {
+//        UIImageView *label = (UIImageView *)touch.view;
+//        if (dragging) {
+//            CGRect frame = label.frame;
+//            frame.origin.x = label.frame.origin.x + touchLocation.x - oldX;
+//            frame.origin.y = label.frame.origin.y + touchLocation.y - oldY;
+//            label.frame = frame;
+//        }
+//    }
+//}
 
 @end

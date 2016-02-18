@@ -44,6 +44,11 @@
 @property IBOutlet UIImageView *someImage;
 @property NSMutableArray *imagesToProcess;
 
+@property UIColor *whiteOnWhite;
+@property UIColor *whiteOnBlack;
+@property UIColor *blackOnBlack;
+@property UIColor *blackOnWhite;
+
 
 @end
 

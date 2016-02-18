@@ -23,6 +23,7 @@
 
 @synthesize someImage;
 @synthesize imagesToProcess;
+@synthesize whiteOnBlack, whiteOnWhite, blackOnBlack,blackOnWhite;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -1317,19 +1318,59 @@ int position=0;
     self.imgView.image = combinedImg;
 }
 
+#pragma mark - color detection
 -(UIImage *)lightOrDarkPiece:(UIImage *)img{
     int widthOfField = img.size.width/8;
     int heightOfField = img.size.height/8;
     
+    
+    // TEST Fields
+    int test_position_top_left_x = 0;
+    int test_position_top_left_y = heightOfField*2;
+    
+    int test_position_top_right_x = img.size.width - widthOfField;
+    int test_position_top_right_y = heightOfField*2;
+    
+    int test_position_bottom_left_x = 0;
+    int test_position_bottom_left_y = img.size.height - heightOfField*2;
+    
+    int test_position_bottom_right_x = img.size.width - widthOfField;
+    int test_position_bottom_right_y = img.size.height - heightOfField*2;
+    
+    CGRect test_topLeftRect = CGRectMake(0, 0, widthOfField, heightOfField);
+    CGRect test_topRightRect = CGRectMake(test_position_top_right_x, 0, widthOfField, heightOfField);
+    CGRect test_bottomLeftRect = CGRectMake(0, test_position_bottom_left_y, widthOfField, heightOfField);
+    CGRect test_bottomRightRect = CGRectMake(test_position_bottom_right_x, test_position_bottom_right_y, widthOfField, heightOfField);
+    
+    CGImageRef test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_topLeftRect);
+    UIImage *test_newImage = [UIImage imageWithCGImage:test_drawImage];
+    CGImageRelease(test_drawImage);
+    UIColor* test_whiteOnBlack = [self averageColor:test_newImage];
+    
+    test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_topRightRect);
+    test_newImage = [UIImage imageWithCGImage:test_drawImage];
+    CGImageRelease(test_drawImage);
+    UIColor* test_whiteOnWhite = [self averageColor:test_newImage];
+    
+    test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_bottomLeftRect);
+    test_newImage = [UIImage imageWithCGImage:test_drawImage];
+    CGImageRelease(test_drawImage);
+    UIColor* test_blackOnWhite = [self averageColor:test_newImage];
+    
+    test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_bottomRightRect);
+    test_newImage = [UIImage imageWithCGImage:test_drawImage];
+    CGImageRelease(test_drawImage);
+    UIColor* test_blackOnBlack = [self averageColor:test_newImage];
+    
     /*
      1 2 3 4 5 6 7 8
-     1 2 3 4 5 6 7 8
-     1 2 3 4 5 6 7 8
-     1 2 3 4 5 6 7 8
-     1 2 3 4 5 6 7 8
-     1 2 3 4 5 6 7 8
-     1 2 3 4 5 6 7 8
-     1 2 3 4 5 6 7 8
+     2 2 3 4 5 6 7 8
+     3 2 3 4 5 6 7 8
+     4 2 3 4 5 6 7 8
+     5 2 3 4 5 6 7 8
+     6 2 3 4 5 6 7 8
+     7 2 3 4 5 6 7 8
+     8 2 3 4 5 6 7 8
      */
     
     int position_top_left_x = 0;
@@ -1343,18 +1384,56 @@ int position=0;
     
     int position_bottom_right_x = img.size.width - img.size.width/8;
     int position_bottom_right_y = img.size.height - img.size.height/8;
-    
-    CGRect topRightRect = CGRectMake(position_top_right_x, 0, img.size.width/8, img.size.height/8);
-    CGRect bottomLeftRect = CGRectMake(0, position_bottom_left_y, img.size.width/8, img.size.height/8);
+
+    CGRect topLeftRect = CGRectMake(position_top_left_x, position_top_left_y, img.size.width/8, img.size.height/8);
+    CGRect topRightRect = CGRectMake(position_top_right_x, position_top_right_y, img.size.width/8, img.size.height/8);
+    CGRect bottomLeftRect = CGRectMake(position_bottom_left_x, position_bottom_left_y, img.size.width/8, img.size.height/8);
     CGRect bottomRightRect = CGRectMake(position_bottom_right_x, position_bottom_right_y, img.size.width/8, img.size.height/8);
     
-    CGRect fromRect = bottomRightRect;
+//    CGRect fromRect = bottomRightRect;
     // original code
-//    CGRect fromRect = CGRectMake(0, 0, img.size.width/8, img.size.height/8);
+//    CGRect topLeftRect = CGRectMake(0, 0, img.size.width/8, img.size.height/8);
     
-    CGImageRef drawImage = CGImageCreateWithImageInRect(img.CGImage, fromRect);
+    CGImageRef drawImage = CGImageCreateWithImageInRect(img.CGImage, topLeftRect);
     UIImage *newImage = [UIImage imageWithCGImage:drawImage];
     CGImageRelease(drawImage);
+    whiteOnBlack = [self averageColor:newImage];
+    
+//    // colors data
+//    UIColor *uicolor = whiteOnBlack;
+//    CGColorRef color = [uicolor CGColor];
+//    
+//    int numComponents = CGColorGetNumberOfComponents(color);
+//    
+//    if (numComponents == 4)
+//    {
+//        const CGFloat *components = CGColorGetComponents(color);
+//        CGFloat red = components[0];
+//        CGFloat green = components[1];
+//        CGFloat blue = components[2];
+//        CGFloat alpha = components[3];
+//    }
+    
+    drawImage = CGImageCreateWithImageInRect(img.CGImage, topRightRect);
+    newImage = [UIImage imageWithCGImage:drawImage];
+    CGImageRelease(drawImage);
+    whiteOnWhite = [self averageColor:newImage];
+    
+    drawImage = CGImageCreateWithImageInRect(img.CGImage, bottomLeftRect);
+    newImage = [UIImage imageWithCGImage:drawImage];
+    CGImageRelease(drawImage);
+    blackOnWhite = [self averageColor:newImage];
+    
+    drawImage = CGImageCreateWithImageInRect(img.CGImage, bottomRightRect);
+    newImage = [UIImage imageWithCGImage:drawImage];
+    CGImageRelease(drawImage);
+    blackOnBlack = [self averageColor:newImage];
+    
+//    UIColor* average = [self averageColor:firstField];
+    
+    // testIntensity R|B|G - sample +- 0.02 <
+    // testIntensity R|B|G - sample +- 0.019 <
+    
     return newImage;
 }
 
