@@ -1309,7 +1309,16 @@ int position=0;
     [parent.collectionView reloadData];
     [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     
-    UIImage* firstField = [self lightOrDarkPiece:plain];
+    // change method calls after light intensity found
+    
+    UIImage* firstField;
+    if (parent.chessImages.count == 4 ) {
+        firstField = [self lightOrDarkPiece:plain];
+    } else {
+        NSString *fieldNotation = [self whichSquaresChanged:plain];
+        NSLog(@"Field: %@", fieldNotation);
+    }
+    
     UIColor* average = [self averageColor:firstField];
     
     dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:firstField]; [parent.averageColor setBackgroundColor:average];});
@@ -1317,6 +1326,66 @@ int position=0;
 //    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
     self.imgView.image = combinedImg;
 }
+#pragma mark - piece movement detection
+-(NSString *)whichSquaresChanged:(UIImage *) img{
+    int widthOfField = img.size.width/8;
+    int heightOfField = img.size.height/8;
+    
+    int horizontalLocation = 0;
+    int verticalLocation = 0;
+    
+    for (int i=0; i<8; i++) {
+        // calculate horizontal position
+        verticalLocation = i*heightOfField;
+        
+        for (int j=0; j<8; j++) {
+            // calculate vertical position
+            horizontalLocation = j*widthOfField;
+            
+            CGRect rect = CGRectMake(horizontalLocation, verticalLocation, widthOfField, heightOfField);
+            
+            CGImageRef drawImage = CGImageCreateWithImageInRect(img.CGImage, rect);
+            UIImage *field = [UIImage imageWithCGImage:drawImage];
+            CGImageRelease(drawImage);
+            UIColor *fieldColor = [self averageColor:field];
+            
+            // if the color changed since the last time
+            // check min dist to known averages
+            // check rule for creating notation
+            
+            // colors data
+            UIColor *uicolor = whiteOnBlack;
+            CGColorRef color = [uicolor CGColor];
+            
+            int numComponents = CGColorGetNumberOfComponents(color);
+            
+            if (numComponents == 4)
+            {
+                const CGFloat *components = CGColorGetComponents(color);
+                CGFloat red = components[0];
+                CGFloat green = components[1];
+                CGFloat blue = components[2];
+                CGFloat alpha = components[3];
+                
+                color = [fieldColor CGColor];
+                components = CGColorGetComponents(color);
+                CGFloat red_field = components[0];
+                CGFloat green_field = components[1];
+                CGFloat blue_field = components[2];
+                CGFloat alpha_field = components[3];
+                CGFloat difference = 0.016;
+                if(fabs(red_field - red) <= difference || fabs(green_field - green) <= difference || fabs(blue_field - blue) <= difference ) {
+                    NSLog(@"whiteOnBlack found");
+                    NSLog(@"Location x: %i  y: %i" ,i,j);
+                }
+            }
+        }
+    }
+    
+    return @"";
+}
+
+
 
 #pragma mark - color detection
 -(UIImage *)lightOrDarkPiece:(UIImage *)img{
