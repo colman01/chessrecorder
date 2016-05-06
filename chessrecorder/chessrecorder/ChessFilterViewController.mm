@@ -8,6 +8,7 @@
 
 #import "ChessFilterViewController.h"
 #import "ShowFrameViewController.h"
+#import "ShowFramePadViewController.h"
 #import "CvMatUIImageConverter.h"
 #include <opencv2/imgproc/imgproc.hpp>
 #include "CheckerboardDetector.h"
@@ -25,17 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    filterType = GPUIMAGE_XYGRADIENT;
 
-//    filterType = GPUIMAGE_CANNYEDGEDETECTION;
-//    filterType =GPUIMAGE_CONVOLUTION;
-//    filterType =GPUIMAGE_TRANSFORM3D;
     filterType = GPUIMAGE_FACES;
-    
-//    
-//    filterType = GPUIMAGE_FILECONFIG;
-//    filterType = GPUIMAGE_COLORINVERT;
     
     [self setupFilter];
 }
@@ -57,9 +49,7 @@
 - (void)setupFilter;
 {
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1920x1080 cameraPosition:AVCaptureDevicePositionBack];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
 
     BOOL needsSecondImage = NO;
@@ -188,28 +178,48 @@
         cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
     }
+    
+    
+    
+    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
+        src[i] = detectedCorners[i];
+    }
+    
+    dst[0] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8    );
+    dst[1] = cv::Point2f(dstImgSize / 8 * 7, dstImgSize / 8    );
+    dst[2] = cv::Point2f(dstImgSize / 8 * 7, dstImgSize / 8 * 7);
+    dst[3] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8 * 7);
+    
     cv::Mat m = cv::getPerspectiveTransform(src, dst);
     
-    //    printf("    output\n");
-    //    for(int i = 0; i < m.rows; i++) {
-    //        const double* mi = m.ptr<double>(i);
-    //        printf("        ( ");
-    //        for(int j = 0; j < m.cols; j++) {
-    //            printf("%8.1f ", mi[j]);
-    //        }
-    //        printf(")\n");
-    //    }
     free(dst);
     free(src);
     
     cv::Mat plainBoardImg;
-    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
     
-    ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+    cv::Mat srcImgCopy = [CvMatUIImageConverter cvMatFromUIImage:img];
+    cv::warpPerspective(srcImgCopy, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
+    cv::transpose(srcImgCopy, srcImg);
+    cv::flip(srcImgCopy,srcImg,1);
     
-    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
+    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImgCopy];
+    
+    cv::transpose(plainBoardImg, plainBoardImg);
+    cv::flip(plainBoardImg, plainBoardImg, 1);
+    
     UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
-    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];self.imgView.image = combinedImg; _busy=NO;});
+    
+ 
+    ShowFramePadViewController *parent = (ShowFramePadViewController *)self.parentViewController;
+    if(!parent.chessImages)
+        parent.chessImages = [[NSMutableArray alloc] init];
+    [parent.chessImages addObject:plain];
+    int position = (int)parent.chessImages.count -1;
+    
+
+    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];self.imgView.image = combinedImg; _busy=NO;
+        [parent.collectionView reloadData];
+        [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];});
 }
 
 
@@ -348,3 +358,15 @@
 
 
 @end
+
+
+
+//    printf("    output\n");
+//    for(int i = 0; i < m.rows; i++) {
+//        const double* mi = m.ptr<double>(i);
+//        printf("        ( ");
+//        for(int j = 0; j < m.cols; j++) {
+//            printf("%8.1f ", mi[j]);
+//        }
+//        printf(")\n");
+//    }

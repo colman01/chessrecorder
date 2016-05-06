@@ -12,5 +12,9 @@
 
 @property IBOutlet UIImageView *imgView;
 @property IBOutlet UIImageView *subView;
+@property IBOutlet UICollectionView *collectionView;
+@property IBOutlet UISlider *slider;
+
+@property NSMutableArray *chessImages;
 
 @end
