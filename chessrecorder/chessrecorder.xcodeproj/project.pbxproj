@@ -253,6 +253,7 @@
 		C066205F19DC641B002F7B2C /* AugmentedRealityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066205E19DC641B002F7B2C /* AugmentedRealityViewController.m */; };
 		C066206319DC69D0002F7B2C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066206219DC69D0002F7B2C /* HomeViewController.m */; };
 		C066206C19DC75E3002F7B2C /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C066206B19DC75E3002F7B2C /* InfoViewController.m */; };
+		C06C5CBD1CDCBB50001EE0C0 /* ShowFramePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06C5CBC1CDCBB50001EE0C0 /* ShowFramePadViewController.m */; };
 		C0B7C5FC19D2D404002610FE /* chess_rotate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */; };
 		C0C38E001C06EAAF00E473CC /* CustomGpuImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C38DFF1C06EAAF00E473CC /* CustomGpuImageView.m */; };
 		C0C38E031C06EB8400E473CC /* CustomGpuImageVidCam.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C38E021C06EB8400E473CC /* CustomGpuImageVidCam.m */; };
@@ -564,6 +565,8 @@
 		C066206219DC69D0002F7B2C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C066206A19DC75E3002F7B2C /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		C066206B19DC75E3002F7B2C /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		C06C5CBB1CDCBB50001EE0C0 /* ShowFramePadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowFramePadViewController.h; sourceTree = "<group>"; };
+		C06C5CBC1CDCBB50001EE0C0 /* ShowFramePadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowFramePadViewController.m; sourceTree = "<group>"; };
 		C0B7C5FB19D2D404002610FE /* chess_rotate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chess_rotate.jpg; sourceTree = "<group>"; };
 		C0C38DFE1C06EAAF00E473CC /* CustomGpuImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGpuImageView.h; sourceTree = "<group>"; };
 		C0C38DFF1C06EAAF00E473CC /* CustomGpuImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGpuImageView.m; sourceTree = "<group>"; };
@@ -810,6 +813,8 @@
 				C002E0A319D1862E00948635 /* ChessFilterViewController.mm */,
 				C0C38E041C07134700E473CC /* ShowFrameViewController.h */,
 				C0C38E051C07134700E473CC /* ShowFrameViewController.m */,
+				C06C5CBB1CDCBB50001EE0C0 /* ShowFramePadViewController.h */,
+				C06C5CBC1CDCBB50001EE0C0 /* ShowFramePadViewController.m */,
 			);
 			name = "Showcase variants";
 			sourceTree = "<group>";
@@ -1551,6 +1556,7 @@
 				C002E0BC19D1C8F300948635 /* FreeTransformController.m in Sources */,
 				0481AE6B19D9854A00F2DE80 /* HomographyVc.mm in Sources */,
 				C002E0A719D18D1F00948635 /* FilterPreviewCollectionViewController.m in Sources */,
+				C06C5CBD1CDCBB50001EE0C0 /* ShowFramePadViewController.m in Sources */,
 				C061FBF219DFF404007E9FDD /* CreateSampleGameData.m in Sources */,
 				C025713F19CC5D7B00624F0E /* ViewController.mm in Sources */,
 				C025713C19CC5D7B00624F0E /* chessrecorder.xcdatamodeld in Sources */,
@@ -1699,7 +1705,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.no-ip.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "xyz.no-ip.chessrecorder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1725,7 +1731,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.no-ip.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "xyz.no-ip.chessrecorder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

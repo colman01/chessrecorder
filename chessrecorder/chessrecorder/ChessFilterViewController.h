@@ -41,6 +41,9 @@
 
 @property IBOutlet UIImageView *someImage;
 
+@property NSMutableArray *imagesToProcess;
+
+@property bool busy;
 
 @end
 
