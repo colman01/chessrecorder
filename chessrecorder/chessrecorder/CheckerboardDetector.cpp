@@ -844,22 +844,22 @@ namespace CheckDet {
         
         for (int i = 0; i < lineList.size(); i++) {
             LineFSt l = lineList[i];
-            line(mat, l.start, l.start + l.ori, Scalar(255, 0, 0), 1);
+//            line(mat, l.start, l.start + l.ori, Scalar(255, 0, 0), 1);
         }
         
         for (int i = 0; i < cornerList.size(); i++) {
             Point2f p = cornerList[i];
-            circle(mat, p, 7, Scalar(0, 255, 0), -1);
+//            circle(mat, p, 7, Scalar(0, 255, 0), -1);
         }
         
         for (int i = 0; i < borderingLineList.size(); i++) {
             LineFSt l = borderingLineList[i];
-            line(mat, l.start, l.start + l.ori, Scalar(255, 255, 255), 3);
+//            line(mat, l.start, l.start + l.ori, Scalar(255, 255, 255), 3);
         }
         
         for (int i = 0; i < outerCornerList.size(); i++) {
             Point2f p = outerCornerList[i];
-            circle(mat, p, 7, Scalar(127, 127, 255), -1);
+//            circle(mat, p, 7, Scalar(127, 127, 255), -1);
         }
 
         orderClockwise(outerCornerList);
