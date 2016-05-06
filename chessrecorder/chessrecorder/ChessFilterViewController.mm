@@ -202,6 +202,32 @@
     cv::transpose(srcImgCopy, srcImg);
     cv::flip(srcImgCopy,srcImg,1);
     
+    cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
+    cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+    cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
+    cv::Mat mean;
+    cv::Mat eigen;
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            fieldRect.x = fieldRect.width * i;
+            fieldRect.y = fieldRect.height * j;
+            
+            cv::Mat field(plainBoardImg, fieldRect);
+            field.convertTo(field, CV_16UC4);
+            field /= 32;
+            
+//            if ((i + j) % 2 == 0) {
+//                fieldType0Mean += field;
+//            } else {
+//                fieldType1Mean += field;
+//            }
+            
+            
+            cv::Mat m = cv::Mat(30,40, CV_32F,&field);
+            cv::PCACompute(m, mean, eigen);
+        }
+    }
+    
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImgCopy];
     
     cv::transpose(plainBoardImg, plainBoardImg);
