@@ -82,6 +82,7 @@ static NSString * const reuseIdentifier = @"Cell";
 //    }
     // Configure the cell
     self.collectionView = collectionView;
+    self.collectionView.allowsSelection = YES;
 
     UIImageView *imgV = [cell viewWithTag:1];
     
@@ -111,6 +112,14 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedImage = (int)[indexPath row];
+    if(!_newSelection) {
+        _newSelection = YES;
+    }
+
+}
 
 /*
  // Uncomment this method to specify if the specified item should be highlighted during tracking

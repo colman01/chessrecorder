@@ -29,12 +29,7 @@
     [super viewDidLoad];
     
     imagesToProcess = [[NSMutableArray alloc] init];
-    
     filterType = GPUIMAGE_FACES;
-//    filterType = GPUIMAGE_HARRISCORNERDETECTION;
-    
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(processArray) userInfo:nil repeats:YES];
-    
     [self setupFilter];
     
 }
@@ -43,15 +38,24 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    NSLog(@"got data?");
+}
+
 - (void)setupFilter;
 {
-//    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-//        videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionBack];
-    
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
     
     
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    
+//    videoDataOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA] forKey:(NSString*)kCVPixelBufferPixelFormatTypeKey]];
+    
+    AVCaptureVideoDataOutput *output = [[[videoCamera captureSession] outputs] lastObject];
+////    NSDictionary* outputSettings = [output videoSettings];
+//    output.videoSettings = @{ (id)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA) };
+//    output.videoSettings = @{ (id)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32RGBA) };
+//    output.videoSettings = @{ (id)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32ABGR) };
 
     BOOL needsSecondImage = NO;
     
@@ -1120,21 +1124,6 @@
             [self.filterSettingsSlider setValue:1.0];
             
             filter = [[GPUImageRGBFilter alloc] init];
-            
-//        case GPUIMAGE_XYGRADIENT:
-//            {
-//                self.title = @"XY Derivative";
-//                self.filterSettingsSlider.hidden = YES;
-//                
-//                filter = [[GPUImageXYDerivativeFilter alloc] init];
-//            }; break;
-//            
-//            filter = [[GPUImageHarrisCornerDetectionFilter alloc] init];
-//            [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.005];
-//            [(GPUImageHarrisCornerDetectionFilter *)filter setThreshold:0.95];
-            
-//            [(GPUImageHarrisCornerDetectionFilter *)filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime) {
-//            }];
 
             [videoCamera setDelegate:self];
             break;
@@ -1170,20 +1159,9 @@ int i=0, j=0;
 #pragma mark - Face Detection Delegate Callback
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
     
-    UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
-//    UIImage *img = [self imageFromSampleBuffer:sampleBuffer];
-//
+    [self printColors];
     
-//    UIImage* image = [self imageFromSampleBuffer:sampleBuffer];
-//    unsigned char* pixels = [image rgbaPixels];
-//    double totalLuminance = 0.0;
-//    for(int p=0;p<image.size.width*image.size.height*4;p+=4)
-//    {
-//        totalLuminance += pixels[p]*0.299 + pixels[p+1]*0.587 + pixels[p+2]*0.114;
-//    }
-//    totalLuminance /= (image.size.width*image.size.height);
-//    totalLuminance /= 255.0;
-//    NSLog(@"totalLuminance %f",totalLuminance);
+    UIImage *img = [self imageFromSamplePlanerPixelBuffer:sampleBuffer];
     
 
     if (!busy && img != nil) {
@@ -1208,34 +1186,46 @@ int position=0;
     busy = NO;
 }
 
-//int position=0;
-//- (void) processArray {
-//    if (imagesToProcess.count > 1 && position < imagesToProcess.count) {
-//        for (int i = position; position<imagesToProcess.count; i++) {
-//            
-//            if(i >= imagesToProcess.count)
-//            {
-//                return;
-//            }
-//            
-//            
-//            UIImage *img = [imagesToProcess objectAtIndex:i];
-//
-////            [self performSelectorInBackground:@selector(findBoardMove:) withObject:img];
-//            [self findBoardMove:img];
-//
-//        }
-//        position = (int)imagesToProcess.count - 1;
-//
-//    }
-//
-//}
+- (void ) printColors {
+    
+    if (whiteOnWhite) {
+        NSLog(@"/n /n /n");
+        NSLog(@"XXXXXXXSXXXXX");
+        
+        CGColorRef color = [whiteOnWhite CGColor];
+        
+        const CGFloat *components = CGColorGetComponents(color);
+        CGFloat colorOfField = components[0];
+        NSLog(@"white on white %f", colorOfField);
+        
+        color = [whiteOnBlack CGColor];
+        components = CGColorGetComponents(color);
+        colorOfField = components[0];
+        NSLog(@"white on black %f", colorOfField);
+        
+        color = [blackOnBlack CGColor];
+        components = CGColorGetComponents(color);
+        colorOfField = components[0];
+        NSLog(@"black on black %f", colorOfField);
+        
+        color = [blackOnWhite CGColor];
+        components = CGColorGetComponents(color);
+        colorOfField = components[0];
+        NSLog(@"black on black %f", colorOfField);
+        
+        NSLog(@"XXXXXXXSXXXXX");
+        NSLog(@"/n /n /n");
+    }
+
+}
+
 -(void)findBoardMove:(UIImage *) img {
     
     ShowFrameViewController *parent = (ShowFrameViewController *)self.parentViewController;
+    self.selectedImage = parent.selectedImage;
+    bool newSelection = parent.newSelection;
     
     cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
-//    UIImage* colorImage = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     
     cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
@@ -1260,9 +1250,7 @@ int position=0;
     lastNumOfPoints = YES;
     // do comparision and id the the 47points in the harris corner detector array
     
-    
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
-        //        cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
     }
     
@@ -1277,27 +1265,16 @@ int position=0;
     free(src);
     
     cv::Mat plainBoardImg;
-
     
     cv::Mat srcImgCopy = [CvMatUIImageConverter cvMatFromUIImage:img];
     cv::warpPerspective(srcImgCopy, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
     cv::transpose(srcImgCopy, srcImg);
-    //    cv::flip(srcImg,srcImg,flipMode=1);
     cv::flip(srcImgCopy,srcImg,1);
     
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImgCopy];
-
-    // origional method
-//    cv::warpPerspective(srcImg, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
-//    cv::transpose(srcImg, srcImg);
-//    //    cv::flip(srcImg,srcImg,flipMode=1);
-//    cv::flip(srcImg,srcImg,1);
-//    
-//    UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImg];
     
     cv::transpose(plainBoardImg, plainBoardImg);
     cv::flip(plainBoardImg, plainBoardImg, 1);
-
     
     UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
     
@@ -1312,9 +1289,18 @@ int position=0;
     // change method calls after light intensity found
     
     UIImage* firstField;
-    if (parent.chessImages.count == 4 ) {
+    if (!whiteOnWhite) {
         firstField = [self lightOrDarkPiece:plain];
-    } else {
+    }
+    if(whiteOnWhite && newSelection){
+        firstField = [self lightOrDarkPiece:plain];
+        parent.newSelection = NO;
+        [self printColors];
+        
+    }
+    
+    if (parent.chessImages.count > _selectedImage && _selectedImage > 2 ) {
+        firstField = [self lightOrDarkPiece:plain];
         NSString *fieldNotation = [self whichSquaresChanged:plain];
         NSLog(@"Field: %@", fieldNotation);
     }
@@ -1322,8 +1308,7 @@ int position=0;
     UIColor* average = [self averageColor:firstField];
     
     dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:firstField]; [parent.averageColor setBackgroundColor:average];});
-// original method
-//    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];});
+
     self.imgView.image = combinedImg;
 }
 #pragma mark - piece movement detection
@@ -1354,10 +1339,16 @@ int position=0;
             // check rule for creating notation
             
             // colors data
-            UIColor *uicolor = whiteOnBlack;
+            UIColor *uicolor = whiteOnWhite;
+            
+            if((i+j % 2) == 0 && blackOnBlack)
+            {
+                uicolor = blackOnBlack;
+            }
+            
             CGColorRef color = [uicolor CGColor];
             
-            int numComponents = CGColorGetNumberOfComponents(color);
+            int numComponents = (int)CGColorGetNumberOfComponents(color);
             
             if (numComponents == 4)
             {
@@ -1365,15 +1356,22 @@ int position=0;
                 CGFloat red = components[0];
                 CGFloat green = components[1];
                 CGFloat blue = components[2];
-                CGFloat alpha = components[3];
                 
                 color = [fieldColor CGColor];
                 components = CGColorGetComponents(color);
                 CGFloat red_field = components[0];
                 CGFloat green_field = components[1];
                 CGFloat blue_field = components[2];
-                CGFloat alpha_field = components[3];
+                
                 CGFloat difference = 0.016;
+                if((red_field - red) > 0.2) {
+                    NSLog(@"might have a real change");
+                    NSLog(@"Location x: %i  y: %i" ,i,j);
+                    NSLog(@"\n");
+                    NSLog(@"red %f", red_field - red);
+                }
+                
+                
                 if(fabs(red_field - red) <= difference || fabs(green_field - green) <= difference || fabs(blue_field - blue) <= difference ) {
                     NSLog(@"whiteOnBlack found");
                     NSLog(@"Location x: %i  y: %i" ,i,j);
@@ -1394,13 +1392,13 @@ int position=0;
     
     
     // TEST Fields
-    int test_position_top_left_x = 0;
-    int test_position_top_left_y = heightOfField*2;
+//    int test_position_top_left_x = 0;
+//    int test_position_top_left_y = heightOfField*2;
     
     int test_position_top_right_x = img.size.width - widthOfField;
-    int test_position_top_right_y = heightOfField*2;
+//    int test_position_top_right_y = heightOfField*2;
     
-    int test_position_bottom_left_x = 0;
+//    int test_position_bottom_left_x = 0;
     int test_position_bottom_left_y = img.size.height - heightOfField*2;
     
     int test_position_bottom_right_x = img.size.width - widthOfField;
@@ -1414,22 +1412,22 @@ int position=0;
     CGImageRef test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_topLeftRect);
     UIImage *test_newImage = [UIImage imageWithCGImage:test_drawImage];
     CGImageRelease(test_drawImage);
-    UIColor* test_whiteOnBlack = [self averageColor:test_newImage];
+//    UIColor* test_whiteOnBlack = [self averageColor:test_newImage];
     
     test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_topRightRect);
     test_newImage = [UIImage imageWithCGImage:test_drawImage];
     CGImageRelease(test_drawImage);
-    UIColor* test_whiteOnWhite = [self averageColor:test_newImage];
+//    UIColor* test_whiteOnWhite = [self averageColor:test_newImage];
     
     test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_bottomLeftRect);
     test_newImage = [UIImage imageWithCGImage:test_drawImage];
     CGImageRelease(test_drawImage);
-    UIColor* test_blackOnWhite = [self averageColor:test_newImage];
+//    UIColor* test_blackOnWhite = [self averageColor:test_newImage];
     
     test_drawImage = CGImageCreateWithImageInRect(img.CGImage, test_bottomRightRect);
     test_newImage = [UIImage imageWithCGImage:test_drawImage];
     CGImageRelease(test_drawImage);
-    UIColor* test_blackOnBlack = [self averageColor:test_newImage];
+//    UIColor* test_blackOnBlack = [self averageColor:test_newImage];
     
     /*
      1 2 3 4 5 6 7 8
@@ -1459,29 +1457,11 @@ int position=0;
     CGRect bottomLeftRect = CGRectMake(position_bottom_left_x, position_bottom_left_y, img.size.width/8, img.size.height/8);
     CGRect bottomRightRect = CGRectMake(position_bottom_right_x, position_bottom_right_y, img.size.width/8, img.size.height/8);
     
-//    CGRect fromRect = bottomRightRect;
-    // original code
-//    CGRect topLeftRect = CGRectMake(0, 0, img.size.width/8, img.size.height/8);
-    
     CGImageRef drawImage = CGImageCreateWithImageInRect(img.CGImage, topLeftRect);
     UIImage *newImage = [UIImage imageWithCGImage:drawImage];
     CGImageRelease(drawImage);
     whiteOnBlack = [self averageColor:newImage];
     
-//    // colors data
-//    UIColor *uicolor = whiteOnBlack;
-//    CGColorRef color = [uicolor CGColor];
-//    
-//    int numComponents = CGColorGetNumberOfComponents(color);
-//    
-//    if (numComponents == 4)
-//    {
-//        const CGFloat *components = CGColorGetComponents(color);
-//        CGFloat red = components[0];
-//        CGFloat green = components[1];
-//        CGFloat blue = components[2];
-//        CGFloat alpha = components[3];
-//    }
     
     drawImage = CGImageCreateWithImageInRect(img.CGImage, topRightRect);
     newImage = [UIImage imageWithCGImage:drawImage];

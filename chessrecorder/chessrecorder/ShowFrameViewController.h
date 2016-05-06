@@ -24,6 +24,10 @@
 
 @property NSNumber *numberOfCorners;
 
+@property int selectedImage;
+
+@property bool newSelection;
+
 
 
 @end

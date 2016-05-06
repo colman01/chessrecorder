@@ -15,7 +15,7 @@
 
 
 
-@interface ChessFilterViewController : UIViewController<GPUImageVideoCameraDelegate> {
+@interface ChessFilterViewController : UIViewController<GPUImageVideoCameraDelegate, AVCaptureVideoDataOutputSampleBufferDelegate> {
     GPUImageVideoCamera *videoCamera;
     GPUImageOutput<GPUImageInput> *filter;
     GPUImagePicture *sourcePicture;
@@ -48,6 +48,8 @@
 @property UIColor *whiteOnBlack;
 @property UIColor *blackOnBlack;
 @property UIColor *blackOnWhite;
+
+@property int selectedImage;
 
 
 @end
