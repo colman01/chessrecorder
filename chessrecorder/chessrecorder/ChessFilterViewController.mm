@@ -225,6 +225,16 @@
             
             cv::Mat m = cv::Mat(30,40, CV_32F,&field);
             cv::PCACompute(m, mean, eigen);
+            
+            printf("    output\n");
+            for(int i = 0; i < eigen.rows; i++) {
+                const float* mi = eigen.ptr<float>(i);
+                printf("        ( ");
+                for(int j = 0; j < eigen.cols; j++) {
+                    printf("%8.1f ", mi[j]);
+                }
+                printf(")\n");
+            }
         }
     }
     
