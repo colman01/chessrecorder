@@ -1330,6 +1330,10 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
         <scene sceneID="Gqh-9r-lfC">
             <objects>
                 <viewController id="nDk-36-XMc" customClass="ChessFilterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F8d-Be-Rp6"/>
+                        <viewControllerLayoutGuide type="bottom" id="TIk-mo-q1n"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pfU-kb-nTl" customClass="GPUImageView">
                         <rect key="frame" x="0.0" y="0.0" width="222" height="174"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

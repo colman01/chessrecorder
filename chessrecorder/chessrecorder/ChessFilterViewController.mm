@@ -195,12 +195,25 @@
     free(dst);
     free(src);
     
+    UIImage *fieldImage = [[UIImage alloc] init];
+    GPUImageCannyEdgeDetectionFilter *canny = [[GPUImageCannyEdgeDetectionFilter alloc] init];
+    
+    
     cv::Mat plainBoardImg;
     
     cv::Mat srcImgCopy = [CvMatUIImageConverter cvMatFromUIImage:img];
     cv::warpPerspective(srcImgCopy, plainBoardImg, m, cv::Size(dstImgSize, dstImgSize));
     cv::transpose(srcImgCopy, srcImg);
     cv::flip(srcImgCopy,srcImg,1);
+    
+    // start
+    UIImage *imgPlain = [CvMatUIImageConverter UIImageFromCVMat:plainBoardImg];
+    
+    fieldImage = [canny imageByFilteringImage:imgPlain];
+    
+    plainBoardImg = [CvMatUIImageConverter cvMatFromUIImage:fieldImage];
+    
+    // end
     
     cv::Rect fieldRect = cv::Rect(0, 0, plainBoardImg.cols / 8, plainBoardImg.rows / 8);
     cv::Mat fieldType0Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
@@ -216,6 +229,20 @@
             field.convertTo(field, CV_16UC4);
             field /= 32;
             
+//            if (i == 7 && j == 7)
+//            {
+//                UIImage *img = [CvMatUIImageConverter UIImageFromCVMat:field];
+//                
+//                
+//                UIImage *resultImage = [[UIImage alloc]init];
+//                resultImage = [canny imageByFilteringImage:img];
+//                fieldImage = resultImage;
+//                
+//                field = [CvMatUIImageConverter cvMatFromUIImage:resultImage];
+//                
+//                
+//            }
+            
 //            if ((i + j) % 2 == 0) {
 //                fieldType0Mean += field;
 //            } else {
@@ -230,12 +257,32 @@
 //            cv::Mat m = cv::Mat(30,40, CV_32F,&field);
             
             padded = padded.reshape(1,2);
+            
+//            UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
+//            cv::Mat grayImage = [CvMatUIImageConverter cvMatGrayFromUIImage:img];
+//            img = [CvMatUIImageConverter UIImageFromCVMat:grayImage];
+//            
+//            UIImage *outputImage  = [[UIImage alloc] init];
+//            cv::Mat image1, image2, image3, image4;
+//            
+//            GPUImageGaussianBlurFilter *gaussian = [[GPUImageGaussianBlurFilter alloc] init];
+//            gaussian.blurRadiusInPixels = 5.0;
+//            
+//            UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
+            
+            
+            
+            
+            
+            field.convertTo(field, CV_16UC4);
+            
             field = field.reshape(1,2);
             cv::PCACompute(field, mean, eigen);
             
             cv::PCA pca = cv::PCA(field, mean,CV_PCA_DATA_AS_ROW);
             
             cv::Mat result = pca.eigenvalues;
+//            result = pca.eigenvectors;
             
             
 
@@ -287,9 +334,13 @@
     int position = (int)parent.chessImages.count -1;
     
 
-    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];self.imgView.image = combinedImg; _busy=NO;
+    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:fieldImage];self.imgView.image = combinedImg; _busy=NO;
         [parent.collectionView reloadData];
         [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];});
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];self.imgView.image = combinedImg; _busy=NO;
+//        [parent.collectionView reloadData];
+//        [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];});
 }
 
 
