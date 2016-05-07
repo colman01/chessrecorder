@@ -295,55 +295,6 @@
 }
 
 
-- (void) parseBuffer:(CMSampleBufferRef) sampleBuffer
-{
-    CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
-    
-    //Processing here
-    int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
-    int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
-    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
-    
-    // put buffer in open cv, no memory copied
-    cv::Mat mat = cv::Mat(bufferHeight,bufferWidth,CV_8UC4,pixel);
-    
-    //End processing
-    CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
-    
-    cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
-    cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
-    
-    int dstImgSize = 400;
-
-    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(mat);
-    for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
-        cv::circle(mat, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
-        src[i] = detectedCorners[i];
-    }
-
-//    printf("getPerspectiveTransform\n");
-//    printf("    input\n");
-//    for (int i = 0; i < 4; i++) {
-//        printf("        (%5.1f, %5.1f) -> (%5.1f, %5.1f)\n", src[i].x, src[i].y, dst[i].x, dst[i].y);
-//    }
-    
-    cv::Mat m = cv::getPerspectiveTransform(src, dst);
-    
-//    printf("    output\n");
-//    for(int i = 0; i < m.rows; i++) {
-//        const double* mi = m.ptr<double>(i);
-//        printf("        ( ");
-//        for(int j = 0; j < m.cols; j++) {
-//            printf("%8.1f ", mi[j]);
-//        }
-//        printf(")\n");
-//    }
-    free(dst);
-    free(src);
-    
-    
-}
 
 // Create a UIImage from sample buffer data
 // Works only if pixel format is kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
