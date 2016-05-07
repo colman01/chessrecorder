@@ -221,31 +221,54 @@
 //            } else {
 //                fieldType1Mean += field;
 //            }
+//            cv::Mat::PCA::eigenvalues
+            
             
             cv::Mat padded = cv::Mat(60, 80, CV_16UC4, cv::Scalar(0));
-            //            mat1.copyTo(padded(Rect(0, 0, mat1.cols, mat1.rows)));
             field.copyTo(padded(cv::Rect(0,0, field.cols, field.rows)));
             
 //            cv::Mat m = cv::Mat(30,40, CV_32F,&field);
-//            cv::Mat m = cv::Mat(2,100, CV_32F,&padded);
             
-//            field = field.reshape(0,1);
             padded = padded.reshape(1,2);
-            cv::PCACompute(padded   , mean, eigen);
+            field = field.reshape(1,2);
+            cv::PCACompute(field, mean, eigen);
             
-//            cv::PCACompute(m, mean, eigen);
-//
+            cv::PCA pca = cv::PCA(field, mean,CV_PCA_DATA_AS_ROW);
+            
+            cv::Mat result = pca.eigenvalues;
+            
+            
 
-            
             printf("    output\n");
-            for(int i = 0; i < eigen.rows; i++) {
-                const float* mi = eigen.ptr<float>(i);
+            for(int i = 0; i < result.rows; i++) {
+                const float* mi = result.ptr<float>(i);
                 printf("        ( ");
-                for(int j = 0; j < eigen.cols; j++) {
+                for(int j = 0; j < result.cols; j++) {
                     printf("%8.1f ", mi[j]);
                 }
                 printf(")\n");
             }
+
+            
+//            printf("    output\n");
+//            for(int i = 0; i < eigen.rows; i++) {
+//                const float* mi = eigen.ptr<float>(i);
+//                printf("        ( ");
+//                for(int j = 0; j < eigen.cols; j++) {
+//                    printf("%8.1f ", mi[j]);
+//                }
+//                printf(")\n");
+//            }
+            
+//            printf("    output\n");
+//            for(int i = 0; i < mean.rows; i++) {
+//                const float* mi = mean.ptr<float>(i);
+//                printf("        ( ");
+//                for(int j = 0; j < mean.cols; j++) {
+//                    printf("%8.1f ", mi[j]);
+//                }
+//                printf(")\n");
+//            }
         }
     }
     
