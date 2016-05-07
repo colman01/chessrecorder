@@ -222,9 +222,20 @@
 //                fieldType1Mean += field;
 //            }
             
+            cv::Mat padded = cv::Mat(60, 80, CV_16UC4, cv::Scalar(0));
+            //            mat1.copyTo(padded(Rect(0, 0, mat1.cols, mat1.rows)));
+            field.copyTo(padded(cv::Rect(0,0, field.cols, field.rows)));
             
-            cv::Mat m = cv::Mat(30,40, CV_32F,&field);
-            cv::PCACompute(m, mean, eigen);
+//            cv::Mat m = cv::Mat(30,40, CV_32F,&field);
+//            cv::Mat m = cv::Mat(2,100, CV_32F,&padded);
+            
+//            field = field.reshape(0,1);
+            padded = padded.reshape(1,2);
+            cv::PCACompute(padded   , mean, eigen);
+            
+//            cv::PCACompute(m, mean, eigen);
+//
+
             
             printf("    output\n");
             for(int i = 0; i < eigen.rows; i++) {
