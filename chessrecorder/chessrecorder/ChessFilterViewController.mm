@@ -285,16 +285,32 @@
 //            result = pca.eigenvectors;
             
             
-
-            printf("    output\n");
-            for(int i = 0; i < result.rows; i++) {
-                const float* mi = result.ptr<float>(i);
-                printf("        ( ");
-                for(int j = 0; j < result.cols; j++) {
-                    printf("%8.1f ", mi[j]);
+            // figure on white squre
+            for(int k = 0; k < result.rows; k++) {
+                const float* mi = result.ptr<float>(k);
+                const float e1 = mi[0];
+                const float e2 = mi[1];
+                
+                if(e1 > 20000.0 && e2 > 10000.0) {
+                    NSLog(@"figure found at: %i %i",i, j );
                 }
-                printf(")\n");
+//                for(int j = 0; j < result.cols; j++) {
+////                    printf("%8.1f ", mi[j]);
+//                    
+//                }
+//                printf(")\n");
             }
+            
+
+//            printf("    output\n");
+//            for(int i = 0; i < result.rows; i++) {
+//                const float* mi = result.ptr<float>(i);
+//                printf("        ( ");
+//                for(int j = 0; j < result.cols; j++) {
+//                    printf("%8.1f ", mi[j]);
+//                }
+//                printf(")\n");
+//            }
 
             
 //            printf("    output\n");
