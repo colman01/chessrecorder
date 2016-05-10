@@ -258,22 +258,7 @@
             
             padded = padded.reshape(1,2);
             
-//            UIImage *img = [UIImage imageNamed:@"nicely.jpg"];
-//            cv::Mat grayImage = [CvMatUIImageConverter cvMatGrayFromUIImage:img];
-//            img = [CvMatUIImageConverter UIImageFromCVMat:grayImage];
-//            
-//            UIImage *outputImage  = [[UIImage alloc] init];
-//            cv::Mat image1, image2, image3, image4;
-//            
-//            GPUImageGaussianBlurFilter *gaussian = [[GPUImageGaussianBlurFilter alloc] init];
-//            gaussian.blurRadiusInPixels = 5.0;
-//            
-//            UIImage *I_45_y = [derivativeYConv imageByFilteringImage:I_45];
-            
-            
-            
-            
-            
+
             field.convertTo(field, CV_16UC4);
             
             field = field.reshape(1,2);
@@ -284,23 +269,32 @@
             cv::Mat result = pca.eigenvalues;
 //            result = pca.eigenvectors;
             
-            
+//            NSLog(@"----- START ------");
             // figure on white squre
             for(int k = 0; k < result.rows; k++) {
                 const float* mi = result.ptr<float>(k);
                 const float e1 = mi[0];
                 const float e2 = mi[1];
+//                printf("%eigenvalue 8.1f 8.1f ", mi[0], mi[1]);
+//                NSLog(@"eigenvalue %i %i %f %f",i, j, e1, e2);
                 
-                if(e1 > 20000.0 && e2 > 10000.0) {
+//                if(e1 > 20000.0 && e2 > 10000.0) {
+//                    NSLog(@"figure found at: %i %i",i, j );
+//                }
+                
+//                if(e1 < 9000.0 || e1 > 18000.0)  {
+//                    if(e2 < 900.0 || e2 > 6000.0 )
+//                    NSLog(@"figure found at: %i %i",i, j );
+//                }
+                
+                if(e1 > 18000.0 && e2 > 6000.0) {
                     NSLog(@"figure found at: %i %i",i, j );
                 }
-//                for(int j = 0; j < result.cols; j++) {
-////                    printf("%8.1f ", mi[j]);
-//                    
+//                if(e1 > 17000.0 && e2 > 4000.0 && e2 < 10000.0) {
+//                    NSLog(@"figure found at: %i %i",i, j );
 //                }
-//                printf(")\n");
             }
-            
+//            NSLog(@"----- END ------");
 
 //            printf("    output\n");
 //            for(int i = 0; i < result.rows; i++) {
@@ -313,25 +307,7 @@
 //            }
 
             
-//            printf("    output\n");
-//            for(int i = 0; i < eigen.rows; i++) {
-//                const float* mi = eigen.ptr<float>(i);
-//                printf("        ( ");
-//                for(int j = 0; j < eigen.cols; j++) {
-//                    printf("%8.1f ", mi[j]);
-//                }
-//                printf(")\n");
-//            }
-            
-//            printf("    output\n");
-//            for(int i = 0; i < mean.rows; i++) {
-//                const float* mi = mean.ptr<float>(i);
-//                printf("        ( ");
-//                for(int j = 0; j < mean.cols; j++) {
-//                    printf("%8.1f ", mi[j]);
-//                }
-//                printf(")\n");
-//            }
+
         }
     }
     
