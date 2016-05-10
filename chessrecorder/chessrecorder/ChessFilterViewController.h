@@ -45,30 +45,17 @@
 
 @property bool busy;
 
+
+@property double ww_mean;
+@property double wb_mean;
+@property double bb_mean;
+@property double bw_mean;
+
+@property double ww_std;
+@property double wb_std;
+@property double bb_std;
+@property double bw_std;
+
+
+
 @end
-
-
-// https://github.com/BradLarson/GPUImage/issues/112
-
-//GPUImageContrastFilter *contrastFilter = [[GPUImageContrastFilter alloc] init];
-//[contrastFilter setContrast:3.5]; // 0 - 4
-//[(GPUImageFilterGroup *)filter addFilter:contrastFilter];
-//
-//GPUImageSaturationFilter *saturationFilter = [[GPUImageSaturationFilter alloc] init];
-//[saturationFilter setSaturation:0.0]; // 0 - 2
-//[(GPUImageFilterGroup*)filter addFilter:saturationFilter];
-//
-//GPUImageSharpenFilter *sharpenFilter = [[GPUImageSharpenFilter alloc] init];
-//[sharpenFilter setSharpness:0.0]; // -4 - 4
-//[(GPUImageFilterGroup *)filter addFilter:sharpenFilter];
-//
-//GPUImageVignetteFilter *vignetteFilter = [[GPUImageVignetteFilter alloc] init];
-//[vignetteFilter setY:0.42];
-//[(GPUImageFilterGroup *)filter addFilter:vignetteFilter];
-//
-//[contrastFilter addTarget:saturationFilter];
-//[saturationFilter addTarget:sharpenFilter];
-//[sharpenFilter addTarget:vignetteFilter];
-//
-//[(GPUImageFilterGroup *)filter setInitialFilters:[NSArray arrayWithObject:contrastFilter]];
-//[(GPUImageFilterGroup *)filter setTerminalFilter:vignetteFilter];

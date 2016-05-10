@@ -172,7 +172,7 @@
     
     fieldImage = [canny imageByFilteringImage:imgPlain];
     
-    plainBoardImg = [CvMatUIImageConverter cvMatFromUIImage:fieldImage];
+    cv::Mat edgeBoardImg = [CvMatUIImageConverter cvMatFromUIImage:fieldImage];
     
     // end
     
@@ -191,17 +191,19 @@
             fieldRect.x = fieldRect.width * i;
             fieldRect.y = fieldRect.height * j;
             
-            cv::Mat field(plainBoardImg, fieldRect);
+            cv::Mat grayField(plainBoardImg, fieldRect);
+            grayField.convertTo(grayField, CV_16UC4);
+            grayField /= 32;
+            
+            cv::Mat field(edgeBoardImg, fieldRect);
             field.convertTo(field, CV_16UC4);
             field /= 32;
             
-            cv::meanStdDev(field, meanScalar, devScalar);
-            
-            
+            cv::meanStdDev(grayField, meanScalar, devScalar);
+
             double r1 = meanScalar.val[0];
             double r2 = devScalar.val[0];
-            
-            
+
             field.convertTo(field, CV_16UC4);
             
             field = field.reshape(1,2);
@@ -210,10 +212,7 @@
             cv::PCA pca = cv::PCA(field, mean,CV_PCA_DATA_AS_ROW);
             
             cv::Mat result = pca.eigenvalues;
-            
-            
 
-            
 //            NSLog(@"----- START ------");
             // figure on white squre
             for(int k = 0; k < result.rows; k++) {
@@ -249,10 +248,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:fieldImage];self.imgView.image = combinedImg; _busy=NO;
         [parent.collectionView reloadData];
         [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];});
-    
-//    dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:plain];self.imgView.image = combinedImg; _busy=NO;
-//        [parent.collectionView reloadData];
-//        [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];});
+
 }
 
 
