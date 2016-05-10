@@ -24,6 +24,14 @@
 
 @synthesize someImage;
 
+@synthesize cols_from;
+@synthesize rows_from;
+
+@synthesize cols_too;
+@synthesize rows_too;
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -52,7 +60,7 @@
 
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
 
-    BOOL needsSecondImage = NO;
+//    BOOL needsSecondImage = NO;
     
     switch (filterType)
     {
@@ -208,15 +216,15 @@
             double r1 = meanScalar.val[0];
             double r2 = devScalar.val[0];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if(parent.newSelection) {
-                    
-                    [self setColorInfo:i index:j andMean:r1 andStd:r2];
-                } else if(parent.chessImages.count > 1)  {
-                    [self checkColor:i withIndex:j withMean:r1 withStd:r2];
-                }
-
-            });
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                if(parent.newSelection) {
+//                    
+//                    [self setColorInfo:i index:j andMean:r1 andStd:r2];
+//                } else if(parent.chessImages.count > 1)  {
+//                    [self checkColor:i withIndex:j withMean:r1 withStd:r2];
+//                }
+//
+//            });
             
 
             field.convertTo(field, CV_16UC4);
@@ -228,8 +236,6 @@
             
             cv::Mat result = pca.eigenvalues;
 
-//            NSLog(@"----- START ------");
-            // figure on white squre
             for(int k = 0; k < result.rows; k++) {
                 const float* mi = result.ptr<float>(k);
                 const float e1 = mi[0];
@@ -238,9 +244,21 @@
                 
                 if(e1 > 18000.0 && e2 > 6000.0) {
                     NSLog(@"figure found at: %i %i",i, j );
+//                    NSNumber* found = [NSNumber numberWithBool:YES];
+//                    [cols_too insertObject:found atIndex:j];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if(parent.newSelection) {
+                            
+                            [self setColorInfo:i index:j andMean:r1 andStd:r2];
+                        } else if(parent.chessImages.count > 1)  {
+                            [self checkColor:i withIndex:j withMean:r1 withStd:r2];
+                        }
+                        
+                    });
+                    
                 }
             }
-//            NSLog(@"----- END ------");
 
         }
     }
@@ -295,8 +313,8 @@
 }
 
 -(void) checkColor:(int)i withIndex:(int)j withMean:(double) mean withStd:(double)std {
-    double tolMean = 0.5;
-    double tolStd = 0.01;
+    double tolMean = 1.2;
+    double tolStd = 0.1;
     int side = 30;
     int x = i*side;
     int y = j*side;

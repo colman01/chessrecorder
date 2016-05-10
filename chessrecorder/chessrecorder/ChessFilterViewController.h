@@ -32,9 +32,9 @@
 - (void)setupFilter;
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 // Filter adjustments
-- (IBAction)updateFilterFromSlider:(id)sender;
-- (void)GPUVCWillOutputFeatures:(NSArray*)featureArray forClap:(CGRect)clap
-                 andOrientation:(UIDeviceOrientation)curDeviceOrientation;
+//- (IBAction)updateFilterFromSlider:(id)sender;
+//- (void)GPUVCWillOutputFeatures:(NSArray*)featureArray forClap:(CGRect)clap
+//                 andOrientation:(UIDeviceOrientation)curDeviceOrientation;
 
 
 @property IBOutlet GPUImageView *gpuImageView;
@@ -45,6 +45,12 @@
 
 @property bool busy;
 
+
+@property NSMutableArray *cols_from;
+@property NSMutableArray *rows_from;
+
+@property NSMutableArray *cols_too;
+@property NSMutableArray *rows_too;
 
 @property double ww_mean;
 @property double wb_mean;
