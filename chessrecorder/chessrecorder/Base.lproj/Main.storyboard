@@ -1145,15 +1145,19 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" image="AlphaBKing.tiff" translatesAutoresizingMaskIntoConstraints="NO" id="UuY-n7-d6J">
                                                             <rect key="frame" x="61" y="69" width="40" height="40"/>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFv-Ic-Sva">
+                                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YFv-Ic-Sva">
                                                             <rect key="frame" x="14" y="8" width="132" height="101"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstItem="UuY-n7-d6J" firstAttribute="top" secondItem="qPh-SH-Vdn" secondAttribute="topMargin" constant="61" id="DxI-ji-P3s"/>
-                                                    <constraint firstItem="UuY-n7-d6J" firstAttribute="leading" secondItem="qPh-SH-Vdn" secondAttribute="leadingMargin" constant="53" id="XlU-NR-dbf"/>
+                                                    <constraint firstItem="YFv-Ic-Sva" firstAttribute="top" secondItem="qPh-SH-Vdn" secondAttribute="topMargin" id="BWC-m4-Afg"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="YFv-Ic-Sva" secondAttribute="trailing" constant="17" id="H5m-Kj-89u"/>
+                                                    <constraint firstItem="YFv-Ic-Sva" firstAttribute="leading" secondItem="qPh-SH-Vdn" secondAttribute="leadingMargin" constant="6" id="RPD-7c-U9e"/>
+                                                    <constraint firstItem="YFv-Ic-Sva" firstAttribute="bottom" secondItem="UuY-n7-d6J" secondAttribute="bottom" id="cAA-h7-fJz"/>
+                                                    <constraint firstItem="UuY-n7-d6J" firstAttribute="leading" secondItem="qPh-SH-Vdn" secondAttribute="leadingMargin" constant="53" id="pcy-Yu-TCA"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="YFv-Ic-Sva" secondAttribute="bottom" constant="53" id="ybS-66-2TS"/>
                                                 </constraints>
                                             </collectionViewCell>
                                         </cells>
@@ -1164,30 +1168,55 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
                                     </collectionView>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HKO-fd-KVW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HKO-fd-KVW">
                                 <rect key="frame" x="223" y="64" width="253" height="174"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zw0-fn-RlG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zw0-fn-RlG">
                                 <rect key="frame" x="476" y="64" width="232" height="174"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="SM2-n4-lXM"/>
+                                </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHd-Fv-fKd">
+                                <rect key="frame" x="0.0" y="246" width="240" height="240"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlphaWPawn.tiff" translatesAutoresizingMaskIntoConstraints="NO" id="7Kf-Jq-DLg">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j37-Gp-By8" firstAttribute="leading" secondItem="xDh-4c-gNg" secondAttribute="leading" id="2FR-ot-7fB"/>
                             <constraint firstAttribute="trailing" secondItem="xDh-4c-gNg" secondAttribute="trailing" id="5r7-4a-404"/>
                             <constraint firstItem="j37-Gp-By8" firstAttribute="top" secondItem="SUo-cF-KpJ" secondAttribute="bottom" id="6Zl-qA-wxN"/>
                             <constraint firstAttribute="bottom" secondItem="j37-Gp-By8" secondAttribute="bottom" constant="530" id="BX1-bs-ySV"/>
+                            <constraint firstItem="YHd-Fv-fKd" firstAttribute="top" secondItem="HKO-fd-KVW" secondAttribute="bottom" constant="8" symbolic="YES" id="BbE-I9-3eW"/>
+                            <constraint firstItem="Zw0-fn-RlG" firstAttribute="top" secondItem="j37-Gp-By8" secondAttribute="top" id="CBK-aZ-UK0"/>
+                            <constraint firstItem="HKO-fd-KVW" firstAttribute="bottom" secondItem="Zw0-fn-RlG" secondAttribute="bottom" id="EVK-qh-12X"/>
                             <constraint firstItem="j37-Gp-By8" firstAttribute="leading" secondItem="3YF-bz-mPB" secondAttribute="leading" id="Had-ab-8iZ"/>
                             <constraint firstItem="xDh-4c-gNg" firstAttribute="top" secondItem="3YF-bz-mPB" secondAttribute="top" constant="523" id="JFa-hN-leg"/>
+                            <constraint firstItem="HKO-fd-KVW" firstAttribute="top" secondItem="j37-Gp-By8" secondAttribute="top" id="K3i-kX-LRI"/>
+                            <constraint firstItem="Zw0-fn-RlG" firstAttribute="leading" secondItem="3YF-bz-mPB" secondAttribute="leading" constant="476" id="Mwm-c5-mau"/>
                             <constraint firstItem="xDh-4c-gNg" firstAttribute="bottom" secondItem="ZPD-pl-Whk" secondAttribute="top" id="Pjx-Pn-F9f"/>
+                            <constraint firstAttribute="trailing" secondItem="YHd-Fv-fKd" secondAttribute="trailing" constant="784" id="PtS-eO-mhV"/>
                             <constraint firstAttribute="trailing" secondItem="j37-Gp-By8" secondAttribute="trailing" constant="802" id="We7-M0-F1n"/>
+                            <constraint firstItem="HKO-fd-KVW" firstAttribute="leading" secondItem="j37-Gp-By8" secondAttribute="trailing" constant="1" id="aKc-pL-aNp"/>
+                            <constraint firstItem="YHd-Fv-fKd" firstAttribute="leading" secondItem="j37-Gp-By8" secondAttribute="leading" id="ibV-3K-blN"/>
+                            <constraint firstItem="Zw0-fn-RlG" firstAttribute="leading" secondItem="HKO-fd-KVW" secondAttribute="trailing" id="mbU-4x-lFi"/>
+                            <constraint firstItem="YHd-Fv-fKd" firstAttribute="top" secondItem="j37-Gp-By8" secondAttribute="bottom" constant="8" symbolic="YES" id="q5R-WJ-adP"/>
+                            <constraint firstItem="xDh-4c-gNg" firstAttribute="top" secondItem="YHd-Fv-fKd" secondAttribute="bottom" constant="37" id="zc7-jG-33n"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="board" destination="YHd-Fv-fKd" id="EcB-yy-yf8"/>
                         <outlet property="collectionView" destination="3p8-a6-aEZ" id="3s7-X2-Idl"/>
                         <outlet property="imgView" destination="HKO-fd-KVW" id="B0U-Mz-uhI"/>
+                        <outlet property="square" destination="7Kf-Jq-DLg" id="5Qe-gI-lvy"/>
                         <outlet property="subView" destination="Zw0-fn-RlG" id="726-zK-UoO"/>
                     </connections>
                 </viewController>
@@ -1347,6 +1376,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2</string>
     </scenes>
     <resources>
         <image name="AlphaBKing.tiff" width="40" height="40"/>
+        <image name="AlphaWPawn.tiff" width="40" height="40"/>
         <image name="Chess-board.jpg" width="400" height="400"/>
         <image name="Chess_board_top.jpg" width="800" height="800"/>
         <image name="DarkGreenMarble.tiff" width="40" height="40"/>

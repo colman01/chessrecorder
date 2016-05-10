@@ -129,6 +129,10 @@
 
 -(void)findBoardMove:(UIImage *) img {
     _busy = YES;
+    
+    ShowFramePadViewController *parent = (ShowFramePadViewController *)self.parentViewController;
+    
+    
     cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:img];
     cv::Point2f* src = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
@@ -168,9 +172,9 @@
     cv::flip(srcImgCopy,srcImg,1);
     
     // start
-    UIImage *imgPlain = [CvMatUIImageConverter UIImageFromCVMat:plainBoardImg];
+    UIImage *plain = [CvMatUIImageConverter UIImageFromCVMat:plainBoardImg];
     
-    fieldImage = [canny imageByFilteringImage:imgPlain];
+    fieldImage = [canny imageByFilteringImage:plain];
     
     cv::Mat edgeBoardImg = [CvMatUIImageConverter cvMatFromUIImage:fieldImage];
     
@@ -203,6 +207,13 @@
 
             double r1 = meanScalar.val[0];
             double r2 = devScalar.val[0];
+            
+            if(parent.newSelection) {
+                
+                [self setColorInfo:i index:j andMean:r1 andStd:r2];
+            } else if(parent.chessImages.count > 1)  {
+                [self checkColor:i withIndex:j withMean:r1 withStd:r2];
+            }
 
             field.convertTo(field, CV_16UC4);
             
@@ -230,15 +241,15 @@
         }
     }
     
+    parent.newSelection = NO;
+    
     UIImage* combinedImg = [CvMatUIImageConverter UIImageFromCVMat:srcImgCopy];
     
     cv::transpose(plainBoardImg, plainBoardImg);
     cv::flip(plainBoardImg, plainBoardImg, 1);
     
-    UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
+//    UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
     
- 
-    ShowFramePadViewController *parent = (ShowFramePadViewController *)self.parentViewController;
     if(!parent.chessImages)
         parent.chessImages = [[NSMutableArray alloc] init];
     [parent.chessImages addObject:plain];
@@ -248,7 +259,75 @@
     dispatch_async(dispatch_get_main_queue(), ^{[parent.imgView setImage:combinedImg]; [parent.subView setImage:fieldImage];self.imgView.image = combinedImg; _busy=NO;
         [parent.collectionView reloadData];
         [parent.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:position inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];});
+}
 
+
+-(void) setColorInfo:(int)i index:(int)j andMean:(double)mean andStd:(double)std{
+    if( i == 3 && j == 3)
+    {
+        //ww
+        _ww_mean = mean;
+        _ww_std = std;
+    }
+    if( i == 4 && j == 3)
+    {
+        //wb
+        _wb_mean = mean;
+        _wb_std = std;
+    }
+    if( i == 0 && j == 7)
+    {
+        //bb
+        _bb_mean = mean;
+        _bb_std = std;
+    }
+    if( i == 7 && j == 7)
+    {
+        //bw
+        _bw_mean = mean;
+        _bw_std = std;
+    }
+    
+}
+
+-(void) checkColor:(int)i withIndex:(int)j withMean:(double) mean withStd:(double)std {
+    double tolMean = 0.5;
+    double tolStd = 0.01;
+    int side = 30;
+    int x = i*side;
+    int y = j*side;
+    ShowFramePadViewController *parent = (ShowFramePadViewController *)self.parentViewController;
+    UIImageView *imgView = [[UIImageView alloc] init];
+    
+    if (( cv::abs<double>(mean - _ww_mean) < tolMean) && (cv::abs<double>(std - _ww_std) < tolStd)) {
+        NSLog(@"white on white found: %i %i", i ,j);
+        imgView.image = [UIImage imageNamed:@"AlphaWPawn.tiff"];
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
+        [imgView setFrame:CGRectMake(x, y, side, side)];
+        [parent.board addSubview:imgView];
+        
+    }
+    if (( cv::abs<double>(mean - _wb_mean) < tolMean) && (cv::abs<double>(std - _wb_std) < tolStd)) {
+        NSLog(@"white on black found: %i %i", i ,j);
+        imgView.image = [UIImage imageNamed:@"AlphaWPawn.tiff"];
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
+        [imgView setFrame:CGRectMake(x, y, side, side)];
+        [parent.board addSubview:imgView];
+    }
+    if (( cv::abs<double>(mean - _bb_mean) < tolMean) && (cv::abs<double>(std - _bb_std) < tolStd)) {
+        NSLog(@"black on black found: %i %i", i ,j);
+        imgView.image = [UIImage imageNamed:@"AlphaBPawn.tiff"];
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
+        [imgView setFrame:CGRectMake(x, y, side, side)];
+        [parent.board addSubview:imgView];
+    }
+    if (( cv::abs<double>(mean - _bw_mean) < tolMean) && (cv::abs<double>(std - _bw_std) < tolStd)) {
+        NSLog(@"black on white found: %i %i", i ,j);
+        imgView.image = [UIImage imageNamed:@"AlphaBPawn.tiff"];
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
+        [imgView setFrame:CGRectMake(x, y, side, side)];
+        [parent.board addSubview:imgView];
+    }
 }
 
 

@@ -12,13 +12,19 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
+@synthesize board;
+@synthesize square;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self setupBoard];
     if (!_imgView) {
         _imgView = [[UIImageView alloc] init];
         _chessImages = [[NSMutableArray alloc] init];
     }
     [_slider addTarget:self action:@selector(handleValueChanged:event:) forControlEvents:UIControlEventValueChanged];
+    
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -29,7 +35,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.allowsSelection = YES;
     
     UIImageView *imgV = [cell viewWithTag:2];
-//    UICollectionViewCell *imgV = [cell viewWithTag:1];
+
     
     if (_chessImages) {
         UIImage *image = [_chessImages objectAtIndex:indexPath.row];
@@ -56,5 +62,43 @@ static NSString * const reuseIdentifier = @"Cell";
         return 10;
     }
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"should set values");
+    
+    [self resetupBoard];
+    if(!_newSelection) {
+        _newSelection = YES;
+    }
+}
+
+
+-(void) setupBoard{
+    int side = 30;
+    
+    for (int i=0; i<8; i++) {
+        int x = i*side;
+        for (int j=0; j<8; j++) {
+            UIImageView *imgView = [[UIImageView alloc] init];
+            int y = j*side;
+            imgView.image = [UIImage imageNamed:@"AlphaWPawn.tiff"];
+            imgView.contentMode = UIViewContentModeScaleAspectFit;
+            [imgView setFrame:CGRectMake(x, y, side, side)];
+            
+            [board addSubview:imgView];
+        }
+    }
+    
+}
+
+-(void) resetupBoard{
+    
+    for (UIImageView *imgV in board.subviews) {
+        imgV.image = nil;
+    }
+    
+}
+
+
 
 @end

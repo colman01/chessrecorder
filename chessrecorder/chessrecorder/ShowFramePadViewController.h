@@ -15,6 +15,11 @@
 @property IBOutlet UICollectionView *collectionView;
 @property IBOutlet UISlider *slider;
 
+@property IBOutlet UIView *board;
+@property IBOutlet UIImageView *square;
+
 @property NSMutableArray *chessImages;
+
+@property bool newSelection;
 
 @end
