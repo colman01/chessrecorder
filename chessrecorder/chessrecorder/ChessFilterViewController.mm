@@ -208,12 +208,16 @@
             double r1 = meanScalar.val[0];
             double r2 = devScalar.val[0];
             
-            if(parent.newSelection) {
-                
-                [self setColorInfo:i index:j andMean:r1 andStd:r2];
-            } else if(parent.chessImages.count > 1)  {
-                [self checkColor:i withIndex:j withMean:r1 withStd:r2];
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(parent.newSelection) {
+                    
+                    [self setColorInfo:i index:j andMean:r1 andStd:r2];
+                } else if(parent.chessImages.count > 1)  {
+                    [self checkColor:i withIndex:j withMean:r1 withStd:r2];
+                }
+
+            });
+            
 
             field.convertTo(field, CV_16UC4);
             
