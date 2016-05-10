@@ -181,8 +181,13 @@
     cv::Mat fieldType1Mean = cv::Mat::zeros(fieldRect.height, fieldRect.width, CV_16UC4);
     cv::Mat mean;
     cv::Mat eigen;
+    cv::Mat mean2;
+    cv::Mat std;
+    cv::Scalar meanScalar,devScalar;
+    
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
+            
             fieldRect.x = fieldRect.width * i;
             fieldRect.y = fieldRect.height * j;
             
@@ -190,13 +195,13 @@
             field.convertTo(field, CV_16UC4);
             field /= 32;
             
+            cv::meanStdDev(field, meanScalar, devScalar);
             
-            cv::Mat padded = cv::Mat(60, 80, CV_16UC4, cv::Scalar(0));
-            field.copyTo(padded(cv::Rect(0,0, field.cols, field.rows)));
             
-            padded = padded.reshape(1,2);
+            double r1 = meanScalar.val[0];
+            double r2 = devScalar.val[0];
             
-
+            
             field.convertTo(field, CV_16UC4);
             
             field = field.reshape(1,2);
@@ -205,6 +210,8 @@
             cv::PCA pca = cv::PCA(field, mean,CV_PCA_DATA_AS_ROW);
             
             cv::Mat result = pca.eigenvalues;
+            
+            
 
             
 //            NSLog(@"----- START ------");
