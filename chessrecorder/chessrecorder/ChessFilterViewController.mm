@@ -57,39 +57,12 @@
     switch (filterType)
     {
         
-
-
-
-        
         case GPUIMAGE_CONVOLUTION:
         {
             self.title = @"3x3 Convolution";
             self.filterSettingsSlider.hidden = YES;
             
             filter = [[GPUImage3x3ConvolutionFilter alloc] init];
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {-2.0f, -1.0f, 0.0f},
-            //                {-1.0f,  1.0f, 1.0f},
-            //                { 0.0f,  1.0f, 2.0f}
-            //            }];
-            
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {0.0f, 1.0f, 0.0f},
-            //                {1.0f,  1.0f, 1.0f},
-            //                { 0.0f,  1.0f, 0.0f}
-            //            }];
-            
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {1.0f, 1.0f, 1.0f},
-            //                {1.0f,  1.0f, 1.0f},
-            //                { 1.0f,  1.0f, 1.0f}
-            //            }];
-            
-//            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-//                {-1.0f,  0.0f, 1.0f},
-//                {-2.0f, 0.0f, 2.0f},
-//                {-1.0f,  0.0f, 1.0f}
-//            }];
             
             [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
                 {0.0f, 1.0f, 0.0f},
@@ -97,17 +70,7 @@
                 { 0.0f,  1.0f, 0.0f}
             }];
             
-            
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                {1.0f,  1.0f, 1.0f},
-            //                {1.0f, -8.0f, 1.0f},
-            //                {1.0f,  1.0f, 1.0f}
-            //            }];
-            //            [(GPUImage3x3ConvolutionFilter *)filter setConvolutionKernel:(GPUMatrix3x3){
-            //                { 0.11f,  0.11f, 0.11f},
-            //                { 0.11f,  0.11f, 0.11f},
-            //                { 0.11f,  0.11f, 0.11f}
-            //            }];
+
         }; break;
         
             
@@ -121,8 +84,6 @@
             [videoCamera setDelegate:self];
             break;
         }
-            
-            
 
             
     }
@@ -140,18 +101,18 @@
     [videoCamera startCameraCapture];
 }
 
-#pragma mark -
-#pragma mark Filter adjustments
-
-- (IBAction)updateFilterFromSlider:(id)sender;
-{
-    [videoCamera resetBenchmarkAverage];
-    switch(filterType)
-    {
-        case GPUIMAGE_CANNYEDGEDETECTION: [(GPUImageCannyEdgeDetectionFilter *)filter setBlurTexelSpacingMultiplier:[(UISlider*)sender value]]; break;
-        
-    }
-}
+//#pragma mark -
+//#pragma mark Filter adjustments
+//
+//- (IBAction)updateFilterFromSlider:(id)sender;
+//{
+//    [videoCamera resetBenchmarkAverage];
+////    switch(filterType)
+////    {
+////        case GPUIMAGE_CANNYEDGEDETECTION: [(GPUImageCannyEdgeDetectionFilter *)filter setBlurTexelSpacingMultiplier:[(UISlider*)sender value]]; break;
+////        
+////    }
+//}
 
 #pragma mark - Face Detection Delegate Callback
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
@@ -229,32 +190,9 @@
             field.convertTo(field, CV_16UC4);
             field /= 32;
             
-//            if (i == 7 && j == 7)
-//            {
-//                UIImage *img = [CvMatUIImageConverter UIImageFromCVMat:field];
-//                
-//                
-//                UIImage *resultImage = [[UIImage alloc]init];
-//                resultImage = [canny imageByFilteringImage:img];
-//                fieldImage = resultImage;
-//                
-//                field = [CvMatUIImageConverter cvMatFromUIImage:resultImage];
-//                
-//                
-//            }
-            
-//            if ((i + j) % 2 == 0) {
-//                fieldType0Mean += field;
-//            } else {
-//                fieldType1Mean += field;
-//            }
-//            cv::Mat::PCA::eigenvalues
-            
             
             cv::Mat padded = cv::Mat(60, 80, CV_16UC4, cv::Scalar(0));
             field.copyTo(padded(cv::Rect(0,0, field.cols, field.rows)));
-            
-//            cv::Mat m = cv::Mat(30,40, CV_32F,&field);
             
             padded = padded.reshape(1,2);
             
@@ -267,7 +205,7 @@
             cv::PCA pca = cv::PCA(field, mean,CV_PCA_DATA_AS_ROW);
             
             cv::Mat result = pca.eigenvalues;
-//            result = pca.eigenvectors;
+
             
 //            NSLog(@"----- START ------");
             // figure on white squre
@@ -275,38 +213,13 @@
                 const float* mi = result.ptr<float>(k);
                 const float e1 = mi[0];
                 const float e2 = mi[1];
-//                printf("%eigenvalue 8.1f 8.1f ", mi[0], mi[1]);
-//                NSLog(@"eigenvalue %i %i %f %f",i, j, e1, e2);
-                
-//                if(e1 > 20000.0 && e2 > 10000.0) {
-//                    NSLog(@"figure found at: %i %i",i, j );
-//                }
-                
-//                if(e1 < 9000.0 || e1 > 18000.0)  {
-//                    if(e2 < 900.0 || e2 > 6000.0 )
-//                    NSLog(@"figure found at: %i %i",i, j );
-//                }
+
                 
                 if(e1 > 18000.0 && e2 > 6000.0) {
                     NSLog(@"figure found at: %i %i",i, j );
                 }
-//                if(e1 > 17000.0 && e2 > 4000.0 && e2 < 10000.0) {
-//                    NSLog(@"figure found at: %i %i",i, j );
-//                }
             }
 //            NSLog(@"----- END ------");
-
-//            printf("    output\n");
-//            for(int i = 0; i < result.rows; i++) {
-//                const float* mi = result.ptr<float>(i);
-//                printf("        ( ");
-//                for(int j = 0; j < result.cols; j++) {
-//                    printf("%8.1f ", mi[j]);
-//                }
-//                printf(")\n");
-//            }
-
-            
 
         }
     }
