@@ -101,8 +101,8 @@
     dst[3] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8 * 7);
     
     cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:srcImgUi];
-    
-    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
+    int num = 0;
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg, num);
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
         cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
@@ -236,8 +236,8 @@
     dst[3] = cv::Point2f(dstImgSize / 8    , dstImgSize / 8 * 7);
     
     cv::Mat srcImg = [CvMatUIImageConverter cvMatFromUIImage:srcImgUi];
-    
-    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
+    int num;
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg, num);
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
         cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];

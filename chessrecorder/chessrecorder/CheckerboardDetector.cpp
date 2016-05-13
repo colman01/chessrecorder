@@ -836,8 +836,8 @@ namespace CheckDet {
         return vector<Point2f>();
     }
     
-    vector<Point2f> getOuterCheckerboardCorners(Mat& mat) {
-        vector<Point2fSt> cornerList = CheckDet::getLooseCheckerboardCorners(mat);
+    vector<Point2f> getOuterCheckerboardCorners(Mat& mat, int &values){
+        vector<Point2fSt> cornerList = CheckDet::getLooseCheckerboardCorners(mat, values);
         vector<LineFSt> lineList = CheckDet::getLinesThroughPoints(cornerList, 3, 5);
         vector<LineFSt> borderingLineList = CheckDet::getBorderingLines(lineList, cornerList, 5);
         vector<Point2f> outerCornerList = CheckDet::getIntersections(borderingLineList);
@@ -867,7 +867,7 @@ namespace CheckDet {
         return outerCornerList;
     }
 
-    vector<Point2fSt> getLooseCheckerboardCorners(Mat& mat) {
+    vector<Point2fSt> getLooseCheckerboardCorners(Mat& mat, int& numberOfPointsDetected) {
         const int MAX_RADIUS = 8;
         
         Mat tmp;
@@ -882,6 +882,7 @@ namespace CheckDet {
         vector<Point2fSt> cornerList = getHeatSourcesForHeatmap(tmp, 150);
         
         applyDistanceFilters(cornerList);
+        numberOfPointsDetected = cornerList.size();
         
         return cornerList;
     }

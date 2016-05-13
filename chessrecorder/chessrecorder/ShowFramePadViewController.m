@@ -29,6 +29,9 @@ static NSString * const reuseIdentifier = @"Cell";
         _imgView = [[UIImageView alloc] init];
         _chessImages = [[NSMutableArray alloc] init];
     }
+    [self configureSliderMethods];
+    [self configureSliderRange];
+    
     [_slider addTarget:self action:@selector(handleValueChanged:event:) forControlEvents:UIControlEventValueChanged];
     
     

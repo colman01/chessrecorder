@@ -148,13 +148,29 @@
     cv::Point2f* dst = (cv::Point2f*) malloc(4 * sizeof(cv::Point2f));
     
     int dstImgSize = 400;
-    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg);
+    
+    // if not 49 points then its not a full board
+    int numberOfPoints = 0;
+    
+    std::vector<cv::Point2f> detectedCorners = CheckDet::getOuterCheckerboardCorners(srcImg, numberOfPoints);
+    
+    
+    printf("number of point %d\n", numberOfPoints);
+    
+    int thres = (int)parent.numberOfCorners.value;
+
+    if(numberOfPoints <= thres  ) {
+        
+        _busy = NO;
+        return;
+        
+        
+    }
+    
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
         cv::circle(srcImg, cv::Point2i(detectedCorners[i].x, detectedCorners[i].y), 7, cv::Scalar(127, 127, 255), -1);
         src[i] = detectedCorners[i];
     }
-    
-    
     
     for (int i = 0; i < MIN(4, detectedCorners.size()); i++) {
         src[i] = detectedCorners[i];

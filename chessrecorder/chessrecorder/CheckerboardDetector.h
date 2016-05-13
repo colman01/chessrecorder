@@ -77,8 +77,8 @@ namespace CheckDet {
         }
     };
     
-    vector<Point2f> getOuterCheckerboardCorners(Mat& mat);
-    vector<Point2fSt> getLooseCheckerboardCorners(Mat& mat);
+    vector<Point2f> getOuterCheckerboardCorners(Mat& mat, int &values);
+    vector<Point2fSt> getLooseCheckerboardCorners(Mat& mat, int& numberOfPointsDetected);
     vector<LineFSt> getLinesThroughPoints(vector<Point2fSt>& cornerList, int minPointsPerLine = 3, float maxErrorPerPoint = 5);
     vector<LineFSt> getBorderingLines(vector<LineFSt>& lines, vector<Point2fSt>& points, float maxDistancePerPoint = 5);
     vector<Point2f> getIntersections(vector<LineFSt>& lines);

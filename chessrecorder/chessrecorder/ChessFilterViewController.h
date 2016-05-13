@@ -64,5 +64,9 @@
 
 @property NSMutableArray *lastKnownGoodSrcPoints;
 
+typedef struct _NSPoint {
+    CGFloat x;
+    CGFloat y;
+} NSPoint;
 
 @end
