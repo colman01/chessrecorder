@@ -62,6 +62,7 @@
 @property double bb_std;
 @property double bw_std;
 
+@property NSMutableArray *lastKnownGoodSrcPoints;
 
 
 @end

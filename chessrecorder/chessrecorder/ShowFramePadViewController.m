@@ -15,6 +15,13 @@ static NSString * const reuseIdentifier = @"Cell";
 @synthesize board;
 @synthesize square;
 
+@synthesize numberOfCorners;
+@synthesize meanThres;
+@synthesize stdThres;
+@synthesize eigenvalue1Thres;
+@synthesize eigenvalue2Thres;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self setupBoard];
@@ -23,6 +30,7 @@ static NSString * const reuseIdentifier = @"Cell";
         _chessImages = [[NSMutableArray alloc] init];
     }
     [_slider addTarget:self action:@selector(handleValueChanged:event:) forControlEvents:UIControlEventValueChanged];
+    
     
     
 }
@@ -96,6 +104,26 @@ static NSString * const reuseIdentifier = @"Cell";
     for (UIImageView *imgV in board.subviews) {
         imgV.image = nil;
     }
+    
+}
+
+
+- (void) configureSliderRange {
+    
+    [self.numberOfCorners setMaximumValue:49];
+    [self.numberOfCorners setMinimumValue:0];
+    
+    [self.meanThres setMinimumValue:0.0];
+    [self.meanThres setMaximumValue:0.0];
+    
+}
+
+- (void) configureSliderMethods {
+    [numberOfCorners addTarget:self action:@selector(numberOfCornersChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void) numberOfCornersChanged:(UIControlEvents *)event {
+    NSLog(@"%f", numberOfCorners.value);
     
 }
 

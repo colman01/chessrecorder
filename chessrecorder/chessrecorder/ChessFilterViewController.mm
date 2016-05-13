@@ -30,6 +30,8 @@
 @synthesize cols_too;
 @synthesize rows_too;
 
+@synthesize lastKnownGoodSrcPoints;
+
 
 
 - (void)viewDidLoad {
@@ -270,7 +272,6 @@
     cv::transpose(plainBoardImg, plainBoardImg);
     cv::flip(plainBoardImg, plainBoardImg, 1);
     
-//    UIImage *plain = [self UIImageFromCVMat:plainBoardImg];
     
     if(!parent.chessImages)
         parent.chessImages = [[NSMutableArray alloc] init];
